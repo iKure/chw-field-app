@@ -1,0 +1,9 @@
+<ion-view view-title="patients module">
+  <ion-content>
+    <ion-list>
+      <a ng-repeat="patient in directory.patients" class="item list-item" ng-click="directory.view(patient)" >
+        {{patient.first_name}} {{patient.last_name}}
+      </a>
+    </ion-list>
+  </ion-content>
+</ion-view>
