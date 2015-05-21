@@ -7,7 +7,9 @@ angular.module('patients')
     console.log('Hello from your Service: Patients in module patients');
 
     var default_patients = [];
-    if (Config.ENV.PATIENTS) default_patients = Config.ENV.PATIENTS;
+    if (Config.ENV.PATIENTS) {
+      default_patients = Config.ENV.PATIENTS;
+    }
 
     var service = {
       patients: default_patients,
