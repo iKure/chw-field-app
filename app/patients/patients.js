@@ -13,8 +13,8 @@ angular.module('patients', [
   $stateProvider
     .state('patients', {
       url: '/patients',
-      templateUrl: 'patients/templates/start.html',
-      controller: 'StartCtrl as start'
+      templateUrl: 'patients/templates/list.html',
+      controller: 'DirectoryCtrl as directory'
     })
     .state('register', {
       url: '/patients/register',
