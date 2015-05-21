@@ -1,13 +1,15 @@
 <ion-view view-title="Register Patient">
  	<ion-content>
- 		<label class="item item-input">
+ 		<div class="list">
+ 		<label class="item item-input item-stacked-label">
  			<span class="input-label">First Name</span>
  			<input type="text" id="first-name" name="first-name" value="{{patient.first_name}}" />
  		</label>
- 		<label class="item item-input">
+ 		<label class="item item-input item-stacked-label">
  			<span class="input-label">Last Name</span>
  			<input type="text" id="last-name" name="last-name" value="{{patient.last_name}}" />
  		</label>
- 		<input type="submit" class="btn" value="register" />
+ 		<button class="button button-block">Register</button>
+ 		</div>
 	</ion-content>
 </ion-view>
