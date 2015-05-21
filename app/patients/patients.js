@@ -11,6 +11,11 @@ angular.module('patients', [
 
   // some basic routing
   $stateProvider
+    .state('profile', {
+      url: '/patients/:id',
+      templateUrl: 'patients/templates/profile.html',
+      controller: 'ProfileCrtl as profile',
+    })
     .state('patients', {
       url: '/patients',
       templateUrl: 'patients/templates/list.html',

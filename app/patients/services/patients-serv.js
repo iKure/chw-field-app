@@ -17,8 +17,12 @@ angular.module('patients')
         console.log("got patient: " + patient.first_name);
         service.patients.push(patient);
         $rootScope.$broadcast('patients.update');
+      },
+      getPatient: function (id) {
+        return service.patients[0]; //there is probably something smart to do here
       }
     };
+
     return service;
   }
 ]);
