@@ -1,12 +1,9 @@
 'use strict';
 angular.module('patients')
-.controller('RegisterCrtl', function (Start, Config) {
+.controller('RegisterCrtl', [ '$scope', 'Patients', function ($scope, Patients) {
+  console.log("This is the RegisterCrtl");
 
-  // bind data from service
-  this.someData = Start.someData;
-  this.ENV = Config.ENV;
-  this.BUILD = Config.BUILD;
-
-  console.log('Hello from your Controller: StartCtrl in module patients:. This is your controller:', this);
-  // TODO: do your controller thing
-});
+  this.addPatient = function (patient) {
+    Patients.addPatient(patient)
+  }
+}]);
