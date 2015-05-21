@@ -5,6 +5,6 @@ angular.module('patients')
   var profile = this;
 
   profile.patient = false;
-  profile.patient = Patients.getPatient(stateParams.id);
+  profile.patient = Patients.getPatient($stateParams.id);
 
 }]);

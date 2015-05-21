@@ -5,21 +5,23 @@ angular.module('patients', [
   'ui.router',
   // TODO: load other modules selected during generation
 ])
-.config(function ($stateProvider) {
+.config(function ($stateProvider, $urlRouterProvider) {
 
   console.log('Allo! Allo from your module: ' + 'patients');
 
+  $urlRouterProvider.otherwise('/patients');
+
   // some basic routing
   $stateProvider
-    .state('profile', {
-      url: '/patients/:id',
-      templateUrl: 'patients/templates/profile.html',
-      controller: 'ProfileCrtl as profile',
-    })
     .state('patients', {
       url: '/patients',
       templateUrl: 'patients/templates/list.html',
       controller: 'DirectoryCtrl as directory'
+    })
+    .state('patients_profile', {
+      url: '/patients/profile/:id',
+      templateUrl: 'patients/templates/profile.html',
+      controller: 'ProfileCtrl as profile',
     })
     .state('register', {
       url: '/patients/register',
