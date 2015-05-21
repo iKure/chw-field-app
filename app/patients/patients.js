@@ -15,6 +15,11 @@ angular.module('patients', [
       url: '/patients',
       templateUrl: 'patients/templates/start.html',
       controller: 'StartCtrl as start'
+    })
+    .state('register', {
+      url: '/patients/register',
+      templateUrl: 'patients/templates/register.html',
+      controller: 'RegisterCrtl as register'
     });
   // TODO: do your thing
 });
