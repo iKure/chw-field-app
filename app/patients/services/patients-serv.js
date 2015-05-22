@@ -30,8 +30,9 @@ angular.module('patients')
       },
       addPatient: function (patient) {
         console.log('got patient: ' + patient.firstName);
-        localDB.post(patient);
-        service.getPatients();
+        localDB.post(patient).then(function () {
+          service.getPatients();
+        });
       },
       getPatient: function (id) {
         console.log(id);
