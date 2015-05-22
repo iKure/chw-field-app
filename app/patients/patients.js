@@ -16,7 +16,6 @@ angular.module('patients', [
     .state('patients', {
       url: '/patients',
       templateUrl: 'patients/templates/list.html',
-      controller: 'DirectoryCtrl as directory'
     })
     .state('patients_profile', {
       url: '/profile/:id',
