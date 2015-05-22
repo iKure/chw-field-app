@@ -10,7 +10,9 @@ angular.module('patients')
 
     if (Config.ENV.PATIENTS) {
       Config.ENV.PATIENTS.forEach( function (patient) {
-        localDB.post(patient);
+        localDB.get(patient['_id']).catch(function () {
+          localDB.put(patient);
+        });
       });
     }
 

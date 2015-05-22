@@ -9,6 +9,7 @@ angular.module('patients')
     'SERVER_URL': 'https://DEVSERVER/api',
     'PATIENTS': [
       {
+        '_id':'nickxxx',
         'first_name': 'Nick',
         'last_name': 'Reid'
       }
