@@ -34,7 +34,11 @@ angular.module('patients')
       },
       getPatient: function (id) {
         console.log(id);
-        return service.patients[0]; //there is probably something smart to do here
+        var patient = false;
+        localDB.get(id).then(function(doc){
+          patient = doc
+        })
+        return false;
       }
     };
 
