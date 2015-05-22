@@ -6,19 +6,20 @@ angular.module('patients')
   function ($rootScope, Config) {
     console.log('Hello from your Service: Patients in module patients');
 
-    var default_patients = [];
+    var defaultPatients = [];
     if (Config.ENV.PATIENTS) {
-      default_patients = Config.ENV.PATIENTS;
+      defaultPatients = Config.ENV.PATIENTS;
     }
 
     var service = {
-      patients: default_patients,
+      patients: defaultPatients,
       addPatient: function (patient) {
-        console.log("got patient: " + patient.first_name);
+        console.log('got patient: ' + patient.firstName);
         service.patients.push(patient);
         $rootScope.$broadcast('patients.update');
       },
       getPatient: function (id) {
+        console.log(id);
         return service.patients[0]; //there is probably something smart to do here
       }
     };
