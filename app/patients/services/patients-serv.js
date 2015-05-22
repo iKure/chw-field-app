@@ -20,7 +20,7 @@ angular.module('patients')
         localDB.allDocs({include_docs: true, descending: true}, function (err, docs) {
           service.patients = [];
           docs.rows.forEach( function (row) {
-            service.patients.push(row['doc']);
+            service.patients.push(row.doc);
           });
           $rootScope.$broadcast('patients.update');
         });
