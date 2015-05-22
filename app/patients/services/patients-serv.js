@@ -6,23 +6,37 @@ angular.module('patients')
   function ($rootScope, Config) {
     console.log('Hello from your Service: Patients in module patients');
 
-    var defaultPatients = [];
+    var localDB = new PouchDB('patients');
+
     if (Config.ENV.PATIENTS) {
-      defaultPatients = Config.ENV.PATIENTS;
+      Config.ENV.PATIENTS.forEach( function (patient) {
+        localDB.post(patient);
+      });
     }
 
     var service = {
-      patients: defaultPatients,
+      getPatients:function () {
+        console.log('PatientService: fetching all patients');
+        localDB.allDocs({include_docs: true, descending: true}, function (err, docs) {
+          service.patients = [];
+          docs.rows.forEach( function (row) {
+            service.patients.push(row['doc']);
+          });
+          $rootScope.$broadcast('patients.update');
+        });
+      },
       addPatient: function (patient) {
         console.log('got patient: ' + patient.firstName);
-        service.patients.push(patient);
-        $rootScope.$broadcast('patients.update');
+        localDB.post(patient);
+        service.getPatients();
       },
       getPatient: function (id) {
         console.log(id);
         return service.patients[0]; //there is probably something smart to do here
       }
     };
+
+    service.getPatients();
 
     return service;
   }
