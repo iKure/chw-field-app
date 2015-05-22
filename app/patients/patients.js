@@ -21,7 +21,7 @@ angular.module('patients', [
       url: '/profile/:id',
       templateUrl: 'patients/templates/profile.html',
     })
-    .state('register', {
+    .state('patient_register', {
       url: '/patients/register',
       templateUrl: 'patients/templates/register.html',
       controller: 'RegisterCrtl as register'

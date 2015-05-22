@@ -35,10 +35,10 @@ angular.module('patients')
       },
       getPatient: function (id) {
         console.log(id);
-        localDB.get(id).then(function(doc){
+        localDB.get(id).then( function (doc) {
           service.patient = doc;
           $rootScope.$broadcast('patient.update');
-        }).catch(function () {
+        }).catch( function () {
           $rootScope.$broadcast('patient.update');
         });
         return false;
