@@ -4,7 +4,11 @@ angular.module('patients')
   console.log('Hello from your Controller: ProfileCtrl in module patients:. This is your controller:', this);
   var profile = this;
 
-  profile.patient = false;
-  profile.patient = Patients.getPatient($stateParams.id);
+   Patients.getPatient($stateParams.id);
+   $scope.$on('patient.update', function(){
+   	console.log("Profile got patient update" + Patients.patient);
+   	profile.patient = Patients.patient;
+   	$scope.$apply();
+   });
 
 }]);

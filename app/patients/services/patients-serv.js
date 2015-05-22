@@ -17,6 +17,7 @@ angular.module('patients')
     }
 
     var service = {
+      patient: false,
       getPatients:function () {
         console.log('PatientService: fetching all patients');
         localDB.allDocs({include_docs: true, descending: true}, function (err, docs) {
@@ -34,10 +35,12 @@ angular.module('patients')
       },
       getPatient: function (id) {
         console.log(id);
-        var patient = false;
         localDB.get(id).then(function(doc){
-          patient = doc
-        })
+          service.patient = doc;
+          $rootScope.$broadcast('patient.update');
+        }).catch(function () {
+          $rootScope.$broadcast('patient.update');
+        });
         return false;
       }
     };
