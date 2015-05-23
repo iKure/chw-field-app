@@ -9,19 +9,17 @@ angular.module('patients', [
 
   console.log('Allo! Allo from your module: ' + 'patients');
 
-  $urlRouterProvider.otherwise('/patients');
-
   // some basic routing
   $stateProvider
-    .state('patients', {
+    .state('patients.directory', {
       url: '/patients',
       templateUrl: 'patients/templates/list.html',
     })
-    .state('patients_profile', {
+    .state('patients.profile', {
       url: '/profile/:id',
       templateUrl: 'patients/templates/profile.html',
     })
-    .state('patient_register', {
+    .state('patient.register', {
       url: '/patients/register',
       templateUrl: 'patients/templates/register.html',
       controller: 'RegisterCrtl as register'

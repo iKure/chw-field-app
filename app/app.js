@@ -2,4 +2,5 @@
 angular.module('CHWApp', [
   // your modules
   'patients',
+  'main',
 ]);
