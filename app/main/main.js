@@ -30,8 +30,16 @@ angular.module('main', [
     .state('tabs.directory', {
       url: '/directory',
       views: {
-        'tabs-patients': {
+        'tabs-directory': {
           templateUrl: 'patients/templates/list.html',
+        }
+      }
+    })
+    .state('tabs.patient', {
+      url: '/patient',
+      views: {
+        'tabs-patient': {
+          templateUrl: 'patients/templates/register.html',
         }
       }
     });
