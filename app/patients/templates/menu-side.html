@@ -11,23 +11,15 @@
 
     <!-- Left menu -->
     <ion-side-menu expose-aside-when="large" side="left">
-      <header class="bar bar-header bar-stable">
-        <h1 class="title">{{profile.patient.first_name}} {{profile.patient.last_name}}</h1>
-      </header>
-      <ion-content class="has-header">
+      <ion-content>
         <ion-list>
-          <ion-item nav-clear menu-close >
-            Summary
+          <ion-item>
+            <h1 class="title">{{profile.patient.first_name}} {{profile.patient.last_name}}</h1>
           </ion-item>
-          <ion-item nav-clear menu-close >
-            Vitals
-          </ion-item>
-          <ion-item nav-clear menu-close >
-            Cases
-          </ion-item>
-          <ion-item nav-clear menu-close >
-            Messages
-          </ion-item>
+          <a ui-sref="tabs.patient.summary" ui-sref-active="active" class="item">Summary</a>
+          <a ui-sref="" ui-sref-active="active" class="item">Vitals</a>
+          <a ui-sref="" ui-sref-active="active" class="item">Cases</a>
+          <a ui-sref="" ui-sref-active="active" class="item">Messages</a>
         </ion-list>
       </ion-content>
     </ion-side-menu>
