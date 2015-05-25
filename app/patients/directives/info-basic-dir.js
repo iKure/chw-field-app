@@ -1,6 +1,6 @@
 'use strict';
 angular.module('patients')
-.directive('register', function () {
+.directive('patinfo', function () {
   return {
     templateUrl: 'patients/templates/information-basic.html',
     restrict: 'E'
