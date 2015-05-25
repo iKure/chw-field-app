@@ -1,14 +1,10 @@
 <ion-view view-title="Patient Summary" ng-controller="ProfileCtrl as profile">
   <ion-content>
-    <ion-list>
-      <ion-item class="item item-divider">
+    <div class="card">
+      <div class="item item-divider">Basic Information <a ui-sref="patient.info-edit({id:patient._id})">Edit</a></div>
+      <div class="item item-text-wrap">
         {{profile.patient.first_name}} {{profile.patient.last_name}}
-      </ion-item>
-      <ion-item class="item item-thumbnail">
-        images working?<br>
-        <img width="75" src="main/assets/images/yo@2x.png">
-      </ion-item>
-
-    </ion-list>
+      </div>
+    </div>
   </ion-content>
 </ion-view>

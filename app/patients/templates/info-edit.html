@@ -1,0 +1,12 @@
+<ion-view view-title="Patient Edit" ng-controller="ProfileCtrl as profile">
+  <ion-content>
+    <ion-list>
+      <ion-item class="item item-divider">
+        {{profile.patient.first_name}} {{profile.patient.last_name}}
+      </ion-item>
+        <patinfo patient="profile.patient" />
+      </ion-item>
+
+    </ion-list>
+  </ion-content>
+</ion-view>

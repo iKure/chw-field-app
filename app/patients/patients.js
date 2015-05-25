@@ -32,6 +32,14 @@ angular.module('patients', [
           templateUrl: 'patients/templates/profile.html',
         }
       }
+    })
+    .state('patient.info-edit',{
+      url:'/info-edit',
+      views:{
+        'menuContent':{
+          templateUrl: 'patients/templates/info-edit.html'
+        }
+      }
     });
   // TODO: do your thing
 });
