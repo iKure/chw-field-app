@@ -13,7 +13,7 @@ angular.module('patients')
 
   this.savePatient = function (patient) {
     Patients.savePatient(patient).then(function () {
-      $state.go('tabs.patient.summary', { id:Patients.patient._id });
+      $state.go('patient.summary', { id:Patients.patient._id });
     });
   };
 }]);

@@ -11,15 +11,13 @@ angular.module('patients', [
 
   // some basic routing
   $stateProvider
-    .state('patients_directory', {
-      url: '/directory',
-      templateUrl: 'patients/templates/list.html',
+    .state('patient', {
+      url: '/patient/:id',
+      abstract: true,
+      templateUrl: 'patients/templates/menu-side.html',
+      controller: 'ProfileCtrl as profile',
     })
-    .state('patients_register', {
-      url: '/register',
-      templateUrl: 'patients/templates/register.html',
-    })
-    .state('tabs.patient.summary', {
+    .state('patient.summary', {
       url: '/summary',
       views:{
         'menuContent': {
@@ -27,7 +25,7 @@ angular.module('patients', [
         }
       }
     })
-    .state('tabs.patient.info-edit', {
+    .state('patient.info-edit', {
       url:'/info-edit',
       views:{
         'menuContent':{
@@ -35,5 +33,4 @@ angular.module('patients', [
         }
       }
     });
-  // TODO: do your thing
 });

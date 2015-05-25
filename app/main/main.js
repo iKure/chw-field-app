@@ -42,15 +42,5 @@ angular.module('main', [
           templateUrl: 'patients/templates/register.html',
         }
       }
-    })
-    .state('tabs.patient', {
-      url: '/patient/:id',
-      abstract: true,
-      views: {
-        'tabs-patient':{
-          templateUrl: 'patients/templates/menu-side.html',
-          controller: 'ProfileCtrl as profile',
-        }
-      }
     });
 });

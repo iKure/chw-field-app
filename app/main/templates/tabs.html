@@ -8,10 +8,6 @@
     <ion-nav-view name="tabs-directory"></ion-nav-view>
   </ion-tab>
 
-  <ion-tab ng-disabled="!tabs.patient" title="Patient" ui-sref="tabs.patient.summary({id:tabs.patient._id})" icon-on="ion-person" icon-off="ion-person">
-    <ion-nav-view name="tabs-patient"></ion-nav-view>
-  </ion-tab>
-
   <ion-tab title="Register" ui-sref="tabs.register({id:tabs.patient._id})" icon-on="ion-plus" icon-off="ion-plus">
     <ion-nav-view name="tabs-register"></ion-nav-view>
   </ion-tab>

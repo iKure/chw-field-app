@@ -7,6 +7,6 @@ angular.module('patients')
     Patients.addPatient(patient);
   };
   $scope.$on('patient.new', function (event, id) {
-    $state.go('tabs.patient.summary', { id:id });
+    $state.go('patient.summary', { id:id });
   });
 }]);
