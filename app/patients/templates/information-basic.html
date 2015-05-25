@@ -10,11 +10,7 @@
 		</label>
 		 <label class="item item-input item-stacked-label">
 			<span class="input-label">Mobile Number</span>
-			<input type="text" id="mobile" name="mobile" ng-model="patient.mobile" />
-		</label>
-		<label class="item item-input item-stacked-label">
-			<span class="input-label">Date of Birth</span>
-			<input type="date" name="birthday" ng-model="birthday" />
+			<input type="tel" id="mobile" name="mobile" ng-model="patient.mobile" />
 		</label>
 	</div>
 	<div class="card list">
@@ -34,32 +30,17 @@
 		    <i class="radio-icon ion-checkmark"></i>
 		  </label>
 	</div>
-	<!--
 	<div class="card list">
-		<div class="item item-divider">Date of Birth</div>
-			<div class="row responsive-sm">
-				<div class="col">
-					 <label class="item item-input item-stacked-label">
-						<span class="input-label">Day</span>
-						<input type="text" name="birthday.day" ng-model="birthday.day" />
-					</label>			
-				</div>
-				<div class="col">
-					 <label class="item item-input item-stacked-label">
-						<span class="input-label">Month</span>
-						<input type="text" id="mobile" name="birthday.month" ng-model="birthday.month" />
-					</label>			
-				</div>
-				<div class="col">
-					 <label class="item item-input item-stacked-label">
-						<span class="input-label">Year</span>
-						<input type="text" name="birthday.year" ng-model="birthday.year" />
-					</label>			
-				</div>
-			</div>
-		</div>
+		<div class="item item-divider">Age</div>
+		<label class="item item-input item-stacked-label">
+			<span class="input-label">Date of Birth</span>
+			<input type="date" name="birthday" ng-model="patient.birthday" />
+		</label>
+		<label class="item item-input item-stacked-label">
+			<span class="input-label">Age</span>
+			<input type="number" name="age" ng-model="patient.age" />
+		</label>
 	</div>
-	-->
 	<div class="item">
 		<button class="button button-block" ng-click="save({patient:patient})">
 			<span ng-if="!patient._id">Register</span>
