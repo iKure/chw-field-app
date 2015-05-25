@@ -4,6 +4,7 @@ angular.module('patients')
   console.log('Hello from your Controller: PatientInfoCtrl in module patients:. This is your controller:', this);
   var ctrl = this;
 
+  ctrl.patient = Patients.patient;
   $scope.$on('patient.update', function () {
     console.log("Crtl got patient update" + Patients.patient);
     ctrl.patient = Patients.patient;

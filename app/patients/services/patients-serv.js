@@ -11,7 +11,7 @@ angular.module('patients')
     if (Config.ENV.PATIENTS) {
       Config.ENV.PATIENTS.forEach( function (patient) {
         localDB.get(patient['_id']).catch(function () {
-          if( patient._id ) {
+          if (patient._id) {
             localDB.put(patient);
           }
         });
@@ -42,6 +42,7 @@ angular.module('patients')
         console.log('patients-serv: SAVING PATIENT ' + patient.firstName);
         return localDB.put(patient).then(function (response) {
           service.getPatients();
+          service.getPatient(response.id);
         });
       },
       getPatient: function (id) {
