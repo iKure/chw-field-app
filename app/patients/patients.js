@@ -21,7 +21,7 @@ angular.module('patients', [
       controller: 'RegisterCrtl as register'
     })
     .state('patient', {
-      url: 'patient/:id',
+      url: '/patient/:id',
       abstract: true,
       templateUrl: 'patients/templates/menu-side.html',
     })

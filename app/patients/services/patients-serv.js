@@ -35,7 +35,7 @@ angular.module('patients')
         });
       },
       getPatient: function (id) {
-        console.log(id);
+        console.log("Getting patient: "+id);
         localDB.get(id).then( function (doc) {
           service.patient = doc;
           $rootScope.$broadcast('patient.update');
