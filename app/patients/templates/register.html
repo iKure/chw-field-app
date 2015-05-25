@@ -1,6 +1,6 @@
-<ion-view view-title="Register">
+<ion-view view-title="Register" ng-controller="RegisterCrtl as register">
 	<ion-content >
 		<p>Create a new patient</p>
-		<patinfo />
+		<patinfo patient="{}" on-save="register.addPatient(patient)" />
 	</ion-content>
 </ion-view>

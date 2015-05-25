@@ -4,7 +4,9 @@ angular.module('patients')
   console.log('This is the RegisterCrtl');
 
   this.addPatient = function (patient) {
-    Patients.addPatient(patient);
-    $state.go('patients');
+    Patients.addPatient(patient)
   };
+  $scope.$on('patient.new', function (event, id) {
+  	$state.go('patient.summary',{id:id});
+  });
 }]);

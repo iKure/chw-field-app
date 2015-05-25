@@ -18,7 +18,6 @@ angular.module('patients', [
     .state('patients_register', {
       url: '/register',
       templateUrl: 'patients/templates/register.html',
-      controller: 'RegisterCrtl as register'
     })
     .state('patient', {
       url: '/patient/:id',

@@ -30,8 +30,10 @@ angular.module('patients')
       },
       addPatient: function (patient) {
         console.log('got patient: ' + patient.firstName);
-        localDB.post(patient).then(function () {
+        return localDB.post(patient).then(function (response) {
+          console.log("Service made new id: "+ response.id);
           service.getPatients();
+          $rootScope.$broadcast('patient.new', response.id);
         });
       },
       getPatient: function (id) {
