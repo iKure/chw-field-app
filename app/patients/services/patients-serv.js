@@ -31,13 +31,19 @@ angular.module('patients')
       addPatient: function (patient) {
         console.log('got patient: ' + patient.firstName);
         return localDB.post(patient).then(function (response) {
-          console.log("Service made new id: "+ response.id);
+          console.log("Service made new id: " + response.id);
           service.getPatients();
           $rootScope.$broadcast('patient.new', response.id);
         });
       },
+      savePatient: function (patient) {
+        console.log('patients-serv: SAVING PATIENT ' + patient.firstName);
+        return localDB.put(patient).then(function (response) {
+          service.getPatients();
+        });
+      },
       getPatient: function (id) {
-        console.log("Getting patient: "+id);
+        console.log("Getting patient: " + id);
         localDB.get(id).then( function (doc) {
           service.patient = doc;
           $rootScope.$broadcast('patient.update');

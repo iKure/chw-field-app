@@ -32,7 +32,7 @@ angular.module('patients', [
         }
       }
     })
-    .state('patient.info-edit',{
+    .state('patient.info-edit', {
       url:'/info-edit',
       views:{
         'menuContent':{

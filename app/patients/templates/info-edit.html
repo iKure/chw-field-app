@@ -1,10 +1,10 @@
-<ion-view view-title="Patient Edit" ng-controller="ProfileCtrl as profile">
+<ion-view view-title="Patient Edit" ng-controller="PatientInfoCtrl as form">
   <ion-content>
     <ion-list>
       <ion-item class="item item-divider">
-        {{profile.patient.first_name}} {{profile.patient.last_name}}
+        {{form.patient.first_name}} {{form.patient.last_name}}
       </ion-item>
-        <patinfo patient="profile.patient" />
+        <patinfo patient="form.patient" on-save="form.savePatient(patient)" />
       </ion-item>
 
     </ion-list>
