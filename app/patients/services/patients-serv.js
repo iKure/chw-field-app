@@ -10,7 +10,7 @@ angular.module('patients')
 
     if (Config.ENV.PATIENTS) {
       Config.ENV.PATIENTS.forEach( function (patient) {
-        localDB.get(patient['_id']).catch(function () {
+        localDB.get(patient._id).catch(function () {
           if (patient._id) {
             localDB.put(patient);
           }
@@ -33,7 +33,7 @@ angular.module('patients')
       addPatient: function (patient) {
         console.log('got patient: ' + patient.firstName);
         return localDB.post(patient).then(function (response) {
-          console.log("Service made new id: " + response.id);
+          console.log('Service made new id:' + response.id);
           service.getPatients();
           $rootScope.$broadcast('patient.new', response.id);
         });
@@ -46,7 +46,7 @@ angular.module('patients')
         });
       },
       getPatient: function (id) {
-        console.log("Getting patient: " + id);
+        console.log('Getting patient: ' + id);
         localDB.get(id).then( function (doc) {
           service.patient = doc;
           $rootScope.$broadcast('patient.update');

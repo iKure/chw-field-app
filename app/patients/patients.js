@@ -5,7 +5,7 @@ angular.module('patients', [
   'ui.router',
   // TODO: load other modules selected during generation
 ])
-.config(function ($stateProvider, $urlRouterProvider) {
+.config(function ($stateProvider) {
 
   console.log('Allo! Allo from your module: ' + 'patients');
 

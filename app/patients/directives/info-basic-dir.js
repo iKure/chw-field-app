@@ -1,6 +1,6 @@
 'use strict';
 angular.module('patients')
-.directive('patinfo', ['Patients', function ($scope, Patients) {
+.directive('patinfo', function () {
   return {
     scope:{
       patient: '=patient',
@@ -10,4 +10,4 @@ angular.module('patients')
     templateUrl: 'patients/templates/information-basic.html',
     restrict: 'E'
   };
-}]);
+});

@@ -6,7 +6,7 @@ angular.module('patients')
 
   Patients.getPatient($stateParams.id);
   $scope.$on('patient.update', function () {
-    console.log("Profile got patient update" + Patients.patient);
+    console.log('Profile got patient update' + Patients.patient);
     profile.patient = Patients.patient;
     $scope.$apply();
   });

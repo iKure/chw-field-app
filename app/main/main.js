@@ -14,9 +14,9 @@ angular.module('main', [
   // some basic routing
   $stateProvider
     .state('tabs', {
-      url: "/tab",
+      url: '/tab',
       abstract: true,
-      templateUrl: "main/templates/tabs.html"
+      templateUrl: 'main/templates/tabs.html'
     })
     .state('tabs.main', {
       url: '/main',

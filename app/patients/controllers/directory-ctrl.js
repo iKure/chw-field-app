@@ -8,6 +8,6 @@ angular.module('patients')
   $scope.$on('patients.update', function () {
     directory.patients = Patients.patients;
     $scope.$apply();
-    console.log("DirectoryCtrl got patients update" + Patients.patients);
+    console.log('DirectoryCtrl got patients update' + Patients.patients);
   });
 }]);
