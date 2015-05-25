@@ -1,15 +1,19 @@
-<ion-tabs class="tabs-positive tabs-icon-only">
+<ion-tabs class="tabs-positive tabs-icon-only" ng-controller="TabsCtrl as tabs" >
 
   <ion-tab title="Home" href="#/tab/main" icon-on="ion-home" icon-off="ion-home">
     <ion-nav-view name="tabs-main"></ion-nav-view>
   </ion-tab>
 
-  <ion-tab title="About" href="#/tab/directory" icon-on="ion-ios-people" icon-off="ion-ios-people">
+  <ion-tab title="Directory" href="#/tab/directory" icon-on="ion-ios-people" icon-off="ion-ios-people">
     <ion-nav-view name="tabs-directory"></ion-nav-view>
   </ion-tab>
 
-  <ion-tab title="Settings" href="#/tab/patient" icon-on="ion-plus" icon-off="ion-plus">
+  <ion-tab ng-disabled="!tabs.patient" title="Patient" ui-sref="tabs.patient.summary({id:tabs.patient._id})" icon-on="ion-person" icon-off="ion-person">
     <ion-nav-view name="tabs-patient"></ion-nav-view>
+  </ion-tab>
+
+  <ion-tab title="Register" ui-sref="tabs.register({id:tabs.patient._id})" icon-on="ion-plus" icon-off="ion-plus">
+    <ion-nav-view name="tabs-register"></ion-nav-view>
   </ion-tab>
 
 </ion-tabs>

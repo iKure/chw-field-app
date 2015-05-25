@@ -19,12 +19,7 @@ angular.module('patients', [
       url: '/register',
       templateUrl: 'patients/templates/register.html',
     })
-    .state('patient', {
-      url: '/patient/:id',
-      abstract: true,
-      templateUrl: 'patients/templates/menu-side.html',
-    })
-    .state('patient.summary', {
+    .state('tabs.patient.summary', {
       url: '/summary',
       views:{
         'menuContent': {
@@ -32,7 +27,7 @@ angular.module('patients', [
         }
       }
     })
-    .state('patient.info-edit', {
+    .state('tabs.patient.info-edit', {
       url:'/info-edit',
       views:{
         'menuContent':{

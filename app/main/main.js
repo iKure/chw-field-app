@@ -35,13 +35,22 @@ angular.module('main', [
         }
       }
     })
-    .state('tabs.patient', {
-      url: '/patient',
+    .state('tabs.register', {
+      url: '/register',
       views: {
-        'tabs-patient': {
+        'tabs-register': {
           templateUrl: 'patients/templates/register.html',
         }
       }
+    })
+    .state('tabs.patient', {
+      url: '/patient/:id',
+      abstract: true,
+      views: {
+        'tabs-patient':{
+          templateUrl: 'patients/templates/menu-side.html',
+          controller: 'ProfileCtrl as profile',
+        }
+      }
     });
-  // TODO: do your thing
 });

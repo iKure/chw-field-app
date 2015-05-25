@@ -1,40 +1,35 @@
-<ion-side-menus ng-controller="ProfileCtrl as profile">
-  <!-- Center content -->
-  <ion-side-menu-content>
-    <ion-nav-bar class="bar-stable nav-title-slide-ios7 bar-positive">
-      <ion-nav-buttons side="left">
-        <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
-      </ion-nav-buttons>
-    </ion-nav-bar>
-    <ion-nav-view name="menuContent" animation="slide-left-right"></ion-nav-view>
-  </ion-side-menu-content>
+  <ion-side-menus ng-controller="ProfileCtrl as profile">
+    <!-- Center content -->
+    <ion-side-menu-content>
+      <ion-nav-bar class="bar-stable nav-title-slide-ios7 bar-positive">
+        <ion-nav-buttons side="left">
+          <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+        </ion-nav-buttons>
+      </ion-nav-bar>
+      <ion-nav-view name="menuContent" animation="slide-left-right"></ion-nav-view>
+    </ion-side-menu-content>
 
-  <!-- Left menu -->
-  <ion-side-menu expose-aside-when="large" side="left">
-    <header class="bar bar-header bar-stable">
-      <h1 class="title">{{profile.patient.first_name}} {{profile.patient.last_name}}</h1>
-    </header>
-    <ion-content class="has-header">
-      <ion-list>
-        <ion-item nav-clear menu-close >
-          Summary
-        </ion-item>
-        <ion-item nav-clear menu-close >
-          Vitals
-        </ion-item>
-        <ion-item nav-clear menu-close >
-          Cases
-        </ion-item>
-        <ion-item nav-clear menu-close >
-          Messages
-        </ion-item>
-      </ion-list>
-    </ion-content>
-  </ion-side-menu>
+    <!-- Left menu -->
+    <ion-side-menu expose-aside-when="large" side="left">
+      <header class="bar bar-header bar-stable">
+        <h1 class="title">{{profile.patient.first_name}} {{profile.patient.last_name}}</h1>
+      </header>
+      <ion-content class="has-header">
+        <ion-list>
+          <ion-item nav-clear menu-close >
+            Summary
+          </ion-item>
+          <ion-item nav-clear menu-close >
+            Vitals
+          </ion-item>
+          <ion-item nav-clear menu-close >
+            Cases
+          </ion-item>
+          <ion-item nav-clear menu-close >
+            Messages
+          </ion-item>
+        </ion-list>
+      </ion-content>
+    </ion-side-menu>
 
-</ion-side-menus>
-<ion-tabs class="tabs-positive tabs-icon-only">
-  <ion-tab title="Home" href="#/tab/main" icon-on="ion-home" icon-off="ion-home"></ion-tab>
-  <ion-tab title="About" href="#/tab/directory" icon-off="ion-ios-people"></ion-tab>
-  <ion-tab title="Settings" class="active" href="#/tab/patient" icon-on="ion-person" icon-off="ion-person"></ion-tab>
-</ion-tabs>
+  </ion-side-menus>
