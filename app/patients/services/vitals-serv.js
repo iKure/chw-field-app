@@ -19,11 +19,12 @@ angular.module('patients')
       return promise;
     },
     save: function (obj) {
-      console.log('VitalService: Got object ' + obj);
       var promise = false;
       if (obj._id) {
+        console.log('VitalService: Existing object ' + obj._id);
         promise = localDB.put(obj);
       }else {
+        console.log('VitalService: New object');
         promise = localDB.post(obj);
       }
       promise.then(function (response) {

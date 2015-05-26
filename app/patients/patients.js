@@ -42,7 +42,7 @@ angular.module('patients', [
       }
     })
     .state('patient.vitals-new', {
-      url: '/vitals/new/:type',
+      url: '/vitals/new',
       views:{
         'menuContent':{
           templateUrl: 'patients/templates/vitals-edit.html',

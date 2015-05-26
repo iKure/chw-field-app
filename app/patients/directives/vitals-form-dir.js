@@ -8,10 +8,16 @@ angular.module('patients')
         scope.type = 'placeholder';
       }
       scope.contentUrl = 'patients/templates/vitals-form-' + scope.type + '.html';
+      scope.$watch('type', function (v) {
+        scope.contentUrl = 'patients/templates/vitals-form-' + v + '.html';
+      });
     },
     restrict: 'E',
     scope:{
       type:'=type',
+      record:'=record',
+      save: '&onSave',
+      close: '&onClose',
     },
   };
 });

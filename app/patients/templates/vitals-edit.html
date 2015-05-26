@@ -3,14 +3,14 @@
     <div class="row">
       <div class="col">
         <ion-list>
-          <a class="item" ui-sref="patient.vitals-new({type:'height'})" ui-sref-active="active">Height</a>
-          <a class="item" ui-sref="patient.vitals-new({type:'weight'})" ui-sref-active="active">Weight</a>
-          <a class="item" ui-sref="patient.vitals-new({type:'temprature'})" ui-sref-active="active">Temprature</a>
-          <a class="item" ui-sref="patient.vitals-new({type:'blood-pressure'})" ui-sref-active="active">Blood Pressure</a>
+          <a class="item" ng-click="vitals.showForm('height')" >Height</a>
+          <a class="item" ng-click="vitals.showForm('weight')" >Weight</a>
+          <a class="item" ng-click="vitals.showForm('temprature')" >Temprature</a>
+          <a class="item" ng-click="vitals.showForm('blood-pressure')" >Blood Pressure</a>
         </ion-list>
       </div>
       <div class="col">
-        <vitals-form type="vitals.type" />
+        <vitals-form type="vitals.type" record="vitals.current" on-save="vitals.saveRecord(record)" />
       </div>
     </div>
   </ion-content>
