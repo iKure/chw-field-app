@@ -1,9 +1,11 @@
 'use strict';
 angular.module('patients')
-.controller('VitalsCtrl', [ '$scope', '$state', 'Patients', 'Vitals', function ($scope, $state, Patients, Vitals) {
+.controller('VitalsCtrl', [ '$scope', '$state', '$stateParams', 'Patients', 'Vitals', function ($scope, $state, $stateParams, Patients, Vitals) {
   console.log('Hello from your Controller: VitalsCtrl in module patients:. This is your controller:', this);
   var ctrl = this;
   ctrl.records = Vitals.records;
+  console.log($stateParams);
+  ctrl.type = $stateParams.type;
 
   $scope.$on('vitals.update', function () {
     ctrl.records = Vitals.records;

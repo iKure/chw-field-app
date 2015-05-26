@@ -42,11 +42,12 @@ angular.module('patients', [
       }
     })
     .state('patient.vitals-new', {
-      url: '/vitals/new',
+      url: '/vitals/new/:type',
       views:{
         'menuContent':{
           templateUrl: 'patients/templates/vitals-edit.html',
         }
       }
-    });
+    })
+;
 });
