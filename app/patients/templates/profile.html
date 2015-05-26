@@ -1,7 +1,7 @@
 <ion-view view-title="Patient Summary" ng-controller="ProfileCtrl as profile">
   <ion-content>
     <div class="card">
-      <div class="item item-divider">Basic Information <a ui-sref="tabs.patient.info-edit({id:profile.patient._id})">Edit</a></div>
+      <div class="item item-divider">Basic Information <a ui-sref="patient.info-edit({id:profile.patient._id})">Edit</a></div>
       <div class="item item-text-wrap">
         Name: {{profile.patient.first_name}} {{profile.patient.last_name}}
       </div>
