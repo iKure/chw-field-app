@@ -1,0 +1,11 @@
+<input type="hidden" ng-model="record.type" value="blood-pressure" />
+<p>To measure height, follow these instructions.</p>
+<div class="card list">
+  <div class="item item-divider">Height</div>
+  <label class="item item-input">
+    <span class="input-label">Height</span>
+    <input type="number" ng-model="record.height" />
+    <p class="input-hint">Height should be measured in CM</p>
+  </label>
+</div>
+<button ng-click="vitals.saveRecord(record)" class="button button-block" >Save</button>
