@@ -12,7 +12,7 @@ angular.module('patients')
       var promise = localDB.allDocs({include_docs: true, descending: true}, function (err, docs) {
         service.records = [];
         docs.rows.forEach( function (row) {
-          service.patients.push(row.doc);
+          service.records.push(row.doc);
         });
         $rootScope.$broadcast('vitals.update');
       });

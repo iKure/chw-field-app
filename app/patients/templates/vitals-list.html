@@ -1,0 +1,8 @@
+<ion-view view-title="patients module" ng-controller="VitalsCtrl as vitals">
+  <ion-content>
+    <ion-list>
+      <a ui-sref="patient.vitals-new" class="item">Add New Vital Record</a>
+      <a ng-repeat="record in vitals.records" ui-sref="" class="item">{{record.id}}</a>
+    </ion-list>
+  </ion-content>
+</ion-view>

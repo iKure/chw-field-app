@@ -1,0 +1,24 @@
+<ion-view view-title="patients module" ng-controller="VitalsCtrl as vitals">
+  <ion-content>
+    <div class="card list">
+      <div class="item item-divider">Blood Pressure</div>
+      <label class="item item-input">
+        <span class="input-label">BP Systolic</span>
+        <input type="number" ng-model="record.bpSystolic" />
+      </label>
+      <label class="item item-input">
+        <span class="input-label">BP Diastolic</span>
+        <input type="number" ng-model="record.bpDiastolic" />
+      </label>
+      <div class="item item-divider">
+        <p>BP Systolic should be between 70-300</p>
+        <p>BP Diastolic should be between 50-150</p>
+      </div>
+    </div>
+    <div class="list list-inset">
+      <div class="item">
+        <button ng-click="vitals.saveRecord(record)" >Save</button>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>

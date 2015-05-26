@@ -32,5 +32,21 @@ angular.module('patients', [
           templateUrl: 'patients/templates/info-edit.html'
         }
       }
+    })
+    .state('patient.vitals', {
+      url:'/vitals',
+      views:{
+        'menuContent':{
+          templateUrl: 'patients/templates/vitals-list.html'
+        }
+      }
+    })
+    .state('patient.vitals-new', {
+      url: '/vitals/new',
+      views:{
+        'menuContent':{
+          templateUrl: 'patients/templates/vitals-edit.html',
+        }
+      }
     });
 });
