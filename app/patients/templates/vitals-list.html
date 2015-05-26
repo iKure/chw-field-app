@@ -1,7 +1,7 @@
 <ion-view view-title="Patient Vitals" ng-controller="VitalsCtrl as vitals">
-  <ion-content>
+  <ion-content class="padding">
+  	<a ui-sref="vitals-new.field({type:placeholder})" class="button button-block">Add New Vital Record</a>
     <ion-list>
-      <a ui-sref="patient.vitals-new" class="item">Add New Vital Record</a>
       <a ng-repeat="record in vitals.records" class="item">{{record._id}}</a>
     </ion-list>
   </ion-content>

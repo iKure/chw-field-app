@@ -1,33 +1,39 @@
-<ion-view view-title="Add Vitals" ng-controller="VitalsCtrl as vitals">
-  <ion-content>
-    <div class="row">
-      <div class="col">
+  <ion-side-menus ng-controller="VitalsAddCtrl as vitals">
+    <!-- Center content -->
+    <ion-side-menu-content>
+      <ion-nav-bar class="bar-stable nav-title-slide-ios7 bar-positive">
+        <ion-nav-buttons side="left">
+          <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+        </ion-nav-buttons>
+      </ion-nav-bar>
+      <ion-nav-view name="menuContent" animation="slide-left-right"></ion-nav-view>
+    </ion-side-menu-content>
+    <!-- Left menu -->
+    <ion-side-menu expose-aside-when="large" side="left">
+      <ion-content>
         <ion-list>
-          <a ng-class="{active:vitals.isActive('height')}" class="item item-icon-right" ng-click="vitals.showForm('height')" >
+          <a ui-sref="vitals-new.field({type:'height'})" ui-sref-active="active" class="item item-icon-right" >
             Height
             <i ng-if="!vitals.isSaved('height')" class="icon ion-android-checkbox-outline-blank"></i>
             <i ng-if="vitals.isSaved('height')" class="icon ion-android-checkbox-outline"></i>
           </a>
-          <a ng-class="{active:vitals.isActive('weight')}" class="item item-icon-right" ng-click="vitals.showForm('weight')" >
+          <a ui-sref="vitals-new.field({type:'weight'})" ui-sref-active="active" class="item item-icon-right">
             Weight
             <i ng-if="!vitals.isSaved('weight')" class="icon ion-android-checkbox-outline-blank"></i>
             <i ng-if="vitals.isSaved('weight')" class="icon ion-android-checkbox-outline"></i>
           </a>
-          <a ng-class="{active:vitals.isActive('temprature')}" class="item item-icon-right" ng-click="vitals.showForm('temprature')" >
+          <a ui-sref="vitals-new.field({type:'temprature'})" ui-sref-active="active" class="item item-icon-right" >
             Temprature
             <i ng-if="!vitals.isSaved('temprature')" class="icon ion-android-checkbox-outline-blank"></i>
             <i ng-if="vitals.isSaved('temprature')" class="icon ion-android-checkbox-outline"></i>
           </a>
-          <a ng-class="{active:vitals.isActive('blood-pressure')}" class="item item-icon-right" ng-click="vitals.showForm('blood-pressure')" >
+          <a ui-sref="vitals-new.field({type:'blood-pressure'})" ui-sref-active="active" class="item item-icon-right" >
             Blood Pressure
             <i ng-if="!vitals.isSaved('blood-pressure')" class="icon ion-android-checkbox-outline-blank"></i>
             <i ng-if="vitals.isSaved('blood-pressure')" class="icon ion-android-checkbox-outline"></i>
           </a>
         </ion-list>
-      </div>
-      <div class="col">
-        <vitals-form type="vitals.type" record="vitals.current" on-save="vitals.saveRecord(record)" />
-      </div>
-    </div>
-  </ion-content>
-</ion-view>
+      </ion-content>
+    </ion-side-menu>
+
+  </ion-side-menus>
