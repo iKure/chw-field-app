@@ -8,6 +8,8 @@ angular.module('patients')
   ctrl.currentSet = {};
   ctrl.type = $stateParams.type;
 
+  this.patient = Patients.current;
+
   $scope.$on('vitals.update', function () {
     ctrl.records = Vitals.records;
     $scope.$apply();
