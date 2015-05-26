@@ -2,7 +2,7 @@
 angular.module('patients')
 .directive('vitalsForm', function () {
   return {
-    template: '<div ng-include="contentUrl"></div>',
+    templateUrl: 'patients/templates/vitals-form-base.html',
     link: function (scope, element, attrs) {
       if (!scope.type) {
         scope.type = 'placeholder';

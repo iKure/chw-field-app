@@ -2,7 +2,7 @@
   <ion-content>
     <ion-list>
       <a ui-sref="patient.vitals-new" class="item">Add New Vital Record</a>
-      <a ng-repeat="record in vitals.records" class="item">{{record.id}}</a>
+      <a ng-repeat="record in vitals.records" class="item">{{record._id}}</a>
     </ion-list>
   </ion-content>
 </ion-view>
