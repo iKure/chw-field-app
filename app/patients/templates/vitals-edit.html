@@ -3,10 +3,26 @@
     <div class="row">
       <div class="col">
         <ion-list>
-          <a class="item" ng-click="vitals.showForm('height')" >Height</a>
-          <a class="item" ng-click="vitals.showForm('weight')" >Weight</a>
-          <a class="item" ng-click="vitals.showForm('temprature')" >Temprature</a>
-          <a class="item" ng-click="vitals.showForm('blood-pressure')" >Blood Pressure</a>
+          <a ng-class="{active:vitals.isActive('height')}" class="item item-icon-right" ng-click="vitals.showForm('height')" >
+            Height
+            <i ng-if="!vitals.isSaved('height')" class="icon ion-android-checkbox-outline-blank"></i>
+            <i ng-if="vitals.isSaved('height')" class="icon ion-android-checkbox-outline"></i>
+          </a>
+          <a ng-class="{active:vitals.isActive('weight')}" class="item item-icon-right" ng-click="vitals.showForm('weight')" >
+            Weight
+            <i ng-if="!vitals.isSaved('weight')" class="icon ion-android-checkbox-outline-blank"></i>
+            <i ng-if="vitals.isSaved('weight')" class="icon ion-android-checkbox-outline"></i>
+          </a>
+          <a ng-class="{active:vitals.isActive('temprature')}" class="item item-icon-right" ng-click="vitals.showForm('temprature')" >
+            Temprature
+            <i ng-if="!vitals.isSaved('temprature')" class="icon ion-android-checkbox-outline-blank"></i>
+            <i ng-if="vitals.isSaved('temprature')" class="icon ion-android-checkbox-outline"></i>
+          </a>
+          <a ng-class="{active:vitals.isActive('blood-pressure')}" class="item item-icon-right" ng-click="vitals.showForm('blood-pressure')" >
+            Blood Pressure
+            <i ng-if="!vitals.isSaved('blood-pressure')" class="icon ion-android-checkbox-outline-blank"></i>
+            <i ng-if="vitals.isSaved('blood-pressure')" class="icon ion-android-checkbox-outline"></i>
+          </a>
         </ion-list>
       </div>
       <div class="col">

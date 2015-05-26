@@ -38,4 +38,20 @@ angular.module('patients')
   }
   this.showForm = showForm;
 
+  function isSaved (type) {
+    if (ctrl.currentSet[type]) {
+      return true;
+    }
+    return false;
+  }
+  this.isSaved = isSaved;
+
+  function isActive(type) {
+    if (ctrl.type == type) {
+      return true;
+    }
+    return false;
+  }
+  this.isActive = isActive;
+
 }]);
