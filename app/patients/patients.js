@@ -51,7 +51,7 @@ angular.module('patients', [
       views: {
         'menuContent':{
           template: '<ion-view><ion-content><vitals-form type="vitals.type" record="vitals.current" on-save="vitals.saveRecord(record)" /></ion-content></ion-view>',
-          controller: 'VitalsAddFormCtrl as vitals',
+          controller: 'VitalsFormCtrl as vitals',
         }
       }
     });
