@@ -16,16 +16,15 @@ angular.module('vitals', [
       templateUrl: 'vitals/templates/vitals-list.html',
       controller: 'VitalsCtrl as vitals',
     })
-    .state('vitals.new', {
-      url: '/new',
-      abstract: true,
+    .state('vitals-new', {
+      url: '/vitals/new',
       templateUrl: 'vitals/templates/vitals-edit.html',
     })
-    .state('vitals.new.field', {
+    .state('vitals-new.field', {
       url: '/:type',
       views: {
         'menuContent':{
-          template: '<ion-view><ion-content><vitals-form type="vitals.type" record="vitals.current" on-save="vitals.saveRecord(record)" /></ion-content></ion-view>',
+          template: '<vitals-form type="vitals.type" record="vitals.current" on-save="vitals.saveRecord(record)" />',
           controller: 'VitalsFormCtrl as vitals',
         }
       }

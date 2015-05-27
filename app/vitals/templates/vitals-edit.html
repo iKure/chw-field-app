@@ -1,21 +1,7 @@
-  <ion-side-menus title="{{vitals.patient.first_name}} {{vitals.patient.last_name}}" ng-controller="VitalsAddCtrl as vitals">
-    <!-- Center content -->
-    <ion-side-menu-content>
-      <ion-nav-bar class="bar-stable nav-title-slide-ios7 bar-positive">
-        <ion-nav-buttons side="left">
-          <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
-        </ion-nav-buttons>
-        <ion-nav-buttons side="right">
-          <button ui-sref="patient.vitals({id:vitals.patient._id})" menu-toggle="right" class="button button-icon icon ion-home"></button>
-        </ion-nav-buttons>
-      </ion-nav-bar>
-      <ion-nav-view name="menuContent" animation="slide-left-right"></ion-nav-view>
-    </ion-side-menu-content>
-    <!-- Left menu -->
-    <ion-side-menu expose-aside-when="large" side="left">
-      <ion-content>
-        <h1>{{vitals.patient.first_name}} {{vitals.patient.last_name}}</h1>
-        <button class="button button-block" ui-sref="patient.vitals({id:vitals.patient._id})">Done</button>
+<ion-view>
+  <ion-content>
+    <div class="row">
+      <div class="col">
         <ion-list>
           <a ui-sref="vitals-new.field({type:'height'})" ui-sref-active="active" class="item item-icon-right" >
             Height
@@ -38,7 +24,10 @@
             <i ng-if="vitals.isSaved('blood-pressure')" class="icon ion-android-checkbox-outline"></i>
           </a>
         </ion-list>
-      </ion-content>
-    </ion-side-menu>
-
-  </ion-side-menus>
+      </div>
+      <div class="col">
+        <ui-view name="menuContent" animation="slide-left-right"></ui-view>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>
