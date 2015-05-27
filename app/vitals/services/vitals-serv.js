@@ -1,7 +1,7 @@
 'use strict';
 angular.module('patients')
 .service('Vitals', [ '$rootScope', 'Config', 'Patients', function ($rootScope, Config, Patients) {
-  console.log('Hello from your Service: Vitals in module patients');
+  console.log('Hello from your Service: Vitals in module vitals');
 
   var localDB = new PouchDB('vitals');
 
