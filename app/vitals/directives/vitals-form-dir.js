@@ -1,15 +1,15 @@
 'use strict';
-angular.module('patients')
+angular.module('vitals')
 .directive('vitalsForm', function () {
   return {
-    templateUrl: 'patients/templates/vitals-form-base.html',
+    templateUrl: 'vitals/templates/vitals-form-base.html',
     link: function (scope, element, attrs) {
       if (!scope.type) {
         scope.type = 'placeholder';
       }
-      scope.contentUrl = 'patients/templates/vitals-form-' + scope.type + '.html';
+      scope.contentUrl = 'vitals/templates/vitals-form-' + scope.type + '.html';
       scope.$watch('type', function (v) {
-        scope.contentUrl = 'patients/templates/vitals-form-' + v + '.html';
+        scope.contentUrl = 'vitals/templates/vitals-form-' + v + '.html';
       });
     },
     restrict: 'E',
