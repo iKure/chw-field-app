@@ -19,6 +19,7 @@ angular.module('vitals', [
     .state('vitals-new', {
       url: '/vitals/new',
       templateUrl: 'vitals/templates/vitals-edit.html',
+      controller: 'VitalsAddCtrl as vitals',
     })
     .state('vitals-new.field', {
       url: '/:type',
