@@ -21,6 +21,7 @@ angular.module('patients')
   $scope.$on('vitals.current.update', function () {
     if (Vitals.current.type == ctrl.type) {
       ctrl.current = Vitals.current;
+      $scope.$apply();
     }
   });
 }]);

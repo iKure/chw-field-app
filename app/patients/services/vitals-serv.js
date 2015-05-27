@@ -22,7 +22,7 @@ angular.module('patients')
       return false;
     },
     getAll: function () {
-      console.log('Getting All VitalService Records');
+      console.log('VitalService: Getting All Records');
       var promise = localDB.allDocs({include_docs: true, descending: true}, function (err, docs) {
         service.records = [];
         docs.rows.forEach( function (row) {
