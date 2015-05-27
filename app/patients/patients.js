@@ -37,7 +37,8 @@ angular.module('patients', [
       url:'/vitals',
       views:{
         'menuContent':{
-          templateUrl: 'patients/templates/vitals-list.html'
+          templateUrl: 'patients/templates/vitals-list.html',
+          controller: 'VitalsCtrl as vitals',
         }
       }
     })
