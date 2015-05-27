@@ -32,28 +32,5 @@ angular.module('patients', [
           templateUrl: 'patients/templates/info-edit.html'
         }
       }
-    })
-    .state('patient.vitals', {
-      url:'/vitals',
-      views:{
-        'menuContent':{
-          templateUrl: 'patients/templates/vitals-list.html',
-          controller: 'VitalsCtrl as vitals',
-        }
-      }
-    })
-    .state('vitals-new', {
-      url: '/vitals/new',
-      abstract: true,
-      templateUrl: 'patients/templates/vitals-edit.html',
-    })
-    .state('vitals-new.field', {
-      url: '/vitals/new/:type',
-      views: {
-        'menuContent':{
-          template: '<ion-view><ion-content><vitals-form type="vitals.type" record="vitals.current" on-save="vitals.saveRecord(record)" /></ion-content></ion-view>',
-          controller: 'VitalsFormCtrl as vitals',
-        }
-      }
     });
 });

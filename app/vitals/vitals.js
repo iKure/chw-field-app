@@ -12,9 +12,22 @@ angular.module('vitals', [
   // some basic routing
   $stateProvider
     .state('vitals', {
-      url: '/vitals',
-      templateUrl: 'vitals/templates/start.html',
-      controller: 'StartCtrl as start'
+      url:'/vitals',
+      templateUrl: 'patients/templates/vitals-list.html',
+      controller: 'VitalsCtrl as vitals',
+    })
+    .state('vitals.new', {
+      url: '/new',
+      abstract: true,
+      templateUrl: 'patients/templates/vitals-edit.html',
+    })
+    .state('vitals.new.field', {
+      url: '/:type',
+      views: {
+        'menuContent':{
+          template: '<ion-view><ion-content><vitals-form type="vitals.type" record="vitals.current" on-save="vitals.saveRecord(record)" /></ion-content></ion-view>',
+          controller: 'VitalsFormCtrl as vitals',
+        }
+      }
     });
-  // TODO: do your thing
 });
