@@ -24,12 +24,9 @@ angular.module('patients')
     getAll: function () {
       console.log('VitalService: Getting All Records');
       return localDB.query( function (doc, emit) {
-        if (Patients.patient && Patients.current._id != doc.patient_id) {
-          return false;
+        if ((Patients.patient && Patients.patient._id == doc.patient_id) || !Patients.patient) {
+          emit(doc.patient_id, doc);
         }
-        // TODO: Decided on better sort
-        emit(doc.patient_id, doc);
-        return true;
       }, {
         include_docs: true,
         descending: true,
@@ -43,6 +40,7 @@ angular.module('patients')
     },
     save: function (obj) {
       var promise = false;
+      obj.patient_id = Patients.patient._id;
       if (obj._id) {
         console.log('VitalService: Existing object ' + obj._id);
         promise = localDB.put(obj);
