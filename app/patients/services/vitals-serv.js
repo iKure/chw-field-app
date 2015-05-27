@@ -23,14 +23,23 @@ angular.module('patients')
     },
     getAll: function () {
       console.log('VitalService: Getting All Records');
-      var promise = localDB.allDocs({include_docs: true, descending: true}, function (err, docs) {
+      return localDB.query( function (doc, emit) {
+        if (Patients.patient && Patients.current._id != doc.patient_id) {
+          return false;
+        }
+        // TODO: Decided on better sort
+        emit(doc.patient_id, doc);
+        return true;
+      }, {
+        include_docs: true,
+        descending: true,
+      }, function (err, docs) {
         service.records = [];
         docs.rows.forEach( function (row) {
           service.records.push(row.doc);
         });
         $rootScope.$broadcast('vitals.update');
       });
-      return promise;
     },
     save: function (obj) {
       var promise = false;
@@ -62,7 +71,11 @@ angular.module('patients')
       return promise;
     }
   };
-  service.getAll();
+
+  $rootScope.$on('patient.update', function () {
+    service.getAll();
+  });
+
   return service;
 
 }]);
