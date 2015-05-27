@@ -13,13 +13,13 @@ angular.module('vitals', [
   $stateProvider
     .state('vitals', {
       url:'/vitals',
-      templateUrl: 'patients/templates/vitals-list.html',
+      templateUrl: 'vitals/templates/vitals-list.html',
       controller: 'VitalsCtrl as vitals',
     })
     .state('vitals.new', {
       url: '/new',
       abstract: true,
-      templateUrl: 'patients/templates/vitals-edit.html',
+      templateUrl: 'vitals/templates/vitals-edit.html',
     })
     .state('vitals.new.field', {
       url: '/:type',
