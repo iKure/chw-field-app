@@ -7,6 +7,20 @@ angular.module('patients')
 
   var service = {
     current: false,
+    currentSet: {},
+    clearCurrentSet: function (){
+      service.currentSet = {};
+      return service.currentSet;
+    },
+    getCurrentSet: function(type){
+      if (!type) {
+        return service.currentSet;
+      }
+      if (service.currentSet[type]) {
+        return service.currentSet[type];
+      }
+      return false;
+    },
     getAll: function () {
       console.log('Getting All VitalService Records');
       var promise = localDB.allDocs({include_docs: true, descending: true}, function (err, docs) {
