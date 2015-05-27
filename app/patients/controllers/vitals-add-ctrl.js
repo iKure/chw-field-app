@@ -4,9 +4,15 @@ angular.module('patients')
   console.log('Hello from your Controller: VitalsCtrl in module patients:. This is your controller:', this);
   var ctrl = this;
   Vitals.clearCurrentSet();
+  ctrl.currentSet = {};
+
+  $scope.$on('vitals.update', function () {
+    ctrl.currentSet = Vitals.getCurrentSet();
+    $scope.$apply();
+  });
 
   function isSaved (type) {
-    if (Vitals.getCurrentSet(type)) {
+    if (ctrl.currentSet[type]) {
       return true;
     }
     return false;
