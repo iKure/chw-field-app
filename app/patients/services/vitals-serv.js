@@ -8,11 +8,11 @@ angular.module('patients')
   var service = {
     current: false,
     currentSet: {},
-    clearCurrentSet: function (){
+    clearCurrentSet: function () {
       service.currentSet = {};
       return service.currentSet;
     },
-    getCurrentSet: function(type){
+    getCurrentSet: function (type) {
       if (!type) {
         return service.currentSet;
       }
@@ -53,6 +53,7 @@ angular.module('patients')
       var promise = localDB.get(id);
       promise.then( function (doc) {
         service.current = doc;
+        service.currentSet[doc.type] = doc._id;
         $rootScope.$broadcast('vitals.current.update');
       });
       promise.catch( function (err) {
