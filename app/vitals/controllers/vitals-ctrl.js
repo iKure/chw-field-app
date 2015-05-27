@@ -1,7 +1,7 @@
 'use strict';
-angular.module('patients')
+angular.module('vitals')
 .controller('VitalsCtrl', [ '$scope', '$state', '$stateParams', 'Patients', 'Vitals', function ($scope, $state, $stateParams, Patients, Vitals) {
-  console.log('Hello from your Controller: VitalsCtrl in module patients:. This is your controller:', this);
+  console.log('Hello from your Controller: VitalsCtrl in module vitals:. This is your controller:', this);
   var ctrl = this;
   ctrl.records = Vitals.records;
   ctrl.current = {};

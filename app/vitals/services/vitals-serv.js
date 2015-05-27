@@ -1,5 +1,5 @@
 'use strict';
-angular.module('patients')
+angular.module('vitals')
 .service('Vitals', [ '$rootScope', 'Config', 'Patients', function ($rootScope, Config, Patients) {
   console.log('Hello from your Service: Vitals in module vitals');
 

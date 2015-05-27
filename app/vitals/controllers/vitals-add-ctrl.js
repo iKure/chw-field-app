@@ -1,7 +1,7 @@
 'use strict';
-angular.module('patients')
+angular.module('vitals')
 .controller('VitalsAddCtrl', [ '$scope', 'Vitals', function ($scope, Vitals) {
-  console.log('Hello from your Controller: VitalsCtrl in module patients:. This is your controller:', this);
+  console.log('Hello from your Controller: VitalsCtrl in module vitals:. This is your controller:', this);
   var ctrl = this;
   Vitals.clearCurrentSet();
   ctrl.currentSet = {};

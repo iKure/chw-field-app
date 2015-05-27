@@ -1,7 +1,7 @@
 'use strict';
-angular.module('patients')
+angular.module('vitals')
 .controller('VitalsFormCtrl', [ '$scope', '$state', '$stateParams', 'Patients', 'Vitals', function ($scope, $state, $stateParams, Patients, Vitals) {
-  console.log('Hello from your Controller: VitalsAddFormCtrl in module patients:. This is your controller:', this);
+  console.log('Hello from your Controller: VitalsAddFormCtrl in module vitals:. This is your controller:', this);
   var ctrl = this;
   this.type = $stateParams.type;
 
