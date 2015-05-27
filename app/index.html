@@ -16,6 +16,7 @@
     <!-- inject:css -->
     <link rel="stylesheet" href="main/styles/main.css">
     <link rel="stylesheet" href="patients/styles/main.css">
+    <link rel="stylesheet" href="vitals/styles/main.css">
     <!-- endinject -->
     <!-- endbuild -->
   </head>
@@ -48,6 +49,10 @@
 
     <!-- build:js scripts/app.js -->
     <!-- inject:js -->
+    <script src="vitals/vitals.js"></script>
+    <script src="vitals/services/start-serv.js"></script>
+    <script src="vitals/controllers/start-ctrl.js"></script>
+    <script src="vitals/constants/config-const.js"></script>
     <script src="patients/patients.js"></script>
     <script src="patients/services/vitals-serv.js"></script>
     <script src="patients/services/patients-serv.js"></script>
