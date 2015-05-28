@@ -7,7 +7,7 @@ angular.module('vitals')
 
   ctrl.current = {};
   if ($stateParams.vitals_id) {
-    Vitals.getById($stateParams.vitals_id);
+    Vitals.setCurrent($stateParams.vitals_id);
   }
 
   this.saveRecord = function (record) {
