@@ -12,7 +12,7 @@ angular.module('patients', [
   // some basic routing
   $stateProvider
     .state('patient_directory', {
-      url: '/patients',
+      url: '/patients/directory',
       templateUrl: 'patients/templates/list.html',
       controller: 'DirectoryCtrl as directory',
     })
