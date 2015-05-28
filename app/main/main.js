@@ -48,6 +48,10 @@ angular.module('main', [
     .state('tabs.patient.summary', {
       url: '/summary',
       views: {
+        'patientNavigation': {
+          templateUrl: 'patients/templates/navigation.html',
+          controller: 'ProfileCtrl as profile',
+        },
         'patientContent': {
           templateUrl: 'patients/templates/profile.html',
           controller: 'ProfileCtrl as profile',
