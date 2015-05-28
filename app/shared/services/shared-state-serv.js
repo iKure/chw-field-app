@@ -32,6 +32,28 @@ angular.module('shared')
     var current = false;
     var records = [];
 
+    function get (id) {
+      if (!id) {
+        return records;
+      }
+    }
+    this.get = get;
+
+    function getCurrent () {
+      if (current) {
+        return current;
+      }
+      return false;
+    }
+    this.getCurrent = getCurrent;
+
+    function clearCurrent () {
+      current = false;
+      $rootScope.$broadcast(name + '.change');
+      return true;
+    }
+    this.clearCurrent = clearCurrent;
+
     function recordsMap (doc, emit) {
       emit(doc._id, doc); // Should have configurable sort order
     }
@@ -39,52 +61,57 @@ angular.module('shared')
       // Handle Error
       records = [];
       docs.rows.forEach( function (row) {
-        service.records.push(row.doc);
+        records.push(row.doc);
       });
+      console.log(name + 'Service: Got ' + records.length + ' records');
       $rootScope.$broadcast(name + '.update');
     }
 
-    var service = {
-      current: false,
-      getAll: function () {
-        console.log(name + 'Service: Getting all records');
-        return localDB.query(
-          recordsMap, {
-          include_docs: true,
-          descending: true,
-        }, docsToRecords);
-      },
-      save: function (obj) {
-        var promise;
-        // inject current state into object
-        if (obj._id) {
-          console.log(name + 'Service: Saving existing object');
-          promise = localDB.put(obj);
-        }else {
-          console.log(name + 'Service: Saving new object');
-          promise = localDB.post(obj);
-        }
-        promise.then(function (response) {
-          console.log(name + 'Service: Saved object, id=' + response.id);
-          service.getAll();
-          service.getById(response.id);
-        });
-        return promise;
-      },
-      getById: function (id) {
-        console.log(name + 'Service: Getting object, id=' + id);
-        var promise = localDB.get(id);
-        promise.then( function (doc) {
-          current = doc;
-          $rootScope.$broadcast(name + '.change');
-        });
-        promise.catch( function (err) {
-          $rootScope.$broadcast(name + '.error');
-        });
-        return promise;
-      }
+    function updateRecords () {
+      console.log(name + 'Service: Getting all records');
+      return localDB.query(
+        recordsMap, {
+        include_docs: true,
+        descending: true,
+      }, docsToRecords);
     }
-    return service;
+    this.updateRecords = updateRecords;
+
+    function save (obj) {
+      var promise;
+      // inject current state into object
+      if (obj._id) {
+        console.log(name + 'Service: Saving existing object');
+        promise = localDB.put(obj);
+      }else {
+        console.log(name + 'Service: Saving new object');
+        promise = localDB.post(obj);
+      }
+      promise.then(function (response) {
+        console.log(name + 'Service: Saved object, id=' + response.id);
+        updateRecords();
+        setCurrent(response.id);
+      });
+      return promise;
+    }
+    this.save = save;
+
+    function setCurrent (id) {
+      console.log(name + 'Service: Getting object, id=' + id);
+      var promise = localDB.get(id);
+      promise.then( function (doc) {
+        current = doc;
+        $rootScope.$broadcast(name + '.change');
+      });
+      promise.catch( function (err) {
+        $rootScope.$broadcast(name + '.error');
+      });
+      return promise;
+    }
+    this.setCurrent = setCurrent;
+
+    return this;
   }
+  this.makeService = makeService;
 
 }]);
