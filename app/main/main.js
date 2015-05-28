@@ -42,7 +42,7 @@ angular.module('main', [
         'mainContent': {
           templateUrl: 'main/templates/patient-layout.html',
           controller: 'ProfileCtrl as profile',
-        }
+        },
       },
     })
     .state('tabs.patient.summary', {
@@ -51,7 +51,7 @@ angular.module('main', [
         'patientContent': {
           templateUrl: 'patients/templates/summary.html',
           controller: 'PatientSummaryCtrl as summary',
-        }
+        },
       }
     })
     .state('tabs.patient.profile', {
