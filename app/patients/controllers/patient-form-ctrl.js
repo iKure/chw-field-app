@@ -5,6 +5,10 @@ angular.module('patients')
   var ctrl = this;
 
   ctrl.patient = Patients.getCurrent();
+  if (!ctrl.patient) {
+    ctrl.patient = {};
+  }
+
   $scope.$on('patients.change', function () {
     ctrl.patient = Patients.getCurrent();
     $scope.$apply();
