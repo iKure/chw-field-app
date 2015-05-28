@@ -31,6 +31,7 @@ angular.module('main', [
       views: {
         'tabs-register': {
           templateUrl: 'patients/templates/register.html',
+          controller: 'PatientFormCtrl as form',
         }
       }
     });

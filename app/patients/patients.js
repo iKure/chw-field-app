@@ -29,7 +29,8 @@ angular.module('patients', [
       url:'/info-edit',
       views:{
         'menuContent':{
-          templateUrl: 'patients/templates/info-edit.html'
+          templateUrl: 'patients/templates/info-edit.html',
+          controller: 'PatientFormCtrl as form',
         }
       }
     });
