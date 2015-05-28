@@ -29,6 +29,8 @@ angular.module('shared')
   this.getState = getState;
 
   function makeService (name) {
+    var service = new Object();
+
     var current = false;
     var records = [];
 
@@ -40,7 +42,7 @@ angular.module('shared')
         return records;
       }
     }
-    this.get = get;
+    service.get = get;
 
     function getCurrent () {
       if (current) {
@@ -48,7 +50,7 @@ angular.module('shared')
       }
       return false;
     }
-    this.getCurrent = getCurrent;
+    service.getCurrent = getCurrent;
 
     function clearCurrent () {
       current = false;
@@ -57,7 +59,7 @@ angular.module('shared')
       $rootScope.$broadcast(name + '.change');
       return true;
     }
-    this.clearCurrent = clearCurrent;
+    service.clearCurrent = clearCurrent;
 
     function recordsMap (doc, emit) {
       if (doc.type != name) {
@@ -97,7 +99,7 @@ angular.module('shared')
         descending: true,
       }, docsToRecords);
     }
-    this.updateRecords = updateRecords;
+    service.updateRecords = updateRecords;
 
     function save (obj) {
       var promise;
@@ -125,7 +127,7 @@ angular.module('shared')
       });
       return promise;
     }
-    this.save = save;
+    service.save = save;
 
     function setCurrent (id) {
       console.log(name + 'Service: Getting object, id=' + id);
@@ -140,9 +142,9 @@ angular.module('shared')
       });
       return promise;
     }
-    this.setCurrent = setCurrent;
+    service.setCurrent = setCurrent;
 
-    return this;
+    return service;
   }
   this.makeService = makeService;
 
