@@ -4,16 +4,15 @@ angular.module('patients')
   console.log('Hello from your Controller: PatientInfoCtrl in module patients:. This is your controller:', this);
   var ctrl = this;
 
-  ctrl.patient = Patients.patient;
-  $scope.$on('patient.update', function () {
-    console.log("Crtl got patient update" + Patients.patient);
-    ctrl.patient = Patients.patient;
+  ctrl.patient = Patients.getCurrent();
+  $scope.$on('patients.change', function () {
+    ctrl.patient = Patients.getCurrent();
     $scope.$apply();
   });
 
   this.savePatient = function (patient) {
-    Patients.savePatient(patient).then(function () {
-      $state.go('patient.summary', { id:Patients.patient._id });
+    Patients.save(patient).then(function (response) {
+      $state.go('patient.summary', { id:response.id });
     });
   };
 }]);
