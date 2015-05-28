@@ -32,6 +32,8 @@ angular.module('shared')
     var current = false;
     var records = [];
 
+    var state_id = name + '_id';
+
     function get (id) {
       if (!id) {
         return records;
@@ -50,6 +52,7 @@ angular.module('shared')
     function clearCurrent () {
       current = false;
       console.log(name + 'Service: Clear current record');
+      setState(state_id, false);
       $rootScope.$broadcast(name + '.change');
       return true;
     }
@@ -57,6 +60,20 @@ angular.module('shared')
 
     function recordsMap (doc, emit) {
       if (doc.type != name) {
+        return false;
+      }
+
+      var passes = true;
+      var currentState = getState();
+      Object.keys(currentState).forEach(function (key) {
+        if (key == state_id) {
+          return false;
+        }
+        if (currentState[key] != doc[key]) {
+          passes = false;
+        }
+      });
+      if (!passes) {
         return false;
       }
       emit(doc._id, doc); // Should have configurable sort order
@@ -83,7 +100,15 @@ angular.module('shared')
 
     function save (obj) {
       var promise;
-      // inject current state into object
+
+      var currentState = getState();
+      Object.keys(currentState).forEach(function (key) {
+        if (key == state_id) {
+          return false;
+        }
+        obj[key] = currentState[key];
+      });
+
       obj.type = name;
       if (obj._id) {
         console.log(name + 'Service: Saving existing object');
@@ -106,6 +131,7 @@ angular.module('shared')
       var promise = localDB.get(id);
       promise.then( function (doc) {
         current = doc;
+        setState(state_id, id);
         $rootScope.$broadcast(name + '.change');
       });
       promise.catch( function (err) {
