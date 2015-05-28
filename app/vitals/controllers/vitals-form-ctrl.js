@@ -6,12 +6,12 @@ angular.module('vitals')
   ctrl.type = $stateParams.type;
 
   ctrl.current = {};
-  if($stateParams.vitals_id) {
+  if ($stateParams.vitals_id) {
     Vitals.getById($stateParams.vitals_id);
   }
 
   this.saveRecord = function (record) {
-    if(!record.field_type){
+    if (!record.field_type) {
       record.field_type = ctrl.type;
     }
     Vitals.save(record);
