@@ -1,8 +1,7 @@
-<ion-tabs class="tabs-positive tabs-icon-only" >
-
-  <ion-tab title="Directory" ui-sref="tabs.patient_directory" ui-sref-active="active" icon-on="ion-home" icon-off="ion-home"></ion-tab>
-
-  <ion-tab title="Register" ui-sref="tabs.patient_register({id:tabs.patient._id})" ui-sref-active="active" icon-on="ion-plus" icon-off="ion-plus"></ion-tab>
-
-</ion-tabs>
+<ion-nav-bar class="bar-stable nav-title-slide-ios7 bar-positive">
+	<ion-nav-buttons side="right">
+		<button class="button button-icon icon ion-home" ui-sref="tabs.patient_directory" ui-sref-active="active"></button>
+		<button class="button button-icon icon ion-plus" title="Register" ui-sref="tabs.patient_register" ui-sref-active="active" ></button>
+	</ion-nav-buttons>
+</ion-nav-bar>
 <ion-nav-view name="mainContent"></ion-nav-view>
