@@ -7,7 +7,6 @@ angular.module('patients')
   function ($rootScope, Config, SharedState) {
     console.log('Hello from your Service: Patients in module patients');
 
-
     var service = SharedState.makeService('patients');
 
     service.updateRecords();

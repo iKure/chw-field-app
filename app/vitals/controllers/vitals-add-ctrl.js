@@ -21,9 +21,8 @@ angular.module('vitals')
   }
   this.isSaved = isSaved;
 
-
-  $scope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams) {
-    if (ctrl.currentSet[toParams.type]){
+  $scope.$on('$stateChangeStart', function (event, toState, toParams, fromState, fromParams) {
+    if (ctrl.currentSet[toParams.type]) {
       toParams.vitals_id = ctrl.currentSet[toParams.type];
     }
   });
