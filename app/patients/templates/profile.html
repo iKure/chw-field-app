@@ -1,25 +1,21 @@
-<ion-view view-title="Patient Summary">
-  <ion-content>
-    <div class="card">
-      <div class="item item-divider">Basic Information <a ui-sref="patient.info-edit({id:profile.patient._id})">Edit</a></div>
-      <div class="item item-text-wrap">
-        Name: {{profile.patient.first_name}} {{profile.patient.last_name}}
-      </div>
-      <div class="item">
-      	Age: {{profile.patient.age}}
-      </div>
-      <div class="item">
-      	Gender: {{profile.patient.gender}}
-      </div>
-      <div class="item">
-      	Mobile: {{profile.patient.mobile}}
-      </div>
-    </div>
-    <div class="card">
-    	<div class="item item-divider">Most Recent Vitals</div>
-    	<div class="item">
-    		None. <a ui-sref="">Add vitals.</a>
-    	</div>
-    </div>
-  </ion-content>
-</ion-view>
+<div class="card">
+  <div class="item item-divider">Basic Information <a ui-sref="patient.info-edit({id:profile.patient._id})">Edit</a></div>
+  <div class="item item-text-wrap">
+    Name: {{profile.patient.first_name}} {{profile.patient.last_name}}
+  </div>
+  <div class="item">
+  	Age: {{profile.patient.age}}
+  </div>
+  <div class="item">
+  	Gender: {{profile.patient.gender}}
+  </div>
+  <div class="item">
+  	Mobile: {{profile.patient.mobile}}
+  </div>
+</div>
+<div class="card">
+	<div class="item item-divider">Most Recent Vitals</div>
+	<div class="item">
+		None.
+	</div>
+</div>

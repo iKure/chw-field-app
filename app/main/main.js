@@ -48,7 +48,7 @@ angular.module('main', [
     .state('tabs.patient.summary', {
       url: '/summary',
       views: {
-        'menuContent': {
+        'patientContent': {
           templateUrl: 'patients/templates/profile.html',
           controller: 'ProfileCtrl as profile',
         }
