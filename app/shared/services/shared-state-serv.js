@@ -49,6 +49,7 @@ angular.module('shared')
 
     function clearCurrent () {
       current = false;
+      console.log(name + 'Service: Clear current record');
       $rootScope.$broadcast(name + '.change');
       return true;
     }
