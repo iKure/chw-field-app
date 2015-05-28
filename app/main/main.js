@@ -71,5 +71,42 @@ angular.module('main', [
           controller: 'PatientFormCtrl as form',
         }
       }
+    })
+    .state('tabs.vitals', {
+      url:'/vitals',
+      abstract: true,
+      views: {
+        'mainContent': {
+          templateUrl: 'main/templates/patient-layout.html',
+          controller: 'ProfileCtrl as profile',
+        }
+      }
+    })
+    .state('tabs.vitals.list', {
+      url: '/list',
+      views: {
+        'patientContent': {
+          templateUrl: 'vitals/templates/vitals-list.html',
+          controller: 'VitalsCtrl as vitals',
+        }
+      }
+    })
+    .state('tabs.vitals.new', {
+      url: '/new',
+      views: {
+        'patientContent': {
+          templateUrl: 'vitals/templates/vitals-edit.html',
+          controller: 'VitalsAddCtrl as vitals',
+        }
+      }
+    })
+    .state('tabs.vitals.new.field', {
+      url: '/:type',
+      views: {
+        'menuContent':{
+          template: '<vitals-form type="vitals.type" record="vitals.current" on-save="vitals.saveRecord(record)" />',
+          controller: 'VitalsFormCtrl as vitals',
+        }
+      }
     });
 });

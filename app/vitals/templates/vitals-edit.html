@@ -1,33 +1,29 @@
-<ion-view>
-  <ion-content>
-    <div class="row">
-      <div class="col">
-        <ion-list>
-          <a ui-sref="vitals-new.field({type:'height'})" ui-sref-active="active" class="item item-icon-right" >
-            Height
-            <i ng-if="!vitals.isSaved('height')" class="icon ion-android-checkbox-outline-blank"></i>
-            <i ng-if="vitals.isSaved('height')" class="icon ion-android-checkbox-outline"></i>
-          </a>
-          <a ui-sref="vitals-new.field({type:'weight'})" ui-sref-active="active" class="item item-icon-right">
-            Weight
-            <i ng-if="!vitals.isSaved('weight')" class="icon ion-android-checkbox-outline-blank"></i>
-            <i ng-if="vitals.isSaved('weight')" class="icon ion-android-checkbox-outline"></i>
-          </a>
-          <a ui-sref="vitals-new.field({type:'temprature'})" ui-sref-active="active" class="item item-icon-right" >
-            Temprature
-            <i ng-if="!vitals.isSaved('temprature')" class="icon ion-android-checkbox-outline-blank"></i>
-            <i ng-if="vitals.isSaved('temprature')" class="icon ion-android-checkbox-outline"></i>
-          </a>
-          <a ui-sref="vitals-new.field({type:'blood-pressure'})" ui-sref-active="active" class="item item-icon-right" >
-            Blood Pressure
-            <i ng-if="!vitals.isSaved('blood-pressure')" class="icon ion-android-checkbox-outline-blank"></i>
-            <i ng-if="vitals.isSaved('blood-pressure')" class="icon ion-android-checkbox-outline"></i>
-          </a>
-        </ion-list>
-      </div>
-      <div class="col">
-        <ui-view name="menuContent" animation="slide-left-right"></ui-view>
-      </div>
-    </div>
-  </ion-content>
-</ion-view>
+<div class="row">
+  <div class="col">
+    <ion-list>
+      <a ui-sref="vitals.new.field({type:'height'})" ui-sref-active="active" class="item item-icon-right" >
+        Height
+        <i ng-if="!vitals.isSaved('height')" class="icon ion-android-checkbox-outline-blank"></i>
+        <i ng-if="vitals.isSaved('height')" class="icon ion-android-checkbox-outline"></i>
+      </a>
+      <a ui-sref="vitals.new.field({type:'weight'})" ui-sref-active="active" class="item item-icon-right">
+        Weight
+        <i ng-if="!vitals.isSaved('weight')" class="icon ion-android-checkbox-outline-blank"></i>
+        <i ng-if="vitals.isSaved('weight')" class="icon ion-android-checkbox-outline"></i>
+      </a>
+      <a ui-sref="vitals.new.field({type:'temprature'})" ui-sref-active="active" class="item item-icon-right" >
+        Temprature
+        <i ng-if="!vitals.isSaved('temprature')" class="icon ion-android-checkbox-outline-blank"></i>
+        <i ng-if="vitals.isSaved('temprature')" class="icon ion-android-checkbox-outline"></i>
+      </a>
+      <a ui-sref="vitals.new.field({type:'blood-pressure'})" ui-sref-active="active" class="item item-icon-right" >
+        Blood Pressure
+        <i ng-if="!vitals.isSaved('blood-pressure')" class="icon ion-android-checkbox-outline-blank"></i>
+        <i ng-if="vitals.isSaved('blood-pressure')" class="icon ion-android-checkbox-outline"></i>
+      </a>
+    </ion-list>
+  </div>
+  <div class="col">
+    <ui-view name="menuContent" animation="slide-left-right"></ui-view>
+  </div>
+</div>

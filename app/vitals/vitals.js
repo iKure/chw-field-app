@@ -14,15 +14,19 @@ angular.module('vitals', [
   $stateProvider
     .state('vitals', {
       url:'/vitals',
+      abstract: true,
+    })
+    .state('vitals.list', {
+      url:'/list',
       templateUrl: 'vitals/templates/vitals-list.html',
       controller: 'VitalsCtrl as vitals',
     })
-    .state('vitals-new', {
-      url: '/vitals/new',
+    .state('vitals.new', {
+      url: '/new',
       templateUrl: 'vitals/templates/vitals-edit.html',
       controller: 'VitalsAddCtrl as vitals',
     })
-    .state('vitals-new.field', {
+    .state('vitals.new.field', {
       url: '/:type',
       views: {
         'menuContent':{
