@@ -53,8 +53,8 @@ angular.module('main', [
           controller: 'ProfileCtrl as profile',
         },
         'patientContent': {
-          templateUrl: 'patients/templates/profile.html',
-          controller: 'ProfileCtrl as profile',
+          templateUrl: 'patients/templates/summary.html',
+          controller: 'PatientSummaryCtrl as summary',
         }
       }
     });

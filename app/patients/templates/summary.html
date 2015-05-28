@@ -1,0 +1,10 @@
+<div class="card">
+  <div class="item item-divider">Notes</div>
+  <div class="item">This is some sample content.</div>
+</div>
+<ion-list>
+  <a ui-sref="vitals-new" class="item button button-block">Add vitals</a>
+  <div class="item" ng-repeat="record in summary.records">
+    {{record._id}}
+  </div>
+</ion-list>
