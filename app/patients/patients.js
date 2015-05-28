@@ -16,6 +16,11 @@ angular.module('patients', [
       templateUrl: 'patients/templates/list.html',
       controller: 'DirectoryCtrl as directory',
     })
+    .state('patient_register', {
+      url: '/patients/register',
+      templateUrl: 'patients/templates/register.html',
+      controller: 'PatientFormCtrl as form',
+    })
     .state('patient', {
       url: '/patients/:id',
       abstract: true,
