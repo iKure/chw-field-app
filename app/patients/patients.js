@@ -11,8 +11,13 @@ angular.module('patients', [
 
   // some basic routing
   $stateProvider
+    .state('patient_directory', {
+      url: '/patients',
+      templateUrl: 'patients/templates/list.html',
+      controller: 'DirectoryCtrl as directory',
+    })
     .state('patient', {
-      url: '/patient/:id',
+      url: '/patients/:id',
       abstract: true,
       templateUrl: 'patients/templates/menu-side.html',
       controller: 'ProfileCtrl as profile',
@@ -22,6 +27,7 @@ angular.module('patients', [
       views:{
         'menuContent': {
           templateUrl: 'patients/templates/profile.html',
+          controller: 'ProfileCtrl as profile',
         }
       }
     })
