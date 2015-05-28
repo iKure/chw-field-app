@@ -55,6 +55,9 @@ angular.module('shared')
     this.clearCurrent = clearCurrent;
 
     function recordsMap (doc, emit) {
+      if (doc.type != name) {
+        return false;
+      }
       emit(doc._id, doc); // Should have configurable sort order
     }
     function docsToRecords(err, docs) {
@@ -80,6 +83,7 @@ angular.module('shared')
     function save (obj) {
       var promise;
       // inject current state into object
+      obj.type = name;
       if (obj._id) {
         console.log(name + 'Service: Saving existing object');
         promise = localDB.put(obj);
