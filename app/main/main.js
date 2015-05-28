@@ -38,6 +38,7 @@ angular.module('main', [
     })
     .state('tabs.patient', {
       url: '/patients/:id',
+      abstract: true,
       views: {
         'mainContent': {
           templateUrl: 'main/templates/patient-layout.html',
@@ -48,10 +49,6 @@ angular.module('main', [
     .state('tabs.patient.summary', {
       url: '/summary',
       views: {
-        'patientNavigation': {
-          templateUrl: 'patients/templates/navigation.html',
-          controller: 'ProfileCtrl as profile',
-        },
         'patientContent': {
           templateUrl: 'patients/templates/summary.html',
           controller: 'PatientSummaryCtrl as summary',
