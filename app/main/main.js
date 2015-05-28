@@ -62,5 +62,14 @@ angular.module('main', [
           controller: 'ProfileCtrl as profile',
         }
       }
+    })
+    .state('tabs.patient.info-edit', {
+      url:'/info-edit',
+      views:{
+        'patientContent':{
+          templateUrl: 'patients/templates/info-edit.html',
+          controller: 'PatientFormCtrl as form',
+        }
+      }
     });
 });
