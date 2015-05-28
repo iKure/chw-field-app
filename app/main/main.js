@@ -38,7 +38,6 @@ angular.module('main', [
     })
     .state('tabs.patient', {
       url: '/patients/:id',
-      abstract: true,
       views: {
         'mainContent': {
           templateUrl: 'main/templates/patient-layout.html',
