@@ -23,6 +23,7 @@ angular.module('main', [
       views: {
         'tabs-directory': {
           templateUrl: 'patients/templates/list.html',
+          controller: 'DirectoryCtrl as directory',
         }
       }
     })
