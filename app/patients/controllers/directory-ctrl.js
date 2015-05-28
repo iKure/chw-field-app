@@ -5,6 +5,8 @@ angular.module('patients')
   var directory = this;
   directory.patients = Patients.get();
 
+  Patients.clearCurrent();
+
   $scope.$on('patients.update', function () {
     directory.patients = Patients.get();
     $scope.$apply();
