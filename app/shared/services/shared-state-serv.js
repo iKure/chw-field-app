@@ -4,6 +4,7 @@ angular.module('shared')
   console.log('Hello from your Service: SharedState in module shared');
 
   var state = {};
+  var localDB = new PouchDB('app'); // Bad name for a localDB
 
   function setState (key, value) {
     if (!value) {
