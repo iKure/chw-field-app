@@ -5,7 +5,7 @@ angular.module('patients')
   var profile = this;
 
   Patients.setCurrent($stateParams.id);
-  $scope.$on('patients.change', function () {
+  $scope.$on('patient.change', function () {
     profile.patient = Patients.getCurrent();
     $scope.$apply();
   });

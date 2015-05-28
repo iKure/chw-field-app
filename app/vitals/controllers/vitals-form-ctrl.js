@@ -17,7 +17,7 @@ angular.module('vitals')
     Vitals.save(record);
   }
 
-  $scope.$on('vitals.change', function () {
+  $scope.$on('vital.change', function () {
     ctrl.current = Vitals.getCurrent();
     $scope.$apply();
   });

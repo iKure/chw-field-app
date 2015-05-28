@@ -5,7 +5,7 @@ angular.module('vitals')
   var ctrl = this;
   ctrl.currentSet = {};
 
-  $scope.$on('vitals.change', function () {
+  $scope.$on('vital.change', function () {
     var current = Vitals.getCurrent();
     if (!current) {
       return false;

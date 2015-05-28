@@ -32,6 +32,7 @@ angular.module('shared')
     var current = false;
     var records = [];
 
+    var plural_name = name + 's'; // Lazy pluralization
     var state_id = name + '_id';
 
     function get (id) {
@@ -85,7 +86,7 @@ angular.module('shared')
         records.push(row.doc);
       });
       console.log(name + 'Service: Got ' + records.length + ' records');
-      $rootScope.$broadcast(name + '.update');
+      $rootScope.$broadcast(plural_name + '.update');
     }
 
     function updateRecords () {

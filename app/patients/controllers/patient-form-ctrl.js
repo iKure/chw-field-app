@@ -9,7 +9,7 @@ angular.module('patients')
     ctrl.patient = {};
   }
 
-  $scope.$on('patients.change', function () {
+  $scope.$on('patient.change', function () {
     ctrl.patient = Patients.getCurrent();
     $scope.$apply();
   });

@@ -9,4 +9,6 @@ angular.module('vitals')
     ctrl.records = Vitals.get();
     $scope.$apply();
   });
+
+  Vitals.clearCurrent();
 }]);

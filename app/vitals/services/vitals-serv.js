@@ -3,7 +3,7 @@ angular.module('vitals')
 .service('Vitals', [ '$rootScope', 'Config', 'SharedState', function ($rootScope, Config, SharedState) {
   console.log('Hello from your Service: Vitals in module vitals');
 
-  var service = SharedState.makeService('vitals');
+  var service = SharedState.makeService('vital');
 
   service['clearCurrentSet'] = function () {
     service.currentSet = {};
