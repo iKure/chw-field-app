@@ -15,24 +15,42 @@ angular.module('main', [
   $stateProvider
     .state('tabs', {
       url: '/tab',
-      abstract: true,
-      templateUrl: 'main/templates/tabs.html'
+      templateUrl: 'main/templates/tabs.html',
+      controller: "TabsCtrl as tabs",
     })
-    .state('tabs.directory', {
+    .state('tabs.patient_directory', {
       url: '/directory',
       views: {
-        'tabs-directory': {
+        'mainContent': {
           templateUrl: 'patients/templates/list.html',
           controller: 'DirectoryCtrl as directory',
         }
       }
     })
-    .state('tabs.register', {
+    .state('tabs.patient_register', {
       url: '/register',
       views: {
-        'tabs-register': {
+        'mainContent': {
           templateUrl: 'patients/templates/register.html',
           controller: 'PatientFormCtrl as form',
+        }
+      }
+    })
+    .state('tabs.patient', {
+      url: '/patients/:id',
+      views: {
+        'mainContent': {
+          templateUrl: 'main/templates/patient-layout.html',
+          controller: 'ProfileCtrl as profile',
+        }
+      },
+    })
+    .state('tabs.patient.summary', {
+      url: '/summary',
+      views: {
+        'menuContent': {
+          templateUrl: 'patients/templates/profile.html',
+          controller: 'ProfileCtrl as profile',
         }
       }
     });

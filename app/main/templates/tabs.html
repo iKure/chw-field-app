@@ -1,11 +1,8 @@
-<ion-tabs class="tabs-positive tabs-icon-only" ng-controller="TabsCtrl as tabs" >
+<ion-tabs class="tabs-positive tabs-icon-only" >
 
-  <ion-tab title="Directory" href="#/tab/directory" icon-on="ion-home" icon-off="ion-home">
-    <ion-nav-view name="tabs-directory"></ion-nav-view>
-  </ion-tab>
+  <ion-tab title="Directory" ui-sref="tabs.patient_directory" ui-sref-active="active" icon-on="ion-home" icon-off="ion-home"></ion-tab>
 
-  <ion-tab title="Register" ui-sref="tabs.register({id:tabs.patient._id})" icon-on="ion-plus" icon-off="ion-plus">
-    <ion-nav-view name="tabs-register"></ion-nav-view>
-  </ion-tab>
+  <ion-tab title="Register" ui-sref="tabs.patient_register({id:tabs.patient._id})" ui-sref-active="active" icon-on="ion-plus" icon-off="ion-plus"></ion-tab>
 
 </ion-tabs>
+<ion-nav-view name="mainContent"></ion-nav-view>

@@ -6,14 +6,14 @@ angular.module('main')
   var ctrl = this;
 
   $scope.$on('$stateChangeStart', function (event, toState, toParams, fromState, fromParams) {
-  	console.log("TabsCtrl: Checking state");
-  	if (toState.name.indexOf('tabs') == 0){
-  		console.log('TabsCtrl: State passed');
-  		return true;
-  	}
-  	event.preventDefault();
-  	console.log("TabsCtrl: Editing state to: " + 'tabs.' + toState.name);
-  	$state.go('tabs.' + toState.name, toParams);
+    console.log("TabsCtrl: Checking state");
+    if (toState.name.indexOf('tabs') == 0) {
+      console.log('TabsCtrl: State passed');
+      return true;
+    }
+    event.preventDefault();
+    console.log("TabsCtrl: Editing state to: " + 'tabs.' + toState.name);
+    $state.go('tabs.' + toState.name, toParams);
   });
 
 }]);

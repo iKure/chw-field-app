@@ -1,9 +1,9 @@
-<ion-view view-title="patients module">
-  <ion-content>
-    <ion-list>
-      <a ng-repeat="patient in directory.patients" class="item list-item" ui-sref="patient.summary({id:patient._id})" >
-        {{patient.first_name}} {{patient.last_name}}
-      </a>
-    </ion-list>
-  </ion-content>
+<ion-view view-title="Register">
+	<ion-content >
+		<ion-list>
+		  <a ng-repeat="patient in directory.patients" class="item list-item" ui-sref="patient.summary({id:patient._id})" >
+		    {{patient.first_name}} {{patient.last_name}}
+		  </a>
+		</ion-list>
+	</ion-content>
 </ion-view>
