@@ -32,6 +32,15 @@ angular.module('patients', [
       url: '/summary',
       views:{
         'menuContent': {
+          templateUrl: 'patients/templates/summary.html',
+          controller: 'PatientSummaryCtrl as summary',
+        }
+      }
+    })
+    .state('patient.profile', {
+      url: '/profile',
+      views:{
+        'menuContent': {
           templateUrl: 'patients/templates/profile.html',
           controller: 'ProfileCtrl as profile',
         }

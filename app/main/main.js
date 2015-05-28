@@ -57,5 +57,14 @@ angular.module('main', [
           controller: 'PatientSummaryCtrl as summary',
         }
       }
+    })
+    .state('tabs.patient.profile', {
+      url: '/profile',
+      views: {
+        'patientContent': {
+          templateUrl: 'patients/templates/profile.html',
+          controller: 'ProfileCtrl as profile',
+        }
+      }
     });
 });

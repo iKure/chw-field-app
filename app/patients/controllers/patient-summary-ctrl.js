@@ -13,7 +13,7 @@ angular.module('patients')
 
   ctrl.records = Vitals.get();
   $scope.$on('vitals.update', function () {
-  	ctrl.records = Vitals.get();
-  	$scope.$apply();
+    ctrl.records = Vitals.get();
+    $scope.$apply();
   });
 }]);
