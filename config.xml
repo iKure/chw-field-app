@@ -24,6 +24,8 @@
         <allow-intent href="itms-apps:*" />
     </platform>
     <engine name="android" spec="^4.0.0" />
+    <preference name="android-versionCode" value="15" />
+    <preference name="android-targetSdkVersion" value="15"/> 
     <plugin name="cordova-plugin-device" spec="^1.0.0" />
     <plugin name="cordova-plugin-dialogs" spec="^1.1.0" />
     <plugin name="cordova-plugin-network-information" spec="^1.0.0" />
