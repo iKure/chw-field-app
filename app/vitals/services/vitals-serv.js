@@ -19,6 +19,13 @@ angular.module('vitals')
     return false;
   };
 
+  $rootScope.$on('$stateChangeStart', function (event, toState) {
+    if (toState.name.indexOf('vitals.list') >= 0) {
+      service.clearCurrent();
+      service.updateRecords();
+    }
+  });
+
   $rootScope.$on('patient.update', function () {
     service.updateRecords();
   });

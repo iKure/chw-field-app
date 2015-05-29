@@ -10,5 +10,4 @@ angular.module('vitals')
     $scope.$apply();
   });
 
-  Vitals.clearCurrent();
 }]);
