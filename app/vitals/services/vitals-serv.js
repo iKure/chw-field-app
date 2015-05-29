@@ -5,20 +5,6 @@ angular.module('vitals')
 
   var service = SharedState.makeService('vital');
 
-  service['clearCurrentSet'] = function () {
-    service.currentSet = {};
-    return service.currentSet;
-  };
-  service['getCurrentSet'] = function (type) {
-    if (!type) {
-      return service.currentSet;
-    }
-    if (service.currentSet[type]) {
-      return service.currentSet[type];
-    }
-    return false;
-  };
-
   $rootScope.$on('$stateChangeStart', function (event, toState) {
     if (toState.name.indexOf('vitals.list') >= 0) {
       service.clearCurrent();
