@@ -1,0 +1,29 @@
+<ion-list>
+  <ion-item class="item item-divider">
+    Enter symptoms below
+  </ion-item>
+  <ion-item class="item">
+    <div class="row responsive-small">
+      <div class="col">
+        <div class="item item-checkbox">
+          <label class="checkbox">
+            <input type="checkbox" ng-model="record.symptoms.injury">
+          </label>
+          Injury
+        </div>
+      </div>
+      <div class="col">
+        <div class="item item-checkbox">
+          <label class="checkbox">
+            <input type="checkbox" ng-model="record.symptoms.indigestion">
+          </label>
+          Acidity/Indigestion
+        </div>
+      </div>
+    </div>
+  </ion-item>
+  <ion-item class="item padding">
+    <button ng-click="save(record)" class="button button-block icon-right ion-chevron-right">Next</button>
+  </ion-item>
+
+</ion-list>

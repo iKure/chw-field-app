@@ -1,8 +1,8 @@
 'use strict';
 angular.module('cases')
-.service('Cases', [ '$rootScope', 'Shared', function ($rootScope, Shared) {
+.service('Cases', [ '$rootScope', 'SharedState', function ($rootScope, SharedState) {
   console.log('Hello from your Service: Cases in module cases');
-  var service = Shared.makeService('case');
+  var service = SharedState.makeService('case');
 
   return service;
 }]);

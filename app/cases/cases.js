@@ -21,6 +21,16 @@ angular.module('cases', [
       views: {
         'mainContent': {
           templateUrl: 'cases/templates/list.html',
+          controller: 'CasesCtrl',
+        }
+      }
+    })
+    .state('cases.new', {
+      url: '/new',
+      views: {
+        'mainContent': {
+          templateUrl: 'cases/templates/symptoms.html',
+          controller: 'CasesAddCtrl as ctrl',
         }
       }
     });
