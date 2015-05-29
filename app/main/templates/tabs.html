@@ -1,7 +1,10 @@
 <ion-nav-bar class="bar-stable nav-title-slide-ios7 bar-positive">
-	<ion-nav-buttons side="right">
+	<ion-nav-buttons side="left">
 		<button class="button button-icon icon ion-home" ui-sref="tabs.patient_directory" ui-sref-active="active"></button>
-		<button class="button button-icon icon ion-plus" title="Register" ui-sref="tabs.patient_register" ui-sref-active="active" ></button>
+	</ion-nav-buttons>
+	<ion-nav-buttons side="right">
+		<button ng-if="!patient" class="button button-icon icon ion-plus" title="Register" ui-sref="tabs.patient_register" ui-sref-active="active" ></button>
+		<button ng-if="patient" class="button button-icon icon ion-person" title="Register" ui-sref="tabs.patient.summary({id:patient._id})" ui-sref-active="active" ></button>
 	</ion-nav-buttons>
 </ion-nav-bar>
 <ion-nav-view name="mainContent"></ion-nav-view>
