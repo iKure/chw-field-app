@@ -1,6 +1,6 @@
 'use strict';
 angular.module('patients')
-.controller('PatientSummaryCtrl', ['$scope', 'Patients', 'Vitals', function ($scope, Patients, Vitals) {
+.controller('PatientSummaryCtrl', ['$scope', 'Patients', 'Cases', function ($scope, Patients, Cases) {
 
   console.log('Hello from your Controller: PatientSummaryCtrl in module patients:. This is your controller:', this);
 
@@ -9,8 +9,8 @@ angular.module('patients')
     $scope.$apply();
   });
 
-  $scope.records = Vitals.get();
-  $scope.$on('vitals.update', function () {
+  $scope.records = Cases.get();
+  $scope.$on('cases.update', function () {
     $scope.records = Vitals.get();
     $scope.$apply();
   });

@@ -1,13 +1,30 @@
 <ion-view view-title="Case: {{case._id}}">
   <ion-content>
-    <h1>{{patient.first_name}} {{patient.last_name}}</h1>
-    <p ng-if="patient.age">Age: {{patient.age}}</p>
-    <div class="row responsive-md">
-      <div class="col">
-        <div ng-include src="'main/templates/patient-navigation.html'"></div>
+    <div class="list">
+      <div class="item item-divider">
+        <div class="row">
+          <div class="col">
+            <p>{{patient.first_name}} {{patient.last_name}}</p>
+            <p ng-if="patient.age">Age: {{patient.age}}</p>
+          </div>
+          <div class="col">
+            <div class="button-bar">
+              <a ui-sref="tabs.case.summary({case_id:case._id})" ui-sref-active="active" class="button button-small">Case</a>
+              <a ui-sref="tabs.vitals.list" ui-sref-active="active" class="button button-small">Vitals</a>
+              <a class="button button-small">Messages</a>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="col col-75">
-        <ui-view name="caseContent"></ui-view>
+      <div class="item">
+        <div class="row responsive-md">
+          <div class="col">
+            <div ng-include src="'main/templates/patient-navigation.html'"></div>
+          </div>
+          <div class="col col-75">
+            <ui-view name="caseContent"></ui-view>
+          </div>
+        </div>
       </div>
     </div>
   </ion-content>

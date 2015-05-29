@@ -77,7 +77,7 @@ angular.module('main', [
       abstract: true,
       views: {
         'mainContent': {
-          templateUrl: 'main/templates/patient-layout.html',
+          templateUrl: 'main/templates/case-layout.html',
           controller: 'ProfileCtrl as profile',
         }
       }

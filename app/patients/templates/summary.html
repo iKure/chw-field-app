@@ -1,10 +1,6 @@
-<div class="card">
-  <div class="item item-divider">Notes</div>
-  <div class="item">This is {{patient.first_name}}.</div>
-</div>
 <ion-list>
-  <a ui-sref="vitals.new" class="item button button-block">Add vitals</a>
-  <div class="item" ng-repeat="record in records">
+  <a ui-sref="cases.new" class="item button button-block">Add Case</a>
+  <a ui-sref="case.summary({case_id:record._id})" class="item" ng-repeat="record in records">
     {{record._id}}
   </div>
 </ion-list>
