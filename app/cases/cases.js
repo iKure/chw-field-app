@@ -33,6 +33,15 @@ angular.module('cases', [
           controller: 'CasesAddCtrl as ctrl',
         }
       }
+    })
+    .state('cases.summary', {
+      url: '/:case_id',
+      views: {
+        'mainContent': {
+          templateUrl: 'cases/templates/summary.html',
+          controller: 'CaseSummaryCtrl',
+        }
+      }
     });
   // TODO: do your thing
 });
