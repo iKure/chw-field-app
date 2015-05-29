@@ -1,6 +1,6 @@
 'use strict';
 angular.module('main')
-.controller('TabsCtrl', [ '$scope', '$state', 'Patients', function ($scope, $state, Patients) {
+.controller('TabsCtrl', [ '$scope', '$state', 'Patients', 'ConnectedState', function ($scope, $state, Patients, ConnectedState) {
   console.log('Hello from your Controller: TabsCtrl in module main:. This is your controller:', this);
 
   var ctrl = this;

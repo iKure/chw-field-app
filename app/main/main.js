@@ -143,7 +143,7 @@ angular.module('main', [
       views: {
         'mainContent':{
           templateUrl: 'main/templates/case-layout.html',
-          controller: 'CaseSummaryCtrl',
+          controller: 'ConnectedStateCtrl',
         }
       }
     })
