@@ -14,8 +14,15 @@ angular.module('cases', [
   $stateProvider
     .state('cases', {
       url: '/cases',
-      templateUrl: 'cases/templates/start.html',
-      controller: 'StartCtrl as start'
+      templateUrl: 'cases/templates/frame.html',
+    })
+    .state('cases.list', {
+      url: '/list',
+      views: {
+        'mainContent': {
+          templateUrl: 'cases/templates/list.html',
+        }
+      }
     });
   // TODO: do your thing
 });
