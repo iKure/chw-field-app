@@ -1,7 +1,7 @@
-<h1>{{profile.patient.first_name}} {{profile.patient.last_name}}</h1>
-<p ng-if="profile.patient.age">Age: {{profile.patient.age}}</p>
+<h1>{{patient.first_name}} {{patient.last_name}}</h1>
+<p ng-if="patient.age">Age: {{patient.age}}</p>
 <ion-list class="padding">
-  <a class="item" ui-sref="patient.profile({id:profile.patient._id})" ui-sref-active="active">Profile</a>
+  <a class="item" ui-sref="patient.profile({id:patient._id})" ui-sref-active="active">Profile</a>
   <a class="item">Cases</a>
   <a class="item" ui-sref="vitals.list" ui-sref-active="active">Vitals</a>
   <a class="item">Perscriptions</a>
