@@ -31,29 +31,29 @@ angular.module('shared')
   function makeService (name) {
     var service = new Object();
 
-    var current = false;
-    var records = [];
+    service.current = false;
+    service.records = [];
 
     var plural_name = name + 's'; // Lazy pluralization
     var state_id = name + '_id';
 
     function get (id) {
       if (!id) {
-        return records;
+        return service.records;
       }
     }
     service.get = get;
 
     function getCurrent () {
-      if (current) {
-        return current;
+      if (service.current) {
+        return service.current;
       }
       return false;
     }
     service.getCurrent = getCurrent;
 
     function clearCurrent () {
-      current = false;
+      service.current = false;
       console.log(name + 'Service: Clear current record');
       setState(state_id, false);
       $rootScope.$broadcast(name + '.change');
@@ -83,11 +83,11 @@ angular.module('shared')
     }
     function docsToRecords(err, docs) {
       // Handle Error
-      records = [];
+      service.records = [];
       docs.rows.forEach( function (row) {
-        records.push(row.doc);
+        service.records.push(row.doc);
       });
-      console.log(name + 'Service: Got ' + records.length + ' records');
+      console.log(name + 'Service: Got ' + service.records.length + ' records');
       $rootScope.$broadcast(plural_name + '.update');
     }
 
@@ -133,7 +133,7 @@ angular.module('shared')
       console.log(name + 'Service: Getting object, id=' + id);
       var promise = localDB.get(id);
       promise.then( function (doc) {
-        current = doc;
+        service.current = doc;
         setState(state_id, id);
         $rootScope.$broadcast(name + '.change');
       });
