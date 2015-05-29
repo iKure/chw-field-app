@@ -1,6 +1,6 @@
 'use strict';
 angular.module('main')
-.controller('TabsCtrl', [ '$scope', '$state', 'Patients', 'ConnectedState', function ($scope, $state, Patients, ConnectedState) {
+.controller('TabsCtrl', [ '$scope', '$state', 'Patients', function ($scope, $state, Patients) {
   console.log('Hello from your Controller: TabsCtrl in module main:. This is your controller:', this);
 
   var ctrl = this;
@@ -19,6 +19,7 @@ angular.module('main')
   $scope.patient = Patients.getCurrent();
   $scope.$on('patient.change', function () {
     $scope.patient = Patients.getCurrent();
+    $scope.$apply();
   });
 
 }]);
