@@ -9,6 +9,12 @@ angular.module('patients')
 
     var service = SharedState.makeService('patient');
 
+    $rootScope.$on('$stateChangeStart', function (event, toState) {
+      if (toState.name.indexOf('patient_directory') >= 0) {
+        service.clearCurrent();
+        service.updateRecords();
+      }
+    });
     service.updateRecords();
 
     return service;

@@ -5,12 +5,6 @@ angular.module('patients')
   var directory = this;
   directory.patients = Patients.get();
 
-  $scope.$on('$stateChangeStart', function (event, toState, toParams) {
-    if (toState.name.indexOf('patient_directory') >= 0) {
-      Patients.clearCurrent();
-    }
-  });
-
   $scope.$on('patients.update', function () {
     directory.patients = Patients.get();
     $scope.$apply();
