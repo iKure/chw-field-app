@@ -34,8 +34,12 @@ angular.module('cases', [
         }
       }
     })
-    .state('cases.summary', {
+    .state('case', {
       url: '/:case_id',
+      abstract: true,
+    })
+    .state('case.summary', {
+      url: '/summary',
       views: {
         'mainContent': {
           templateUrl: 'cases/templates/summary.html',

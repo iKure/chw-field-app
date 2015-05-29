@@ -136,5 +136,24 @@ angular.module('main', [
           controller: 'CasesAddCtrl as ctrl',
         }
       }
+    })
+    .state('tabs.case', {
+      url: '/:case_id',
+      abstract: true,
+      views: {
+        'mainContent':{
+          templateUrl: 'main/templates/case-layout.html',
+          controller: 'CaseSummaryCtrl',
+        }
+      }
+    })
+    .state('tabs.case.summary', {
+      url: '/summary',
+      views: {
+        'caseContent':{
+          templateUrl: 'cases/templates/summary.html',
+          controller: 'CaseSummaryCtrl',
+        }
+      }
     });
 });

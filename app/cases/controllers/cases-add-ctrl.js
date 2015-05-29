@@ -20,7 +20,7 @@ angular.module('cases')
     Cases.save(record).then(function (response) {
       saveSymptoms(response.id);
 
-      $state.go('cases.summary', {
+      $state.go('case.summary', {
         'case_id':response.id,
       });
     });
