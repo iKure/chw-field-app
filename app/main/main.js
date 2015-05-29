@@ -108,5 +108,33 @@ angular.module('main', [
           controller: 'VitalsFormCtrl as vitals',
         }
       }
+    })
+    .state('tabs.cases', {
+      url:'/cases',
+      abstract: true,
+      views: {
+        'mainContent': {
+          templateUrl: 'main/templates/patient-layout.html',
+          controller: 'ProfileCtrl as profile',
+        }
+      }
+    })
+    .state('tabs.cases.list', {
+      url: '/list',
+      views: {
+        'patientContent': {
+          templateUrl: 'cases/templates/list.html',
+          controller: 'CasesCtrl as ctrl',
+        }
+      }
+    })
+    .state('tabs.cases.new', {
+      url: '/new',
+      views: {
+        'patientContent': {
+          templateUrl: 'cases/templates/symptoms.html',
+          controller: 'CasesAddCtrl as ctrl',
+        }
+      }
     });
 });
