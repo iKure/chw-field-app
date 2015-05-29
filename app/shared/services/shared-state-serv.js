@@ -109,6 +109,9 @@ angular.module('shared')
         if (key == state_id) {
           return false;
         }
+        if (obj[key]) {
+          return false;
+        }
         obj[key] = currentState[key];
       });
 
