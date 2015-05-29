@@ -42,23 +42,5 @@ angular.module('cases', [
           controller: 'CaseSummaryCtrl',
         }
       }
-    })
-    .state('cases.summary.vitals', {
-      url: '/vitals',
-      views: {
-        'caseContent': {
-          templateUrl: 'vitals/templates/vitals-edit.html',
-          controller: 'VitalsAddCtrl as vitals',
-        }
-      }
-    })
-    .state('cases.summary.vitals.new.field', {
-      url: '/:type',
-      views: {
-        'menuContent':{
-          template: '<vitals-form type="vitals.type" record="vitals.current" on-save="vitals.saveRecord(record)" />',
-          controller: 'VitalsFormCtrl as vitals',
-        }
-      }
     });
 });
