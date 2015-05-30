@@ -116,11 +116,13 @@ angular.module('shared')
       });
 
       obj.type = name;
+      obj.date_modified = Date.now();
       if (obj._id) {
         console.log(name + 'Service: Saving existing object');
         promise = localDB.put(obj);
       }else {
         console.log(name + 'Service: Saving new object');
+        obj.date_created = Date.now();
         promise = localDB.post(obj);
       }
       promise.then(function (response) {
