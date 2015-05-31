@@ -85,7 +85,7 @@ angular.module('main', [
     .state('tabs.vitals.list', {
       url: '/list',
       views: {
-        'patientContent': {
+        'caseContent': {
           templateUrl: 'vitals/templates/vitals-list.html',
           controller: 'VitalsCtrl as vitals',
         }
@@ -94,7 +94,7 @@ angular.module('main', [
     .state('tabs.vitals.new', {
       url: '/new',
       views: {
-        'patientContent': {
+        'caseContent': {
           templateUrl: 'vitals/templates/vitals-edit.html',
           controller: 'VitalsAddCtrl as vitals',
         }
