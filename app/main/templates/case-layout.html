@@ -1,10 +1,10 @@
-<ion-view view-title="Case: {{case._id}}">
+<ion-view view-title="Case">
   <ion-content>
     <div class="list">
       <div class="item item-divider">
         <div class="row">
           <div class="col">
-            {{patient._id}}
+            <p>Case: <em>{{case.date_created | date}}</em></p>
             <p>{{patient.first_name}} {{patient.last_name}}</p>
             <p ng-if="patient.age">Age: {{patient.age}}</p>
           </div>
