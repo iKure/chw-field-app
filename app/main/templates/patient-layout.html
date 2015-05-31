@@ -1,18 +1,16 @@
-<ion-view view-title="Patient: {{patient.first_name}} {{patient.last_name}}">
+<ion-view view-title="Patient">
   <ion-content>
     <div class="list">
       <div class="item item-divider">
         <p>{{patient.first_name}} {{patient.last_name}}</p>
         <p ng-if="patient.age">Age: {{patient.age}}</p>
       </div>
-      <div class="item">
-        <div class="row responsive-md">
-          <div class="col">
-            <div ng-include src="'main/templates/patient-navigation.html'"></div>
-          </div>
-          <div class="col col-75">
-            <ui-view name="patientContent"></ui-view>
-          </div>
+      <div class="content-container">
+        <div class="nav content-sidebar">
+          <div ng-include src="'main/templates/patient-navigation.html'"></div>
+        </div>
+        <div class="content-main">
+          <ui-view name="patientContent"></ui-view>
         </div>
       </div>
     </div>

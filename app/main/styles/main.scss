@@ -25,4 +25,36 @@ $ionicons-font-path: "../assets/fonts" !default;
 // TODO: import scss files from other modules
 // @import "../../<module>/styles"
 
+.content-container{
+	position:relative;
+}
 
+.content-sidebar{
+	width: 40px;
+	position:absolute;
+	top:0px;
+	left:10px;
+	a{
+		span{
+			display:none;
+		}
+	}
+
+}
+
+.content-main{
+	padding-left:60px;
+	padding-right:10px;
+}
+
+@media (min-width:600px){
+	.content-sidebar{
+		width: 130px;
+		a span{
+			display:block;
+		}
+	}
+	.content-main{
+		padding-left:150px;
+	}
+}

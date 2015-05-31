@@ -1,7 +1,14 @@
 <ion-list class="padding">
-  <a class="item" ui-sref="tabs.patient.summary({id:patient._id})" ui-sref-active="active">Summary</a>
-  <a class="item" ui-sref="tabs.patient.profile({id:patient._id})" ui-sref-active="active">Profile</a>
-  <a class="item" ui-sref="tabs.cases.list" ui-sref-active="active">Cases</a>
-  <a class="item">Perscriptions</a>
-  <a class="item">Messages</a>
+  <a class="item item-icon-left" ui-sref="tabs.patient.summary({id:patient._id})" ui-sref-active="active">
+  	<span>Summary</span>
+  	<i class="icon ion-clipboard"></i>
+  </a>
+  <a class="item item-icon-left" ui-sref="tabs.patient.profile({id:patient._id})" ui-sref-active="active">
+  	<span>Profile</span>
+  	<i class="icon ion-ios-body"></i>
+  </a>
+  <a class="item item-icon-left" ui-sref="tabs.cases.list" ui-sref-active="active">
+  	<span>Cases</span>
+  	<i class="icon ion-medkit"></i>
+  </a>
 </ion-list>
