@@ -17,14 +17,12 @@
           </div>
         </div>
       </div>
-      <div class="item">
-        <div class="row responsive-md">
-          <div class="col">
-            <div ng-include src="'main/templates/patient-navigation.html'"></div>
-          </div>
-          <div class="col col-75">
-            <ui-view name="caseContent"></ui-view>
-          </div>
+      <div class="content-container">
+        <div class="nav content-sidebar">
+          <div ng-include src="'main/templates/patient-navigation.html'"></div>
+        </div>
+        <div class="content-main">
+          <ui-view name="caseContent"></ui-view>
         </div>
       </div>
     </div>
