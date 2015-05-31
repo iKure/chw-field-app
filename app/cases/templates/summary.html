@@ -1,7 +1,7 @@
 <div class="card list">
 	<div class="item item-divider">Symptoms</div>
 	<div class="item" ng-repeat="symptom in symptoms">
-		<h3>{{symptom._id}}</h3>
+		<h3>{{symptom.name}}</h3>
 		<p>Modified: {{symptom.date_modified | date}}</p>
 	</div>
 	<div class="item" ng-if="symptoms.length == 0">

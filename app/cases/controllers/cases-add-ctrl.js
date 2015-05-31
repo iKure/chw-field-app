@@ -11,6 +11,7 @@ angular.module('cases')
     var keys = Object.keys($scope.symptoms);
     keys.forEach(function (key) {
       var record = $scope.symptoms[key];
+      record.field_type = key;
       record.case_id = case_id;
       Symptoms.save(record);
     });
