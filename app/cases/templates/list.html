@@ -1,4 +1,4 @@
 <a class="button button-block" ui-sref="cases.new">New Case</a>
 <ion-list>
-  <a class="item" ng-repeat="record in records">{{record.created | date:'medium'}} {{record:._id}}</a>
+  <a class="item" ng-repeat="record in records">{{record.created | date}} {{record._id}}</a>
 </ion-list>

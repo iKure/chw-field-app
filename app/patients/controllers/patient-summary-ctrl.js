@@ -6,12 +6,10 @@ angular.module('patients')
 
   $scope.$on('patient.change', function () {
     $scope.patient = Patients.getCurrent();
-    $scope.$apply();
   });
 
-  $scope.records = Cases.get();
+  $scope.records = Cases.records;
   $scope.$on('cases.update', function () {
-    $scope.records = Vitals.get();
-    $scope.$apply();
+    $scope.records = Vitals.records;
   });
 }]);

@@ -7,6 +7,5 @@ angular.module('patients')
 
   $scope.$on('patients.update', function () {
     directory.patients = Patients.get();
-    $scope.$apply();
   });
 }]);
