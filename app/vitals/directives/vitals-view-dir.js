@@ -5,7 +5,7 @@ angular.module('vitals')
     templateUrl: 'vitals/templates/vitals-view-base.html',
     restrict: 'E',
     scope: {
-    	record: '=record',
+      record: '=record',
     },
   };
 });

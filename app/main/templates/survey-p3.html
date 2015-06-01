@@ -1,0 +1,54 @@
+<div class="list">
+  <div class="item">
+    <h3>Pregnant Mothers Survey</h3>
+  </div>
+  <div class="item">
+    <div class="list list-inset">
+      <div class="item item-divider">Nearest Hospital</div>
+      <div class="item item-stack-label">
+        Distance to the nearest hospital?
+        <input type="number" />
+        <p class="meta">Distance in Km</p>
+      </div>
+      <div class="item item-stacked-label">
+        <span class="label">Time taked to travel</span>
+        <input type="number" />
+      </div>
+      <div class="item item-stacked-label">
+        <span class="label">Cost of treatmeant</span>
+        <input type="number" />
+      </div>
+    </div>
+  </div>
+  <div class="item">
+    <div class="list list-inset">
+      <div class="item item-divider">Where were you planning to deliver?</div>
+      <label class="item item-radio">
+        <input type="radio" name="group">
+        <div class="item-content">Government Institution</div>
+        <i class="radio-icon ion-checkmark"></i>
+      </label>
+      <label class="item item-radio">
+        <input type="radio" name="group">
+        <div class="item-content">Private Institution</div>
+        <i class="radio-icon ion-checkmark"></i>
+      </label>
+      <label class="item item-radio">
+        <input type="radio" name="group">
+        <div class="item-content">Home</div>
+        <i class="radio-icon ion-checkmark"></i>
+      </label>
+      <label class="item item-radio">
+        <input type="radio" name="group">
+        <div class="item-content">Nearest center for institutional delivery</div>
+        <i class="radio-icon ion-checkmark"></i>
+      </label>
+      <label class="item item-radio">
+        <input type="radio" name="group">
+        <div class="item-content">Not decided</div>
+        <i class="radio-icon ion-checkmark"></i>
+      </label>
+    </div>
+  </div>
+  <a ui-sref="tabs.patient.summary({id:patient._id})" class="item button button-block icon-right ion-chevron-right">Next</a>
+</div>

@@ -155,5 +155,47 @@ angular.module('main', [
           controller: 'CaseSummaryCtrl',
         }
       }
+    })
+    .state('tabs.surveys', {
+      url: '/surveys',
+      views: {
+        'mainContent': {
+          templateUrl: 'main/templates/patient-layout.html',
+          controller: 'ProfileCtrl as profile'
+        }
+      }
+    })
+    .state('tabs.surveys.list', {
+      url: '/list',
+      views: {
+        'patientContent': {
+          templateUrl: 'main/templates/survey-list.html',
+        }
+      }
+    })
+    .state('tabs.surveys.page1', {
+      url: '/page1',
+      views: {
+        'patientContent': {
+          templateUrl: 'main/templates/survey-p1.html'
+        }
+      }
+    })
+    .state('tabs.surveys.page2', {
+      url: '/page2',
+      views: {
+        'patientContent': {
+          templateUrl: 'main/templates/survey-p2.html'
+        }
+      }
+    })
+    .state('tabs.surveys.page3', {
+      url: '/page3',
+      views: {
+        'patientContent': {
+          templateUrl: 'main/templates/survey-p3.html'
+        }
+      }
     });
+
 });
