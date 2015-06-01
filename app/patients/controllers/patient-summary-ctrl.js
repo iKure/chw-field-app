@@ -9,7 +9,8 @@ angular.module('patients')
   });
 
   $scope.records = Cases.records;
+  Cases.updateRecords();
   $scope.$on('cases.update', function () {
-    $scope.records = Vitals.records;
+    $scope.records = Cases.records;
   });
 }]);
