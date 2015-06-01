@@ -1,4 +1,4 @@
 <a ui-sref="vitals.new" class="button button-block">Add New Vital Record</a>
 <ion-list>
-	<a ng-repeat="record in vitals.records" class="item">{{record._id}}</a>
+	<vitals-view ng-repeat="record in vitals.records" record="record" class="item">{{record.date_created | date}}</vitals-view>
 </ion-list>
