@@ -14,9 +14,9 @@ angular.module('forms')
       });
     });
   }
-  
-  var records = [];
-  this.records = records;
+
+  var service = new Object;
+  service.records = [];
 
   function getRecords () {
     var promise = localDB.allDocs({
@@ -25,16 +25,17 @@ angular.module('forms')
     promise.then(loadRecords);
     return promise;
   }
-  this.getRecords = getRecords;
+  service.getRecords = getRecords;
 
   function loadRecords (docs) {
-    records = [];
+    service.records = [];
     docs.rows.forEach(function (row) {
-      records.push(row.doc);
+      service.records.push(row.doc);
     });
-    console.log('ODKService: Got ' + records.length + ' records');
+    console.log('ODKService: Got ' + service.records.length + ' records');
     $rootScope.$broadcast('odk.update');
   }
 
-  getRecords();
+  service.getRecords();
+  return service;
 }]);

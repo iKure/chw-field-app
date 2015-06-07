@@ -12,7 +12,7 @@ angular.module('forms', [
   $stateProvider
     .state('forms', {
       url: '/forms',
-      templateUrl: 'forms/templates/start.html',
+      templateUrl: 'forms/templates/odk-list.html',
       controller: 'OdkCtrl as Odk'
     })
     .state('forms.create', {
