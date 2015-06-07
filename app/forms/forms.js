@@ -12,8 +12,17 @@ angular.module('forms', [
   $stateProvider
     .state('forms', {
       url: '/forms',
-      templateUrl: 'forms/templates/odk-list.html',
-      controller: 'OdkCtrl as Odk'
+      abstract: true,
+      templateUrl: 'forms/templates/view.html',
+    })
+    .state('forms.list', {
+      url: '/list',
+      views:{
+        'formsContent':{
+          templateUrl: 'forms/templates/odk-list.html',
+          controller: 'OdkCtrl as Odk'
+        }
+      }
     })
     .state('forms.create', {
       url: '/new/:type',
