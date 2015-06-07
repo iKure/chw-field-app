@@ -3,8 +3,8 @@ angular.module('CHWApp', [
   // your modules
   'shared',
   'forms',
-  'vitals',
-  'cases',
-  'patients',
+  //'vitals',
+  //'cases',
+  //'patients',
   //'main',
 ]);
