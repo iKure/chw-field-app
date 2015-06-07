@@ -1,12 +1,12 @@
 <ion-view view-title="forms module">
   <ion-content>
-    <ion-list>
-      <ion-item class="item item-divider">
+    <div class="list">
+      <div class="item item-divider">
         Stuff
-      </ion-item>
-      <ion-item ng-repeat="record in records" class="item">
-        This is your odkList template!
-      </ion-item>
-    </ion-list>
+      </div>
+      <a ng-repeat="record in records" class="item">
+        {{record.label}}
+      </a>
+    </div>
   </ion-content>
 </ion-view>
