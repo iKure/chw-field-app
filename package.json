@@ -44,5 +44,8 @@
   "cordovaPlatforms": [
     "ios",
     "android"
-  ]
+  ],
+  "dependencies": {
+    "couchapp": "git://github.com/mikeal/node.couchapp.js"
+  }
 }
