@@ -13,7 +13,7 @@ angular.module('forms', [
     .state('forms', {
       url: '/forms',
       templateUrl: 'forms/templates/start.html',
-      controller: 'StartCtrl as start'
+      controller: 'OdkCtrl as Odk'
     })
     .state('forms.create', {
       url: '/new/:type',
