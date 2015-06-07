@@ -5,5 +5,5 @@ angular.module('CHWApp', [
   'vitals',
   'cases',
   'patients',
-  'main',
+  //'main',
 ]);
