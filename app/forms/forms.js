@@ -26,10 +26,11 @@ angular.module('forms', [
     })
     .state('forms.create', {
       url: '/new/:type',
-      templateUrl: 'forms/templates/start.html',
-    })
-    .state('forms.view', {
-      url: '/:form_id',
-      templateUrl: 'forms/templates/start.html',
+      views:{
+        'formsContent':{
+          templateUrl: 'forms/templates/start.html',
+          controller: 'FormCreateCtrl as ctrl'
+        }
+      }
     });
 });
