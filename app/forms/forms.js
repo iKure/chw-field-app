@@ -20,7 +20,7 @@ angular.module('forms', [
       views:{
         'formsContent':{
           templateUrl: 'forms/templates/forms-list.html',
-          controller: 'OdkCtrl as Odk'
+          controller: 'FormsCtrl'
         }
       }
     })
@@ -29,7 +29,7 @@ angular.module('forms', [
       views:{
         'formsContent':{
           templateUrl: 'forms/templates/start.html',
-          controller: 'FormCreateCtrl as ctrl'
+          controller: 'FormCreateCtrl'
         }
       }
     });
