@@ -32,5 +32,13 @@ angular.module('forms', [
           controller: 'FormCreateCtrl'
         }
       }
+    })
+    .state('forms.field', {
+      url: '/field/:field_id',
+      views:{
+        'formsContent': {
+          templateUrl: 'forms/templates/start.html'
+        }
+      }
     });
 });
