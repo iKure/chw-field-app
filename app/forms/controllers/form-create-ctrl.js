@@ -6,5 +6,6 @@ angular.module('forms')
   if (!$stateParams.type) {
     $state.go('forms.list');
   }
+  console.log('FormCreateCtrl: Create new form type: ' + $stateParams.type);
 
 }]);
