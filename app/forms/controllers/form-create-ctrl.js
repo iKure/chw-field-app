@@ -8,4 +8,12 @@ angular.module('forms')
   }
   console.log('FormCreateCtrl: Create new form type: ' + $stateParams.type);
 
+  var promise = Forms.get($stateParams.type);
+  promise.then( function (doc) {
+    console.log('FormCreateCtrl: Creating new fields');
+  }).catch( function (err) {
+    console.log('FormCreateCtrl: Could not find form template type: ' + $stateParams.type);
+    $state.go('forms.list');
+  });
+
 }]);
