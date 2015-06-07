@@ -19,7 +19,7 @@ angular.module('forms', [
       url: '/list',
       views:{
         'formsContent':{
-          templateUrl: 'forms/templates/odk-list.html',
+          templateUrl: 'forms/templates/forms-list.html',
           controller: 'OdkCtrl as Odk'
         }
       }
