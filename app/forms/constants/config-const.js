@@ -10,6 +10,7 @@ angular.module('forms')
     "FORMS":[
       {
         "_id":"test",
+        "label":"Test Form",
         "fields":[
           {
             "name":"age",
