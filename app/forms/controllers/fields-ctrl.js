@@ -29,4 +29,15 @@ angular.module('forms')
     });
   });
 
+  function update (key, value) {
+    $scope.data[key] = value;
+  }
+  $scope.update = update;
+
+  function save () {
+    console.log('FieldsCtrl: Saving field: ' + $scope.data._id);
+    Fields.save($scope.data);
+  }
+  $scope.save = save;
+
 }]);

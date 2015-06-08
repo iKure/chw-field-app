@@ -1,4 +1,4 @@
 <label>
 	<span class="input-label">{{field.label}}</span>
-	<input type="number" ng-model="data" />
+	<input type="number" ng-model="data" ng-blur="update({key:field.name, value:data})" />
 </label>
