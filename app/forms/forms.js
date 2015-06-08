@@ -45,14 +45,5 @@ angular.module('forms', [
           controller: 'FieldsCtrl'
         }
       }
-    })
-    .state('forms.field.create', {
-      url: '/:type',
-      views:{
-        'formsContent':{
-          templateUrl: 'forms/templates/start.html',
-          controller: 'FormCreateCtrl'
-        }
-      }
     });
 });
