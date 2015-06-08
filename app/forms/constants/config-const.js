@@ -50,8 +50,9 @@ angular.module('forms')
           },
           {
             'name': 'sub',
-            'label': 'Sub Form: Test',
+            'label': 'Sub Test Form',
             'type': 'form',
+            'include': 'test',
             'persistant': true
           }
         ]

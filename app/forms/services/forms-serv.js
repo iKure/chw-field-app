@@ -7,9 +7,14 @@ angular.module('forms')
 
   if (Config.ENV.FORMS) {
     Config.ENV.FORMS.forEach(function (form) {
-      localDB.get(form._id).catch( function (err) {
+      localDB.get(form._id).then(function (doc) {
+        form._rev = doc._rev;
         localDB.put(form).then( function (response) {
-          console.log( 'FormsService: PUT form id = ' + response.id);
+          console.log( 'FormsService: Updated form id = ' + response.id);
+        });
+      }).catch( function (err) {
+        localDB.put(form).then( function (response) {
+          console.log( 'FormsService: Created form id = ' + response.id);
         });
       });
     });
