@@ -10,6 +10,7 @@ angular.module('forms')
     'FORMS': [
       {
         '_id': 'test',
+        'label': 'Test Form',
         'fields': [
           {
             'name': 'age',
@@ -34,6 +35,24 @@ angular.module('forms')
             ],
             'persistant': false,
             'validators': []
+          }
+        ]
+      },
+      {
+        '_id': 'container_form',
+        'label': 'Container Form',
+        'fields': [
+          {
+            'name': 'name',
+            'label': 'Full Name',
+            'type': 'text',
+            'persistant': true
+          },
+          {
+            'name': 'sub',
+            'label': 'Sub Form: Test',
+            'type': 'form',
+            'persistant': true
           }
         ]
       }
