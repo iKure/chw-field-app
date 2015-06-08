@@ -3,7 +3,7 @@ angular.module('forms')
 .service('Forms', ['$rootScope', 'Config', function ($rootScope, Config) {
   console.log('Hello from your Service: Forms in module forms');
 
-  var localDB = new PouchDB('odk_forms');
+  var localDB = new PouchDB('forms');
 
   if (Config.ENV.FORMS) {
     Config.ENV.FORMS.forEach(function (form) {
