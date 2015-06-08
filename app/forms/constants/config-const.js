@@ -6,7 +6,38 @@ angular.module('forms')
   // https://github.com/mwaylabs/generator-m#gulp-environment
   ENV: {
     /*inject-env*/
-    'SERVER_URL': 'https://DEVSERVER/api'
+    'SERVER_URL': 'https: //DEVSERVER/api',
+    'FORMS': [
+      {
+        '_id': 'test',
+        'fields': [
+          {
+            'name': 'age',
+            'label': 'Age',
+            'type': 'number',
+            'persistant': true,
+            'validators': []
+          },
+          {
+            'name': 'ice_cream',
+            'label': 'Favoriteicecreamflavor',
+            'type': 'select',
+            'choices': [
+              {
+                'label': 'Chocolate',
+                'value': 'chocolate'
+              },
+              {
+                'label': 'Vanilla',
+                'value': 'notchocolate'
+              }
+            ],
+            'persistant': false,
+            'validators': []
+          }
+        ]
+      }
+    ]
     /*endinject*/
   },
 
