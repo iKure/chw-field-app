@@ -6,14 +6,7 @@ angular.module('patients')
   // https://github.com/mwaylabs/generator-m#gulp-environment
   ENV: {
     /*inject-env*/
-    'SERVER_URL': 'https://DEVSERVER/api',
-    'PATIENTS': [
-      {
-        '_id':'nickxxx',
-        'first_name': 'Nick',
-        'last_name': 'Reid'
-      }
-    ]
+    'SERVER_URL': 'https://DEVSERVER/api'
     /*endinject*/
   },
 

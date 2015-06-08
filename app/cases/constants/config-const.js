@@ -6,6 +6,7 @@ angular.module('cases')
   // https://github.com/mwaylabs/generator-m#gulp-environment
   ENV: {
     /*inject-env*/
+    'SERVER_URL': 'https://DEVSERVER/api'
     /*endinject*/
   },
 

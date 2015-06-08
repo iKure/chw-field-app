@@ -37,7 +37,8 @@ angular.module('forms', [
       url: '/field/:field_id',
       views:{
         'formsContent': {
-          templateUrl: 'forms/templates/fields-list.html'
+          templateUrl: 'forms/templates/fields-list.html',
+          controller: 'FieldsCtrl'
         }
       }
     });

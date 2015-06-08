@@ -8,6 +8,11 @@ angular.module('forms')
   var service = new Object;
   service.records = [];
 
+  function get(id) {
+    return localDB.get(id);
+  }
+  service.get = get;
+
   function save (field, form) {
     if (form) {
       console.log("FieldsService: Save fields for form: " + form._id);
