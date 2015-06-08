@@ -36,7 +36,10 @@ angular.module('forms')
 
   function save () {
     console.log('FieldsCtrl: Saving field: ' + $scope.data._id);
-    Fields.save($scope.data);
+    Fields.save($scope.data).then(function (response) {
+      console.log('FieldsCtrl: Saved field: ' + response.id);
+      $scope.data._rev = response.rev;
+    });
   }
   $scope.save = save;
 
