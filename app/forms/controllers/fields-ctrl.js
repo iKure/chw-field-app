@@ -15,6 +15,7 @@ angular.module('forms')
     redirect('No field_id');
   }
 
+  $scope.field_id = $stateParams.field_id;
   $scope.data = {};
   $scope.fields = [];
 

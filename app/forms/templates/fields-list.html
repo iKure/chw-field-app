@@ -2,6 +2,6 @@
   <div class="item item-divider">
     Fields in form
   </div>
-  <div ng-repeat="field in fields" field-form field="field" data="data[field.name]" on-update="update(key, value)" class="item"></div>
+  <div ng-repeat="field in fields" field-form field="field" data="data[field.name]" on-update="update(key, value)" field-id="field_id" class="item"></div>
   <button class="button button-block" ng-click="save()">Save</button>
 </div>

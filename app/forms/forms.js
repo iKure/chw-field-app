@@ -25,7 +25,11 @@ angular.module('forms', [
       }
     })
     .state('forms.create', {
-      url: '/new/:type',
+      url: '/new/:type/:field_id/:persistant',
+      params: {
+        field_id: null,
+        persistant: null
+      },
       views:{
         'formsContent':{
           templateUrl: 'forms/templates/start.html',
@@ -39,6 +43,15 @@ angular.module('forms', [
         'formsContent': {
           templateUrl: 'forms/templates/fields-list.html',
           controller: 'FieldsCtrl'
+        }
+      }
+    })
+    .state('forms.field.create', {
+      url: '/:type',
+      views:{
+        'formsContent':{
+          templateUrl: 'forms/templates/start.html',
+          controller: 'FormCreateCtrl'
         }
       }
     });

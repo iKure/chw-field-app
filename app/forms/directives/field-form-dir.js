@@ -14,6 +14,7 @@ angular.module('forms')
     scope: {
       update: '&onUpdate',
       close: '&onClose',
+      field_id: '=fieldId',
       field: '=field',
       data: '=data'
     }

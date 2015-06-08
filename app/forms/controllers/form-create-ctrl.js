@@ -11,7 +11,12 @@ angular.module('forms')
   var promise = Forms.get($stateParams.type);
   promise.then( function (doc) {
     console.log('FormCreateCtrl: Creating new fields');
-    Fields.save({}, doc).then(function (response) {
+    var field = {};
+    if ($stateParams.field_id) {
+      console.log('FormCreateCtrl: Set parent field to: ' + $stateParams.field_id);
+      field.parent_id = $stateParams.field_id;
+    }
+    Fields.save(field, doc).then(function (response) {
       console.log('FormCreateCtrl: Forwarding to new field: ' + response.id);
       $state.go('forms.field', {
         field_id: response.id
