@@ -50,8 +50,9 @@ angular.module('patients')
           },
           {
             'name': 'sub',
-            'label': 'Sub Form: Test',
+            'label': 'Test Sub Form',
             'type': 'form',
+            'include': 'test',
             'persistant': true
           }
         ]
