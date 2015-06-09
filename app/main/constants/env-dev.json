@@ -61,6 +61,22 @@
                     "persistant": true
                 },
                 {
+                    "name":"age",
+                    "label": "Age",
+                    "type": "number",
+                    "persistant": true,
+                    "units": [
+                        {
+                            "label": "Years",
+                            "value": "years"
+                        },
+                        {
+                            "label": "Months",
+                            "value": "months"
+                        }
+                    ]
+                },
+                {
                     "name": "mobile",
                     "label": "Mobile Number",
                     "type": "number",

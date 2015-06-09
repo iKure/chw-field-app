@@ -1,4 +1,12 @@
-<label>
-	<span class="input-label">{{field.label}}</span>
-	<input type="number" ng-model="data.value" ng-blur="update({key:field.name, value:data})" />
-</label>
+<div class="row responsive-sm">
+	<label class="col">
+		<span class="input-label">{{field.label}}</span>
+		<input type="number" ng-model="data.value" ng-blur="update({key:field.name, value:data})" />
+	</label>
+	<label class="col-20 item item-stacked-label item-input item-select" ng-if="field.units">
+		<span class="input-label">Units</span>
+		<select>
+			<option ng-repeat="unit in field.units" value="{{unit.value}}">{{unit.label}}</option>
+		</select>
+	</label>
+</div>
