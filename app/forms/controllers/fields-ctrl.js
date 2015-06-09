@@ -23,6 +23,9 @@ angular.module('forms')
   $scope.save = save;
 
   if ($scope.field.include) {
+    if (!$scope.data) {
+      $scope.data = {};
+    }
     $scope.data.include = $scope.field.include;
   }
 
