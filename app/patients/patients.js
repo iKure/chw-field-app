@@ -20,7 +20,7 @@ angular.module('patients', [
     .state('patient_register', {
       url: '/patients/register',
       templateUrl: 'patients/templates/register.html',
-      controller: 'PatientFormCtrl as form',
+      controller: 'PatientFormCtrl',
     })
     .state('patient', {
       url: '/patients/:id',

@@ -1,22 +1,25 @@
 'use strict';
 angular.module('patients')
-.controller('PatientFormCtrl', [ '$scope', '$state', 'Patients', function ($scope, $state, Patients) {
+.controller('PatientFormCtrl', [ '$scope', '$state', 'Patients', 'Forms', 'Fields', function ($scope, $state, Patients, Forms, Fields) {
   console.log('Hello from your Controller: PatientFormCtrl in module patients:. This is your controller:', this);
-  var ctrl = this;
 
-  ctrl.patient = Patients.getCurrent();
-  if (!ctrl.patient) {
-    ctrl.patient = {};
-  }
-
-  $scope.$on('patient.change', function () {
-    ctrl.patient = Patients.getCurrent();
-    $scope.$apply();
+  $scope.form = false;
+  $scope.data = {};
+  Forms.get('demographics').then(function (doc) { // This should be configured in a seeting somewhere
+    $scope.form = doc;
   });
 
-  this.savePatient = function (patient) {
+  function save() {
+    var patient = {};
+    Object.keys($scope.data).forEach(function (key) {
+      if (key.indexOf('_') == 0) {
+        return false;
+      }
+      patient[key] = $scope.data[key];
+    });
     Patients.save(patient).then(function (response) {
       $state.go('patient.summary', { id:response.id });
     });
-  };
+  }
+  $scope.save = save;
 }]);

@@ -1,6 +1,6 @@
 <ion-view view-title="Register">
 	<ion-content >
 		<p>Create a new patient</p>
-		<patinfo patient="form.patient" on-save="form.savePatient(patient)" />
+		<div field-list fields="form.fields" data="data" on-close="save()"></div>
 	</ion-content>
 </ion-view>
