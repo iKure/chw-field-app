@@ -21,6 +21,11 @@ angular.module('forms')
 
   function close () {
     console.log('FormCreateCtrl: Close');
+    if ($scope.data._id) {
+      $state.go('forms.field', {field_id: $scope.data._id});
+    } else {
+      $state.go('forms.list');
+    }
   }
   $scope.close = close;
 }]);
