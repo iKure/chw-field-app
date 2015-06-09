@@ -4,5 +4,5 @@ angular.module('CHWApp', [
   'shared',
   'forms',
   'patients',
-  'main',
+  //'main',
 ]);

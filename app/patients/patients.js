@@ -15,7 +15,7 @@ angular.module('patients', [
     .state('patient_directory', {
       url: '/patients/directory',
       templateUrl: 'patients/templates/list.html',
-      controller: 'DirectoryCtrl as directory',
+      controller: 'PatientDirectoryCtrl',
     })
     .state('patient_register', {
       url: '/patients/register',
@@ -23,15 +23,15 @@ angular.module('patients', [
       controller: 'PatientFormCtrl',
     })
     .state('patient', {
-      url: '/patients/:id',
+      url: '/patient/:patient_id',
       abstract: true,
       templateUrl: 'patients/templates/menu-side.html',
-      controller: 'ProfileCtrl as profile',
+      controller: 'PatientCtrl',
     })
     .state('patient.summary', {
       url: '/summary',
       views:{
-        'menuContent': {
+        'patientContent': {
           templateUrl: 'patients/templates/summary.html',
           controller: 'PatientSummaryCtrl as summary',
         }
@@ -40,7 +40,7 @@ angular.module('patients', [
     .state('patient.profile', {
       url: '/profile',
       views:{
-        'menuContent': {
+        'patientContent': {
           templateUrl: 'patients/templates/profile.html',
           controller: 'ProfileCtrl as profile',
         }
@@ -49,7 +49,7 @@ angular.module('patients', [
     .state('patient.info-edit', {
       url:'/info-edit',
       views:{
-        'menuContent':{
+        'patientContent':{
           templateUrl: 'patients/templates/info-edit.html',
           controller: 'PatientFormCtrl as form',
         }
