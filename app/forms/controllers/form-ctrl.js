@@ -17,6 +17,11 @@ angular.module('forms')
     promise.then( function (doc) {
       console.log('FormCtrl: Got form type: ' + doc._id);
       $scope.form = doc;
+      if (!$scope.data) { // assume new field
+        $scope.data = {
+          form_id: doc._id,
+        };
+      }
       $scope.$apply(); // This shouldn't be here
     }).catch( function (err) {
       console.log('FormCtrl: Could not find form template type: ' + type);

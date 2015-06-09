@@ -13,11 +13,7 @@ angular.module('forms')
   }
   service.get = get;
 
-  function save (field, form) {
-    if (form) {
-      console.log("FieldsService: Save fields for form: " + form._id);
-      field.form_id = form._id;
-    }
+  function save (field) {
     // Add patient_id, (parent) field_id, and anything else
     var promise = false;
     if (!field._id) {

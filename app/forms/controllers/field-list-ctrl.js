@@ -33,7 +33,7 @@ angular.module('forms')
       return setTimeout(close, duration);
     }
 
-    Fields.save($scope.data, $scope.form).then(function (response) {
+    Fields.save($scope.data).then(function (response) {
       $scope.data._id = response.id;
       $scope.data._rev = response.rev;
       $scope.$broadcast('field.save', response.id);
