@@ -1,6 +1,6 @@
 'use strict';
 angular.module('forms')
-.controller('FormCreateCtrl', ['$scope', '$state', '$stateParams', 'Forms', 'Fields', function ($scope, $state, $stateParams, Forms, Fields) {
+.controller('FormCtrl', ['$scope', '$state', '$stateParams', 'Forms', 'Fields', function ($scope, $state, $stateParams, Forms, Fields) {
 
   console.log('Hello from your Controller: FormCreateCtrl in module forms:. This is your controller:', this);
   if (!$stateParams.type) {

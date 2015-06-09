@@ -29,7 +29,7 @@ angular.module('forms', [
       views:{
         'formsContent':{
           templateUrl: 'forms/templates/form-fields-list.html',
-          controller: 'FormCreateCtrl'
+          controller: 'FormCtrl'
         }
       }
     })
@@ -38,7 +38,7 @@ angular.module('forms', [
       views:{
         'formsContent': {
           templateUrl: 'forms/templates/form-fields-list.html',
-          controller: 'FormCreateCtrl'
+          controller: 'FormCtrl'
         }
       }
     });
