@@ -1,0 +1,30 @@
+.field-text{
+	.button-edit{
+		float:none;
+		display:block;
+		width:100%;
+	}
+}
+
+@media (min-width: 400px) {
+	.field-text{
+		.button-edit{
+			width:auto;
+			float:right;
+			span{
+				display:none;
+			}
+		}
+		.inputs{
+			float:left;
+		}
+	}
+}
+
+@media (min-width: 800px) {
+	.field-text{
+		.button-edit span{
+			display: inline;
+		}
+	}
+}

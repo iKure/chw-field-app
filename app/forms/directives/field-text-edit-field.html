@@ -1,5 +1,10 @@
-<label>
-	<button class="button icon icon-left ion-edit" ng-click="openModal()">Edit {{label}}</button>
-	<span class="input-label">{{label}}</span>
-	<span class="input-value">{{value}}</span>
+<label class="field-text">
+	<div class="inputs">
+		<span class="input-label">{{label}}</span>
+		<span class="input-value">{{value}}</span>
+	</div>
+	<button class="button button-edit" ng-click="openModal()">
+		<i class="icon ion-edit"></i>
+		<span>Edit {{label}}</span>
+	</button>
 </label>
