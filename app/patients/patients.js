@@ -6,21 +6,36 @@ angular.module('patients', [
   'shared',
   // TODO: load other modules selected during generation
 ])
-.config(function ($stateProvider) {
+.config(function ($stateProvider, $urlRouterProvider) {
 
   console.log('Allo! Allo from your module: ' + 'patients');
 
+  $urlRouterProvider.otherwise('/patients/directory');
+
   // some basic routing
   $stateProvider
-    .state('patient_directory', {
-      url: '/patients/directory',
-      templateUrl: 'patients/templates/list.html',
-      controller: 'PatientDirectoryCtrl',
+    .state('patients', {
+      url: '/patients',
+      templateUrl: 'patients/templates/view.html',
+      abstract: true,
     })
-    .state('patient_register', {
-      url: '/patients/register',
-      templateUrl: 'patients/templates/register.html',
-      controller: 'PatientFormCtrl',
+    .state('patients.directory', {
+      url: '/directory',
+      views: {
+        'patientsContent':{
+          templateUrl: 'patients/templates/list.html',
+          controller: 'PatientDirectoryCtrl',
+        }
+      }
+    })
+    .state('patients.register', {
+      url: '/register',
+      views: {
+        'patientsContent': {
+          templateUrl: 'patients/templates/register.html',
+          controller: 'PatientFormCtrl',
+        }
+      }
     })
     .state('patient', {
       url: '/patient/:patient_id',
