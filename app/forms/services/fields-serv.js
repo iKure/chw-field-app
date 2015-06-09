@@ -13,6 +13,19 @@ angular.module('forms')
   }
   service.get = get;
 
+  function all() {
+    return localDB.query(
+      function (doc, emit) {
+        if (doc.parent) {
+          return false;
+        }
+        emit(doc._id, doc);
+      }, {
+        include_docs: true,
+      });
+  }
+  service.all = all;
+
   function save (field) {
     // Add patient_id, (parent) field_id, and anything else
     var promise = false;

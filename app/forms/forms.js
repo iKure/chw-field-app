@@ -20,7 +20,7 @@ angular.module('forms', [
       views:{
         'formsContent':{
           templateUrl: 'forms/templates/forms-list.html',
-          controller: 'FormsCtrl'
+          controller: 'FieldsDirectoryCtrl'
         }
       }
     })
