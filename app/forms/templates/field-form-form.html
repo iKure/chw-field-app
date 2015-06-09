@@ -1,2 +1,4 @@
-<a ng-if="data._id" ui-sref="forms.field({field_id:data._id})" class="item icon-left ion-chevron-right">{{field.label}}</a>
-<a ng-if="!data._id" ui-sref="forms.create({type:field.include, field_id:field_id})" class="item icon-right ion-plus">{{field.label}}</a>
+<a ui-sref="forms.field.sub_form({name:field.name})" class="item item-icon-right">
+	{{field.label}}
+	<i class="icon ion-plus"></i>
+</a>

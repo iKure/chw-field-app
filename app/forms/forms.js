@@ -41,5 +41,13 @@ angular.module('forms', [
           controller: 'FormCtrl'
         }
       }
+    })
+    .state('forms.field.sub_form', {
+      url: '/:name',
+      views:{
+        'modal': {
+          templateUrl: 'forms/templates/form-fields-list.html',
+        }
+      }
     });
 });
