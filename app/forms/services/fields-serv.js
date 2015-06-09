@@ -13,10 +13,21 @@ angular.module('forms')
   }
   service.get = get;
 
-  function all() {
+  function all(matches) {
+    if (!matches) {
+      matches = {
+        parent: undefined
+      };
+    }
     return localDB.query(
       function (doc, emit) {
-        if (doc.parent) {
+        var passes = true;
+        Object.keys(matches).forEach(function (key) {
+          if (doc[key] != matches[key]) {
+            passes = false;
+          }
+        });
+        if (!passes) {
           return false;
         }
         emit(doc._id, doc);
