@@ -3,6 +3,7 @@ angular.module('forms', [
   'ionic',
   'ngCordova',
   'ui.router',
+  'ui.bootstrap',
   'shared',
 ])
 .config(function ($stateProvider) {
@@ -46,7 +47,7 @@ angular.module('forms', [
       url: '/:name',
       views:{
         'modal': {
-          templateUrl: 'forms/templates/form-fields-list.html',
+          controller: 'SubFormCtrl',
         }
       }
     });
