@@ -4,7 +4,7 @@ angular.module('patients')
   console.log('Hello from your Controller: ProfileCtrl in module patients:. This is your controller:', this);
 
   if (!$stateParams.patient_id) {
-    $state.go('patient_directory');
+    $state.go('patients.directory');
   }
 
   Patients.get($stateParams.patient_id).then(function (doc) {
