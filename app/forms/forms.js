@@ -25,14 +25,10 @@ angular.module('forms', [
       }
     })
     .state('forms.create', {
-      url: '/new/:type/:field_id/:persistant',
-      params: {
-        field_id: null,
-        persistant: null
-      },
+      url: '/new/:type',
       views:{
         'formsContent':{
-          templateUrl: 'forms/templates/start.html',
+          templateUrl: 'forms/templates/form-fields-list.html',
           controller: 'FormCreateCtrl'
         }
       }

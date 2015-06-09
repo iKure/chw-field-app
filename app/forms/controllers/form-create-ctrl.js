@@ -10,18 +10,8 @@ angular.module('forms')
 
   var promise = Forms.get($stateParams.type);
   promise.then( function (doc) {
-    console.log('FormCreateCtrl: Creating new fields');
-    var field = {};
-    if ($stateParams.field_id) {
-      console.log('FormCreateCtrl: Set parent field to: ' + $stateParams.field_id);
-      field.parent_id = $stateParams.field_id;
-    }
-    Fields.save(field, doc).then(function (response) {
-      console.log('FormCreateCtrl: Forwarding to new field: ' + response.id);
-      $state.go('forms.field', {
-        field_id: response.id
-      });
-    });
+    console.log('FormCreateCtrl: Got form ' + doc._id);
+    $scope.form = doc;
   }).catch( function (err) {
     console.log('FormCreateCtrl: Could not find form template type: ' + $stateParams.type);
     $state.go('forms.list');

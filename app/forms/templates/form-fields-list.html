@@ -1,0 +1,5 @@
+<h1>{{form.label}}</h1>
+<div class="list">
+  <div ng-repeat="field in form.fields" field-form field="field" data="data[field.name]" on-update="update(key, value)" field-id="field_id" class="item"></div>
+  <button class="button button-block" ng-click="save()">Save</button>
+</div>
