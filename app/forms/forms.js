@@ -19,13 +19,22 @@ angular.module('forms', [
       url: '/list',
       views:{
         'formsContent':{
-          templateUrl: 'forms/templates/forms-list.html',
-          controller: 'FieldsDirectoryCtrl'
+          templateUrl: 'forms/templates/fields-directory.html',
+          controller: 'FieldsDirectoryCtrl',
         }
       }
     })
     .state('forms.create', {
-      url: '/new/:type',
+      url: '/new',
+      views: {
+        'formsContent': {
+          templateUrl: 'forms/templates/forms-directory.html',
+          controller: 'FormsDirectoryCtrl',
+        }
+      }
+    })
+    .state('forms.type', {
+      url: '/type/:type',
       views:{
         'formsContent':{
           templateUrl: 'forms/templates/form-fields-list.html',

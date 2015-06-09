@@ -1,0 +1,8 @@
+<div class="list">
+  <div class="item item-divider">
+    Available Forms
+  </div>
+  <a ng-repeat="record in records" ui-sref="forms.type({type:record._id})" class="item">
+    {{record.label}}
+  </a>
+</div>
