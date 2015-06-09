@@ -10,8 +10,8 @@ angular.module('forms')
     scope: {
       data: '=data',
       fields: '=fields',
-      save: '&onSave',
       close: '&onClose',
-    }
+    },
+    controller: 'FieldListCtrl',
   };
 });
