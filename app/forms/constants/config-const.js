@@ -56,6 +56,24 @@ angular.module('forms')
             'persistant': true
           }
         ]
+      },
+      {
+        '_id': 'demographics',
+        'label': 'Patient Demographics',
+        'fields': [
+          {
+            'name': 'name',
+            'label': 'Full Name',
+            'type': 'text',
+            'persistant': true
+          },
+          {
+            'name': 'mobile',
+            'label': 'Mobile Number',
+            'type': 'number',
+            'persistant': true
+          }
+        ]
       }
     ]
     /*endinject*/
