@@ -22,7 +22,7 @@ angular.module('forms')
   }
   $scope.save = save;
 
-  if($scope.field.include){
+  if ($scope.field.include) {
     $scope.data.include = $scope.field.include;
   }
 

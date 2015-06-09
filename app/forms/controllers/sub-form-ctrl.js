@@ -1,6 +1,6 @@
 'use strict';
 angular.module('forms')
-.controller('SubFormCtrl', ['$scope', '$ionicPopover', '$state', '$stateParams', 'Forms', 'Fields', function ($scope, $ionicPopover, $state, $stateParams, Forms, Fields) {
+.controller('SubFormCtrl', ['$scope', '$ionicModal', '$state', '$stateParams', 'Forms', 'Fields', function ($scope, $ionicModal, $state, $stateParams, Forms, Fields) {
 
   console.log('Hello from your Controller: SubFormCtrl in module forms:. This is your controller:', this);
 
@@ -14,40 +14,38 @@ angular.module('forms')
       });
       return false;
     }
-    $scope.data = $scope.$parent.data[$stateParams.name]; 
-    Forms.get($scope.data.include).then(function (doc){
+    $scope.data = $scope.$parent.data[$stateParams.name];
+    Forms.get($scope.data.include).then(function (doc) {
       $scope.form = doc;
       createPopover();
     });
   }
 
   function createPopover () {
-    $ionicPopover.fromTemplateUrl('forms/templates/sub-form.html', {
-      scope: $scope
-    }).then(function (popover) {
-      $scope.popover = popover;
-      $scope.popover.show('body');
+    $ionicModal.fromTemplateUrl('forms/templates/sub-form.html', {
+      scope: $scope,
+      animation: 'slide-in-up'
+    }).then(function (modal) {
+      $scope.modal = modal;
+      $scope.modal.show();
     });
 
-    $scope.closePopover = function () {
-      $scope.popover.hide();
+    $scope.closeModal = function () {
+      $scope.modal.hide();
     };
-    //Cleanup the popover when we're done with it!
     $scope.$on('$destroy', function () {
-      $scope.popover.remove();
+      $scope.modal.remove();
     });
-    // Execute action on hide popover
-    $scope.$on('popover.hidden', function () {
-      console.log("SubFormCtrl: Close popover");
+    $scope.$on('modal.hidden', function () {
+      console.log("SubFormCtrl: Close modal");
       setTimeout(function () {
         $state.go('forms.field', {
           field_id: $stateParams.field_id,
         });
       }, 100);
     });
-    // Execute action on remove popover
-    $scope.$on('popover.removed', function () {
-      console.log("SubFormCtrl: Popover removed");
+    $scope.$on('modal.removed', function () {
+      console.log("SubFormCtrl: Modal removed");
     });
   }
 

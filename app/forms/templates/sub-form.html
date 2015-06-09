@@ -1,9 +1,9 @@
-<ion-modal-vie>
+<ion-modal-view>
     <ion-header-bar>
         <h1 class="title">{{form.label}}</h1>
-        <button class="button icon ion-close" ng-click="closePopover"></button>
+        <button class="button icon ion-close" ng-click="closeModal()"></button>
     </ion-header-bar>
     <ion-content>
         <div field-list class="form-fields" fields="form.fields" data="data" on-close="close()" ></div>
     </ion-content>
-</ion-modal-vie>
+</ion-modal-view>
