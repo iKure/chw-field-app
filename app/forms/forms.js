@@ -3,7 +3,6 @@ angular.module('forms', [
   'ionic',
   'ngCordova',
   'ui.router',
-  'ui.bootstrap',
   'shared',
 ])
 .config(function ($stateProvider) {
