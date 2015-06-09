@@ -19,6 +19,19 @@ angular.module('forms')
       $scope.form = doc;
       createPopover();
     });
+    if ($scope.data._id) {
+      Fields.get($scope.data._id).then(function (doc) {
+        console.log('SubFormCtrl: Reloading data');
+        $scope.data = doc;
+      });
+    }
+  }
+
+  function cleanUp () {
+    console.log('SubFormCtrl: Cleaning up');
+    $state.go('forms.field', {
+      field_id: $stateParams.field_id,
+    });
   }
 
   function createPopover () {
@@ -38,11 +51,7 @@ angular.module('forms')
     });
     $scope.$on('modal.hidden', function () {
       console.log("SubFormCtrl: Close modal");
-      setTimeout(function () {
-        $state.go('forms.field', {
-          field_id: $stateParams.field_id,
-        });
-      }, 100);
+      setTimeout(cleanUp, 100);
     });
     $scope.$on('modal.removed', function () {
       console.log("SubFormCtrl: Modal removed");
