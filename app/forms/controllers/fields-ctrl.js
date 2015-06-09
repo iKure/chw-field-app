@@ -12,10 +12,12 @@ angular.module('forms')
 
   function save () {
     console.log('FieldCtrl: Saving field: ' + $scope.data._id);
+    $scope.$emit('field.saving', $scope.field.name);
     Fields.save($scope.data).then(function (response) {
       console.log('FieldCtrl: Saved field: ' + response.id);
       $scope.data._id = response.id;
       $scope.data._rev = response.rev;
+      $scope.$emit('field.saved', $scope.field.name);
     });
   }
   $scope.save = save;
