@@ -18,4 +18,14 @@ angular.module('forms')
     $state.go('forms.list');
   });
 
+  function save() {
+    Fields.save($scope.data, $scope.form).then(function (response) {
+      $scope.data._id = response.id;
+      $scope.data._rev = response.rev;
+      $scope.$broadcast('field.save', response.id);
+    });
+    // show loading until all saving is done.
+    // redirect to fields page
+  }
+  $scope.save = save;
 }]);
