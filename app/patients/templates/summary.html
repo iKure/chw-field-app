@@ -1,1 +1,6 @@
-<p>Patient Summary Page</p>
+<p>{{patient._id}} Summary Page</p>
+<div class="list">
+	<div ng-repeat="record in records" class="item">
+		{{record._id}}
+	</div>
+</div>

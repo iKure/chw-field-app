@@ -48,7 +48,7 @@ angular.module('patients', [
       views:{
         'patientContent': {
           templateUrl: 'patients/templates/summary.html',
-          controller: 'PatientSummaryCtrl as summary',
+          controller: 'PatientSummaryCtrl',
         }
       }
     })

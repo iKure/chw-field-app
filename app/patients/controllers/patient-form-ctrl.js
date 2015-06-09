@@ -18,7 +18,10 @@ angular.module('patients')
       patient[key] = $scope.data[key];
     });
     Patients.save(patient).then(function (response) {
-      $state.go('patient.summary', { patient_id:response.id });
+      $scope.data.patient_id = response.id;
+      Fields.save($scope.data).then(function () {
+        $state.go('patient.summary', { patient_id:response.id });
+      });
     });
   }
   $scope.save = save;
