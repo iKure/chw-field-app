@@ -13,6 +13,7 @@ angular.module('forms')
     console.log('FormCreateCtrl: Got form ' + doc._id);
     $scope.form = doc;
     $scope.data = {};
+    $scope.$apply(); // This shouldn't be here
   }).catch( function (err) {
     console.log('FormCreateCtrl: Could not find form template type: ' + $stateParams.type);
     $state.go('forms.list');
