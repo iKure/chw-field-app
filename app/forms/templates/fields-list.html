@@ -1,7 +1,5 @@
 <div class="list">
-  <div class="item item-divider">
-    Fields in form
-  </div>
+  <div ng-if="label" class="item item-divider">{{label}}</div>
   <div ng-repeat="field in fields" field-form field="field" data="data[field.name]" on-save="save(field)" field-id="field_id" class="item"></div>
   <button class="item button button-block" ng-click="save()">Save</button>
 </div>

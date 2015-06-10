@@ -10,6 +10,7 @@ angular.module('forms')
     scope: {
       data: '=data',
       fields: '=fields',
+      label: '=label',
       close: '&onClose',
     },
     controller: 'FieldListCtrl',
