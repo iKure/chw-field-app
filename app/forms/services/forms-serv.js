@@ -5,6 +5,12 @@ angular.module('forms')
 
   var localDB = new PouchDB('forms');
 
+  if (Config.ENV.SERVER_URL) {
+    var remoteDB = new PouchDB(Config.ENV.SERVER_URL + 'forms');
+    console.log("FormsService: Getting data from: " + Config.ENV.SERVER_URL + 'forms');
+    localDB.replicate.from(remoteDB);
+  }
+
   if (Config.ENV.FORMS) {
     Config.ENV.FORMS.forEach(function (form) {
       localDB.get(form._id).then(function (doc) {
