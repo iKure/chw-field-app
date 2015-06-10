@@ -1,5 +1,5 @@
 <ion-list>
-	<a ng-repeat="patient in records" class="item list-item" ui-sref="patient.summary({patient_id:patient._id})" >
-	{{patient.name.value}}
+	<a ng-repeat="patient in records" class="item list-item" ui-sref="patients.single.summary({patient_id:patient._id})" >
+	{{patient.name}}
 	</a>
 </ion-list>

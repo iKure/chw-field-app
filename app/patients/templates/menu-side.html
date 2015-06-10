@@ -1,5 +1,9 @@
-<ion-view view-title="Patient: {{patient.name.value}}">
-  <ion-content class="has-header" >
-    <ui-view name="patientContent"></ui-view>
-  </ion-content>
-</ion-view>
+<div class="patient-page">
+	<div class="sidebar-patient">
+		<h1>{{patient.name}}</h1>
+		<div ng-if="patient.age" class="age">{{patient.age}}</div>
+	</div>
+	<div class="content-patient">
+		<ui-view name="personContent"></ui-view>
+	</div>
+</div>

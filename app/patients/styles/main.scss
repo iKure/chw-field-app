@@ -1,2 +1,22 @@
+.patient-page{
+	position: relative;
+	.sidebar-patient{
+		display:none;
+	}
+}
 
-
+@media (min-width: 650px) {
+	.patient-page{
+		.sidebar-patient{
+			display:block;
+			position: fixed;
+			top: 10px;
+			left:10px;
+			width: 190px;
+		}
+		.content-patient{
+			padding: 10px;
+			padding-left: 200px;
+		}
+	}
+}

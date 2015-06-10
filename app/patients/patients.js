@@ -37,34 +37,38 @@ angular.module('patients', [
         }
       }
     })
-    .state('patient', {
-      url: '/patient/:patient_id',
+    .state('patients.single', {
+      url: '/:patient_id',
       abstract: true,
-      templateUrl: 'patients/templates/view.html',
-      controller: 'PatientCtrl',
+      views: {
+        'patientsContent': {
+          templateUrl: 'patients/templates/menu-side.html',
+          controller: 'PatientCtrl',
+        }
+      }
     })
-    .state('patient.summary', {
+    .state('patients.single.summary', {
       url: '/summary',
       views:{
-        'patientsContent': {
+        'personContent': {
           templateUrl: 'patients/templates/summary.html',
           controller: 'PatientSummaryCtrl',
         }
       }
     })
-    .state('patient.profile', {
+    .state('patients.single.profile', {
       url: '/profile',
       views:{
-        'patientsContent': {
+        'personContent': {
           templateUrl: 'patients/templates/profile.html',
           controller: 'ProfileCtrl as profile',
         }
       }
     })
-    .state('patient.info-edit', {
+    .state('patients.single.info-edit', {
       url:'/info-edit',
       views:{
-        'patientsContent':{
+        'personContent':{
           templateUrl: 'patients/templates/info-edit.html',
           controller: 'PatientFormCtrl as form',
         }
