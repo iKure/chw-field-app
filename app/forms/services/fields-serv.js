@@ -38,9 +38,10 @@ angular.module('forms')
   service.all = all;
 
   function save (field) {
-    // Add patient_id, (parent) field_id, and anything else
     var promise = false;
+    field.date_modified = Date.now();
     if (!field._id) {
+      field.date_created = Date.now();
       promise = localDB.post(field);
     } else {
       promise = localDB.put(field);

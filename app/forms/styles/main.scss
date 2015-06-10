@@ -1,19 +1,24 @@
-.field-text{
-	.button-edit{
-		float:none;
-		display:block;
-		width:100%;
-	}
+.button-edit{
+	float:none;
+	display:block;
+	width:100%;
+}
+
+.item-form{
+	
 }
 
 @media (min-width: 400px) {
+	.button-edit{
+		width:auto;
+		float:right;
+		span {
+			display:none;
+		}
+	}
 	.field-text{
 		.button-edit{
-			width:auto;
 			float:left;
-			span{
-				display:none;
-			}
 		}
 		.inputs{
 			margin-left:15px;
@@ -26,9 +31,7 @@
 }
 
 @media (min-width: 800px) {
-	.field-text{
-		.button-edit span{
-			display: inline;
-		}
+	.button-edit span{
+		display: inline;
 	}
 }

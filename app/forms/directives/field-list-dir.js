@@ -9,6 +9,7 @@ angular.module('forms')
     },
     scope: {
       data: '=data',
+      form: '=form',
       fields: '=fields',
       label: '=label',
       close: '&onClose',
