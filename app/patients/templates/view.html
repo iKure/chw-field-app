@@ -1,6 +1,7 @@
-<ion-view view-title="Patients Module">
+<ion-view>
 	<div class="bar bar-header bar-stable">
-		<h1 class="title">Patient Module</h1>
+		<h1 ng-if="!patient" class="title">Patients</h1>
+		<h1 ng-if="patient" class="title">{{patient.name}}</h1>
 		<button ui-sref="patients.directory" ui-sref-active="active" class="button icon ion-search"></button>
 		<button ui-sref="patients.register" ui-sref-active="active" class="button icon ion-plus"></button>
 	</div>
