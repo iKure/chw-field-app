@@ -29,7 +29,6 @@ angular.module('forms')
       console.log('FormCtrl: Got form type: ' + doc._id);
       $scope.form = doc;
       $scope.data.form_id = doc._id;
-      $scope.apply();
     }).catch( function (err) {
       console.log('FormCtrl: Could not find form template type: ' + type);
       // not sure what the error state should be....
