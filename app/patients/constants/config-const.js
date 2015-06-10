@@ -69,7 +69,7 @@ angular.module('patients')
           {
             'name': 'age',
             'label': 'Age',
-            'type': 'number',
+            'type': 'birthday',
             'persistant': true,
             'units': [
               {

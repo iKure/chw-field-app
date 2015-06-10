@@ -69,7 +69,7 @@ angular.module('forms')
           {
             'name': 'age',
             'label': 'Age',
-            'type': 'number',
+            'type': 'birthday',
             'persistant': true,
             'units': [
               {

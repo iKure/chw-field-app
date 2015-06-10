@@ -1,0 +1,12 @@
+<div class="list list-inset">
+	<div class="item item-divider">{{field.label}}</div>
+	<ion-toggle ng-model="birthdayKnown" toggle-class="toggle-calm">Birthdate known</ion-toggle>
+	<label ng-if="birthdayKnown" class="item item-stacked">
+		<span class="input-label">Birthday</span>
+		<input type="date" ng-model="birthday" />
+	</label>
+	<div ng-if="!birthdayKnown" class="list">
+		<field-text-edit class="item" ng-if="!field.units" label="field.label" value="data.value" type="'number'"></field-text-edit>
+		<field-text-edit class="item" ng-if="field.units" ng-repeat="unit in field.units" label="unit.label" value="data[unit.value]" type="'number'"></field-text-edit>
+	</div>
+</div>
