@@ -1,6 +1,6 @@
 'use strict';
 angular.module('forms')
-.service('Fields', ['$rootScope', 'Forms', function ($rootScope, Forms) {
+.service('Fields', ['$rootScope', 'Forms', '$q', function ($rootScope, Forms, $q) {
   console.log('Hello from your Service: Fields in module forms');
 
   var localDB = new PouchDB('fields');
@@ -14,26 +14,39 @@ angular.module('forms')
   service.get = get;
 
   function all(matches) {
+    var deferred = $q.defer();
+
     if (!matches) {
       matches = {
         parent: undefined
       };
     }
-    return localDB.query(
-      function (doc, emit) {
-        var passes = true;
-        Object.keys(matches).forEach(function (key) {
-          if (doc[key] != matches[key]) {
-            passes = false;
-          }
-        });
-        if (!passes) {
-          return false;
+
+    var results = [];
+
+    var promise = localDB.query(function (doc, emit) {
+      var passes = true;
+      Object.keys(matches).forEach(function (key) {
+        if (doc[key] != matches[key]) {
+          passes = false;
         }
-        emit(doc._id, doc);
-      }, {
-        include_docs: true,
       });
+      if (!passes) {
+        return false;
+      }
+      emit(doc.date_created);
+    }, {
+      include_docs: true,
+    })
+
+    promise.then(function (docs) {
+      docs.rows.forEach(function (row) {
+        results.push(row.doc);
+      });
+      deferred.resolve(results);
+    });
+
+    return deferred.promise;
   }
   service.all = all;
 

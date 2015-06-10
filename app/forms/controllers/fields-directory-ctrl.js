@@ -6,10 +6,7 @@ angular.module('forms')
 
   $scope.records = [];
   Fields.all().then(function (results) {
-    console.log('FieldsDirectoryCtrl: Got ' + results.rows.length + ' records');
-    $scope.records = [];
-    results.rows.forEach(function (row) {
-      $scope.records.push(row.doc);
-    });
+    console.log('FieldsDirectoryCtrl: Got ' + results.length + ' records');
+    $scope.records = results;
   });
 }]);

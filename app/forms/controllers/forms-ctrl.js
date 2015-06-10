@@ -6,8 +6,6 @@ angular.module('forms')
   $scope.records = Forms.records;
 
   $scope.$on('forms.update', function () {
-    $scope.records = Forms.records;
     console.log("FormsCtrl: Got new records " + $scope.records.length);
-    $scope.$apply();
   });
 }]);

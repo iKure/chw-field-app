@@ -10,6 +10,7 @@ angular.module('forms')
     docs.rows.forEach(function (row) {
       $scope.records.push(row.doc);
     });
-    console.log('FormsDirectoryCtrl: Got ' + docs.rows.lenght + ' records')
+    console.log('FormsDirectoryCtrl: Got ' + docs.rows.lenght + ' records');
+    $scope.$apply();
   });
 }]);
