@@ -11,12 +11,16 @@ angular.module('patients')
 
   function save() {
     var patient = {};
-    Object.keys($scope.data).forEach(function (key) {
-      if (key.indexOf('_') == 0) {
-        return false;
+
+    $scope.form.fields.forEach( function (field) {
+      if (!field.persistant || !$scope.data[field.name]) {
+        return true;
       }
-      patient[key] = $scope.data[key];
+      if ($scope.data[field.name].value) {
+        patient[field.name] = $scope.data[field.name].value;
+      }
     });
+
     Patients.save(patient).then(function (response) {
       $scope.data.patient_id = response.id;
       Fields.save($scope.data).then(function () {
