@@ -1,7 +1,6 @@
 <div class="row responsive-sm">
 	<label class="col">
-		<span class="input-label">{{field.label}}</span>
-		<input type="number" ng-model="data.value" ng-blur="update({key:field.name, value:data})" />
+		<field-text-edit label="field.label" value="data.value" type="'number'"></field-text-edit>
 	</label>
 	<label class="col-20 item item-stacked-label item-input item-select" ng-if="field.units">
 		<span class="input-label">Units</span>

@@ -10,6 +10,7 @@ angular.module('forms')
     scope: {
       label: '=label',
       value: '=value',
+      type: '=type',
     },
     controller: 'FieldTextEditCtrl',
   };
