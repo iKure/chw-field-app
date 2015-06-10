@@ -33,29 +33,12 @@ angular.module('forms', [
         }
       }
     })
-    .state('forms.type', {
-      url: '/type/:type',
-      views:{
-        'formsContent':{
-          templateUrl: 'forms/templates/form-fields-list.html',
-          controller: 'FormCtrl'
-        }
-      }
-    })
     .state('forms.field', {
-      url: '/field/:field_id',
+      url: '/field?type&field_id',
       views:{
         'formsContent': {
           templateUrl: 'forms/templates/form-fields-list.html',
           controller: 'FormCtrl'
-        }
-      }
-    })
-    .state('forms.field.sub_form', {
-      url: '/:name',
-      views:{
-        'modal': {
-          controller: 'SubFormCtrl',
         }
       }
     });
