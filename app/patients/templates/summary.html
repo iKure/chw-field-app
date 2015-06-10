@@ -1,6 +1,11 @@
-<p>{{patient._id}} Summary Page</p>
+<button class="button button-block">Add Form</button>
 <div class="list">
-	<div ng-repeat="record in records" class="item">
-		{{record._id}}
+	<div ng-repeat="record in records" class="item item-form">
+		<button class="button button-edit">
+			<span>Edit {{record.form_label}}</span>
+			<i class="icon ion-edit"></i>
+		</button>
+		<h3>{{record.form_label}}</h3>
+		<p class="meta">{{record.date_created | date}}</p>
 	</div>
 </div>
