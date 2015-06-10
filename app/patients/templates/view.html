@@ -1,15 +1,10 @@
 <ion-view view-title="Patients Module">
-  	<div class="tabs tabs-icon-top tabs-top tabs-striped">
-	  <a ui-sref="patients.directory" ui-sref-active="active" class="tab-item">
-	    <i class="icon ion-search"></i>
-	    Directory
-	  </a>
-	  <a ui-sref="patients.register" ui-sref-active="active" class="tab-item">
-	    <i class="icon ion-plus"></i>
-	    Register
-	  </a>
-  	</div>
-  <ion-content has-tabs>
+	<div class="bar bar-header bar-stable">
+		<h1 class="title">Patient Module</h1>
+		<button ui-sref="patients.directory" ui-sref-active="active" class="button icon ion-search"></button>
+		<button ui-sref="patients.register" ui-sref-active="active" class="button icon ion-plus"></button>
+	</div>
+  <ion-content class="has-header">
     <ui-view name="patientsContent"></ui-view>
   </ion-content>
 </ion-view>
