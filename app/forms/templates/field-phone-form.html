@@ -1,0 +1,4 @@
+<field-text-edit label="field.label" value="data.value" type="'tel'"></field-text-edit>
+<select ng-if="field.units" class="units">
+	<option ng-repeat="unit in field.units" value="{{unit.value}}">{{unit.label}}</option>
+</select>

@@ -101,7 +101,7 @@ angular.module('patients')
           {
             'name': 'mobile',
             'label': 'Mobile Number',
-            'type': 'number',
+            'type': 'phone',
             'persistant': true
           }
         ]
