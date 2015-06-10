@@ -65,11 +65,12 @@ angular.module('patients', [
         }
       }
     })
-    .state('patients.single.type', {
-      url: '/new/:type',
+    .state('patients.single.form', {
+      url: '/form?type&field_id',
       views: {
         'personContent': {
           templateUrl: 'forms/templates/form-fields-list.html',
+          controller: 'FormCtrl',
         }
       }
     });
