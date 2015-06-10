@@ -56,21 +56,21 @@ angular.module('patients', [
         }
       }
     })
-    .state('patients.single.profile', {
-      url: '/profile',
+    .state('patients.single.new', {
+      url: '/new',
       views:{
         'personContent': {
-          templateUrl: 'patients/templates/profile.html',
-          controller: 'ProfileCtrl as profile',
+          templateUrl: 'patients/templates/forms-new.html',
+          controller: 'FormsDirectoryCtrl',
         }
       }
     })
-    .state('patients.single.info-edit', {
-      url:'/info-edit',
-      views:{
-        'personContent':{
-          templateUrl: 'patients/templates/info-edit.html',
-          controller: 'PatientFormCtrl as form',
+    .state('patients.single.type', {
+      url: '/new/:type',
+      views: {
+        'personContent': {
+          templateUrl: 'forms/templates/form-fields-list.html',
+          controller: 'FormCtrl',
         }
       }
     });

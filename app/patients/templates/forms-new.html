@@ -1,0 +1,8 @@
+<div class="list">
+  <div class="item item-divider">
+    Pick a form to create
+  </div>
+  <a ng-repeat="record in records" ui-sref="patients.single.type({patient_id:patient._id, type:record._id})" class="item">
+    {{record.label}}
+  </a>
+</div>
