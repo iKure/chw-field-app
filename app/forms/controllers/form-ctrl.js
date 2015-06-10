@@ -1,14 +1,22 @@
 'use strict';
 angular.module('forms')
-.controller('FormCtrl', ['$scope', '$state', '$stateParams', 'Forms', 'Fields', function ($scope, $state, $stateParams, Forms, Fields) {
+.controller('FormCtrl', ['$scope', 'Forms', 'Fields', function ($scope, Forms, Fields) {
 
   console.log('Hello from your Controller: FormCtrl in module forms:. This is your controller:', this);
-  if ($stateParams.field_id) {
-    getField($stateParams.field_id);
-  }else if ($stateParams.type) {
-    getForm($stateParams.type);
-  }else {
-    $state.go('forms.list');
+
+  $scope.form = {};
+  $scope.data = {};
+
+  if (!$scope.close) {
+    $scope.close = function () {
+      console.log("FormCtrl: Default close function");
+    }
+  }
+
+  if ($scope.fieldId) {
+    getField($scope.fieldId);
+  }else if ($scope.formType) {
+    getForm($scope.formType);
   }
 
   function getForm (type) {
@@ -17,15 +25,8 @@ angular.module('forms')
     promise.then( function (doc) {
       console.log('FormCtrl: Got form type: ' + doc._id);
       $scope.form = doc;
-      if (!$scope.data) { // assume new field
-        $scope.data = {
-          form_id: doc._id,
-        };
-      }
-      if ($stateParams.patient_id) { // I don't like putting this here, but I'm being lazy
-        $scope.data.patient_id = $stateParams.patient_id;
-      }
-      $scope.$apply(); // This shouldn't be here
+      $scope.data.form_id = doc._id;
+      $scope.apply();
     }).catch( function (err) {
       console.log('FormCtrl: Could not find form template type: ' + type);
       // not sure what the error state should be....
@@ -40,21 +41,9 @@ angular.module('forms')
       if (doc.form_id) {
         getForm(doc.form_id);
       }
-      $scope.$apply();
     }).catch(function (err) {
       console.log('FormCtrl: Could not find form id: ' + id);
     });
   }
 
-  function close () {
-    console.log('FormCtrl: Close');
-    if ($scope.data.patient_id) {
-      $state.go('patients.single.summary', {patient_id: $scope.data.patient_id});
-    } else if ($scope.data._id) {
-      $state.go('forms.field', {field_id: $scope.data._id});
-    } else {
-      $state.go('forms.list');
-    }
-  }
-  $scope.close = close;
 }]);

@@ -37,8 +37,11 @@ angular.module('forms', [
       url: '/field?type&field_id',
       views:{
         'formsContent': {
-          templateUrl: 'forms/templates/form-fields-list.html',
-          controller: 'FormCtrl'
+          template: '<form-edit field-id="field_id" form-type="type"></form-edit>',
+          controller: ['$scope', '$stateParams', function ($scope, $stateParams) {
+            $scope.field_id = $stateParams.field_id;
+            $scope.type = $stateParams.type;
+          }],
         }
       }
     });
