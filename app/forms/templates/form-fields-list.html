@@ -1,3 +1,6 @@
-<h1>{{form.label}}</h1>
-<div field-list class="form-fields" fields="form.fields" data="data" on-close="close()" ></div>
-<ui-view name="modal" autoscroll="false"></ui-view>
+<div class="" ng-controller="FormCtrl">
+	<h1>{{form.label}}</h1>
+	{{data}}
+	<div field-list class="form-fields" fields="form.fields" data="data" on-close="close()" ></div>
+	<ui-view name="modal" autoscroll="false"></ui-view>
+</div>

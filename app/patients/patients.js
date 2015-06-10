@@ -70,7 +70,6 @@ angular.module('patients', [
       views: {
         'personContent': {
           templateUrl: 'forms/templates/form-fields-list.html',
-          controller: 'FormCtrl',
         }
       }
     });

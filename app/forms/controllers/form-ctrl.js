@@ -22,6 +22,9 @@ angular.module('forms')
           form_id: doc._id,
         };
       }
+      if ($stateParams.patient_id) { // I don't like putting this here, but I'm being lazy
+        $scope.data.patient_id = $stateParams.patient_id;
+      }
       $scope.$apply(); // This shouldn't be here
     }).catch( function (err) {
       console.log('FormCtrl: Could not find form template type: ' + type);
@@ -45,7 +48,9 @@ angular.module('forms')
 
   function close () {
     console.log('FormCtrl: Close');
-    if ($scope.data._id) {
+    if ($scope.data.patient_id) {
+      $state.go('patients.single.summary', {patient_id: $scope.data.patient_id});
+    } else if ($scope.data._id) {
       $state.go('forms.field', {field_id: $scope.data._id});
     } else {
       $state.go('forms.list');
