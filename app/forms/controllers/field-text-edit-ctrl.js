@@ -16,7 +16,6 @@ angular.module('forms')
   $scope.openModal = function () {
     $scope.modal.show().then(function () {
       $cordovaKeyboard.show();
-      console.log("Modal opened for " + $scope.label);
     });
   };
 
@@ -25,17 +24,12 @@ angular.module('forms')
     $scope.modal.hide();
   };
 
+  window.addEventListener('native.keyboardhide', function () {
+    $scope.closeModal();
+  });
+
   $scope.$on('$destroy', function () {
     $scope.modal.remove();
-  });
-  // Execute action on hide modal
-  $scope.$on('modal.hidden', function () {
-    // Execute action
-    console.log("Modal closes & value=" + $scope.value);
-  });
-  // Execute action on remove modal
-  $scope.$on('modal.removed', function () {
-    // Execute action
   });
 
   $scope.updateValue = function (val) {
