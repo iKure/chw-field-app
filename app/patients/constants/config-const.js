@@ -83,6 +83,22 @@ angular.module('patients')
             ]
           },
           {
+            'name': 'sex',
+            'label': 'Sex',
+            'type': 'select',
+            'choices': [
+              {
+                'label': 'Male',
+                'value': 'male'
+              },
+              {
+                'label': 'Female',
+                'value': 'female'
+              }
+            ],
+            'persistant': true
+          },
+          {
             'name': 'mobile',
             'label': 'Mobile Number',
             'type': 'number',

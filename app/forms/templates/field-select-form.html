@@ -4,7 +4,7 @@
 	</div>
 	 <label ng-repeat="choice in field.choices" class="item item-radio">
           <input type="radio" ng-model="data.value" value="{{choice.value}}" name="{{field.name}}" />
-          <div class="item-content">{{choice.value}}</div>
+          <div class="item-content">{{choice.label}}</div>
           <i class="radio-icon ion-checkmark"></i>
       </label>
 </div>
