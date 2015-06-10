@@ -1,11 +1,4 @@
-<div class="row responsive-sm">
-	<label class="col">
-		<field-text-edit label="field.label" value="data.value" type="'number'"></field-text-edit>
-	</label>
-	<label class="col-20 item item-stacked-label item-input item-select" ng-if="field.units">
-		<span class="input-label">Units</span>
-		<select>
-			<option ng-repeat="unit in field.units" value="{{unit.value}}">{{unit.label}}</option>
-		</select>
-	</label>
-</div>
+<field-text-edit label="field.label" value="data.value" type="'number'"></field-text-edit>
+<select ng-if="field.units" class="units">
+	<option ng-repeat="unit in field.units" value="{{unit.value}}">{{unit.label}}</option>
+</select>

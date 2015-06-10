@@ -10,14 +10,18 @@
 	.field-text{
 		.button-edit{
 			width:auto;
-			float:right;
+			float:left;
 			span{
 				display:none;
 			}
 		}
 		.inputs{
+			margin-left:15px;
 			float:left;
 		}
+	}
+	.units{
+		float:right;
 	}
 }
 
