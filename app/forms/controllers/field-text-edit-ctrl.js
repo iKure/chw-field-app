@@ -3,7 +3,7 @@ angular.module('forms')
 .controller('FieldTextEditCtrl', ['$scope', '$ionicModal', function ($scope, $ionicModal) {
 
   console.log('Hello from your Controller: FieldTextEditCtrl in module forms:. This is your controller:', this);
-  $ionicModal.fromTemplateUrl('forms/directives/field-text-edit-modal.html', {
+  $ionicModal.fromTemplateUrl('forms/templates/field-text-edit-modal.html', {
     scope: $scope,
     animation: 'slide-in-up',
     focusFirstInput: true,

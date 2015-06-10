@@ -2,7 +2,7 @@
 angular.module('forms')
 .directive('fieldTextEdit', function () {
   return {
-    templateUrl: 'forms/directives/field-text-edit-field.html',
+    templateUrl: 'forms/templates/field-text-edit-field.html',
     restrict: 'EA',
     link: function postLink (scope, element, attrs) {
       console.log("Yo! Check a fieldTextEdit");
