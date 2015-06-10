@@ -5,12 +5,8 @@ angular.module('forms')
   console.log('Hello from your Controller: FormsDirectoryCtrl in module forms:. This is your controller:', this);
 
   $scope.records = [];
-  Forms.getRecords().then(function (docs) {
-    $scope.records = [];
-    docs.rows.forEach(function (row) {
-      $scope.records.push(row.doc);
-    });
-    console.log('FormsDirectoryCtrl: Got ' + docs.rows.lenght + ' records');
-    $scope.$apply();
+  Forms.all().then(function (docs) {
+    $scope.records = docs;
+    console.log('FormsDirectoryCtrl: Got ' + $scope.records.length + ' records');
   });
 }]);
