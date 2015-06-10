@@ -40,13 +40,13 @@ angular.module('patients', [
     .state('patient', {
       url: '/patient/:patient_id',
       abstract: true,
-      templateUrl: 'patients/templates/menu-side.html',
+      templateUrl: 'patients/templates/view.html',
       controller: 'PatientCtrl',
     })
     .state('patient.summary', {
       url: '/summary',
       views:{
-        'patientContent': {
+        'patientsContent': {
           templateUrl: 'patients/templates/summary.html',
           controller: 'PatientSummaryCtrl',
         }
@@ -55,7 +55,7 @@ angular.module('patients', [
     .state('patient.profile', {
       url: '/profile',
       views:{
-        'patientContent': {
+        'patientsContent': {
           templateUrl: 'patients/templates/profile.html',
           controller: 'ProfileCtrl as profile',
         }
@@ -64,7 +64,7 @@ angular.module('patients', [
     .state('patient.info-edit', {
       url:'/info-edit',
       views:{
-        'patientContent':{
+        'patientsContent':{
           templateUrl: 'patients/templates/info-edit.html',
           controller: 'PatientFormCtrl as form',
         }
