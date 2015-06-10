@@ -3,22 +3,20 @@ angular.module('forms')
 .controller('SubFormCtrl', ['$scope', '$ionicModal', '$state', '$stateParams', 'Forms', 'Fields', function ($scope, $ionicModal, $state, $stateParams, Forms, Fields) {
 
   console.log('Hello from your Controller: SubFormCtrl in module forms:. This is your controller:', this);
+  Forms.get($scope.data.include).then(function (doc) {
+    $scope.form = doc;
+  });
 
-  function getFormFields() {
-    if (!$scope.$parent.data) {
-      return setTimeout(getFormFields, 100);
-    }
-    if (!$stateParams.name || !$scope.$parent.data[$stateParams.name]) {
-      $state.go('forms.field', {
-        field_id: $stateParams.field_id,
-      });
-      return false;
-    }
-    $scope.data = $scope.$parent.data[$stateParams.name];
-    Forms.get($scope.data.include).then(function (doc) {
-      $scope.form = doc;
-      createPopover();
-    });
+  $ionicModal.fromTemplateUrl('forms/templates/sub-form.html', {
+    scope: $scope,
+    animation: 'slide-in-up'
+  }).then(function (modal) {
+    $scope.modal = modal;
+    console.log("SubFormCtrl has created a modal");
+  });
+
+  function openModal () {
+    $scope.modal.show();
     if ($scope.data._id) {
       Fields.get($scope.data._id).then(function (doc) {
         console.log('SubFormCtrl: Reloading data');
@@ -26,37 +24,20 @@ angular.module('forms')
       });
     }
   }
+  $scope.open = openModal;
 
-  function cleanUp () {
-    console.log('SubFormCtrl: Cleaning up');
-    $state.go('forms.field', {
-      field_id: $stateParams.field_id,
-    });
-  }
+  function closeModal () {
+    $scope.modal.hide();
+  };
+  $scope.close = closeModal;
 
-  function createPopover () {
-    $ionicModal.fromTemplateUrl('forms/templates/sub-form.html', {
-      scope: $scope,
-      animation: 'slide-in-up'
-    }).then(function (modal) {
-      $scope.modal = modal;
-      $scope.modal.show();
-    });
-
-    $scope.closeModal = function () {
-      $scope.modal.hide();
-    };
-    $scope.$on('$destroy', function () {
-      $scope.modal.remove();
-    });
-    $scope.$on('modal.hidden', function () {
-      console.log("SubFormCtrl: Close modal");
-      setTimeout(cleanUp, 100);
-    });
-    $scope.$on('modal.removed', function () {
-      console.log("SubFormCtrl: Modal removed");
-    });
-  }
-
-  getFormFields();
+  $scope.$on('$destroy', function () {
+    $scope.modal.remove();
+  });
+  $scope.$on('modal.hidden', function () {
+    console.log("SubFormCtrl: Close modal");
+  });
+  $scope.$on('modal.removed', function () {
+    console.log("SubFormCtrl: Modal removed");
+  });
 }]);
