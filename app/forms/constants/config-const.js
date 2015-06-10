@@ -6,7 +6,7 @@ angular.module('forms')
   // https://github.com/mwaylabs/generator-m#gulp-environment
   ENV: {
     /*inject-env*/
-    'SERVER_URL': 'http://127.0.0.1:5984/',
+    'SERVER_URL': 'https://somewhere.someplace.com/',
     'FORMS': []
     /*endinject*/
   },

@@ -8,8 +8,8 @@ angular.module('patients')
 
     var localDB = new PouchDB('patients');
     var remoteDB = false;
-    console.log(Config.ENV.SERVER_URL);
     if (Config.ENV.SERVER_URL) {
+      console.log("Patients connecting to: " + Config.ENV.SERVER_URL);
       remoteDB = new PouchDB(Config.ENV.SERVER_URL + 'patients');
       var syncHandler = localDB.sync(remoteDB, {
         live: true,
