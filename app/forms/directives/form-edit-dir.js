@@ -10,6 +10,7 @@ angular.module('forms')
     scope: {
       form: '=?form',
       formType: '=?formType',
+      initialData: '=?initialData',
       data: '=?data',
       fieldId: '=?fieldId',
       close: '&onClose',

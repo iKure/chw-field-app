@@ -6,6 +6,9 @@ angular.module('forms')
 
   $scope.form = {};
   $scope.data = {};
+  if ($scope.initialData) {
+    $scope.data = $scope.initialData;
+  }
 
   if (!$scope.close) {
     $scope.close = function () {
