@@ -1,11 +1,10 @@
 <div class="list list-inset" controller="FieldBirthdayCtrl as ctrl">
   <div class="item item-divider">{{field.label}}</div>
-  <ion-toggle ng-model="birthdayUnknown" toggle-class="toggle-calm">Birthdate unknown</ion-toggle>
-  <label ng-if="!birthdayUnknown" class="item item-stacked">
+  <label class="item item-stacked">
     <span class="input-label">Birthdate</span>
     <input type="date" ng-model="data.birthdate" />
   </label>
-  <div ng-if="birthdayUnknown" class="item">
+  <div class="item">
     <ng-include src="'forms/templates/field-number-form.html'" ></ng-include>
   </div>
 </div>
