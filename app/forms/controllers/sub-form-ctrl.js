@@ -5,7 +5,10 @@ angular.module('forms')
   console.log('Hello from your Controller: SubFormCtrl in module forms:. This is your controller:', this);
   Forms.get($scope.data.include).then(function (doc) {
     $scope.form = doc;
+    updateValue();
   });
+
+  updateValue();
 
   $ionicModal.fromTemplateUrl('forms/templates/sub-form.html', {
     scope: $scope,
@@ -17,6 +20,7 @@ angular.module('forms')
 
   function openModal () {
     $scope.modal.show();
+    updateValue();
     if ($scope.data._id) {
       Fields.get($scope.data._id).then(function (doc) {
         console.log('SubFormCtrl: Reloading data');
@@ -28,6 +32,7 @@ angular.module('forms')
 
   function closeModal () {
     $scope.modal.hide();
+    updateValue();
   };
   $scope.close = closeModal;
 
@@ -40,4 +45,28 @@ angular.module('forms')
   $scope.$on('modal.removed', function () {
     console.log("SubFormCtrl: Modal removed");
   });
+
+  function gatherValues() {
+    var values = {};
+    if (!$scope.form) {
+      return {};
+    }
+    $scope.form.fields.forEach(function (field) {
+      if ($scope.data[field.name] && $scope.data[field.name].value) {
+        values[field.name] = $scope.data[field.name].value;
+      }
+    });
+    return values;
+  }
+
+  function updateValue() {
+    var values = gatherValues();
+    if (Object.keys(values).length > 0) {
+      $scope.data.value = true;
+      return true;
+    }
+    $scope.data.value = false;
+    return false;
+  }
+
 }]);

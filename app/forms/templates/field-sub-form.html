@@ -1,9 +1,10 @@
-<button ng-if="!data._id" ng-click="open()" class="button button-edit">
+<button ng-if="!data.value" ng-click="open()" class="button button-edit">
 	<i class="icon ion-plus"></i>
 	<span>Add {{label}}</span>
 </button>
-<button ng-if="data._id" ng-click="open()" class="button button-edit">
+<button ng-if="data.value" ng-click="open()" class="button button-edit">
 	<i class="icon ion-edit"></i>
 	<span>Edit {{label}}</span>
 </button>
 <form-item ng-if="data._id" data="data"></form-item>
+{{values}}
