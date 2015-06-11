@@ -38,10 +38,18 @@ angular.module('forms', [
       url: '/field?type&field_id',
       views:{
         'formsContent': {
-          template: '<form-edit field-id="field_id" form-type="type"></form-edit>',
-          controller: ['$scope', '$stateParams', function ($scope, $stateParams) {
+          template: '{{close}}<form-edit field-id="field_id" form-type="type" data="data" on-close="close()"></form-edit>',
+          controller: ['$scope', '$state', '$stateParams', function ($scope, $state, $stateParams) {
             $scope.field_id = $stateParams.field_id;
             $scope.type = $stateParams.type;
+            $scope.data = {};
+            $scope.close = function () {
+              if ($scope.data._id) {
+                console.log("Go to _id=" + $scope.data._id);
+              } else {
+                $state.go("forms.list");
+              }
+            }
           }],
         }
       }
