@@ -1,38 +1,31 @@
 'use strict';
 angular.module('forms')
-.controller('FieldTextEditCtrl', ['$scope', '$ionicModal', '$cordovaKeyboard', function ($scope, $ionicModal, $cordovaKeyboard) {
+.controller('FieldTextEditCtrl', ['$scope', '$ionicModal', '$cordovaKeyboard', 'focus', function ($scope, $ionicModal, $cordovaKeyboard, focus) {
 
   console.log('Hello from your Controller: FieldTextEditCtrl in module forms:. This is your controller:', this);
-  $ionicModal.fromTemplateUrl('forms/templates/field-text-edit-modal.html', {
-    scope: $scope,
-    animation: 'slide-in-up',
-    focusFirstInput: true,
-  }).then(function (modal) {
-    $scope.modal = modal;
-    console.log("Modal created for " + $scope.label);
-  });
-  console.log('Should have created a modal!');
 
-  $scope.openModal = function () {
-    $scope.modal.show().then(function () {
-      $cordovaKeyboard.show();
-    });
-  };
+  $scope.editing = false;
 
-  $scope.closeModal = function () {
-    $cordovaKeyboard.close();
-    $scope.modal.hide();
-  };
-
-  window.addEventListener('native.keyboardhide', function () {
-    $scope.closeModal();
-  });
-
-  $scope.$on('$destroy', function () {
-    $scope.modal.remove();
-  });
-
-  $scope.updateValue = function (val) {
-    $scope.value = val;
+  $scope.blurInput = function () {
+    console.log("Not editing:" + $scope.label);
+    $scope.editing = false;
+    try {
+      $cordovaKeyboard.hide();
+    } catch (err) {
+      console.log("No keyboard");
+    }
   }
+
+  $scope.setFocus = function ($event) {
+    setTimeout(function () {
+      console.log("Editing:" + $scope.label);
+      $scope.editing = true;
+      try {
+        $cordovaKeyboard.show();
+      } catch (err) {
+        console.log("No keyboard");
+      }
+    }, 100);
+  }
+
 }]);

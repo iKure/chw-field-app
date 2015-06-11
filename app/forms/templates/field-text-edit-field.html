@@ -1,9 +1,10 @@
-<label class="field-text">
-	<button class="button button-edit" ng-click="openModal()">
+<a ng-if="!editing" ng-click="setFocus()" class="button button-edit">
 		<i class="icon ion-edit"></i>
-	</button>
-	<div class="inputs">
-		<span class="input-label">{{label}}</span>
-		<span class="input-value">{{value}}</span>
-	</div>
+</a>
+<a ng-if="editing" ng-click="blurFocus()" class="button button-edit">
+	<i class="icon ion-ios-circle-outline"></i>
+</a>
+<label class="field-text" ng-click="setFocus()" >
+	<span class="input-label">{{label}}</span>
+	<input type="{{type}}" ng-model="value" sync-focus-with="editing" ng-blur="blurInput()" ng-focus="setFocus()"  />
 </label>

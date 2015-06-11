@@ -1,9 +1,3 @@
-.button-edit{
-	float:none;
-	display:block;
-	width:100%;
-}
-
 .form-actions:after {
 	content:'';
     display:block;
@@ -11,6 +5,23 @@
 }
 .form-actions{
 	margin:10px;
+}
+
+.field-text{
+	.button-edit{
+		float:left;
+		margin-right:10px;
+	}
+	.input-label{
+		padding: 0px;
+	}
+	input{
+		font-size:20px !important;
+	}
+}
+
+.units{
+	float:right;
 }
 
 .item.item-form{
@@ -24,18 +35,6 @@
 		span.collapse {
 			display:none;
 		}
-	}
-	.field-text{
-		.button-edit{
-			float:left;
-		}
-		.inputs{
-			margin-left:15px;
-			float:left;
-		}
-	}
-	.units{
-		float:right;
 	}
 }
 

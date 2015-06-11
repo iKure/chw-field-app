@@ -5,6 +5,7 @@ angular.module('forms', [
   'ui.router',
   'shared',
   "checklist-model",
+  'focusOn',
 ])
 .config(function ($stateProvider) {
 
