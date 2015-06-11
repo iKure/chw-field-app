@@ -35,7 +35,16 @@ angular.module('forms', [
       }
     })
     .state('forms.field', {
-      url: '/field?type&field_id',
+      url: '/field/:field_id',
+      views: {
+        'formsContent': {
+          templateUrl: 'forms/templates/field-summary.html',
+          controller: 'FieldSummaryCtrl'
+        }
+      }
+    })
+    .state('forms.edit', {
+      url: '/edit?type&field_id',
       views:{
         'formsContent': {
           template: '{{close}}<form-edit field-id="field_id" form-type="type" data="data" on-close="close()"></form-edit>',
@@ -45,7 +54,7 @@ angular.module('forms', [
             $scope.data = {};
             $scope.close = function () {
               if ($scope.data._id) {
-                console.log("Go to _id=" + $scope.data._id);
+                $state.go("forms.field", {field_id: $scope.data._id});
               } else {
                 $state.go("forms.list");
               }
