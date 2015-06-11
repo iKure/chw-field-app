@@ -72,6 +72,10 @@
                         {
                             "label": "Months",
                             "value": "months"
+                        },
+                        {
+                            "label": "Weeks",
+                            "value": "weeks"
                         }
                     ]
                 },
