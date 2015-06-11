@@ -3,6 +3,7 @@
         {
             "_id": "test",
             "label": "Test Form",
+            "hidden": true,
             "fields": [
                 {
                     "name": "age",
@@ -32,6 +33,7 @@
         },
         {
             "_id": "container_form",
+            "hidden": true,
             "label": "Container Form",
             "fields": [
                 {
