@@ -21,10 +21,10 @@ angular.module('patients')
       }
     });
 
-    Patients.save(patient).then(function (response) {
-      $scope.data.patient_id = response.id;
+    Patients.save(patient).then(function (patient) {
+      $scope.data.patient_id = patient._id;
       Fields.save($scope.data).then(function () {
-        $state.go('patients.single.summary', { patient_id:response.id });
+        $state.go('patients.single.summary', { patient_id:patient._id });
       });
     });
   }
