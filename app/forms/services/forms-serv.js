@@ -70,7 +70,9 @@ angular.module('forms')
       }).then(function (docs) {
         var results = [];
         docs.rows.forEach(function (row) {
-          results.push(row.doc);
+          if (!row.doc.hidden) {
+            results.push(row.doc);
+          }
         });
         deferred.resolve(results);
       });
