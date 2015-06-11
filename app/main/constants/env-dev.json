@@ -137,17 +137,17 @@
                     "persistant": false
                 },
                 {
-                    "name": "temprature",
-                    "label": "Temprature",
+                    "name": "temperature",
+                    "label": "Temperature",
                     "type": "number",
                     "units": [
                         {
-                            "label": "Celsius",
-                            "value": "c"
-                        },
-                        {
                             "label": "Fahrenheit",
                             "value": "f"
+                        },
+                        {
+                            "label": "Celsius",
+                            "value": "c"
                         }
                     ],
                     "persistant": false
