@@ -441,6 +441,69 @@
                     ]
                 }
             ]
+        },
+        {
+            "_id": "pregnancy-history",
+            "label": "Previous History of Pregnancy",
+            "hidden": true,
+            "fields": [
+                {
+                    "name": "previous-pregnancies-number",
+                    "label": "Number of previous pregnancies",
+                    "type": "number"
+                },
+                {
+                    "name": "living-children-male",
+                    "label": "Number of living male children",
+                    "type": "number"
+                },
+                {
+                    "name": "living-children-female",
+                    "label": "Number of living female children",
+                    "type": "number"
+                },
+                {
+                    "name": "previous-still-birth",
+                    "label": "Have you had a previous still birth/abortion",
+                    "type": "choice",
+                    "choices": [
+                        {
+                            "label": "Yes",
+                            "value": "yes"
+                        },
+                        {
+                            "label": "No",
+                            "value": "no"
+                        }
+                    ]
+                },
+                {
+                    "name": "delivery",
+                    "label": "Type of delivery",
+                    "type": "select",
+                    "choices": [
+                        {
+                            "label": "Normal",
+                            "value": "normal"
+                        },
+                        {
+                            "label": "Caesarean",
+                            "value": "caesarean"
+                        }
+                    ]
+                },
+                {
+                    "name": "weight",
+                    "label": "Weight of the child at birth",
+                    "type": "number",
+                    "units": [
+                        {
+                            "label": "KG",
+                            "value": "kg"
+                        }
+                    ]
+                }
+            ]
         }
     ]
 }
