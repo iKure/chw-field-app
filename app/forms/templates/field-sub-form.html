@@ -6,5 +6,5 @@
 	<i class="icon ion-edit"></i>
 	<span>Edit {{label}}</span>
 </button>
+<p ng-repeat="val in values">{{val.label}}: {{val.value}}</p>
 <form-item ng-if="data._id" data="data"></form-item>
-{{values}}

@@ -47,21 +47,23 @@ angular.module('forms')
   });
 
   function gatherValues() {
-    var values = {};
+    $scope.values = [];
     if (!$scope.form) {
-      return {};
+      return false;
     }
     $scope.form.fields.forEach(function (field) {
       if ($scope.data[field.name] && $scope.data[field.name].value) {
-        values[field.name] = $scope.data[field.name].value;
+        $scope.values.push({
+          "label": field.label,
+          "value": $scope.data[field.name].value,
+        });
       }
     });
-    return values;
   }
 
   function updateValue() {
-    var values = gatherValues();
-    if (Object.keys(values).length > 0) {
+    gatherValues();
+    if ($scope.values.length > 0) {
       $scope.data.value = true;
       return true;
     }
