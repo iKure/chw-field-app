@@ -1,4 +1,8 @@
 <field-text-edit label="field.label" value="data.value" type="'number'"></field-text-edit>
-<select ng-if="field.units" class="units">
-	<option ng-repeat="unit in field.units" value="{{unit.value}}">{{unit.label}}</option>
+<select ng-if="field.units && field.units.length > 1" class="units">
+	<option ng-repeat="unit in field.units" ng-model="data.units" value="{{unit.value}}">{{unit.label}}</option>
 </select>
+<div ng-if="field.units && field.units.length == 1" ng-repeat="unit in field.units" class="units">
+	<p class="units">{{unit.label}}</p>
+	<input type="hidden" ng-model="data.units" value="{{unit.value}}" />
+</div>
