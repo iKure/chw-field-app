@@ -504,6 +504,75 @@
                     ]
                 }
             ]
+        },
+        {
+            "_id": "anc-form",
+            "label": "Antenatal Care",
+            "fields": [
+                {
+                    "name": "check-ups",
+                    "label": "How many Antenatal check-ups?",
+                    "type": "number"
+                },
+                {
+                    "name": "location",
+                    "label": "Where have you had Antenatal check-ups?",
+                    "type": "select",
+                    "choices": [
+                        {
+                            "label": "Government Institution",
+                            "value": "gov"
+                        },
+                        {
+                            "label": "Private Institution",
+                            "value": "private"
+                        },
+                        {
+                            "label": "Home",
+                            "value": "home"
+                        },
+                        {
+                            "label": "Nearest center for institutional delivery",
+                            "value": "nearest"
+                        }
+                    ]
+                },
+                {
+                    "name": "procedures",
+                    "label": "Were any of the following done during the Antenatal care",
+                    "type":"select-multiple",
+                    "choices": [
+                        {
+                            "label": "Blood pressure check",
+                            "value": "blood-pressure"
+                        },
+                        {
+                            "label": "Weight measurement",
+                            "value": "weight"
+                        },
+                        {
+                            "label": "Blood test",
+                            "value": "blood-test"
+                        },
+                        {
+                            "label": "Urine test",
+                            "value": "urine-test"
+                        },
+                        {
+                            "label": "Abdominal Examination",
+                            "value": "abdominal-exam"
+                        },
+                        {
+                            "label": "TT Injection",
+                            "value": "tt"
+                        },
+                        {
+                            "label": "IFA Tablets Issued",
+                            "value": "ifa-tablets"
+                        }
+                    ]
+                }
+            ]
         }
     ]
 }
