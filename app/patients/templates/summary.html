@@ -1,10 +1,7 @@
 <button ui-sref="patients.single.new({patient_id:patient._id})" class="button button-block">Add Form</button>
 <div class="list">
-	<div ng-repeat="field in records" class="item item-form">
-		<button ui-sref="patients.single.form({patient_id:patient._id, field_id:field._id})" class="button button-edit">
-			<span>Edit {{field.form_label}}</span>
-			<i class="icon ion-edit"></i>
-		</button>
+	<a ui-sref="patients.single.form({patient_id:patient._id, field_id:field._id})" ng-repeat="field in records" class="item item-form item-icon-right">
+		<i class="icon ion-chevron-right"></i>
 		<form-item data="field"></form-item>
-	</div>
+	</a>
 </div>

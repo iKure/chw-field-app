@@ -65,11 +65,11 @@ angular.module('patients', [
         }
       }
     })
-    .state('patients.single.form', {
-      url: '/form?type&field_id',
+    .state('patients.single.edit', {
+      url: '/edit?type&field_id',
       views: {
         'personContent': {
-          template: '<form-edit initial-data="initialData" field-id="field_id" form-type="type" on-close="close()"></form-edit>',
+          template: '<form-edit data="data" initial-data="initialData" field-id="field_id" form-type="type" on-close="close()"></form-edit>',
           controller: ['$scope', '$state', '$stateParams', function ($scope, $state, $stateParams) {
             $scope.field_id = $stateParams.field_id;
             $scope.type = $stateParams.type;
@@ -79,12 +79,30 @@ angular.module('patients', [
               patient_id: $scope.patient_id
             };
 
+            $scope.data = false;
+
             $scope.close = function () {
-              $state.go('patients.single.summary', {
-                patient_id: $scope.patient_id,
-              })
+              if ($scope.data._id) {
+                $state.go('patients.single.form', {
+                  patient_id: $scope.patient_id,
+                  field_id: $scope.data._id,
+                });
+              } else {
+                $state.go('patients.single.summary', {
+                  patient_id: $scope.patient_id,
+                });
+              }
             }
           }],
+        }
+      }
+    })
+    .state('patients.single.form', {
+      url: '/form/:field_id',
+      views: {
+        'personContent': {
+          templateUrl: 'patients/templates/field-summary.html',
+          controller: 'FieldSummaryCtrl',
         }
       }
     });

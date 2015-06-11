@@ -3,6 +3,10 @@
 		<div class="item item-text-wrap item-divider">{{patient.name}}</div>
 		<div class="item">ID: {{patient._id}}</div>
 		<div class="item" ng-if="patient.age" class="age">Age: {{patient.age}}</div>
+		<a class="item item-icon-left" ui-sref="patients.single.summary({patient_id:patient._id})" ui-sref-active="active">
+			<i class="icon ion-home"></i>
+			Summary
+		</a>
 	</div>
 	<div class="content-patient">
 		<ui-view name="personContent"></ui-view>
