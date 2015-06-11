@@ -1,9 +1,20 @@
 'use strict';
 angular.module('forms')
-.service('Fields', ['$rootScope', 'Forms', '$q', function ($rootScope, Forms, $q) {
+.service('Fields', ['$rootScope', 'Forms', '$q', 'Config', function ($rootScope, Forms, $q, Config) {
   console.log('Hello from your Service: Fields in module forms');
 
-  var localDB = new PouchDB('fields');
+  var dbName = 'fields';
+
+  var localDB = new PouchDB(dbName);
+
+  if (Config.ENV.SERVER_URL) {
+    var remoteDB = new PouchDB(Config.ENV.SERVER_URL + dbName);
+    console.log("FormsService: Getting data from: " + Config.ENV.SERVER_URL + dbName);
+    var syncHandler = localDB.sync(remoteDB, {
+      live: true,
+      retry: true
+    });
+  }
 
   var service = new Object;
   service.records = [];

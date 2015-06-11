@@ -1,7 +1,7 @@
 <div class="patient-page">
-	<div class="sidebar-patient">
-		<h1>{{patient.name}}</h1>
-		<div ng-if="patient.age" class="age">{{patient.age}}</div>
+	<div class="sidebar-patient list card">
+		<div class="item item-text-wrap item-divider">{{patient.name}}</div>
+		<div class="item" ng-if="patient.age" class="age">Age: {{patient.age}}</div>
 	</div>
 	<div class="content-patient">
 		<ui-view name="personContent"></ui-view>
