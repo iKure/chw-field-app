@@ -1,9 +1,10 @@
 <ion-view>
 	<div class="bar bar-header bar-stable">
-		<h1 ng-if="!patient" class="title">Patients</h1>
-		<h1 ng-if="patient" class="title">{{patient.name}}</h1>
-		<button ui-sref="patients.directory" ui-sref-active="active" class="button icon ion-search"></button>
-		<button ui-sref="patients.register" ui-sref-active="active" class="button icon ion-plus"></button>
+		<div class="button-bar">
+			<button class="button icon ion-chatboxes"></button>
+			<button ui-sref="patients.directory" ui-sref-active="active" class="button icon ion-search"></button>
+			<button ng-if="patient" ui-sref="patients.single.summary" ui-sref-active="active" class="button icon ion-person"></button>
+		</div>
 	</div>
   <ion-content class="has-header">
     <ui-view name="patientsContent"></ui-view>
