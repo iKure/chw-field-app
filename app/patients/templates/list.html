@@ -1,5 +1,17 @@
-<ion-list>
+<div class="actions directory-actions">
+	<div class="list list-inset">
+		<a class="item item-icon-right">
+			<i class="icon ion-search"></i>
+			Search
+		</a>
+		<a ui-sref="patients.register" class="item item-icon-right">
+			<i class="icon ion-plus"></i>
+			New Patient
+		</a>
+	</div>
+</div>
+<div class="directory-content list">
 	<a ng-repeat="patient in records" class="item list-item" ui-sref="patients.single.summary({patient_id:patient._id})" >
 	{{patient.name}}
 	</a>
-</ion-list>
+</div>
