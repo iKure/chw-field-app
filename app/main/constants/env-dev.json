@@ -320,6 +320,28 @@
                     ]
                 }
             ]
+        },
+        {
+            "_id": "location",
+            "label": "Location on body",
+            "hidden": true,
+            "fields": [
+                {
+                    "name": "location",
+                    "label": "Location",
+                    "type": "select",
+                    "choices": [
+                        {
+                            "value": "everywhere",
+                            "label": "Everywhere"
+                        },
+                        {
+                            "value": "nowhere",
+                            "label": "No here"
+                        } 
+                    ]
+                }
+            ]
         }
     ]
 }
