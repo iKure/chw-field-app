@@ -242,26 +242,21 @@
                 {
                     "name": "amount",
                     "label": "How much",
-                    "type": "text"
-                },
-                {
-                    "name": "shivers",
-                    "label": "Shivers",
-                    "type": "select",
-                    "choices": [
+                    "type": "number",
+                    "units": [
                         {
-                            "value": "yes",
-                            "label": "Yes"
+                            "label": "Fahrenheit",
+                            "value": "f"
                         },
                         {
-                            "value": "no",
-                            "label": "No"
+                            "label": "Celsius",
+                            "value": "c"
                         }
                     ]
                 },
                 {
-                    "name": "frequency",
-                    "label": "frequency",
+                    "name": "shivers",
+                    "label": "Shivers",
                     "type": "select",
                     "choices": [
                         {
@@ -271,13 +266,12 @@
                         {
                             "value": "periodic",
                             "label": "Periodic"
+                        },
+                        {
+                            "value": "none",
+                            "label": "None"
                         }
                     ]
-                },
-                {
-                    "name": "comments",
-                    "label": "Additional Notes",
-                    "type": "text"
                 }
 
             ]
