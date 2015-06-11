@@ -102,6 +102,7 @@
         {
             "_id": "vitals",
             "label": "Vitals",
+            "hidden": true,
             "fields": [
                 {
                     "name": "height",
@@ -154,16 +155,11 @@
             "label": "General Case",
             "fields": [
                 {
-                    "name": "vomiting",
-                    "label": "Vomiting",
+                    "name": "symptoms",
+                    "label": "Symptoms",
                     "type": "form",
-                    "include": "symptom-general"
-                },
-                {
-                    "name": "indigestion",
-                    "label": "Indigestion/Acidity",
-                    "type": "form",
-                    "include": "symptom-general"
+                    "include": "symptoms",
+                    "persistant": true
                 },
                 {
                     "name": "vitals",
@@ -171,25 +167,52 @@
                     "type": "form",
                     "include": "vitals",
                     "persistant": true
+                },
+                {
+                    "name": "notes",
+                    "label": "Additional Notes",
+                    "type": "text"
                 }
             ]
         },
         {
-            "_id": "symptom-general",
-            "label": "Symptom Description",
+            "_id": "symptoms",
+            "label": "Symptoms",
+            "hidden": true,
+            "fields": [
+                {
+                    "name": "fever",
+                    "label": "Fever",
+                    "type": "form",
+                    "include": "symptom-fever"
+                },
+                {
+                    "name": "rash-skin",
+                    "label": "Skin Rash",
+                    "type": "form",
+                    "include": "symptom-rash-skin"
+                },
+                {
+                    "name": "comments",
+                    "label": "Additional Notes",
+                    "type": "text"
+                }
+
+            ]
+        },
+        {
+            "_id": "symptom-fever",
+            "label": "Symptoms: Fever",
+            "hidden": true,
             "fields": [
                 {
                     "name": "duration",
-                    "label": "How long have you experienced symptoms?",
+                    "label": "How long",
                     "type": "number",
                     "units": [
                         {
-                            "label":"Days",
-                            "values": "days"
-                        },
-                        {
-                            "label": "Hours",
-                            "value": "hours"
+                            "value": "days",
+                            "label": "Days"
                         }
                     ]
                 },
