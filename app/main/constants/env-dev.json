@@ -336,6 +336,111 @@
                     ]
                 }
             ]
+        },
+        {
+            "_id": "pregnant-mother",
+            "label": "Pregnant Mother Survey",
+            "fields": [
+                {
+                    "name": "name",
+                    "label": "Name of the respondant",
+                    "type": "text",
+                    "persistant": true
+                },
+                {
+                    "name":"age",
+                    "label": "Age",
+                    "type": "birthday",
+                    "persistant": true,
+                    "units": [
+                        {
+                            "label": "Years",
+                            "value": "years"
+                        },
+                        {
+                            "label": "Months",
+                            "value": "months"
+                        },
+                        {
+                            "label": "Weeks",
+                            "value": "weeks"
+                        }
+                    ]
+                },
+                {
+                    "name":"gestational-age",
+                    "label": "Gestational Age ",
+                    "type": "number",
+                    "units": [
+                        {
+                            "label": "Months",
+                            "value": "months"
+                        },
+                        {
+                            "label": "Weeks",
+                            "value": "weeks"
+                        }
+                    ]
+                },
+                {
+                    "name": "entitlement-cards",
+                    "label": "What entitlement cards available?",
+                    "type": "select-multiple",
+                    "choices": [
+                        {
+                            "label": "MCPC",
+                            "value": "MCPC"
+                        },
+                        {
+                            "label": "Maternity Voucher",
+                            "value": "maternity-voucher"
+                        },
+                        {
+                            "label": "JSY Card",
+                            "value": "jsy-card"
+                        }
+                    ]
+                },
+                {
+                    "name": "previous-pregnancy",
+                    "label": "Previous Pregnancy",
+                    "type": "form",
+                    "include": "pregnancy-history"
+                },
+                {
+                    "name": "anc",
+                    "label": "Antenatal Care",
+                    "type": "form",
+                    "include": "anc-form"
+                },
+                {
+                    "name": "delivery-plan",
+                    "label": "Where are you planning to deliver?",
+                    "type": "select",
+                    "choices": [
+                        {
+                            "label": "Government Institution",
+                            "value": "gov"
+                        },
+                        {
+                            "label": "Private Institution",
+                            "value": "private"
+                        },
+                        {
+                            "label": "Home",
+                            "value": "home"
+                        },
+                        {
+                            "label": "Nearest center for institutional delivery",
+                            "value": "nearest"
+                        },
+                        {
+                            "label": "Not decided",
+                            "value": "dk"
+                        }
+                    ]
+                }
+            ]
         }
     ]
 }
