@@ -221,6 +221,60 @@
                     ]
                 },
                 {
+                    "name": "type",
+                    "label": "Type",
+                    "type": "select",
+                    "choices": [
+                        {
+                            "value": "everyday",
+                            "label": "Everyday"
+                        },
+                        {
+                            "value": "somedays",
+                            "label": "Somedays"
+                        },
+                        {
+                            "value": "periodic",
+                            "label": "Periodic"
+                        }
+                    ]
+                },
+                {
+                    "name": "amount",
+                    "label": "How much",
+                    "type": "text"
+                },
+                {
+                    "name": "shivers",
+                    "label": "Shivers",
+                    "type": "select",
+                    "choices": [
+                        {
+                            "value": "yes",
+                            "label": "Yes"
+                        },
+                        {
+                            "value": "no",
+                            "label": "No"
+                        }
+                    ]
+                },
+                {
+                    "name": "frequency",
+                    "label": "frequency",
+                    "type": "select",
+                    "choices": [
+                        {
+                            "value": "allday",
+                            "label": "All day"
+                        },
+                        {
+                            "value": "periodic",
+                            "label": "Periodic"
+                        }
+                    ]
+                },
+                {
                     "name": "comments",
                     "label": "Additional Notes",
                     "type": "text"
