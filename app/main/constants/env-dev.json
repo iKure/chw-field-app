@@ -98,6 +98,108 @@
                     "persistant": true
                 }
             ]
+        },
+        {
+            "_id": "vitals",
+            "label": "Vitals",
+            "fields": [
+                {
+                    "name": "height",
+                    "label": "Height",
+                    "type": "number",
+                    "units": [
+                        {
+                            "label": "Meters",
+                            "value": "m"
+                        },
+                        {
+                            "label": "Centimeters",
+                            "value": "cm"
+                        }
+                    ],
+                    "persistant": false
+                },
+                {
+                    "name": "weight",
+                    "label": "Weight",
+                    "type": "number",
+                    "units": [
+                        {
+                            "label": "Kg",
+                            "value": "kg"
+                        }
+                    ],
+                    "persistant": false
+                },
+                {
+                    "name": "temprature",
+                    "label": "Temprature",
+                    "type": "number",
+                    "units": [
+                        {
+                            "label": "Celsius",
+                            "value": "c"
+                        },
+                        {
+                            "label": "Fahrenheit",
+                            "value": "f"
+                        }
+                    ],
+                    "persistant": false
+                }
+            ]
+        },
+        {
+            "_id": "case-general",
+            "label": "General Case",
+            "fields": [
+                {
+                    "name": "vomiting",
+                    "label": "Vomiting",
+                    "type": "form",
+                    "include": "symptom-general"
+                },
+                {
+                    "name": "indigestion",
+                    "label": "Indigestion/Acidity",
+                    "type": "form",
+                    "include": "symptom-general"
+                },
+                {
+                    "name": "vitals",
+                    "label": "Vitals",
+                    "type": "form",
+                    "include": "vitals",
+                    "persistant": true
+                }
+            ]
+        },
+        {
+            "_id": "symptom-general",
+            "label": "Symptom Description",
+            "fields": [
+                {
+                    "name": "duration",
+                    "label": "How long have you experienced symptoms?",
+                    "type": "number",
+                    "units": [
+                        {
+                            "label":"Days",
+                            "values": "days"
+                        },
+                        {
+                            "label": "Hours",
+                            "value": "hours"
+                        }
+                    ]
+                },
+                {
+                    "name": "comments",
+                    "label": "Additional Notes",
+                    "type": "text"
+                }
+
+            ]
         }
     ]
 }
