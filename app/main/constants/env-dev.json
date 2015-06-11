@@ -281,6 +281,45 @@
                 }
 
             ]
+        },
+        {
+            "_id": "symptom-rash-skin",
+            "label": "Symptoms: Fever",
+            "hidden": true,
+            "fields": [
+                {
+                    "name": "duration",
+                    "label": "How long",
+                    "type": "number",
+                    "units": [
+                        {
+                            "value": "days",
+                            "label": "Days"
+                        }
+                    ]
+                },
+                {
+                    "name": "location",
+                    "label": "Rash location",
+                    "type": "form",
+                    "include": "location"
+                },
+                {
+                    "name": "itching",
+                    "label": "Itching",
+                    "type": "select",
+                    "choices": [
+                        {
+                            "value": "yes",
+                            "label": "Yes"
+                        },
+                        {
+                            "value": "no",
+                            "label": "No"
+                        }
+                    ]
+                }
+            ]
         }
     ]
 }
