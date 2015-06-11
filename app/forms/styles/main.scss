@@ -4,12 +4,13 @@
 	width:100%;
 }
 
-.button.button-floating-right{
-	position:fixed;
-	z-index:10;
-	right:10px;
-	top:10px;
-	background: rgba(255,255,255,0.5) !important;
+.form-actions:after {
+	content:'';
+    display:block;
+    clear: both;
+}
+.form-actions{
+	margin:10px;
 }
 
 .item-form{
