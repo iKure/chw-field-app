@@ -12,6 +12,6 @@
 </div>
 <div class="directory-content list">
 	<a ng-repeat="patient in records" class="item list-item" ui-sref="patients.single.summary({patient_id:patient._id})" >
-	{{patient.name}}
+	{{patient.name}} ({{patient._id}})
 	</a>
 </div>
