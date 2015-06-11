@@ -1,7 +1,8 @@
-{{label}}
-{{crap}}
-<button ng-click="open()" class="button button-edit">
-	<i ng-if="!data._id" class="icon ion-plus"></i>
-	<i ng-if="data._id" class="icon ion-edit"></i>
+<button ng-if="!data._id" ng-click="open()" class="button button-edit">
+	<i class="icon ion-plus"></i>
+	<span>Add {{label}}</span>
+</button>
+<button ng-if="data._id" ng-click="open()" class="button button-edit">
+	<i class="icon ion-edit"></i>
 	<span>Edit {{label}}</span>
 </button>
