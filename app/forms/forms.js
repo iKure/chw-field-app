@@ -4,6 +4,7 @@ angular.module('forms', [
   'ngCordova',
   'ui.router',
   'shared',
+  "checklist-model",
 ])
 .config(function ($stateProvider) {
 

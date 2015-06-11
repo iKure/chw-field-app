@@ -12,7 +12,8 @@
     "angular-localForage": "~1.2.2",
     "pouchdb": "~3.5.0",
     "angular-bootstrap": "~0.13.0",
-    "bootstrap-sass": "~3.3.4"
+    "bootstrap-sass": "~3.3.4",
+    "checklist-model": "~0.2.4"
   },
   "devDependencies": {},
   "resolutions": {
