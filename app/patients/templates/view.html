@@ -1,12 +1,19 @@
-<ion-view>
-	<div class="bar bar-header bar-stable">
-		<div class="button-bar">
-			<button class="button icon ion-chatboxes"></button>
-			<button ui-sref="patients.directory" ui-sref-active="active" class="button icon ion-search"></button>
-			<button ng-if="patient" ui-sref="patients.single.summary" ui-sref-active="active" class="button icon ion-person"></button>
-		</div>
+<ion-view class="patients-frame">
+	<div class="tabs tabs-top tabs-icon-top">
+	  <a class="tab-item">
+	    <i class="icon ion-chatboxes"></i>
+	    Messages
+	  </a>
+	  <a ui-sref="patients.directory" ui-sref-active="active" class="tab-item">
+	    <i class="icon ion-navicon-round"></i>
+	    Patients
+	  </a>
+	  <a ng-if="patient" ui-sref="patients.single.summary" ui-sref-active="active" class="tab-item">
+	    <i class="icon ion-person"></i>
+	    Settings
+	  </a>
 	</div>
-  <ion-content class="has-header">
-    <ui-view name="patientsContent"></ui-view>
-  </ion-content>
+	<ion-content class="has-header">
+		<ui-view name="patientsContent"></ui-view>
+	</ion-content>
 </ion-view>
