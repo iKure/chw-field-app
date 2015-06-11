@@ -37,6 +37,7 @@ angular.module('forms')
       emit(doc.date_created);
     }, {
       include_docs: true,
+      descending: true,
     })
 
     promise.then(function (docs) {
