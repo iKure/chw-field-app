@@ -2,8 +2,10 @@
 angular.module('patients')
 .service('Patients', [
   '$rootScope',
+  '$q',
   'Config',
-  function ($rootScope, Config, SharedState) {
+  '$cordovaDevice',
+  function ($rootScope, $q, Config, $cordovaDevice) {
     console.log('Hello from your Service: Patients in module patients');
 
     var localDB = new PouchDB('patients');
@@ -31,21 +33,61 @@ angular.module('patients')
     }
     service.list = list;
 
-    function save (patient) {
-      var promise = false;
-      patient.date_modified = Date.now();
-      if (patient._id) {
-        console.log('PatientsService: Saving existing object');
-        promise = localDB.put(patient);
-      } else {
-        console.log('PatientService: Saving new object');
-        patient.date_created = Date.now();
-        promise = localDB.post(patient);
+    function getID() {
+      var deferred = $q.defer();
+      console.log("PatientService: Attempting to get new ID");
+      function makeID() {
+        var id_salt = 'PA';
+        try {
+          id_salt = $cordovaDevice.getUUID();
+        } catch (err) {
+          console.log("ERROR:" + err);
+          id_salt = Math.random().toString(36);
+        }
+        id_salt = id_salt.substr(id_salt.length - 3);
+
+        var timeStr = Date.now().toString();
+        timeStr = timeStr.substr(timeStr.length - 6);
+
+        var ID = id_salt + '-' + timeStr;
+        console.log("PatientService: Trying ID = " + ID);
+
+        localDB.get(ID).then(function (id) {
+          makeID();
+        }).catch(function () {
+          deferred.resolve(ID);
+        });
       }
-      promise.then(function (response) {
-        console.log('PatientService: Saved patient: ' + response.id);
-      });
-      return promise;
+      makeID();
+      return deferred.promise;
+    }
+    service.getID = getID
+
+    function save (patient) {
+      var deferred = $q.defer();
+
+      function savePatient(patient) {
+        patient.date_modified = Date.now();
+        localDB.put(patient).then(function (response) {
+          console.log('PatientService: Saved patient: ' + response.id);
+          deferred.resolve(patient);
+        });
+      }
+
+      if (!patient._id) {
+        console.log('PatientService: Saving new object');
+        getID().then(function (ID) {
+          console.log("PatientService: Made ID = " + ID);
+          patient._id = ID;
+          patient.date_created = Date.now();
+          savePatient(patient);
+        });
+      } else {
+        console.log('PatientsService: Saving existing object');
+        savePatient(patient);
+      }
+
+      return deferred.promise;
     }
     service.save = save;
 
