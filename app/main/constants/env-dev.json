@@ -404,10 +404,20 @@
                     ]
                 },
                 {
+                    "name": "pregnancy-first",
+                    "label": "Is this your first pregnancy?",
+                    "type": "boolean"
+                },
+                {
                     "name": "previous-pregnancy",
                     "label": "Previous Pregnancy",
                     "type": "form",
                     "include": "pregnancy-history"
+                },
+                {
+                    "name": "no-anc",
+                    "label": "Have you recieved any antinatal care?",
+                    "type": "boolean"
                 },
                 {
                     "name": "anc",
