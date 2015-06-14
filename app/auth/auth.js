@@ -15,16 +15,25 @@ angular.module('auth', [
   };
   pouchDBProvider.methods = angular.extend({}, POUCHDB_METHODS, authMethods);
 })
+.run(['$rootScope', '$state', function ($rootScope, $state) {
+  $rootScope.$on('$stateChangeStart', function (event, toState, toParams, fromState, fromParams) {
+    // check login, if not logged in — redirect to login
+    if (toState.name != 'login'){
+      event.preventDefault();
+      console.log("Auth: Caught no login @ " + toState.name);
+      $state.go('login');
+    }
+  });
+}])
 .config(function ($stateProvider) {
 
   console.log('Allo! Allo from your module: ' + 'auth');
 
   // some basic routing
   $stateProvider
-    .state('auth', {
-      url: '/auth',
-      templateUrl: 'auth/templates/start.html',
-      controller: 'StartCtrl as start'
+    .state('login', {
+      url: '/login',
+      templateUrl: 'auth/templates/login.html',
+      controller: 'LoginCtrl'
     });
-  // TODO: do your thing
 });
