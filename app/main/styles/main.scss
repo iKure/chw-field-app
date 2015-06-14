@@ -6,6 +6,8 @@ in ionic's _variables.scss file.
 For example, you might change some of the default colors:
 */
 
+@import "../../bower_components/ionic/scss/_variables.scss";
+
 $light:                           #fff !default;
 $stable:                          #f8f8f8 !default;
 $positive:                        #4a87ee !default;
@@ -20,7 +22,11 @@ $font-size-base: 				  18px;
 $font-size-large:                 26px;
 $font-size-small:                 14px;
 
-$button-default-bg:               #ddd;
+$button-default-bg:               $button-dark-bg;
+$button-default-text:             $button-dark-text;
+$button-default-border:           $button-dark-border;
+$button-default-active-bg:        $button-dark-active-bg;
+$button-default-active-border:    $button-dark-active-border;
 
 // The path for our ionicons font files, relative to the built & temporary main.css
 $ionicons-font-path: "../assets/fonts" !default;
