@@ -5,6 +5,16 @@ angular.module('auth', [
   'ui.router',
   // TODO: load other modules selected during generation
 ])
+.config(function (pouchDBProvider, POUCHDB_METHODS) {
+  // From: https://github.com/angular-pouchdb/angular-pouchdb
+  // Example for nolanlawson/pouchdb-authentication
+  var authMethods = {
+    login: 'qify',
+    logout: 'qify',
+    getUser: 'qify'
+  };
+  pouchDBProvider.methods = angular.extend({}, POUCHDB_METHODS, authMethods);
+})
 .config(function ($stateProvider) {
 
   console.log('Allo! Allo from your module: ' + 'auth');
