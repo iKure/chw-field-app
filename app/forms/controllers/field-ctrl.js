@@ -25,11 +25,19 @@ angular.module('forms')
   }
   $scope.save = save;
 
+  if (!$scope.data) {
+    $scope.data = {};
+  }
+
   if ($scope.field.include) {
     if (!$scope.data) {
       $scope.data = {};
     }
     $scope.data.include = $scope.field.include;
+  }
+
+  if ($scope.field.units) {
+    $scope.data.units = $scope.field.units[0].value;
   }
 
 }]);
