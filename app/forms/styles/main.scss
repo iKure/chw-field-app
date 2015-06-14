@@ -7,9 +7,10 @@
 	margin:10px;
 }
 
-.button-edit{
+.button.button-edit{
 	width:auto;
-	float:right;
+	float:left;
+	margin-right: 10px;
 	span.collapse {
 		display:none;
 	}
