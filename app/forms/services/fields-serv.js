@@ -1,6 +1,6 @@
 'use strict';
 angular.module('forms')
-.service('Fields', ['$rootScope', 'Forms', '$q', 'Config', function ($rootScope, Forms, $q, Config) {
+.service('Fields', ['$rootScope', 'Forms', '$q', 'Config', 'Auth', function ($rootScope, Forms, $q, Config, Auth) {
   console.log('Hello from your Service: Fields in module forms');
 
   var dbName = 'fields';
@@ -65,8 +65,10 @@ angular.module('forms')
   function save (field) {
     var promise = false;
     field.date_modified = Date.now();
+    field.user_modified = Auth.currentUser.name;
     if (!field._id) {
       field.date_created = Date.now();
+      field.user_created = Auth.currentUser.name;
       promise = localDB.post(field);
     } else {
       promise = localDB.put(field);
