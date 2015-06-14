@@ -3,7 +3,6 @@ angular.module('patients', [
   'ionic',
   'ngCordova',
   'ui.router',
-  'shared',
   // TODO: load other modules selected during generation
 ])
 .config(function ($stateProvider, $urlRouterProvider) {

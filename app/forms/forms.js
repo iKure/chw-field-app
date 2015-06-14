@@ -3,7 +3,6 @@ angular.module('forms', [
   'ionic',
   'ngCordova',
   'ui.router',
-  'shared',
   "checklist-model",
   'focusOn',
 ])
