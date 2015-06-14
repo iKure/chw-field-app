@@ -13,7 +13,6 @@ angular.module('forms')
       fields: '=fields',
       label: '=label',
       close: '&onClose',
-    },
-    controller: 'FieldListCtrl',
+    }
   };
 });
