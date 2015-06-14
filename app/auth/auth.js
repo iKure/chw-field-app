@@ -37,6 +37,5 @@ angular.module('auth', [
     .state('login', {
       url: '/login',
       templateUrl: 'auth/templates/login.html',
-      controller: 'LoginCtrl'
     });
 });

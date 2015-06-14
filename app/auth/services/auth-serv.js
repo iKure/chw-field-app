@@ -8,18 +8,16 @@ angular.module('auth')
     if (Config.ENV.POUCH_OPTS) {
       pouchOpts = Config.ENV.POUCH_OPTS;
     }
-    console.log("AuthServ: Connecting to: " + Config.ENV.SERVER_URL + " with " + pouchOpts.skipSetup);
+    console.log("AuthServ: Connecting to: " + Config.ENV.SERVER_URL + " with " + pouchOpts);
     var local = new pouchDB('auth');
-    var db = new PouchDB(Config.ENV.SERVER_URL + 'auth', {
-      skipSetup: true,
-    });
-    local.sync(db, {live: true, retry: true}).on('error', console.log.bind(console));
+    var db = new PouchDB(Config.ENV.SERVER_URL + 'auth', pouchOpts);
   }
 
   var service = {};
 
-  function login (username, password){
+  function login (username, password) {
     console.log("AuthServ: Logging in to :" + Config.ENV.SERVER_URL);
+    console.log("AuthServ: username=" + username + ' & password=' + password);
     var ajaxOpts = {
       ajax: {
         headers: {
