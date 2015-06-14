@@ -32,6 +32,11 @@ angular.module('auth')
   }
   service.login = login;
 
+  function logout () {
+    return db.logout();
+  }
+  service.logout = logout;
+
   function getSession () {
     var deferred = $q.defer();
     if (Config.ENV.SESSION) {

@@ -37,5 +37,12 @@ angular.module('auth', [
     .state('login', {
       url: '/login',
       templateUrl: 'auth/templates/login.html',
+    })
+    .state('logout', {
+      url: '/logout',
+      controller: ['$state', 'Auth', function ($state, Auth) {
+        Auth.logout();
+        $state.go('login');
+      }]
     });
 });
