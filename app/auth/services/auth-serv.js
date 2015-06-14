@@ -14,6 +14,7 @@ angular.module('auth')
   }
 
   var service = {};
+  service.currentUser = false;
 
   function login (username, password) {
     console.log("AuthServ: Logging in to :" + Config.ENV.SERVER_URL);
@@ -40,6 +41,7 @@ angular.module('auth')
   function getSession () {
     var deferred = $q.defer();
     if (Config.ENV.SESSION) {
+      service.currentUser = Config.ENV.SESSION.userCtx;
       deferred.resolve(Config.ENV.SESSION);
     } else if (Config.ENV.SERVER_URL) {
       console.log('AuthServ: Checking SERVER_URL');
@@ -50,7 +52,8 @@ angular.module('auth')
           console.log("AuthServ: User not logged in!");
           deferred.reject(false);
         } else {
-          console.log("AuthServ: Got a user");
+          service.currentUser = response.userCtx;
+          console.log("AuthServ: Got user " + service.currentUser.name);
           deferred.resolve(response);
         }
       });
