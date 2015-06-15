@@ -9,7 +9,8 @@ angular.module('messages')
     },
     scope: {
       messages: '=messages',
-      thread_id: '=threadId'
+      thread_id: '=threadId',
+      read_only: '=readOnly',
     },
     controller: "MessageThreadCtrl",
   };

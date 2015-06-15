@@ -5,4 +5,4 @@
     <div class="meta meta-message">{{message.date_created | date}} by {{message.sender}}</div>
   </div>
 </div>
-<message-create thread-id="thread_id" on-create="addMessage(message)"></message-create>
+<message-create ng-if="!read_only" thread-id="thread_id" on-create="addMessage(message)"></message-create>
