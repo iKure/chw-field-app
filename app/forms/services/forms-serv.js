@@ -11,6 +11,9 @@ angular.module('forms')
     console.log("FormsService: Getting data from: " + Config.ENV.SERVER_URL + 'forms');
     localDB.replicate.from(remoteDB).then(function () {
       ready = true;
+    }).catch(function (err) {
+      console.error(err);
+      ready = true;
     });
   }
 
