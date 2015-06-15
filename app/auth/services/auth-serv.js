@@ -28,6 +28,10 @@ angular.module('auth')
     };
 
     var promise = db.login(username, password, ajaxOpts);
+    promise.then(function (response) {
+      console.log('AuthServ: Got successful login for ' + response.name);
+      service.currentUser = response;
+    });
 
     return promise;
   }
@@ -43,11 +47,14 @@ angular.module('auth')
     if (Config.ENV.SESSION) {
       service.currentUser = Config.ENV.SESSION.userCtx;
       deferred.resolve(Config.ENV.SESSION);
+    } else if (!service.currentUser) {
+      deferred.reject(false);
     } else if (Config.ENV.SERVER_URL) {
       console.log('AuthServ: Checking SERVER_URL');
       db.getSession(function (err, response) {
         if (err) {
           console.log("AuthServ: Could not reach network");
+          deferred.reject(false); // Should attempt to connect to local?
         } else if (!response.userCtx.name) {
           console.log("AuthServ: User not logged in!");
           deferred.reject(false);
