@@ -38,7 +38,13 @@ angular.module('auth')
   service.login = login;
 
   function logout () {
-    return db.logout();
+    return db.logout(function (err, response) {
+      if (err) {
+        console.error(err);
+      } else {
+        service.currentUser(false);
+      }
+    });
   }
   service.logout = logout;
 
