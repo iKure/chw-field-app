@@ -8,11 +8,17 @@ angular.module('patients')
   function ($rootScope, $q, Config, $cordovaDevice) {
     console.log('Hello from your Service: Patients in module patients');
 
-    var localDB = new PouchDB('patients');
+    var dbName = 'patients';
+    if (Config.ENV.SaltDB) {
+      dbName = dbName + '-' + Config.ENV.SaltDB;
+    }
+
+    var localDB = new PouchDB(dbName);
     var remoteDB = false;
     if (Config.ENV.SERVER_URL) {
-      console.log("Patients connecting to: " + Config.ENV.SERVER_URL);
-      remoteDB = new PouchDB(Config.ENV.SERVER_URL + 'patients');
+      var fullUrl = Config.ENV.SERVER_URL + dbName;
+      console.log("Patients connecting to: " + fullUrl);
+      remoteDB = new PouchDB(fullUrl);
       var syncHandler = localDB.sync(remoteDB, {
         live: true,
         retry: true

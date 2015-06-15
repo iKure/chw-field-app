@@ -3,12 +3,17 @@ angular.module('forms')
 .service('Forms', ['$rootScope', '$q', 'Config', function ($rootScope, $q, Config) {
   console.log('Hello from your Service: Forms in module forms');
 
-  var localDB = new PouchDB('forms');
+  var dbName = 'forms';
+  if (Config.ENV.SaltDB) {
+    dbName = dbName + '-' + Config.ENV.SaltDB;
+  }
+
+  var localDB = new PouchDB(dbName);
   var ready = false;
 
   if (Config.ENV.SERVER_URL) {
-    var remoteDB = new PouchDB(Config.ENV.SERVER_URL + 'forms');
-    console.log("FormsService: Getting data from: " + Config.ENV.SERVER_URL + 'forms');
+    var remoteDB = new PouchDB(Config.ENV.SERVER_URL + dbName);
+    console.log("FormsService: Getting data from: " + Config.ENV.SERVER_URL + dbName);
     localDB.replicate.from(remoteDB).then(function () {
       ready = true;
     }).catch(function (err) {

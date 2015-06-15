@@ -4,6 +4,9 @@ angular.module('forms')
   console.log('Hello from your Service: Fields in module forms');
 
   var dbName = 'fields';
+  if (Config.ENV.SaltDB) {
+    dbName = dbName + '-' + Config.ENV.SaltDB;
+  }
 
   var localDB = new PouchDB(dbName);
 
