@@ -1,5 +1,5 @@
 {
-    "SaltDB": "DEV-STATIC",
+    "SaltDB": "dev-static",
     "SESSION": {
         "info": {
             "authenticated": "cookie", 
