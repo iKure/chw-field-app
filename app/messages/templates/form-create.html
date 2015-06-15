@@ -1,4 +1,12 @@
-<form ng-controller="MessageCreateCtrl" ng-submit="save()" >
-  <input type="text" ng-model="message.body" />
-  <button class="button button-send" >Send</button>
+<form class="list" ng-submit="save()">
+
+  <div class="item item-input-inset">
+    <label class="item-input-wrapper">
+      <input type="text" placeholder="Add a message" ng-model="message.body">
+    </label>
+    <button class="button button-small">
+      Send
+    </button>
+  </div>
+
 </form>
