@@ -1,3 +1,4 @@
 {
+    "SaltDB": "PROD",
     "SERVER_URL": "https://nickreid.iriscouch.com/"
 }
