@@ -9,7 +9,8 @@ angular.module('messages')
     },
     scope: {
       messages: '=messages',
-      thread_id: '=thread_id'
-    }
+      thread_id: '=threadId'
+    },
+    controller: "MessageThreadCtrl",
   };
 });
