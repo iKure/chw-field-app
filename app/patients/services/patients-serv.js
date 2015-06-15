@@ -32,10 +32,47 @@ angular.module('patients')
     }
     service.get = get;
 
-    function list () {
-      return localDB.allDocs({
+    function list (extra_matches) {
+      var deferred = $q.defer();
+
+      var matches = {};
+      if (extra_matches) {
+        Object.keys(extra_matches).forEach(function (key) {
+          matches[key] = extra_matches[key];
+        });
+      }
+
+      var promise = localDB.query(function (doc, emit) {
+        var passes = true;
+        Object.keys(matches).forEach(function (key) {
+          if (key == 'name_or_id' && matches[key]) {
+            var nameMatch = doc.name.toLowerCase().indexOf(matches[key].toLowerCase()) > -1;
+            var idMatch = doc._id.toLowerCase().indexOf(matches[key].toLowerCase()) > -1
+            if (!nameMatch && !idMatch) {
+              passes = false;
+            }
+          } else if (doc[key] != matches[key]) {
+            passes = false;
+          }
+        });
+        if (!passes) {
+          return false;
+        }
+        emit(doc.name);
+      }, {
         include_docs: true,
+        descending: true,
       });
+
+      promise.then(function (docs) {
+        var results = [];
+        docs.rows.forEach(function (row) {
+          results.push(row.doc);
+        });
+        deferred.resolve(results);
+      });
+
+      return deferred.promise;
     }
     service.list = list;
 

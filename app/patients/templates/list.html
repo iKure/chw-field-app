@@ -1,8 +1,16 @@
 <div class="actions directory-actions">
 	<div class="list list-inset">
-		<a class="item item-icon-right">
+		<a ng-if="!searching" ng-click="startSearch()" class="item item-icon-right">
 			<i class="icon ion-search"></i>
 			Search
+		</a>
+		<label ng-if="searching" class="item item-input">
+			<i class="icon ion-search placeholder-icon"></i>
+			<input type="text" ng-model="query.text" placeholder="Search">
+		</label>
+		<a ng-if="searching" ng-click="clearSearch()" class="item item-icon-left">
+			<i class="icon icon-close"></i>
+			Clear search
 		</a>
 		<a ui-sref="patients.register" class="item item-icon-right">
 			<i class="icon ion-plus"></i>

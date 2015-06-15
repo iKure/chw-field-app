@@ -56,7 +56,7 @@ angular.module('forms')
     }, {
       include_docs: true,
       descending: true,
-    })
+    });
 
     promise.then(function (docs) {
       docs.rows.forEach(function (row) {
