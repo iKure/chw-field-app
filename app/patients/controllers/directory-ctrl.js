@@ -21,7 +21,7 @@ angular.module('patients')
         var query = {
           name_or_id: $scope.query.text,
         };
-        if (!query.name_or_id || query.name_or_id == ""){
+        if (!query.name_or_id || query.name_or_id == "") {
           delete query.name_or_id;
         }
         Patients.list(query).then(function (results) {
