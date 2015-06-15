@@ -102,7 +102,17 @@ angular.module('patients', [
         'personContent': {
           templateUrl: 'forms/templates/field-summary.html',
           controller: 'FieldSummaryCtrl',
-        }
+        },
+      },
+      resolve: {
+        data: ['$stateParams', 'Fields', function ($stateParams, Fields) {
+          return Fields.get($stateParams.field_id);
+        }],
+        messages: ['$stateParams', 'Messages', function ($stateParams, Messages) {
+          return Messages.list({
+            thread_id: $stateParams.field_id
+          });
+        }]
       }
     });
 });

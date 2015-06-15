@@ -12,6 +12,12 @@ angular.module('messages')
     });
   }
 
+  function addMessage (message) {
+    $scope.messages.push(message);
+    updateThread();
+  }
+  $scope.addMessage = addMessage;
+
   if (!$scope.messages || $scope.messages.length < 1) {
     updateThread();
   }

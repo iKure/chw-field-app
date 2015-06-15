@@ -5,10 +5,15 @@ angular.module('messages')
   console.log('Hello from your Controller: MessageCreateCtrl in module messages:. This is your controller:', this);
   
   function save () {
+    if ($scope.thread_id) {
+      $scope.message.thread_id = $scope.thread_id;
+    }
     Messages.save($scope.message).then(function (message) {
       $scope.message = {};
-      if ($scope.messages) {
-        $scope.messages.push(message);
+      if ($scope.create) {
+        $scope.create({
+          message: message,
+        });
       }
     });
   }

@@ -1,13 +1,11 @@
 'use strict';
 angular.module('forms')
-.controller('FieldSummaryCtrl', ['$scope', '$stateParams', 'Fields', 'Forms', function ($scope, $stateParams, Fields, Forms) {
+.controller('FieldSummaryCtrl', ['$scope', '$stateParams', 'Fields', 'Forms', 'data', function ($scope, $stateParams, Fields, Forms, data) {
 
   console.log('Hello from your Controller: FieldSummaryCtrl in module forms:. This is your controller:', this);
 
   $scope.form = {};
-  $scope.data = {};
-
-  getField($stateParams.field_id);
+  $scope.data = data;
 
   function getForm (type) {
     console.log('FormCtrl: Getting form type: ' + type);
