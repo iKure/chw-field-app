@@ -27,13 +27,17 @@ angular.module('forms')
   }
   service.get = get;
 
-  function all(matches) {
+  function all(extra_matches) {
     var deferred = $q.defer();
+    var matches = {
+      parent: undefined,
+      archived: undefined
+    };
 
-    if (!matches) {
-      matches = {
-        parent: undefined
-      };
+    if (extra_matches) {
+      Object.keys(extra_matches).forEach(function (key) {
+        matches[key] = extra_matches[key];
+      });
     }
 
     var results = [];
@@ -88,7 +92,7 @@ angular.module('forms')
         doc.archived = true;
         console.log("FieldsService: Archiving " + id);
       } else {
-        doc.archived = false;
+        doc.archived = undefined;
         console.log("FieldsService: Unarchiving " + id);
       }
       save(doc).then(function (response) {
