@@ -1,11 +1,12 @@
 <div class="card list">
 	<div class="item item-divider">{{data.form_label}}</div>
-	<div class="item">Created: {{data.date_created | date}}</div>
-	<div class="item">Updated: {{data.date_modified | date}}</div>
+	<div class="item">Created: {{data.date_created | date}} by {{data.user_created}}</div>
+	<div class="item">Updated: {{data.date_modified | date}} by {{data.user_modified}}</div>
 </div>
-{{form}}
+<button ui-sref="^.edit({patient_id:patient._id, field_id:data._id})" class="button button-block">Edit {{data.form_label}}</button>
 <div class="list list-inset">
+	<div class="item item-divider">Summary</div>
 	<div ng-repeat="field in form.fields" class="item">
-		{{field.label}}
+		{{field.label}}: {{data[field.name].value}}
 	</div>
 </div>

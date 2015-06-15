@@ -100,7 +100,7 @@ angular.module('patients', [
       url: '/form/:field_id',
       views: {
         'personContent': {
-          templateUrl: 'patients/templates/field-summary.html',
+          templateUrl: 'forms/templates/field-summary.html',
           controller: 'FieldSummaryCtrl',
         }
       }
