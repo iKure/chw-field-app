@@ -1,15 +1,16 @@
 <div class="card list">
-	<div class="item item-divider">{{data.form_label}}</div>
-	<div class="item">Created: {{data.date_created | date}} by {{data.user_created}}</div>
-	<div class="item">Updated: {{data.date_modified | date}} by {{data.user_modified}}</div>
-</div>
-<div class="button-bar">
-	<button ng-if="data.archived" class="button" ng-click="archive()" >Unarchive</button>
-	<button ng-if="!data.archived" class="button" ng-click="archive()" >Archive</button>
-	<button ng-if="!data.archived" ui-sref="^.edit({patient_id:patient._id, field_id:data._id})" class="button">Edit {{data.form_label}}</button>
+	<div class="item item-divider">{{data.form_label}} updated: {{data.date_modified | date}} by {{data.user_modified}}</div>
+	<a ng-if="data.archived" ng-click="archive()" class="item">Unarchive {{data.form_label}} to make changes</a>
+	<a ng-if="!data.archived" ng-click="archive()" class="item">Archive {{data.form_label}} when it is complete</a>
 </div>
 <div class="list list-inset">
-	<div class="item item-divider">Summary</div>
+	<div class="item item-divider item-button-right">
+		Summary
+	</div>
+	<a ng-if="!data.archived" ui-sref="^.edit({field_id:data._id})" class="item item-icon-left">
+		<i class="icon ion-edit"></i>
+		Edit {{data.form_label}}
+	</a>
 	<div ng-repeat="field in form.fields" class="item">
 		{{field.label}}: {{data[field.name].value}}
 	</div>

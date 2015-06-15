@@ -16,7 +16,6 @@ angular.module('forms')
         $scope.data = doc;
         console.log("FieldSummaryCtrl: Finished archiving field " + $scope.data._id);
         // hide loading
-        $scope.$apply();
       });
     });
   }
