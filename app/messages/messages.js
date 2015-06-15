@@ -14,7 +14,12 @@ angular.module('messages', [
     .state('messages', {
       url: '/messages',
       templateUrl: 'messages/templates/start.html',
-      controller: 'StartCtrl as start'
+      controller: 'StartCtrl as start',
+      resolve: {
+        messages: ['Messages', function (Messages) {
+          return Messages.list();
+        }]
+      }
     });
   // TODO: do your thing
 });
