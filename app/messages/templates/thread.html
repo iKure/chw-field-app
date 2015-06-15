@@ -1,0 +1,11 @@
+<div class="message-thread">
+<div class="list list-messages">
+  <div class="item item-message" ng-repeat="message in messages">
+    <p class="body-message">{{message.body}}</p>
+    <div class="meta meta-message">{{message.date_created | date}} by {{message.sender}}</div>
+  </div>
+</div>
+<form ng-controller="MessageCreateCtrl" ng-submit="save()" >
+  <input type="text" ng-model="message.body" />
+  <button class="button button-send" >Send</button>
+</form>

@@ -43,10 +43,9 @@ angular.module('messages')
       if (!passes) {
         return false;
       }
-      emit(doc.name);
+      emit(doc.date_created);
     }, {
       include_docs: true,
-      descending: true,
     });
 
     promise.then(function (docs) {
