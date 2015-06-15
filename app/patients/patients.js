@@ -88,7 +88,7 @@ angular.module('patients', [
                 });
               } else {
                 $state.go('patients.single.summary', {
-                  patient_id: $scope.patient_id,
+                  patient_id: $stateParams.patient_id,
                 });
               }
             }
