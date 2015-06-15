@@ -3,7 +3,11 @@
 	<div class="item">Created: {{data.date_created | date}} by {{data.user_created}}</div>
 	<div class="item">Updated: {{data.date_modified | date}} by {{data.user_modified}}</div>
 </div>
-<button ui-sref="^.edit({patient_id:patient._id, field_id:data._id})" class="button button-block">Edit {{data.form_label}}</button>
+<div class="button-bar">
+	<button ng-if="data.archived" class="button" ng-click="archive()" >Unarchive</button>
+	<button ng-if="!data.archived" class="button" ng-click="archive()" >Archive</button>
+	<button ng-if="!data.archived" ui-sref="^.edit({patient_id:patient._id, field_id:data._id})" class="button">Edit {{data.form_label}}</button>
+</div>
 <div class="list list-inset">
 	<div class="item item-divider">Summary</div>
 	<div ng-repeat="field in form.fields" class="item">

@@ -80,5 +80,26 @@ angular.module('forms')
   }
   service.save = save;
 
+  function toggleArchive (id) {
+    console.log("FieldsService: Toggling archive " + id);
+    var deferred = $q.defer();
+    get(id).then(function (doc) {
+      if (!doc.archived) {
+        doc.archived = true;
+        console.log("FieldsService: Archiving " + id);
+      } else {
+        doc.archived = false;
+        console.log("FieldsService: Unarchiving " + id);
+      }
+      save(doc).then(function (response) {
+        deferred.resolve(response);
+        console.log("FieldsService: Archive toggled " + id);
+      });
+    });
+
+    return deferred.promise;
+  }
+  service.toggleArchive = toggleArchive;
+
   return service;
 }]);

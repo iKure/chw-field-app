@@ -34,4 +34,19 @@ angular.module('forms')
       console.log('FieldSummaryCtrl: Could not find field id: ' + id);
     });
   }
+
+  function archive () {
+    console.log("FieldSummaryCtrl: ARCHIVE! " + $scope.data._id);
+    // show confirm
+    // show loading
+    Fields.toggleArchive($scope.data._id).then(function (response) {
+      Fields.get(response.id).then(function (doc) {
+        $scope.data = doc;
+        console.log("FieldSummaryCtrl: Finished archiving field " + $scope.data._id);
+        // hide loading
+        $scope.$apply();
+      });
+    });
+  }
+  $scope.archive = archive;
 }]);
