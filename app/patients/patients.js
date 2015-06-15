@@ -83,7 +83,7 @@ angular.module('patients', [
             $scope.close = function () {
               if ($scope.data._id) {
                 $state.go('patients.single.form', {
-                  patient_id: $scope.patient_id,
+                  patient_id: $stateParams.patient_id,
                   field_id: $scope.data._id,
                 });
               } else {
