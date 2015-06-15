@@ -1,0 +1,14 @@
+<ion-view view-title="messages module">
+  <ion-content>
+    <ion-list>
+      <div class="item" ng-repeat="message in messages">
+        <p>{{message.body}}</p>
+        <div class="meta">{{message.date_created | date}} by {{message.sender}}</div>
+      </div>
+    </ion-list>
+    <form ng-controller="MessageCreateCtrl" ng-submit="save()" >
+      <input type="text" ng-model="message.body" />
+      <button class="button button-send" >Send</button>
+    </form>
+  </ion-content>
+</ion-view>

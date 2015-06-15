@@ -62,5 +62,21 @@ angular.module('messages')
   }
   service.list = list;
 
+  function save (message) {
+    console.log("MessagesService: Saving " + message.body);
+    message.date_created = Date.now();
+    message.sender = Auth.currentUser.name;
+
+    var deferred = $q.defer();
+    localDB.post(message).then(function (response) {
+      console.log("MessagesService: Saved message " + response.id);
+      localDB.get(response.id).then(function (doc) {
+        deferred.resolve(doc);
+      });
+    });
+    return deferred.promise;
+  }
+  service.save = save;
+
   return service;
 }]);

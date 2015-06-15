@@ -13,8 +13,10 @@ angular.module('messages', [
   $stateProvider
     .state('messages', {
       url: '/messages',
-      templateUrl: 'messages/templates/start.html',
-      controller: 'StartCtrl as start',
+      templateUrl: 'messages/templates/list.html',
+      controller: ['$scope', 'messages', function ($scope, messages) {
+        $scope.messages = messages;
+      }],
       resolve: {
         messages: ['Messages', function (Messages) {
           return Messages.list();
