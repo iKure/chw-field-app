@@ -60,10 +60,16 @@ angular.module('forms')
 
   function get (id) {
     var deferred = $q.defer();
+    if (!id) {
+      deferred.reject(false);
+      return deferred.promise;
+    }
     wait().then(function () {
-      var promise = localDB.get(id);
-      promise.then(function (doc) {
+      var promise = localDB.get(id).then(function (doc) {
         deferred.resolve(doc);
+      }).catch(function (err) {
+        console.error(err);
+        deferred.reject(false);
       });
     });
     return deferred.promise;

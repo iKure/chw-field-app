@@ -22,8 +22,27 @@ angular.module('forms')
   var service = new Object;
   service.records = [];
 
+  function getForm (type) {
+    console.log('FieldsService: Get form' + type);
+    var promise = Forms.get(type);
+    promise.then( function (doc) {
+      console.log('FieldsService: Got form type: ' + doc._id);
+      $scope.form = doc;
+      $scope.data.form_id = doc._id;
+    }).catch( function (err) {
+      console.log('FieldsService: Could not find form template type: ' + type);
+    });
+  }
+
   function get(id) {
-    return localDB.get(id);
+    var deferred = $q.defer();
+    localDB.get(id).then(function (doc) {
+      Forms.get(doc.form_id).then(function (form) {
+        doc.form = form;
+        deferred.resolve(doc);
+      });
+    });
+    return deferred.promise;
   }
   service.get = get;
 

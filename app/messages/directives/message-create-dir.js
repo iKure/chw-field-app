@@ -9,8 +9,8 @@ angular.module('messages')
     },
     controller: "MessageCreateCtrl",
     scope:{
-    	thread_id: "=threadId",
-    	create: '&onCreate',
+      thread_id: "=threadId",
+      create: '&onCreate',
     }
   };
 });

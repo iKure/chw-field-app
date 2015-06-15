@@ -68,17 +68,17 @@ angular.module('patients', [
       url: '/edit?type&field_id',
       views: {
         'personContent': {
-          template: '<form-edit data="data" initial-data="initialData" field-id="field_id" form-type="type" on-close="close()"></form-edit>',
-          controller: ['$scope', '$state', '$stateParams', function ($scope, $state, $stateParams) {
-            $scope.field_id = $stateParams.field_id;
-            $scope.type = $stateParams.type;
-            $scope.patient_id = $stateParams.patient_id;
+          template: '<form-edit initial-data="initialData" data="data" form="form" on-close="close()"></form-edit>',
+          controller: ['$scope', '$state', '$stateParams', 'data', 'form', function ($scope, $state, $stateParams, data, form) {
+            $scope.data = data;
+            $scope.form = form;
+            if (!form && data.form) {
+              $scope.form = data.form;
+            }
 
             $scope.initialData = {
-              patient_id: $scope.patient_id
+              patient_id: $stateParams.patient_id
             };
-
-            $scope.data = false;
 
             $scope.close = function () {
               if ($scope.data._id) {
@@ -94,6 +94,20 @@ angular.module('patients', [
             }
           }],
         }
+      },
+      resolve: {
+        data: ['$stateParams', 'Fields', function ($stateParams, Fields) {
+          if (!$stateParams.field_id) {
+            return false;
+          }
+          return Fields.get($stateParams.field_id);
+        }],
+        form: ['$stateParams', 'Forms', function ($stateParams, Forms) {
+          if (!$stateParams.type) {
+            return false;
+          }
+          return Forms.get($stateParams.type);
+        }]
       }
     })
     .state('patients.single.form', {
