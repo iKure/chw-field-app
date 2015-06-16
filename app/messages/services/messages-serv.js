@@ -35,7 +35,10 @@ angular.module('messages')
     Object.keys(threadGroups).forEach(function (key) {
       threads.push(organizeThread(threadGroups[key]));
     });
-    // Sort threads
+    threads.sort(function (a, b) {
+      return +(a.date_modified > b.date_modified) || +(a.date_modified === b.date_modified) - 1;
+    });
+    threads.reverse();
     return threads;
   }
 
