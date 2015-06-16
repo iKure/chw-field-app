@@ -98,7 +98,7 @@ angular.module('patients', [
       views: {
         'personContent': {
           template: '<form-edit initial-data="initialData" data="data" form="form" on-close="close()"></form-edit>',
-          controller: ['$scope', '$state', '$stateParams', 'data', 'form', function ($scope, $state, $stateParams, data, form) {
+          controller: ['$scope', '$state', '$stateParams', '$ionicPopup', 'data', 'form', function ($scope, $state, $stateParams, $ionicPopup, data, form) {
             $scope.data = data;
             $scope.form = form;
             if (!form && data.form) {
@@ -111,9 +111,27 @@ angular.module('patients', [
 
             $scope.close = function () {
               if ($scope.data._id) {
-                $state.go('patients.single.form', {
-                  patient_id: $stateParams.patient_id,
-                  field_id: $scope.data._id,
+                $ionicPopup.show({
+                  title: 'Refer Case',
+                  template: 'Does this case need attention from a doctor?',
+                  scope: $scope,
+                  buttons: [
+                    { text: 'No'},
+                    {
+                      text: 'Yes',
+                      type: 'button-positive',
+                      onTap: function () {
+                        return true;
+                      }
+                    }
+                  ]
+                }).then(function (res) {
+                  if (res) {
+                    // Redirect to recipient selection & add automatic message
+                  }
+                  $state.go('patients.single.summary', {
+                    patient_id: $stateParams.patient_id,
+                  });
                 });
               } else {
                 $state.go('patients.single.summary', {
