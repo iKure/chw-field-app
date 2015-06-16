@@ -49,6 +49,11 @@ angular.module('patients', [
           templateUrl: 'patients/templates/list.html',
           controller: 'PatientDirectoryCtrl',
         }
+      },
+      resolve: {
+        records: ['Patients', function (Patients) {
+          return Patients.list();
+        }]
       }
     })
     .state('patients.register', {

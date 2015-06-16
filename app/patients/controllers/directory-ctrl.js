@@ -1,10 +1,13 @@
 'use strict';
 angular.module('patients')
-.controller('PatientDirectoryCtrl', [ '$scope', 'Patients', function ($scope, Patients) {
+.controller('PatientDirectoryCtrl', [ '$scope', 'Patients', 'records', function ($scope, Patients, records) {
   console.log('Hello from your Controller: PatientDirectoryCtrl in module patients:. This is your controller:', this);
-  $scope.records = [];
-  Patients.list().then(function (results) {
-    $scope.records = results;
+  $scope.records = records;
+
+  $scope.$on('patients.update', function () {
+    Patients.list().then(function (results) {
+      $scope.records = results;
+    });
   });
 
   $scope.query = {};

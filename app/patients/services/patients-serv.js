@@ -22,6 +22,12 @@ angular.module('patients')
       var syncHandler = localDB.sync(remoteDB, {
         live: true,
         retry: true
+      }).on('change', function (replication) {
+        if (replication.direction == 'pull') {
+          $rootScope.$broadcast('patients.update');
+        }
+      }).on('error', function (err) {
+        console.error(err);
       });
     }
 
