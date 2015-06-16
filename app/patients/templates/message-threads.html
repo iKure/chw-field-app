@@ -1,5 +1,6 @@
 <div class="list">
-	<a ng-repeat="thread in threads" class="item item-thread" ng-click="go_to_field(thread._id)">
+	<a ng-repeat="thread in threads" class="item item-thread" ui-sref="patients.single.form({patient_id:thread.patient._id, field_id: thread._id})" ng-click="go_to_field(thread._id)">
+		{{thread.patient.name}}
 		<div ng-include="'messages/templates/thread-item.html'"></div>
 	</a>
 </div>
