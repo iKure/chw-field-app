@@ -22,6 +22,70 @@ angular.module('messages')
 
   var service = {};
 
+  function groupByThread (results) {
+    var threadGroups = {}
+    results.rows.forEach(function (row) {
+      var doc = row.doc;
+      if (!threadGroups[doc.thread_id]) {
+        threadGroups[doc.thread_id] = []
+      }
+      threadGroups[doc.thread_id].push(doc);
+    });
+    var threads = [];
+    Object.keys(threadGroups).forEach(function (key) {
+      threads.push(organizeThread(threadGroups[key]));
+    });
+    // Sort threads
+    return threads;
+  }
+
+  function organizeThread (docs) {
+    var threadObj = {};
+    function addMessage (doc) {
+      if (!threadObj.messages) {
+        threadObj.messages = [];
+      }
+      threadObj.messages.push(doc);
+      if (!threadObj.date_modified || doc.date_modified > threadObj.date_modified) {
+        threadObj.date_modified = doc.date_modified;
+      }
+      if (!threadObj.date_created || doc.date_created > threadObj.date_created) {
+        threadObj.date_created = doc.date_created;
+      }
+    }
+    docs.forEach(function (doc) {
+      threadObj._id = doc.thread_id;
+      if (doc.body) {
+        addMessage(doc);
+      }
+    });
+    return threadObj;
+  }
+
+  function get(id) {
+    console.log('MessagesService: Getting message thread ' + id);
+    var deferred = $q.defer();
+    localDB.query({
+      map: function (doc, emit) {
+        emit(doc.thread_id);
+      }
+    }, {
+      key: id,
+      include_docs: true,
+      group: true,
+    }).then(function (results) {
+      console.log('MessagesService: Got results ' + results.rows.length);
+      var threads = groupByThread(results);
+      if (threads.length < 1) {
+        deferred.reject(false);
+      } else {
+        deferred.resolve(threads[0]);
+      }
+    });
+    return deferred.promise;
+  }
+  service.get = get;
+
   function list (extra_matches) {
     console.log('MessagesService: Getting messages for ' + extra_matches);
     var deferred = $q.defer();

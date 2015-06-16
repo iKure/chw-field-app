@@ -22,6 +22,20 @@ angular.module('messages', [
           return Messages.list();
         }]
       }
+    })
+    .state('message_thread', {
+      url: '/messages/:thread_id',
+      templateUrl: 'messages/templates/list.html',
+      controller: ['$scope', 'thread', function ($scope, thread) {
+        $scope.thread = thread;
+        $scope.thread_id = thread._id;
+        $scope.messages = thread.messages;
+      }],
+      resolve: {
+        thread: ['$stateParams', 'Messages', function ($stateParams, Messages) {
+          return Messages.get($stateParams.thread_id);
+        }],
+      }
     });
   // TODO: do your thing
 });

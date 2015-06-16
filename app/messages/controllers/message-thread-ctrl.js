@@ -5,10 +5,14 @@ angular.module('messages')
   console.log('Hello from your Controller: MessageThreadCtrl in module messages:. This is your controller:', this);
 
   function updateThread () {
-    Messages.list({
-      thread_id: $scope.thread_id,
-    }).then(function (results) {
-      $scope.messages = results;
+    console.log("MessageThreadCtrl: Updating thread");
+    if (!$scope.thread_id) {
+      console.log("MessageThreadCtrl: No thread_id, can't update");
+      return false;
+    }
+    Messages.get($scope.thread_id).then(function (thread) {
+      $scope.thread = thread;
+      $scope.messages = thread.messages;
     });
   }
 
