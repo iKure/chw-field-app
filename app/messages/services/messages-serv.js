@@ -47,7 +47,10 @@ angular.module('messages')
   }
 
   function organizeThread (docs) {
-    var threadObj = {};
+    var threadObj = {
+      messages:[],
+      participants: [],
+    };
     function addMessage (doc) {
       if (!threadObj.messages) {
         threadObj.messages = [];
@@ -65,6 +68,9 @@ angular.module('messages')
       if (doc.body) {
         addMessage(doc);
       }
+    });
+    threadObj.messages.sort(function (a, b) {
+      return +(a.date_created > b.date_created) || +(a.date_created === b.date_created) - 1;
     });
     return threadObj;
   }

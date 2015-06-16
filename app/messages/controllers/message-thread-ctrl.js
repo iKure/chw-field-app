@@ -19,7 +19,6 @@ angular.module('messages')
   $scope.$on('messages.update', updateThread);
 
   function addMessage (message) {
-    $scope.messages.push(message);
     updateThread();
   }
   $scope.addMessage = addMessage;
