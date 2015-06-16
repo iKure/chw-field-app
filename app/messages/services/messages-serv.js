@@ -46,10 +46,10 @@ angular.module('messages')
         threadObj.messages = [];
       }
       threadObj.messages.push(doc);
-      if (!threadObj.date_modified || doc.date_modified > threadObj.date_modified) {
-        threadObj.date_modified = doc.date_modified;
+      if (!threadObj.date_modified || doc.date_created > threadObj.date_modified) {
+        threadObj.date_modified = doc.date_created;
       }
-      if (!threadObj.date_created || doc.date_created > threadObj.date_created) {
+      if (!threadObj.date_created || doc.date_created < threadObj.date_created) {
         threadObj.date_created = doc.date_created;
       }
     }
@@ -113,12 +113,9 @@ angular.module('messages')
     });
 
     promise.then(function (docs) {
-      var results = [];
-      docs.rows.forEach(function (row) {
-        results.push(row.doc);
-      });
-      console.log('MessagesService: Got ' + results.length + ' messages');
-      deferred.resolve(results);
+      var threads = groupByThread(docs);
+      console.log('MessagesService: Got ' + threads.length + ' threads');
+      deferred.resolve(threads);
     });
 
     return deferred.promise;

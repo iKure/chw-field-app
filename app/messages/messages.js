@@ -14,11 +14,11 @@ angular.module('messages', [
     .state('messages', {
       url: '/messages',
       templateUrl: 'messages/templates/list.html',
-      controller: ['$scope', 'messages', function ($scope, messages) {
-        $scope.messages = messages;
+      controller: ['$scope', 'threads', function ($scope, threads) {
+        $scope.threads = threads;
       }],
       resolve: {
-        messages: ['Messages', function (Messages) {
+        threads: ['Messages', function (Messages) {
           return Messages.list();
         }]
       }

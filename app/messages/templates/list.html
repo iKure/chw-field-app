@@ -1,5 +1,9 @@
 <ion-view view-title="messages module">
   <ion-content>
-    <message-thread messages="messages"></message-thread>
+    <div class="list">
+    	<a ng-repeat="thread in threads" class="item item-thread" ui-sref="message_thread({thread_id:thread._id})">
+    		<div ng-include="'messages/templates/thread-item.html'"></div>
+    	</a>
+    </div>
   </ion-content>
 </ion-view>
