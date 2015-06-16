@@ -16,6 +16,10 @@ angular.module('forms')
     var syncHandler = localDB.sync(remoteDB, {
       live: true,
       retry: true
+    }).on('change', function (replication) {
+      if (replication.direction == 'pull') {
+        $rootScope.$broadcast('fields.update');
+      }
     });
   }
 

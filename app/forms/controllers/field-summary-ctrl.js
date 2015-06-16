@@ -20,4 +20,11 @@ angular.module('forms')
     });
   }
   $scope.archive = archive;
+
+  $scope.$on('fields.update', function () {
+    Fields.get($scope.data._id).then(function (doc) {
+      $scope.data = doc;
+      $scope.form = doc.form;
+    });
+  });
 }]);
