@@ -1,6 +1,19 @@
 <div class="item-checkbox">
-	<label class="checkbox">
-		<input ng-model="data.value" type="checkbox">
-	</label>
-	{{field.label}}
+	<div class="list list-inset">
+		<div class="item item-divider">{{field.label}}</div>
+		<label class="item item-radio">
+	    	<input type="radio" ng-model="data.value" ng-value="true" name="{{field.name}}">
+		    <div class="item-content">
+		      Yes
+		    </div>
+		    <i class="radio-icon ion-checkmark"></i>
+		</label>
+		<label class="item item-radio">
+	    	<input type="radio" ng-model="data.value" ng-value="false" name="{{field.name}}">
+		    <div class="item-content">
+		      No
+		    </div>
+		    <i class="radio-icon ion-checkmark"></i>
+		</label>
+	</div>
 </div>
