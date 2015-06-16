@@ -10,7 +10,7 @@ angular.module('auth')
     }
     console.log("AuthServ: Connecting to: " + Config.ENV.SERVER_URL + " with " + pouchOpts);
     var local = new pouchDB('auth');
-    var db = new PouchDB(Config.ENV.SERVER_URL + 'auth', pouchOpts);
+    var db = new pouchDB(Config.ENV.SERVER_URL + 'auth', pouchOpts);
   }
 
   var service = {};

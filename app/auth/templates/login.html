@@ -4,6 +4,9 @@
       <div class="item item-divider">
         Login
       </div>
+      <div ng-if="error" class="item bar bar-assertive">
+        {{error}}
+      </div>
       <label class="item item-input">
         <span class="input-label">Username</span>
         <input type="text" ng-model="username">
