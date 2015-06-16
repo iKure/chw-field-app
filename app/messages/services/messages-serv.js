@@ -17,6 +17,10 @@ angular.module('messages')
     var syncHandler = localDB.sync(remoteDB, {
       live: true,
       retry: true
+    }).on('change', function (replication) {
+      if (replication.direction == 'pull') {
+        $rootScope.$broadcast('messages.update');
+      }
     });
   }
 
