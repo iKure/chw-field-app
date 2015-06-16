@@ -18,6 +18,30 @@ angular.module('patients', [
       templateUrl: 'patients/templates/view.html',
       abstract: true,
     })
+    .state('patients.messages', {
+      url: '/messages',
+      views: {
+        'patientsContent': {
+          templateUrl: 'patients/templates/message-threads.html',
+          controller: ['$scope', '$state', 'threads', 'Fields', function ($scope, $state, threads, Fields) {
+            $scope.threads = threads;
+            $scope.go_to_field = function (field_id) {
+              Fields.get(field_id).then(function (doc) {
+                $state.go('patients.single.form', {
+                  field_id: doc._id,
+                  patient_id: doc.patient_id,
+                });
+              });
+            }
+          }],
+        }
+      },
+      resolve: {
+        threads: ['Messages', function (Messages) {
+          return Messages.list();
+        }]
+      }
+    })
     .state('patients.directory', {
       url: '/directory',
       views: {

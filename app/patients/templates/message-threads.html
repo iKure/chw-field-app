@@ -1,0 +1,5 @@
+<div class="list">
+	<a ng-repeat="thread in threads" class="item item-thread" ng-click="go_to_field(thread._id)">
+		<div ng-include="'messages/templates/thread-item.html'"></div>
+	</a>
+</div>
