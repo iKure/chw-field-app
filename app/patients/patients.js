@@ -35,7 +35,7 @@ angular.module('patients', [
             var new_results = []
             function sendResults (obj) {
               new_results.push(obj);
-              if (new_results.length == results.length){
+              if (new_results.length == results.length) {
                 deferred.resolve(new_results);
               }
             }
@@ -49,7 +49,7 @@ angular.module('patients', [
                   thread.patient = patient;
                   sendResults(thread);
                 });
-              }).catch(function (err){
+              }).catch (function (err) {
                 sendResults(thread);
               });
             });
