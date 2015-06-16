@@ -358,7 +358,7 @@
             "fields": [
                 {
                     "name": "name",
-                    "label": "Name of the respondant",
+                    "label": "Name of the respondent",
                     "type": "text",
                     "persistant": true
                 },
