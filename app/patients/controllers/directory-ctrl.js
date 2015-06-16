@@ -37,6 +37,10 @@ angular.module('patients')
 
   function clearSearch () {
     $scope.searching = false;
+    $scope.query = {};
+    Patients.list().then(function (results) {
+      $scope.records = results;
+    });
     searchListener();
   }
   $scope.clearSearch = clearSearch;
