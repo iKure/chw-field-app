@@ -164,7 +164,7 @@ angular.module('patients', [
       url: '/form/:field_id?',
       views: {
         'personContent': {
-          templateUrl: 'forms/templates/field-summary.html',
+          templateUrl: 'forms/templates/field-summary-page.html',
           controller: 'FieldSummaryCtrl',
         },
       },

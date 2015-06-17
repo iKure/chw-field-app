@@ -1,9 +1,12 @@
-<div class="list" ng-if="data"> 
-	<div ng-repeat="key in getKeys(data)" class="item">
-		{{key}}
-		<button ng-click="openFromKey(key)" class="button button-edit">
-			<i class="icon ion-edit"></i> Edit
-		</button>
+<div ng-if="data"> 
+	<div ng-repeat="key in getKeys(data)" class="list list-inset">
+		<div class="item item-divider item-button-right">
+			{{keyToForm(key).label}}
+			<button ng-click="openForm(keyToForm(key))" class="button button-edit">
+				<i class="icon ion-edit"></i>
+			</button>
+		</div>
+		<field-summary type="keyToForm(key).include" data="data[key]"></field-summary>
 	</div>
 </div>
 <button ng-click="pickForm()" class="button button-block">

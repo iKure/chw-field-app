@@ -16,13 +16,15 @@ angular.module('forms')
       ]
     });
   }
-  $scope.openFromKey = function (key) {
-    $scope.forms.some(function (form) {
-      if (key == form.name) {
-        $scope.openForm(form);
+  $scope.keyToForm = function (key) {
+    var form = false;
+    $scope.forms.some(function (_form) {
+      if (key == _form.name) {
+        form = _form;
         return true;
       }
     });
+    return form;
   }
   $scope.openForm = function (form) {
     if (popup) {
