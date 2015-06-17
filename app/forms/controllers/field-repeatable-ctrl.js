@@ -16,8 +16,15 @@ angular.module('forms')
       ]
     });
   }
-  $scope.current = {};
-  $scope.addForm = function (form) {
+  $scope.openFromKey = function (key) {
+    $scope.forms.some(function (form) {
+      if (key == form.name) {
+        $scope.openForm(form);
+        return true;
+      }
+    });
+  }
+  $scope.openForm = function (form) {
     if (popup) {
       popup.close();
     }
@@ -26,16 +33,25 @@ angular.module('forms')
     }
     $scope.current = {
       type: form.include,
+      name: form.name,
       label: form.label,
       data: $scope.data[form.name],
     };
-    $scope.checked = true;
-    console.log("FieldRepeatableCtrl: Show sub-form");
+    console.log("FieldRepeatableCtrl: Show sub-form " + form.name);
+  }
+
+  $scope.deleteForm = function (key) {
+    console.log("FieldRepeatableCtrl: Deleting " + key);
+    var d = $scope.data;
+    delete d[key];
+    $scope.closeForm();
   }
 
   $scope.closeForm = function () {
-    $scope.current = {};
-    $scope.checked = false;
+    $scope.current = false;
     console.log("FieldRepeatableCtrl: Hiding sub-form");
+  }
+  $scope.getKeys = function (obj) {
+    return Object.keys(obj);
   }
 }]);

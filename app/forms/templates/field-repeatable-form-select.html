@@ -1,5 +1,6 @@
 <div class="list">
-	<a ng-repeat="form in forms" ng-click="addForm(form)" class="item">
+	<a ng-repeat="form in forms" ng-click="openForm(form)" class="item">
+		<i ng-if="data[form.name]" class="icon ion-checkmark"></i>
 		{{form.label}}
 	</a>
 </div>

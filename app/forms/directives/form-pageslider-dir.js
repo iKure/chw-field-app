@@ -2,7 +2,7 @@
 angular.module('forms')
 .directive('formPageslider', function () {
   return {
-    template: '<div class="title">{{label}}</div><div field-list class="form-fields" fields="form.fields" data="data" on-close="close()" ></div><button class="button button-block" ng-click="close()">Done</button>',
+    template: '<button ng-click="clear({key:name})" class="button button-block button-assertive"><i class="icon ion-trash"></i>Delete</button><div class="title">{{label}}</div><div field-list class="form-fields" fields="form.fields" data="data" on-close="close()" ></div><button class="button button-block" ng-click="close()">Done</button>',
     restrict: 'E',
     controller: ['$scope', 'Forms', function ($scope, Forms) {
       console.log("FormPageSliderCtrl: Says HI!");
@@ -22,7 +22,9 @@ angular.module('forms')
     }],
     scope: {
       close: '&onClose',
+      clear: '&onDelete',
       label: '=label',
+      name: '=name',
       type: '=type',
       data: '=data',
     },

@@ -1,9 +1,17 @@
+<div class="list" ng-if="data"> 
+	<div ng-repeat="key in getKeys(data)" class="item">
+		{{key}}
+		<button ng-click="openFromKey(key)" class="button button-edit">
+			<i class="icon ion-edit"></i> Edit
+		</button>
+	</div>
+</div>
 <button ng-click="pickForm()" class="button button-block">
 	<i class="icon ion-plus"></i>
 	<span>Add {{label}}</span>
 </button>
-<pageslide ps-open="checked" ps-size="450px">
+<pageslide ps-open="current" ps-size="450px">
 	<div class="container">
-		<form-pageslider on-close="closeForm()" label="current.label" type="current.type" data="current.data" ></form-pageslider>
+		<form-pageslider on-close="closeForm()" on-delete="deleteForm(key)" label="current.label" type="current.type" data="current.data" name="current.name" ></form-pageslider>
 	</div>
 </pageslide>
