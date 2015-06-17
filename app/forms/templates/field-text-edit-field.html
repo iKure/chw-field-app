@@ -1,9 +1,3 @@
-<a ng-if="!editing" ng-click="setFocus()" class="button button-edit">
-		<i class="icon ion-edit"></i>
-</a>
-<a ng-if="editing" ng-click="blurFocus()" class="button button-edit">
-	<i class="icon ion-ios-circle-outline"></i>
-</a>
 <label class="field-text" ng-click="setFocus()" >
 	<span class="input-label">{{label}}</span>
 	<input type="{{type}}" ng-model="value" sync-focus-with="editing" ng-blur="blurInput()" ng-focus="setFocus()"  />
