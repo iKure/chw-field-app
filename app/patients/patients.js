@@ -6,6 +6,9 @@ angular.module('patients', [
   'yaru22.angular-timeago',
   // TODO: load other modules selected during generation
 ])
+.config(function ($ionicConfigProvider) {
+  $ionicConfigProvider.views.maxCache(0);
+})
 .config(function ($stateProvider, $urlRouterProvider) {
 
   console.log('Allo! Allo from your module: ' + 'patients');

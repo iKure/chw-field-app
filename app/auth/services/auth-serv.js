@@ -42,7 +42,8 @@ angular.module('auth')
       if (err) {
         console.error(err);
       } else {
-        service.currentUser(false);
+        console.log("AuthServ: Setting currentUser to false");
+        service.currentUser = false;
       }
     });
   }
@@ -66,7 +67,7 @@ angular.module('auth')
           deferred.reject(false);
         } else {
           service.currentUser = response.userCtx;
-          console.log("AuthServ: Got user " + service.currentUser.name);
+          console.log("AuthServ: Got session user " + service.currentUser.name);
           deferred.resolve(response);
         }
       });
