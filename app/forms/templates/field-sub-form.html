@@ -1,10 +1,13 @@
-<button ng-if="!data.value" ng-click="open()" class="button button-edit">
+<button ng-if="!data.value" ng-click="open()" class="button button-block">
 	<i class="icon ion-plus"></i>
 	<span>Add {{label}}</span>
 </button>
-<button ng-if="data.value" ng-click="open()" class="button button-edit">
-	<i class="icon ion-edit"></i>
-	<span>Edit {{label}}</span>
-</button>
-<p ng-repeat="val in values">{{val.label}}: {{val.value}}</p>
-<form-item ng-if="data._id" data="data"></form-item>
+<div ng-if="data.value" class="list list-inset">
+	<div class="item item-divider item-button-right">
+		{{label}}
+		<button ng-if="data.value" ng-click="open()" class="button button-edit">
+			<i class="icon ion-edit"></i>
+		</button>
+	</div>
+	<field-summary type="form_id" data="data"></field-summary>
+</div>
