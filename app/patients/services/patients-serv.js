@@ -19,7 +19,21 @@ angular.module('patients')
       var fullUrl = Config.ENV.SERVER_URL + dbName;
       console.log("Patients connecting to: " + fullUrl);
       remoteDB = new PouchDB(fullUrl);
-      var syncHandler = localDB.sync(remoteDB, {
+    }
+
+    var service = {};
+
+    var syncHandler = false;
+    function startReplication() {
+      if (!remoteDB) {
+        console.log("PatientsService: No remoteDB");
+        return false;
+      }
+      if (syncHandler) {
+        syncHandler.cancel();
+        console.log("PatientsService: Canceled syncHandler");
+      }
+      syncHandler = localDB.sync(remoteDB, {
         live: true,
         retry: true
       }).on('change', function (replication) {
@@ -27,12 +41,14 @@ angular.module('patients')
           $rootScope.$broadcast('patients.update');
         }
         $rootScope.$broadcast('synced');
+        console.log("PatientsService: Changes " + replication.direction);
       }).on('error', function (err) {
-        console.error(err);
+        console.log("PatientsService: Stopped — " + err.message);
       });
+      console.log("PatientsService: Started syncHandler");
     }
-
-    var service = {};
+    service.startReplication = startReplication;
+    startReplication();
 
     function get (id) {
       return localDB.get(id);
