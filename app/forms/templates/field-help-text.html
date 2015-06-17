@@ -1,0 +1,7 @@
+<a class="button button-icon button-clear button-help" ng-click="visable = !visable">
+	<i ng-if="!visable" class="icon ion-help-circled"></i>
+	<i ng-if="visable" class="icon ion-close"></i>
+</a>
+<div ng-if="visable" class="help-text">
+	{{text}}
+</div>
