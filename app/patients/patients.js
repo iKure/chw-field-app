@@ -4,6 +4,7 @@ angular.module('patients', [
   'ngCordova',
   'ui.router',
   'yaru22.angular-timeago',
+  "checklist-model",
   // TODO: load other modules selected during generation
 ])
 .config(function ($ionicConfigProvider) {
@@ -173,26 +174,77 @@ angular.module('patients', [
         }]
       }
     });
-}).run(['$rootScope', '$ionicPopup', function ($rootScope, $ionicPopup) {
+}).run(['$rootScope', '$ionicPopup', 'Messages', function ($rootScope, $ionicPopup, Messages) {
+  function addReferalAlert(thread_id) {
+    function createReferalPopup () {
+      var $scope = $rootScope.$new();
+      $scope.users = [
+        {
+          name: 'Anirban Bandopadhayay'
+        },
+        {
+          name: 'Dr. Anjuli Dasika'
+        },
+        {
+          name: 'Dr. Nick Flanders'
+        },
+        {
+          name: 'Jackie Wolf'
+        },
+      ];
+      function tapFunc (event) {
+        console.log("AutoReferral: Should capture users here...");
+        return true; // Should return list... but doesn't matter because no real users.
+      }
+      $ionicPopup.show({
+        title: 'Add Participants',
+        templateUrl: 'messages/templates/participants-add.html',
+        scope: $scope,
+        buttons: [
+          { text: 'Cancel' },
+          {
+            text: 'Add',
+            type: 'button-positive',
+            onTap: tapFunc,
+          }
+        ]
+      }).then(function (result) {
+        if (!result) {
+          return false;
+        }
+        console.log("AutoReferral: Adding auto message!");
+        Messages.save({
+          thread_id: thread_id,
+          body: "This case has been flagged for referal",
+          sender: false,
+        });
+      });
+    }
+    $ionicPopup.show({
+      title: 'Refer Case',
+      template: 'Does this case need attention from a doctor?',
+      buttons: [
+        { text: 'No'},
+        {
+          text: 'Yes',
+          type: 'button-positive',
+          onTap: function () {
+            return true;
+          }
+        }
+      ]
+    }).then(function (result) {
+      if (result) {
+        createReferalPopup();
+      }
+    });
+  }
   $rootScope.$on('$stateChangeSuccess', function (event, toState, toParams, fromState, fromParams) {
     if (fromState.name == 'patients.single.edit' &&
       toState.name == 'patients.single.form' &&
       !fromParams.field_id &&
       toParams.field_id) {
-      $ionicPopup.show({
-        title: 'Refer Case',
-        template: 'Does this case need attention from a doctor?',
-        buttons: [
-          { text: 'No'},
-          {
-            text: 'Yes',
-            type: 'button-positive',
-            onTap: function () {
-              return true;
-            }
-          }
-        ]
-      });
+      addReferalAlert(toParams.field_id);
     }
   });
 }]);

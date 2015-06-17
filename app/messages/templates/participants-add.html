@@ -1,0 +1,7 @@
+<div class="list">
+	<div class="item item-divider">Pick people to alert</div>
+	<label ng-repeat="user in users" class="item">
+		<input style="width:auto;" type="checkbox" checklist-model="recipients" checklist-value="user" />
+		{{user.name}}
+	</label>
+</div>
