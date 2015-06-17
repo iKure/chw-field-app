@@ -131,27 +131,9 @@ angular.module('patients', [
 
             $scope.close = function () {
               if ($scope.data._id) {
-                $ionicPopup.show({
-                  title: 'Refer Case',
-                  template: 'Does this case need attention from a doctor?',
-                  scope: $scope,
-                  buttons: [
-                    { text: 'No'},
-                    {
-                      text: 'Yes',
-                      type: 'button-positive',
-                      onTap: function () {
-                        return true;
-                      }
-                    }
-                  ]
-                }).then(function (res) {
-                  if (res) {
-                    // Redirect to recipient selection & add automatic message
-                  }
-                  $state.go('patients.single.summary', {
-                    patient_id: $stateParams.patient_id,
-                  });
+                $state.go('patients.single.form', {
+                  patient_id: $stateParams.patient_id,
+                  field_id: $scope.data._id,
                 });
               } else {
                 $state.go('patients.single.summary', {
@@ -178,7 +160,7 @@ angular.module('patients', [
       }
     })
     .state('patients.single.form', {
-      url: '/form/:field_id',
+      url: '/form/:field_id?',
       views: {
         'personContent': {
           templateUrl: 'forms/templates/field-summary.html',
@@ -191,4 +173,26 @@ angular.module('patients', [
         }]
       }
     });
-});
+}).run(['$rootScope', '$ionicPopup', function ($rootScope, $ionicPopup) {
+  $rootScope.$on('$stateChangeSuccess', function (event, toState, toParams, fromState, fromParams) {
+    if (fromState.name == 'patients.single.edit' &&
+      toState.name == 'patients.single.form' &&
+      !fromParams.field_id &&
+      toParams.field_id) {
+      $ionicPopup.show({
+        title: 'Refer Case',
+        template: 'Does this case need attention from a doctor?',
+        buttons: [
+          { text: 'No'},
+          {
+            text: 'Yes',
+            type: 'button-positive',
+            onTap: function () {
+              return true;
+            }
+          }
+        ]
+      });
+    }
+  });
+}]);
