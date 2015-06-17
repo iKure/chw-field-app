@@ -177,9 +177,21 @@
                 {
                     "name": "symptoms",
                     "label": "Symptoms",
-                    "type": "form",
-                    "include": "symptoms",
-                    "persistant": true
+                    "type": "repeatable",
+                    "forms": [
+                        {
+                            "name": "fever",
+                            "label": "Fever",
+                            "type": "form",
+                            "include": "symptom-fever"
+                        },
+                        {
+                            "name": "rash-skin",
+                            "label": "Skin Rash",
+                            "type": "form",
+                            "include": "symptom-rash-skin"
+                        }
+                    ]
                 },
                 {
                     "name": "vitals",
@@ -193,31 +205,6 @@
                     "label": "Additional Notes",
                     "type": "text"
                 }
-            ]
-        },
-        {
-            "_id": "symptoms",
-            "label": "Symptoms",
-            "hidden": true,
-            "fields": [
-                {
-                    "name": "fever",
-                    "label": "Fever",
-                    "type": "form",
-                    "include": "symptom-fever"
-                },
-                {
-                    "name": "rash-skin",
-                    "label": "Skin Rash",
-                    "type": "form",
-                    "include": "symptom-rash-skin"
-                },
-                {
-                    "name": "comments",
-                    "label": "Additional Notes",
-                    "type": "text"
-                }
-
             ]
         },
         {
