@@ -1,10 +1,13 @@
-<div class="units" >
-	<label class="item item-radio" ng-repeat="unit in field.units" >
-		<input type="radio" ng-model="data.units" value="{{unit.value}}" name="{{field.name}}-units">
-		<div class="item-content">
-			{{unit.label}}
+<div class="row">
+	<div class="col">
+		<field-text-edit label="field.label" value="data.value" type="'number'"></field-text-edit>
+	</div>
+	<div class="col">
+		<div class="button-bar">
+			<button ng-repeat="unit in field.units" 
+				ng-class="{active: data.units==unit.value}"
+				ng-click="data.units=unit.value"
+				class="button" >{{unit.label}}</button>
 		</div>
-		<i class="radio-icon ion-checkmark"></i>
-	</label>
+	</div>
 </div>
-<field-text-edit label="field.label" value="data.value" type="'number'"></field-text-edit>
