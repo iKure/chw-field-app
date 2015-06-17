@@ -6,6 +6,7 @@ angular.module('forms', [
   "checklist-model",
   'focusOn',
   "pageslide-directive",
+  "RecursionHelper",
 ])
 .config(function ($stateProvider) {
 

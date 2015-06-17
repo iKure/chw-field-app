@@ -1,9 +1,17 @@
 <div ng-repeat="field in form.fields" class="item">
 	<div ng-if="field.type=='repeatable'">
-		COMPLICATED {{field.label}}
+		<div ng-repeat="form in field.forms">
+			<div ng-if="data[field.name][form.name]" class="list list-inset">
+				<div class="item item-divider">{{form.label}}</div>
+				<field-summary type="form.include" data="data[field.name][form.name]"></field-summary>
+			</div>
+		</div>
 	</div>
 	<div ng-if="field.type=='form'">
-		COMPLICATED {{field.label}}
+		<div class="list list-inset">
+			<div class="item item-divider">{{field.label}}</div>
+			<field-summary type="field.include" data="data[field.name]"></field-summary>
+		</div>
 	</div>
 	<div ng-if="field.type!='repeatable' && field.type!='form'">
 		{{field.label}}: {{data[field.name].value}}

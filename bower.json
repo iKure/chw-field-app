@@ -18,7 +18,8 @@
     "pouchdb-authentication": "~0.4.0",
     "angular-pouchdb": "~2.1.0",
     "angular-timeago": "~0.1.12",
-    "ng-pageslide": "~1.0.3"
+    "ng-pageslide": "~1.0.3",
+    "angular-recursion": "~1.0.5"
   },
   "devDependencies": {},
   "resolutions": {
