@@ -1,4 +1,5 @@
-<ion-view class="patients-frame">
+<ion-view class="pane-main has-header has-status-bar">
+	<status-bar class="bar bar-status bar-top"></status-bar>
 	<div network-status class="tabs tabs-top tabs-icon-top tabs-positive">
 	  <a ui-sref="logout" class="tab-item">
 	  	<i class="icon ion-settings"></i>
@@ -17,7 +18,7 @@
 	    New Patient
 	  </a>
 	</div>
-	<ion-content class="has-header">
+	<ion-content>
 		<ui-view name="patientsContent"></ui-view>
 	</ion-content>
 </ion-view>

@@ -59,6 +59,36 @@ $ionicons-font-path: "../assets/fonts" !default;
 	padding-right:10px;
 }
 
+.bar-status{
+	font-size: 11px;
+	margin: 0px;
+	padding: 0px 10px;
+	.online-status, .update-status {
+		float:left;
+		margin-right: 5px;
+	}
+	.user-status {
+		position:absolute;
+		right: 10px;
+	}
+}
+
+.pane-main.has-status-bar.has-header{
+	.bar-status{
+		position:fixed;
+		top: 0px;
+		height: 15px;
+		overflow:hidden;
+	}
+	.tabs-top{
+		position:fixed;
+		top:15px;
+	}
+	ion-content{
+		padding-top: 65px;
+	}
+}
+
 @media (min-width:600px){
 	.content-sidebar{
 		width: 130px;

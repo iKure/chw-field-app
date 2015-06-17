@@ -1,19 +1,20 @@
 'use strict';
-angular.module('patients') // This is not right, but its where I want things to go...
-.directive('networkStatus', function () {
+angular.module('patients')
+.directive('statusBar', function () {
   return {
-    restrict: 'A',
+    templateUrl: 'main/templates/status-bar.html',
+    restrict: 'E',
     link: function postLink (scope, element, attrs) {
-      console.log("NetworkStatusDir: link & update online color");
-      if (scope.online) {
-        element.addClass('tabs-positive');
-        element.removeClass('tabs-dark');
-      } else {
-        element.removeClass('tabs-positive');
-        element.addClass('tabs-dark');
-      }
+      console.log('Yo! Status Bar Directive');
     },
-    controller: ['$scope', '$cordovaNetwork', function ($scope, $cordovaNetwork) {
+    controller: ['$scope', '$cordovaNetwork', 'Auth', function ($scope, $cordovaNetwork, Auth) {
+      $scope.user = Auth.currentUser;
+
+      $scope.lastUpdated = false;
+      $scope.$on('synced', function () {
+        $scope.lastUpdated = Date.now();
+      })
+
       $scope.online = true; // Default to true if in browser;
       try {
         $scope.online = $cordovaNetwork.isOnline();
