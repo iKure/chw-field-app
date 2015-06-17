@@ -1,6 +1,6 @@
 'use strict';
 angular.module('forms')
-.controller('FieldCtrl', ['$scope', 'Fields', 'Forms', function ($scope, Fields) {
+.controller('FieldCtrl', ['$scope', '$ionicPopover', 'Fields', function ($scope, $ionicPopover, Fields) {
 
   console.log('Hello from your Controller: FieldCtrl in module forms:. This is your controller:', this);
 

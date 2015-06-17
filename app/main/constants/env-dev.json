@@ -386,6 +386,7 @@
                 {
                     "name":"gestational-age",
                     "label": "Gestational Age ",
+                    "help_text": "\"Gestational age\" means how many weeks or months pregnant is this woman?",
                     "type": "number",
                     "units": [
                         {
@@ -431,6 +432,7 @@
                 {
                     "name": "no-anc",
                     "label": "Have you recieved any antinatal care?",
+                    "help_text": "\"Antenatal Care\" (ANC) according to the World Health Organization is the \"care that a woman received from a health worker any time during her pregnancy.\" Besides checking babys growth and mothers health status (such as height, weight, blood and urine), the ANC visits are important for giving iron, folic acid and calcium supplements to the woman to support her and her babys health.",
                     "type": "boolean"
                 },
                 {
@@ -491,7 +493,7 @@
                 {
                     "name": "previous-still-birth",
                     "label": "Have you had a previous still birth/abortion",
-                    "type": "choice",
+                    "type": "select",
                     "choices": [
                         {
                             "label": "Yes",
@@ -566,6 +568,7 @@
                 {
                     "name": "procedures",
                     "label": "Were any of the following done during the Antenatal care",
+                    "help_text": "\"Antenatal Care\" (ANC) according to the World Health Organization is the \"care that a woman received from a health worker any time during her pregnancy.\" Besides checking babys growth and mothers health status (such as height, weight, blood and urine), the ANC visits are important for giving iron, folic acid and calcium supplements to the woman to support her and her babys health.",
                     "type":"select-multiple",
                     "choices": [
                         {

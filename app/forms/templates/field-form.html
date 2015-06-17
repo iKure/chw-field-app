@@ -1,4 +1,5 @@
 <div class="field-form">
-  <div ng-include="contentUrl"></div>
-  <div class="meta"></div>
+	<field-help-text ng-if="field.help_text" title="field.label" text="field.help_text"></field-help-text>
+	<div ng-include="contentUrl"></div>
+	<div class="meta"></div>
 </div>

@@ -16,6 +16,18 @@
 	}
 }
 
+.button.button-help{
+	position:absolute;
+	top:10px;
+	left:-10px;
+}
+
+.help-text {
+	padding:10px;
+	background-color: #dfdfdf;
+	white-space: normal;
+}
+
 .field-text{
 	.input-label{
 		padding: 0px;
