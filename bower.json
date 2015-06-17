@@ -17,7 +17,8 @@
     "ng-focus-on": "~0.2.2",
     "pouchdb-authentication": "~0.4.0",
     "angular-pouchdb": "~2.1.0",
-    "angular-timeago": "~0.1.12"
+    "angular-timeago": "~0.1.12",
+    "ng-pageslide": "~1.0.3"
   },
   "devDependencies": {},
   "resolutions": {

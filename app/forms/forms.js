@@ -5,6 +5,7 @@ angular.module('forms', [
   'ui.router',
   "checklist-model",
   'focusOn',
+  "pageslide-directive",
 ])
 .config(function ($stateProvider) {
 

@@ -46,6 +46,14 @@
 	margin: 0px 0px 10px;
 }
 
+.ng-pageslide {
+	background-color:#FFF;
+	overflow:scroll !important;
+	.container{
+		margin:10px;
+	}
+}
+
 
 @media (min-width: 800px) {
 	.button-edit span.collapse{
