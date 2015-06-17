@@ -20,6 +20,7 @@ angular.module('forms')
       if (replication.direction == 'pull') {
         $rootScope.$broadcast('fields.update');
       }
+      $rootScope.$broadcast('synced');
     });
   }
 

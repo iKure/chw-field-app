@@ -26,6 +26,7 @@ angular.module('patients')
         if (replication.direction == 'pull') {
           $rootScope.$broadcast('patients.update');
         }
+        $rootScope.$broadcast('synced');
       }).on('error', function (err) {
         console.error(err);
       });

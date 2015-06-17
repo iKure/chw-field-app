@@ -21,6 +21,7 @@ angular.module('messages')
       if (replication.direction == 'pull') {
         $rootScope.$broadcast('messages.update');
       }
+      $rootScope.$broadcast('synced');
     });
   }
 
