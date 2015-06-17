@@ -1,6 +1,6 @@
 <div ng-if="online" class="online-status">Online</div>
 <div ng-if="!online" class="online-status">Offline</div>
 <div ng-if="lastUpdated" class="update-status">
-	Updated: {{lastUpdated}}
+	Updated: {{lastUpdated | timeAgo}}
 </div>
 <div ng-if="user" class="user-status">{{user.name}}</div>
