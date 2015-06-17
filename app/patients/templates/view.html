@@ -1,21 +1,21 @@
 <ion-view class="pane-main has-header has-status-bar">
 	<status-bar class="bar bar-status bar-top"></status-bar>
 	<div network-status class="tabs tabs-top tabs-icon-top tabs-positive">
-	  <a ui-sref="logout" class="tab-item">
-	  	<i class="icon ion-settings"></i>
-	  	Logout
+	  <a ui-sref="patients.directory" ui-sref-active="active" class="tab-item">
+	    <i class="icon ion-ios-people"></i>
+	    Home
 	  </a>
 	  <a ui-sref="patients.messages" class="tab-item">
 	    <i class="icon ion-chatboxes"></i>
 	    Messages
 	  </a>
-	  <a ui-sref="patients.directory" ui-sref-active="active" class="tab-item">
-	    <i class="icon ion-ios-people"></i>
-	    Home
-	  </a>
 	  <a ui-sref="patients.register" ui-sref-active="active" class="tab-item">
 	    <i class="icon ion-person-add"></i>
 	    New Patient
+	  </a>
+	  <a ui-sref="logout" class="tab-item">
+	  	<i class="icon ion-settings"></i>
+	  	Logout
 	  </a>
 	</div>
 	<ion-content>
