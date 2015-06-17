@@ -61,8 +61,13 @@ $ionicons-font-path: "../assets/fonts" !default;
 
 .bar-status{
 	font-size: 11px;
+	line-height: 1em;
 	margin: 0px;
 	padding: 0px 10px;
+	background-color: $dark;
+	background-image: transparent;
+	border-bottom:0px;
+	color: $light;
 	.online-status, .update-status {
 		float:left;
 		margin-right: 5px;
