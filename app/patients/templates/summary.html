@@ -1,10 +1,10 @@
-<button ui-sref="patients.single.new({patient_id:patient._id})" class="button button-block">
-	<i class="icon ion-medkit"></i>
-	Add Case
-</button>
-<div class="list">
-	<a ui-sref="patients.single.form({patient_id:patient._id, field_id:field._id})" ng-repeat="field in records" class="item item-form item-icon-right">
-		<i class="icon ion-chevron-right"></i>
-		<form-item data="field"></form-item>
-	</a>
-</div>
+<ion-view>
+	<ion-content>
+		<div class="list">
+			<a ui-sref="patients.single.form({patient_id:patient._id, field_id:field._id})" ng-repeat="field in records" class="item item-form item-icon-right">
+				<i class="icon ion-chevron-right"></i>
+				<form-item data="field"></form-item>
+			</a>
+		</div>
+	</ion-content>
+</ion-view>
