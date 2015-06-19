@@ -1,3 +1,9 @@
-<ion-content>
-	<div form-edit label="'Register Patient'" form="form" data="data" on-close="save()"></div>
-</ion-content>
+<ion-view>
+	<ion-header class="bar bar-header">
+		<button ui-sref="patients.directory" class="button icon ion-chevron-left button-clear"></button>
+		<div class="h1 title">New Patient</div>
+	</ion-header>
+	<ion-content class="has-header">
+		<div form-edit label="'Register Patient'" form="form" data="data" on-close="save()"></div>
+	</ion-content>
+</ion-view>

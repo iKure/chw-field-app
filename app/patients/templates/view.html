@@ -1,6 +1,5 @@
-<ion-view class="pane-main has-header has-status-bar">
-	<status-bar class="bar bar-status bar-top"></status-bar>
-	<div network-status class="tabs tabs-top tabs-icon-top tabs-positive">
+<ion-view class="pane-main">
+	<div network-status class="tabs bar-header tabs-top tabs-icon-top tabs-positive">
 	  <a ui-sref="patients.directory" ui-sref-active="active" class="tab-item">
 	    <i class="icon ion-ios-people"></i>
 	    Home
@@ -18,5 +17,5 @@
 	  	Logout
 	  </a>
 	</div>
-	<ui-view name="patientsContent"></ui-view>
+	<ion-nav-view class="has-header" name="patientsContent"></ion-nav-view>
 </ion-view>
