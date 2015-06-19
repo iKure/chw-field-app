@@ -84,6 +84,14 @@ angular.module('patients', [
           templateUrl: 'patients/templates/register.html',
           controller: 'PatientFormCtrl',
         }
+      },
+      resolve: {
+        form: ['Forms', function (Forms) {
+          // This should be configured in a seeting somewhere
+          return Forms.get('demographics').catch(function (err) {
+            console.error(err);
+          });
+        }]
       }
     })
     .state('patients.single', {

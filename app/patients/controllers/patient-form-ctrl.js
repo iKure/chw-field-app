@@ -1,17 +1,14 @@
 'use strict';
 angular.module('patients')
-.controller('PatientFormCtrl', [ '$scope', '$state', 'Patients', 'Forms', 'Fields', function ($scope, $state, Patients, Forms, Fields) {
+.controller('PatientFormCtrl', [ '$scope', '$state', 'Patients', 'form', function ($scope, $state, Patients, form) {
   console.log('Hello from your Controller: PatientFormCtrl in module patients:. This is your controller:', this);
-
-  $scope.form = false;
-  $scope.data = {};
-  Forms.get('demographics').then(function (doc) { // This should be configured in a seeting somewhere
-    $scope.form = doc;
-  }).catch(function (err) {
-    console.error(err);
-    // Show error message?
+  if (!form) {
+    console.log("Could not find form: demographics");
     $state.go('patients.directory');
-  });
+    return false;
+  }
+  $scope.form = form;
+  $scope.data = {};
 
   function save() {
     var patient = {};
