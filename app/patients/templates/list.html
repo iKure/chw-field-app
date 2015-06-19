@@ -1,25 +1,28 @@
-<div class="actions directory-actions">
-	<div class="list list-inset">
-		<a ng-if="!searching" ng-click="startSearch()" class="item item-icon-right">
-			<i class="icon ion-search"></i>
-			Search
-		</a>
-		<label ng-if="searching" class="item item-input">
-			<i class="icon ion-search placeholder-icon"></i>
-			<input type="text" ng-model="query.text" placeholder="Search">
-		</label>
-		<a ng-if="searching" ng-click="clearSearch()" class="item item-icon-left">
-			<i class="icon icon-close"></i>
-			Clear search
-		</a>
-		<a ui-sref="patients.register" class="item item-icon-right">
-			<i class="icon ion-plus"></i>
-			New Patient
+<ion-content>
+	<ion-header class="bar-subheader bar-header bar-stable">
+		<div ng-if="!searching"  class="button-bar">
+			<a ng-click="startSearch()" class="button">
+				<i class="icon ion-search"></i>
+				Search
+			</a>
+			<a ui-sref="patients.register" class="button">
+				<i class="icon ion-plus"></i>
+				New Patient
+			</a>
+		</div>
+		<div ng-if="searching" class="bar bar-header item-input-inset">
+		  <label class="item-input-wrapper">
+		    <i class="icon ion-ios-search placeholder-icon"></i>
+		    <input type="search" ng-model="query.text" placeholder="Search">
+		  </label>
+		  <button ng-click="clearSearch()" class="button button-clear">
+		    Cancel
+		  </button>
+		</div>
+	</ion-header>
+	<div class="list">
+		<a ng-repeat="patient in records" class="item list-item" ui-sref="patients.single.summary({patient_id:patient._id})" >
+		{{patient.name}} ({{patient._id}})
 		</a>
 	</div>
-</div>
-<div class="directory-content list">
-	<a ng-repeat="patient in records" class="item list-item" ui-sref="patients.single.summary({patient_id:patient._id})" >
-	{{patient.name}} ({{patient._id}})
-	</a>
-</div>
+</ion-content>
