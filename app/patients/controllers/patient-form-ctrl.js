@@ -1,6 +1,6 @@
 'use strict';
 angular.module('patients')
-.controller('PatientFormCtrl', [ '$scope', '$state', 'Patients', 'form', function ($scope, $state, Patients, form) {
+.controller('PatientFormCtrl', [ '$scope', '$state', 'Patients', 'Fields', 'form', function ($scope, $state, Patients, Fields, form) {
   console.log('Hello from your Controller: PatientFormCtrl in module patients:. This is your controller:', this);
   if (!form) {
     console.log("Could not find form: demographics");
@@ -12,11 +12,6 @@ angular.module('patients')
 
   function save() {
     var patient = {};
-
-    if (!$scope.data._id) { // if form was not saved, just close
-      close();
-      return false;
-    }
 
     $scope.form.fields.forEach( function (field) {
       if (!field.persistant || !$scope.data[field.name]) {
