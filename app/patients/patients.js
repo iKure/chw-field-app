@@ -102,6 +102,16 @@ angular.module('patients', [
           templateUrl: 'patients/templates/menu-side.html',
           controller: 'PatientCtrl',
         }
+      },
+      resolve: {
+        patient: ['$stateParams', 'Patients', function ($stateParams, Patients) {
+          if (!$stateParams.patient_id) {
+            return false;
+          }
+          return Patients.get($stateParams.patient_id).catch(function (err) {
+            console.error(err);
+          })
+        }],
       }
     })
     .state('patients.single.summary', {

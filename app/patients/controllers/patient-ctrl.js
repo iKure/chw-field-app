@@ -1,13 +1,11 @@
 'use strict';
 angular.module('patients')
-.controller('PatientCtrl', [ '$scope', '$state', '$stateParams', 'Patients', function ($scope, $state, $stateParams, Patients) {
+.controller('PatientCtrl', [ '$scope', '$state', 'patient', function ($scope, $state, patient) {
   console.log('Hello from your Controller: ProfileCtrl in module patients:. This is your controller:', this);
 
-  if (!$stateParams.patient_id) {
+  if (!patient) {
     $state.go('patients.directory');
+    return false;
   }
-
-  Patients.get($stateParams.patient_id).then(function (doc) {
-    $scope.patient = doc;
-  });
+  $scope.patient = patient;
 }]);
