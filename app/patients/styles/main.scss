@@ -41,3 +41,18 @@
 		padding-right: 200px;
 	}
 }
+
+
+.patient-header{
+	height: 80px;
+}
+.patient-header .tabs{
+	background-color: transparent;
+	position: absolute;
+	top:30px;
+	background-image:none;
+}
+.patient-pane .patient-content{
+	position:absolute;
+	top:80px;
+}
