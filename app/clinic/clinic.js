@@ -14,7 +14,6 @@ angular.module('clinic', [
     .state('clinic', {
       url: '/clinic',
       templateUrl: 'clinic/templates/start.html',
-      controller: 'StartCtrl as start'
     });
   // TODO: do your thing
 });

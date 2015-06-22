@@ -4,6 +4,7 @@ angular.module('CHWApp', [
   // your modules
   'auth',
   'messages',
+  'clinic',
   'forms',
   'patients',
 ]);
