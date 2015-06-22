@@ -121,6 +121,16 @@ angular.module('patients', [
           templateUrl: 'patients/templates/summary.html',
           controller: 'PatientSummaryCtrl',
         }
+      },
+      resolve: {
+        records: ['Fields', 'patient', function (Fields, patient) {
+          if (!patient) {
+            return false;
+          };
+          return Fields.all({
+            patient_id: patient._id,
+          });
+        }]
       }
     })
     .state('patients.single.new', {
