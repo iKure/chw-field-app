@@ -46,11 +46,10 @@
 .patient-header{
 	height: 80px;
 }
-.patient-header .tabs{
-	background-color: transparent;
+.patient-header .nav{
 	position: absolute;
 	top:30px;
-	background-image:none;
+	height:35px;
 }
 .patient-pane .patient-content{
 	position:absolute;
