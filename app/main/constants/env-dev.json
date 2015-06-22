@@ -12,6 +12,21 @@
             "roles": []
         }
     },
+    "CLINICS": {
+        "FOO": [
+            {
+                "_id": "settings",
+                "name": "Foo Clinic"
+            },
+            {
+                "_id": "nickreid",
+                "type": "patient",
+                "name": "Nick Reid",
+                "age": "30",
+                "sex": "male"
+            }
+        ]
+    },
     "FORMS": [
         {
             "_id": "test",

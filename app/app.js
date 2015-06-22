@@ -7,4 +7,5 @@ angular.module('CHWApp', [
   'clinic',
   'forms',
   'patients',
+  'main',
 ]);
