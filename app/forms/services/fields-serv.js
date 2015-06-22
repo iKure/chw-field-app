@@ -1,28 +1,9 @@
 'use strict';
 angular.module('forms')
-.service('Fields', ['$rootScope', 'Forms', '$q', 'Config', 'Auth', function ($rootScope, Forms, $q, Config, Auth) {
+.service('Fields', ['$rootScope', 'Forms', '$q', 'Config', 'Auth', 'Clinic', function ($rootScope, Forms, $q, Config, Auth, Clinic) {
   console.log('Hello from your Service: Fields in module forms');
 
-  var dbName = 'fields';
-  if (Config.ENV.SaltDB) {
-    dbName = dbName + '-' + Config.ENV.SaltDB;
-  }
-
-  var localDB = new PouchDB(dbName);
-
-  if (Config.ENV.SERVER_URL) {
-    var remoteDB = new PouchDB(Config.ENV.SERVER_URL + dbName);
-    console.log("FormsService: Getting data from: " + Config.ENV.SERVER_URL + dbName);
-    var syncHandler = localDB.sync(remoteDB, {
-      live: true,
-      retry: true
-    }).on('change', function (replication) {
-      if (replication.direction == 'pull') {
-        $rootScope.$broadcast('fields.update');
-      }
-      $rootScope.$broadcast('synced');
-    });
-  }
+  var localDB = Clinic.localDB;
 
   var service = new Object;
   service.records = [];
@@ -54,6 +35,7 @@ angular.module('forms')
   function all(extra_matches) {
     var deferred = $q.defer();
     var matches = {
+      type: 'field',
       parent: undefined,
       archived: undefined
     };
@@ -63,8 +45,6 @@ angular.module('forms')
         matches[key] = extra_matches[key];
       });
     }
-
-    var results = [];
 
     var promise = localDB.query(function (doc, emit) {
       var passes = true;
@@ -83,6 +63,7 @@ angular.module('forms')
     });
 
     promise.then(function (docs) {
+      var results = [];
       docs.rows.forEach(function (row) {
         results.push(row.doc);
       });
@@ -98,6 +79,7 @@ angular.module('forms')
     field.date_modified = Date.now();
     field.user_modified = Auth.currentUser.name;
     if (!field._id) {
+      field.type = 'field';
       field.date_created = Date.now();
       field.user_created = Auth.currentUser.name;
       promise = localDB.post(field);
