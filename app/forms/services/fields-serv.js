@@ -3,8 +3,6 @@ angular.module('forms')
 .service('Fields', ['$rootScope', 'Forms', '$q', 'Config', 'Auth', 'Clinic', function ($rootScope, Forms, $q, Config, Auth, Clinic) {
   console.log('Hello from your Service: Fields in module forms');
 
-  var localDB = Clinic.localDB;
-
   var service = new Object;
   service.records = [];
 
@@ -21,72 +19,79 @@ angular.module('forms')
   }
 
   function get(id) {
-    var deferred = $q.defer();
-    localDB.get(id).then(function (doc) {
-      Forms.get(doc.form_id).then(function (form) {
-        doc.form = form;
-        deferred.resolve(doc);
+    console.log('FieldsService: Getting field: ' + id);
+    return Clinic.getClinic().then(function (db) {
+      var deferred = $q.defer();
+      db.get(id).then(function (doc) {
+        Forms.get(doc.form_id).then(function (form) {
+          doc.form = form;
+          deferred.resolve(doc);
+        });
       });
+      return deferred.promise;
     });
-    return deferred.promise;
   }
   service.get = get;
 
   function all(extra_matches) {
-    var deferred = $q.defer();
-    var matches = {
-      type: 'field',
-      parent: undefined,
-      archived: undefined
-    };
+    return Clinic.getClinic().then(function (db) {
+      var deferred = $q.defer();
+      var matches = {
+        type: 'field',
+        parent: undefined,
+        archived: undefined
+      };
 
-    if (extra_matches) {
-      Object.keys(extra_matches).forEach(function (key) {
-        matches[key] = extra_matches[key];
-      });
-    }
-
-    var promise = localDB.query(function (doc, emit) {
-      var passes = true;
-      Object.keys(matches).forEach(function (key) {
-        if (doc[key] != matches[key]) {
-          passes = false;
-        }
-      });
-      if (!passes) {
-        return false;
+      if (extra_matches) {
+        Object.keys(extra_matches).forEach(function (key) {
+          matches[key] = extra_matches[key];
+        });
       }
-      emit(doc.date_created);
-    }, {
-      include_docs: true,
-      descending: true,
-    });
 
-    promise.then(function (docs) {
-      var results = [];
-      docs.rows.forEach(function (row) {
-        results.push(row.doc);
+      var promise = db.query(function (doc, emit) {
+        var passes = true;
+        Object.keys(matches).forEach(function (key) {
+          if (doc[key] != matches[key]) {
+            passes = false;
+          }
+        });
+        if (!passes) {
+          return false;
+        }
+        emit(doc.date_created);
+      }, {
+        include_docs: true,
+        descending: true,
       });
-      deferred.resolve(results);
-    });
 
-    return deferred.promise;
+      promise.then(function (docs) {
+        var results = [];
+        docs.rows.forEach(function (row) {
+          results.push(row.doc);
+        });
+        deferred.resolve(results);
+      });
+
+      return deferred.promise;
+    });
   }
   service.all = all;
 
   function save (field) {
-    var promise = false;
-    field.date_modified = Date.now();
-    field.user_modified = Auth.currentUser.name;
-    if (!field._id) {
-      field.type = 'field';
-      field.date_created = Date.now();
-      field.user_created = Auth.currentUser.name;
-      promise = localDB.post(field);
-    } else {
-      promise = localDB.put(field);
-    }
-    return promise;
+    return Clinic.getClinic().then(function (db) {
+      var promise = false;
+      field.date_modified = Date.now();
+      field.user_modified = Auth.currentUser.name;
+      if (!field._id) {
+        field.type = 'field';
+        field.date_created = Date.now();
+        field.user_created = Auth.currentUser.name;
+        promise = db.post(field);
+      } else {
+        promise = db.put(field);
+      }
+      return promise;
+    });
   }
   service.save = save;
 
