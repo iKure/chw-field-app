@@ -25,6 +25,13 @@
                 "name": "Nick Reid",
                 "age": "30",
                 "sex": "male"
+            },
+            {
+                "_id": "foobar",
+                "type": "patient",
+                "name": "Foo Bar",
+                "age": "20",
+                "sex": "female"
             }
         ]
     },
