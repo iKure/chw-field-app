@@ -11,7 +11,8 @@ angular.module('auth', [
   var authMethods = {
     login: 'qify',
     logout: 'qify',
-    getUser: 'qify'
+    getUser: 'qify',
+    find: 'qify',
   };
   pouchDBProvider.methods = angular.extend({}, POUCHDB_METHODS, authMethods);
 })
