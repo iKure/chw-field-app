@@ -13,7 +13,6 @@ angular.module('main', [
   if (!Config.ENV.CLINICS) {
     return false;
   }
-  /*
   console.log('MAIN: Init clinics');
   function initClinicDB(id, docs) {
     var local = new pouchDB(id);
@@ -24,11 +23,33 @@ angular.module('main', [
     });
     console.log("MAIN: Put " + docs.length + " records into " + id);
   }
+  function cleanDB(id) {
+    console.log('MAIN: Cleaning db: ' + id);
+    var deferred = $q.defer();
+    var db = new pouchDB(id);
+    db.allDocs().then(function (results) {
+      console.log('MAIN: Got ' + results.rows.length + ' docs to clean');
+      var deleted = 0;
+      function moveOn () {
+        deleted += 1;
+        if (deleted == results.rows.length) {
+          deferred.resolve(true);
+        }
+      }
+      results.rows.forEach(function (res) {
+        db.remove(res.id, res.value.rev).then(function () {
+          console.log('MAIN: Deleted: ' + res.id);
+          moveOn();
+        }).catch(function () {
+          console.log('MAIN: Could not delete' + res.id + '(' + res.value.rev + ')');
+        });
+      });
+    });
+    return deferred.promise;
+  }
   Object.keys(Config.ENV.CLINICS).forEach(function (clinic_id) {
-    var local = new pouchDB(clinic_id);
-    local.destroy(function () {
+    cleanDB(clinic_id).then(function () {
       initClinicDB(clinic_id, Config.ENV.CLINICS[clinic_id]);
     });
   });
-  */
 }]);
