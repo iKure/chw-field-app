@@ -1,16 +1,18 @@
-<div class="card list">
-	<div class="item item-divider">{{data.form_label}} updated: {{data.date_modified | date}} by {{data.user_modified}}</div>
-	<a ng-if="data.archived" ng-click="archive()" class="item">Unarchive {{data.form_label}} to make changes</a>
-	<a ng-if="!data.archived" ng-click="archive()" class="item">Archive {{data.form_label}} when it is complete</a>
-</div>
-<div class="list list-inset">
-	<div class="item item-divider item-button-right">
-		Summary
+<ion-content>
+	<div class="card list card-meta">
+		<div class="item item-divider">{{data.form.label}}</div>
+		<div class="item">Created: {{data.date_created | date}} by {{data.user_created}}</div>
+		<div class="item">Updated: {{data.date_modified | timeAgo}} by {{data.user_modified}}</div>
 	</div>
-	<a ng-if="!data.archived" ui-sref="^.edit({field_id:data._id})" class="item item-icon-left">
-		<i class="icon ion-edit"></i>
-		Edit {{data.form_label}}
-	</a>
-	<field-summary form="form" data="data"></field-summary>
-</div>
-<message-thread read-only="data.archived" thread-id="data._id" messages="thread.messages"></message-thread>
+	<div class="list list-inset">
+		<div class="item item-divider item-button-right">
+			Summary
+		</div>
+		<a ng-if="!data.archived" ui-sref="^.edit({field_id:data._id})" class="item item-icon-left">
+			<i class="icon ion-edit"></i>
+			Edit {{data.form_label}}
+		</a>
+		<field-summary form="form" data="data"></field-summary>
+	</div>
+	<message-thread read-only="data.archived" thread-id="data._id" messages="thread.messages"></message-thread>
+</ion-content>
