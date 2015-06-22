@@ -80,7 +80,7 @@ angular.module('patients')
     }
     service.filter = filter;
 
-    function getID() {
+    function getID(db) {
       var deferred = $q.defer();
       console.log("PatientService: Attempting to get new ID");
       function makeID() {
@@ -99,7 +99,7 @@ angular.module('patients')
         var ID = id_salt + '-' + timeStr;
         console.log("PatientService: Trying ID = " + ID);
 
-        localDB.get(ID).then(function (id) {
+        db.get(ID).then(function (id) {
           makeID();
         }).catch(function () {
           deferred.resolve(ID);
@@ -111,30 +111,32 @@ angular.module('patients')
     service.getID = getID
 
     function save (patient) {
-      var deferred = $q.defer();
+      return Clinic.getClinic().then(function (db) {
+        var deferred = $q.defer();
 
-      function savePatient(patient) {
-        patient.date_modified = Date.now();
-        localDB.put(patient).then(function (response) {
-          console.log('PatientService: Saved patient: ' + response.id);
-          deferred.resolve(patient);
-        });
-      }
+        function savePatient(patient) {
+          patient.date_modified = Date.now();
+          db.put(patient).then(function (response) {
+            console.log('PatientService: Saved patient: ' + response.id);
+            deferred.resolve(patient);
+          });
+        }
 
-      if (!patient._id) {
-        console.log('PatientService: Saving new object');
-        getID().then(function (ID) {
-          console.log("PatientService: Made ID = " + ID);
-          patient._id = ID;
-          patient.date_created = Date.now();
+        if (!patient._id) {
+          console.log('PatientService: Saving new object');
+          getID(db).then(function (ID) {
+            console.log("PatientService: Made ID = " + ID);
+            patient._id = ID;
+            patient.date_created = Date.now();
+            savePatient(patient);
+          });
+        } else {
+          console.log('PatientsService: Saving existing object');
           savePatient(patient);
-        });
-      } else {
-        console.log('PatientsService: Saving existing object');
-        savePatient(patient);
-      }
+        }
 
-      return deferred.promise;
+        return deferred.promise;
+      });
     }
     service.save = save;
 
