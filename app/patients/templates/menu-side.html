@@ -1,16 +1,7 @@
 <div class="patient-pane">
 	<ion-header class="bar bar-header patient-header">
 		<div class="title">{{patient.name}} ({{patient._id}})</div>
-		<div class="tabs">
-			<a ui-sref="patients.single.summary({patient_id:patient._id})" ui-sref-active="active" class="tab-item">
-		    	<i class="icon ion-ios-person"></i>
-		    	Summary
-		  	</a>
-			<a ui-sref="patients.single.new({patient_id:patient._id})" ui-sref-active="active" class="tab-item">
-		    	<i class="icon ion-plus"></i>
-		    	New Case
-		  	</a>
-		</div>
+		<ion-nav-view name="personNav" class="nav"></ion-nav-view>
 	</ion-header>
 	<ion-nav-view class="patient-content" name="personContent"></ion-nav-view>
 </div>

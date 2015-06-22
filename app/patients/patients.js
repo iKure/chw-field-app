@@ -117,6 +117,9 @@ angular.module('patients', [
     .state('patients.single.summary', {
       url: '/summary',
       views:{
+        'personNav': {
+          templateUrl: 'patients/templates/nav-patient.html',
+        },
         'personContent': {
           templateUrl: 'patients/templates/summary.html',
           controller: 'PatientSummaryCtrl',
@@ -195,6 +198,10 @@ angular.module('patients', [
           templateUrl: 'forms/templates/field-summary-page.html',
           controller: 'FieldSummaryCtrl',
         },
+        'personNav': {
+          templateUrl: 'patients/templates/nav-field.html',
+          controller: 'FieldSummaryCtrl',
+        }
       },
       resolve: {
         data: ['$stateParams', 'Fields', function ($stateParams, Fields) {
