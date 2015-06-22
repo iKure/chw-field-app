@@ -9,7 +9,7 @@ angular.module('main', [
 .config(function ($ionicConfigProvider) {
   $ionicConfigProvider.views.maxCache(0);
 })
-.run(['Config', 'pouchDB', function (Config, pouchDB) {
+.run(['$q', 'Config', 'pouchDB', function ($q, Config, pouchDB) {
   if (!Config.ENV.CLINICS) {
     return false;
   }

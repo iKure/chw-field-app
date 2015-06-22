@@ -9,67 +9,74 @@ angular.module('patients')
   function ($rootScope, $q, Config, $cordovaDevice, Clinic) {
     console.log('Hello from your Service: Patients in module patients');
 
-    var localDB = Clinic.localDB;
-
     var service = {};
 
     function get (id) {
-      return localDB.get(id);
+      return Clinic.getClinic().then(function (db) {
+        return db.get(id);
+      });
     }
     service.get = get;
 
     function list (extra_matches) {
       console.log("PatientsService: Getting patients");
-      var deferred = $q.defer();
+      var promise = Clinic.getClinic().then(function (db) {
+        console.log("PatientsService: Got clinic & listing patients");
+        var deferred = $q.defer();
 
-      var promise = localDB.query(function (doc, emit) {
-        if (doc.type != 'patient') {
-          return false;
-        }
-        emit(doc.name);
-      }, {
-        include_docs: true,
-      });
-
-      promise.then(function (docs) {
-        var results = [];
-        docs.rows.forEach(function (row) {
-          results.push(row.doc);
+        var promise = db.query(function (doc, emit) {
+          if (doc.type != 'patient') {
+            return false;
+          }
+          emit(doc.name);
+        }, {
+          include_docs: true,
         });
-        deferred.resolve(results);
-      }).catch(function (err) {
-        console.error(err);
-      });
 
-      return deferred.promise;
+        promise.then(function (docs) {
+          var results = [];
+          docs.rows.forEach(function (row) {
+            results.push(row.doc);
+          });
+          console.log("PatientsService: Got " + results.length + " patients");
+          deferred.resolve(results);
+        }).catch(function (err) {
+          console.error(err);
+        });
+
+        return deferred.promise;
+      });
+      return promise;
     }
     service.list = list;
 
     function filter (str) {
       console.log("PatientsService: Filtering by " + str);
-      var deferred = $q.defer();
+      return Clinic.getClinic().then(function (db) {
+        var deferred = $q.defer();
 
-      localDB.query(function (doc, emit) {
-        if (doc.type != 'patient') {
-          return false;
-        }
-        if (str && str != "" && (!doc.name || doc.name.indexOf(str) == -1) && (!doc._id || doc._id.indexOf(str) == -1)) {
-          return false;
-        }
-        emit(doc.name);
-      }, {
-        include_docs: true,
-      }).then(function (docs) {
-        var results = [];
-        docs.rows.forEach(function (row) {
-          results.push(row.doc);
+        db.query(function (doc, emit) {
+          if (doc.type != 'patient') {
+            return false;
+          }
+          if (str && str != "" && (!doc.name || doc.name.indexOf(str) == -1) && (!doc._id || doc._id.indexOf(str) == -1)) {
+            return false;
+          }
+          emit(doc.name);
+        }, {
+          include_docs: true,
+        }).then(function (docs) {
+          var results = [];
+          docs.rows.forEach(function (row) {
+            results.push(row.doc);
+          });
+          deferred.resolve(results);
+        }).catch(function (err) {
+          console.error(err);
         });
-        deferred.resolve(results);
-      }).catch(function (err) {
-        console.error(err);
-      });
 
-      return deferred.promise;
+        return deferred.promise;
+      });
     }
     service.filter = filter;
 
