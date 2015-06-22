@@ -21,13 +21,7 @@ angular.module('patients')
         clearTimeout(timeout);
       }
       timeout = setTimeout(function () {
-        var query = {
-          name_or_id: $scope.query.text,
-        };
-        if (!query.name_or_id || query.name_or_id == "") {
-          delete query.name_or_id;
-        }
-        Patients.list(query).then(function (results) {
+        Patients.filter($scope.query.text).then(function (results) {
           $scope.records = results;
         });
       })

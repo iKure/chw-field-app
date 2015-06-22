@@ -23,9 +23,11 @@ angular.module('patients')
       var deferred = $q.defer();
 
       var promise = localDB.query(function (doc, emit) {
-        emit(doc.type);
+        if (doc.type != 'patient') {
+          return false;
+        }
+        emit(doc.name);
       }, {
-        key: 'patient',
         include_docs: true,
       });
 
@@ -42,6 +44,34 @@ angular.module('patients')
       return deferred.promise;
     }
     service.list = list;
+
+    function filter (str) {
+      console.log("PatientsService: Filtering by " + str);
+      var deferred = $q.defer();
+
+      localDB.query(function (doc, emit) {
+        if (doc.type != 'patient') {
+          return false;
+        }
+        if (str && str != "" && (!doc.name || doc.name.indexOf(str) == -1) && (!doc._id || doc._id.indexOf(str) == -1)) {
+          return false;
+        }
+        emit(doc.name);
+      }, {
+        include_docs: true,
+      }).then(function (docs) {
+        var results = [];
+        docs.rows.forEach(function (row) {
+          results.push(row.doc);
+        });
+        deferred.resolve(results);
+      }).catch(function (err) {
+        console.error(err);
+      });
+
+      return deferred.promise;
+    }
+    service.filter = filter;
 
     function getID() {
       var deferred = $q.defer();
