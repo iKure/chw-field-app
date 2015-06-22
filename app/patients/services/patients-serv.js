@@ -5,50 +5,13 @@ angular.module('patients')
   '$q',
   'Config',
   '$cordovaDevice',
-  function ($rootScope, $q, Config, $cordovaDevice) {
+  'Clinic',
+  function ($rootScope, $q, Config, $cordovaDevice, Clinic) {
     console.log('Hello from your Service: Patients in module patients');
 
-    var dbName = 'patients';
-    if (Config.ENV.SaltDB) {
-      dbName = dbName + '-' + Config.ENV.SaltDB;
-    }
-
-    var localDB = new PouchDB(dbName);
-    var remoteDB = false;
-    if (Config.ENV.SERVER_URL) {
-      var fullUrl = Config.ENV.SERVER_URL + dbName;
-      console.log("Patients connecting to: " + fullUrl);
-      remoteDB = new PouchDB(fullUrl);
-    }
+    var localDB = Clinic.localDB;
 
     var service = {};
-
-    var syncHandler = false;
-    function startReplication() {
-      if (!remoteDB) {
-        console.log("PatientsService: No remoteDB");
-        return false;
-      }
-      if (syncHandler) {
-        syncHandler.cancel();
-        console.log("PatientsService: Canceled syncHandler");
-      }
-      syncHandler = localDB.sync(remoteDB, {
-        live: true,
-        retry: true
-      }).on('change', function (replication) {
-        if (replication.direction == 'pull') {
-          $rootScope.$broadcast('patients.update');
-        }
-        $rootScope.$broadcast('synced');
-        console.log("PatientsService: Changes " + replication.direction);
-      }).on('error', function (err) {
-        console.log("PatientsService: Stopped — " + err.message);
-      });
-      console.log("PatientsService: Started syncHandler");
-    }
-    service.startReplication = startReplication;
-    startReplication();
 
     function get (id) {
       return localDB.get(id);
@@ -56,35 +19,14 @@ angular.module('patients')
     service.get = get;
 
     function list (extra_matches) {
+      console.log("PatientsService: Getting patients");
       var deferred = $q.defer();
 
-      var matches = {};
-      if (extra_matches) {
-        Object.keys(extra_matches).forEach(function (key) {
-          matches[key] = extra_matches[key];
-        });
-      }
-
       var promise = localDB.query(function (doc, emit) {
-        var passes = true;
-        Object.keys(matches).forEach(function (key) {
-          if (key == 'name_or_id' && matches[key]) {
-            var nameMatch = doc.name.toLowerCase().indexOf(matches[key].toLowerCase()) > -1;
-            var idMatch = doc._id.toLowerCase().indexOf(matches[key].toLowerCase()) > -1
-            if (!nameMatch && !idMatch) {
-              passes = false;
-            }
-          } else if (doc[key] != matches[key]) {
-            passes = false;
-          }
-        });
-        if (!passes) {
-          return false;
-        }
-        emit(doc.name);
+        emit(doc.type);
       }, {
+        key: 'patient',
         include_docs: true,
-        descending: true,
       });
 
       promise.then(function (docs) {
@@ -93,6 +35,8 @@ angular.module('patients')
           results.push(row.doc);
         });
         deferred.resolve(results);
+      }).catch(function (err) {
+        console.error(err);
       });
 
       return deferred.promise;

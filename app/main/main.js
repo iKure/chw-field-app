@@ -13,17 +13,22 @@ angular.module('main', [
   if (!Config.ENV.CLINICS) {
     return false;
   }
+  /*
   console.log('MAIN: Init clinics');
   function initClinicDB(id, docs) {
     var local = new pouchDB(id);
     docs.forEach(function (doc) {
-      local.put(doc);
+      local.put(doc).then(function (result) {
+        console.log('MAIN: Put ' + result.id);
+      });
     });
     console.log("MAIN: Put " + docs.length + " records into " + id);
   }
   Object.keys(Config.ENV.CLINICS).forEach(function (clinic_id) {
     var local = new pouchDB(clinic_id);
-    local.destroy();
-    initClinicDB(clinic_id, Config.ENV.CLINICS[clinic_id]);
+    local.destroy(function () {
+      initClinicDB(clinic_id, Config.ENV.CLINICS[clinic_id]);
+    });
   });
+  */
 }]);
