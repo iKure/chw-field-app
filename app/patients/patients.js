@@ -148,6 +148,10 @@ angular.module('patients', [
     .state('patients.single.edit', {
       url: '/edit?type&field_id',
       views: {
+        'personNav': {
+          templateUrl: 'patients/templates/nav-field.html',
+          controller: 'FieldSummaryCtrl',
+        },
         'personContent': {
           template: '<ion-content><form-edit initial-data="initialData" data="data" form="form" on-close="close()"></form-edit></ion-content>',
           controller: ['$scope', '$state', '$stateParams', '$ionicPopup', 'data', 'form', function ($scope, $state, $stateParams, $ionicPopup, data, form) {
