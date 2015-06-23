@@ -9,6 +9,7 @@
 
 # ionic fonts
 /app/main/assets/fonts/ionicons.*
+/app/main/assets/fonts/glyphicons*
 
 # cordova
 /platforms/
