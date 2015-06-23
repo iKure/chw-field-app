@@ -31,6 +31,7 @@ angular.module('clinic')
 
   var syncHandler = false;
   function sync(clinic_id) {
+    var deferred = $q.defer();
     if (Config.ENV.SERVER_URL) {
       var full_url = Config.ENV.SERVER_URL + clinic_id;
       console.log('ClinicService: Connecting to ' + full_url);
@@ -40,7 +41,8 @@ angular.module('clinic')
     }
     if (!service.remoteDB) {
       console.log('ClinicService: No remoteDB');
-      return false;
+      deferred.reject('No remote');
+      return deferred.promise;
     }
     if (syncHandler) {
       syncHandler.cancel();
@@ -48,8 +50,9 @@ angular.module('clinic')
     console.log('ClinicService: Logged into remote');
     service.remoteDB.info().then(function () {
       console.log('ClinicService: Syncing started....');
+      $rootScope.$broadcast('clinic.sync.start');
       syncHandler = service.localDB.sync(service.remoteDB, {
-        //live: true,
+        live: true,
         retry: true,
       }).on('change', function (info) {
         // handle change
@@ -59,21 +62,20 @@ angular.module('clinic')
         }
       }).on('paused', function () {
         // replication paused (e.g. user went offline)
+        $rootScope.$broadcast('clinic.sync.stop');
         console.log('ClinicService: Sync paused');
       }).on('active', function () {
         // replicate resumed (e.g. user went back online)
         console.log('ClinicService: Sync active');
+        $rootScope.$broadcast('clinic.sync.start');
       }).on('denied', function (info) {
         // a document failed to replicate, e.g. due to permissions
-      }).on('complete', function (info) {
-        // handle complete
-      }).on('error', function (err) {
-        // handle error
       });
     }).catch(function (err) {
       console.log('ClinicService: ' + err.message);
+      deferred.reject(err.message);
     });
-    return true;
+    return deferred.promise;
   }
   service.sync = sync;
 

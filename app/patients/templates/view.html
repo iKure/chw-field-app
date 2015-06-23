@@ -9,7 +9,8 @@
 	    Messages
 	  </a>
 	  <a sync-handler class="tab-item">
-	    <i class="icon ion-loop"></i>
+	    <i ng-if="!syncActive" class="icon ion-loop"></i>
+	    <i ng-if="syncActive" class="icon ion-load-c"></i>
 	    Sync
 	  </a>
 	  <a ui-sref="logout" class="tab-item">
