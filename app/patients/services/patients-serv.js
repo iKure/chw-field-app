@@ -128,6 +128,7 @@ angular.module('patients')
             console.log("PatientService: Made ID = " + ID);
             patient._id = ID;
             patient.date_created = Date.now();
+            patient.type = 'patient';
             savePatient(patient);
           });
         } else {
