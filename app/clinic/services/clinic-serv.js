@@ -34,7 +34,9 @@ angular.module('clinic')
     if (Config.ENV.SERVER_URL) {
       var full_url = Config.ENV.SERVER_URL + clinic_id;
       console.log('ClinicService: Connecting to ' + full_url);
-      service.remoteDB = new pouchDB(full_url);
+      service.remoteDB = new pouchDB(full_url, {
+        skipSetup: true,
+      });
     }
     if (!service.remoteDB) {
       console.log('ClinicService: No remoteDB');
@@ -43,9 +45,11 @@ angular.module('clinic')
     if (syncHandler) {
       syncHandler.cancel();
     }
+    console.log('ClinicService: Logged into remote');
     service.remoteDB.info().then(function () {
+      console.log('ClinicService: Syncing started....');
       syncHandler = service.localDB.sync(service.remoteDB, {
-        live: true,
+        //live: true,
         retry: true,
       }).on('change', function (info) {
         // handle change
@@ -63,7 +67,8 @@ angular.module('clinic')
       }).on('error', function (err) {
         // handle error
       });
-      console.log('ClinicService: Syncing started....');
+    }).catch(function (err) {
+      console.log('ClinicService: ' + err.message);
     });
     return true;
   }
