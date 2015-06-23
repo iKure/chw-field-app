@@ -10,10 +10,23 @@ angular.module('messages')
 
   var localDB = new pouchDB(dbName);
   var remoteDB = false;
-  if (Config.ENV.SERVER_URL) {
-    var fullUrl = Config.ENV.SERVER_URL + dbName;
-    console.log("MessagesService: connecting to " + fullUrl);
-    remoteDB = new pouchDB(fullUrl);
+
+  var service = {};
+
+  var syncHandler = false;
+  function sync () {
+    if (Config.ENV.SERVER_URL) {
+      var fullUrl = Config.ENV.SERVER_URL + dbName;
+      console.log("MessagesService: connecting to " + fullUrl);
+      remoteDB = new pouchDB(fullUrl);
+    }
+    if (!remoteDB) {
+      console.log('MessagesService: No remoteDB');
+      return false;
+    }
+    if (syncHandler) {
+      syncHandler.cancel();
+    }
     var syncHandler = localDB.sync(remoteDB, {
       live: true,
       retry: true
@@ -21,11 +34,14 @@ angular.module('messages')
       if (replication.direction == 'pull') {
         $rootScope.$broadcast('messages.update');
       }
-      $rootScope.$broadcast('synced');
+    }).on('paused', function () {
+      $rootScope.$broadcast('messages.sync.stop');
+    }).on('active', function () {
+      $rootScope.$broadcast('messages.sync.start');
     });
   }
-
-  var service = {};
+  service.sync = sync;
+  service.sync();
 
   function groupByThread (results) {
     var threadGroups = {}
