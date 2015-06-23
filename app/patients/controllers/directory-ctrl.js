@@ -4,7 +4,7 @@ angular.module('patients')
   console.log('Hello from your Controller: PatientDirectoryCtrl in module patients:. This is your controller:', this);
   $scope.records = records;
 
-  $scope.$on('patients.update', function () {
+  $scope.$on('clinic.update', function () {
     Patients.list().then(function (results) {
       $scope.records = results;
     });

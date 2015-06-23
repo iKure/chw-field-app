@@ -8,9 +8,9 @@ angular.module('patients')
     link: function postLink (scope, element, attrs) {
       console.log("Yo! SyncHandler Directive");
     },
-    controller:['$scope', 'Patients', function ($scope, Patients) {
+    controller:['$scope', 'Clinic', function ($scope, Clinic) {
       $scope.sync = function () {
-        Patients.startReplication();
+        Clinic.sync('foo');
       }
     }],
   };

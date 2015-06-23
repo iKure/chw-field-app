@@ -54,6 +54,9 @@ angular.module('clinic')
       }).on('change', function (info) {
         // handle change
         console.log('ClinicService: Sync handeling changes');
+        if (info.direction == 'pull') {
+          $rootScope.$broadcast('clinic.update');
+        }
       }).on('paused', function () {
         // replication paused (e.g. user went offline)
         console.log('ClinicService: Sync paused');
