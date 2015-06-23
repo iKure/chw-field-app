@@ -32,9 +32,34 @@
                 "name": "Foo Bar",
                 "age": "20",
                 "sex": "female"
+            },
+            {
+                "_id": "field-1",
+                "type": "field",
+                "patient_id": "foobar",
+                "form_id": "test",
+                "data": {
+                    "age": 12,
+                    "ice_cream": "notchocolate"
+                }
             }
         ]
     },
+    "MESSAGES": [
+        {
+            "_id": "participant-1",
+            "thread_id": "field-1",
+            "type": "participant",
+            "user": "test"
+        },
+        {
+            "_id": "message-1",
+            "thread_id": "field-1",
+            "type": "message",
+            "date_created": 100,
+            "body": "Test was added to this conversation"
+        }
+    ],
     "FORMS": [
         {
             "_id": "test",
