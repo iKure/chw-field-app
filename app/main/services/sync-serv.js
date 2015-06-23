@@ -35,11 +35,18 @@ angular.module('main')
     updateState('messages', false);
   });
 
+  $rootScope.$on('forms.sync.start', function () {
+    updateState('forms', true);
+  });
+  $rootScope.$on('forms.sync.stop', function () {
+    updateState('forms', false);
+  });
+
   service.sync = function () {
     console.log('SyncService: Try sync');
     Clinic.sync('foo');
     Messages.sync();
-    //Forms.replicate
+    Forms.sync();
   }
 
   return service;
