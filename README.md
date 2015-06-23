@@ -9,31 +9,31 @@ Currently this application is designed and tested for Android devices, but iOS (
 ## How to install, compile, & customize
 To install this software, clone this repository:
 
-'''
+```
 git clone https://github.com/iKure/chw-field-app.git
-'''
+```
 
 Then install npm (if you don't currently have it) and install the following:
 
-'''
+```
 npm install --global yo
 npm install --global gulp
 npm install --global bower
-'''
+```
 
 Finally compile and run the project
 
-'''
+```
 npm install
 bower install
 gulp --cordova 'prepare'
-'''
+```
 
 Then you can emulate the app by running:
 
-'''
+```
 gulp watch --env=dev
-'''
+```
 
 From there I recommend you take a look at the docs before customizing the software to your hearts content.
 
