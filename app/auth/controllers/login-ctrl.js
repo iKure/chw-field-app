@@ -17,8 +17,8 @@ angular.module('auth')
       hideOnStateChange: true,
     });
     var promise = Auth.login($scope.username, $scope.password)
-    promise.then(function () {
-      console.log("LoginCtrl: Successful login");
+    promise.then(function (user) {
+      console.log("LoginCtrl: Successful login as " + user.name);
       $state.go('patients.directory'); // Should put this in config
     }).catch(function (err) {
       console.log("LoginCtrl: Bad Login or something");

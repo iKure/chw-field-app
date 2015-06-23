@@ -17,6 +17,7 @@ angular.module('auth')
   service.currentUser = false;
 
   function login (username, password) {
+    var deferred = $q.defer();
     console.log("AuthServ: Logging in to :" + Config.ENV.SERVER_URL);
     console.log("AuthServ: username=" + username + ' & password=' + password);
     var ajaxOpts = {
@@ -30,10 +31,14 @@ angular.module('auth')
     var promise = db.login(username, password, ajaxOpts);
     promise.then(function (response) {
       console.log('AuthServ: Got successful login for ' + response.name);
-      service.currentUser = response;
+      db.getUser(response.name).then(function (user) {
+        console.log('AuthServ: Got user data for ' + user);
+        service.currentUser = user;
+        deferred.resolve(user);
+      });
     });
 
-    return promise;
+    return deferred.promise;
   }
   service.login = login;
 
