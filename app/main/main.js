@@ -10,11 +10,7 @@ angular.module('main', [
   $ionicConfigProvider.views.maxCache(0);
 })
 .run(['$q', 'Config', 'pouchDB', function ($q, Config, pouchDB) {
-  if (!Config.ENV.CLINICS) {
-    return false;
-  }
-  console.log('MAIN: Init clinics');
-  function initClinicDB(id, docs) {
+  function initDB(id, docs) {
     var local = new pouchDB(id);
     docs.forEach(function (doc) {
       local.put(doc).then(function (result) {
@@ -47,9 +43,19 @@ angular.module('main', [
     });
     return deferred.promise;
   }
-  Object.keys(Config.ENV.CLINICS).forEach(function (clinic_id) {
-    cleanDB(clinic_id).then(function () {
-      initClinicDB(clinic_id, Config.ENV.CLINICS[clinic_id]);
+  if (Config.ENV.CLINICS) {
+    console.log('MAIN: Init clinics');
+    Object.keys(Config.ENV.CLINICS).forEach(function (clinic_id) {
+      cleanDB(clinic_id).then(function () {
+        initDB(clinic_id, Config.ENV.CLINICS[clinic_id]);
+      });
     });
-  });
+  }
+
+  if (Config.ENV.FORMS) {
+    console.log('MAIN: Init forms');
+    cleanDB('forms').then(function () {
+      initDB('forms', Config.ENV.FORMS);
+    });
+  }
 }]);
