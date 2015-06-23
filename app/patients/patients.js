@@ -34,32 +34,8 @@ angular.module('patients', [
         }
       },
       resolve: {
-        threads: ['$q', 'Messages', 'Fields', 'Patients', function ($q, Messages, Fields, Patients) {
-          var deferred = $q.defer();
-          Messages.list().then(function (results) {
-            var new_results = []
-            function sendResults (obj) {
-              new_results.push(obj);
-              if (new_results.length == results.length) {
-                deferred.resolve(new_results);
-              }
-            }
-            results.forEach(function (thread) {
-              if (!thread._id) {
-                sendResults(thread);
-                return false;
-              }
-              Fields.get(thread._id).then(function (field) {
-                return Patients.get(field.patient_id).then(function (patient) {
-                  thread.patient = patient;
-                  sendResults(thread);
-                });
-              }).catch (function (err) {
-                sendResults(thread);
-              });
-            });
-          });
-          return deferred.promise;
+        threads: ['Messages', function (Messages) {
+          return Messages.list();
         }]
       }
     })
