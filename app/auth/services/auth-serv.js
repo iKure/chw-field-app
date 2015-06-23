@@ -54,13 +54,34 @@ angular.module('auth')
   }
   service.logout = logout;
 
+  function getCurrentUser () {
+    console.log('AuthServ: Get current user');
+    var deferred = $q.defer();
+    if (service.currentUser) {
+      console.log('AuthServ: current user is set, return');
+      deferred.resolve(service.currentUser);
+    } else {
+      service.getSession().then(function (user) {
+        console.log('AuthServ: Got current user from session');
+        deferred.resolve(user);
+      }).catch(function (err) {
+        console.log('AuthServ: No current user');
+        deferred.reject(false);
+      });
+    }
+    return deferred.promise;
+  }
+  service.getCurrentUser = getCurrentUser;
+
   function getSession () {
+    console.log('AuthServ: Getting session');
     var deferred = $q.defer();
     if (Config.ENV.SESSION) {
       service.currentUser = Config.ENV.SESSION.userCtx;
       deferred.resolve(Config.ENV.SESSION);
-    } else if (!service.currentUser) {
-      deferred.reject(false);
+    } else if (service.currentUser) {
+      console.log('AuthServ: There is a current user, return that');
+      deferred.resolve(service.currentUser);
     } else if (Config.ENV.SERVER_URL) {
       console.log('AuthServ: Checking SERVER_URL');
       db.getSession(function (err, response) {
@@ -71,9 +92,11 @@ angular.module('auth')
           console.log("AuthServ: User not logged in!");
           deferred.reject(false);
         } else {
-          service.currentUser = response.userCtx;
-          console.log("AuthServ: Got session user " + service.currentUser.name);
-          deferred.resolve(response);
+          db.getUser(response.userCtx.name).then(function (user) {
+            console.log("AuthServ: Got session user " + user.name);
+            service.currentUser = user;
+            deferred.resolve(user);
+          });
         }
       });
     } else {
