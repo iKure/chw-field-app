@@ -1,9 +1,9 @@
 <div class="list">
 	<div class="item item-divider">
-		{{field.label}} {{data}}
+		{{field.label}}
 	</div>
 	 <label ng-repeat="choice in field.choices" class="item item-radio">
-          <input type="radio" ng-model="data" value="{{choice.value}}" name="{{field._ref}}" />
+          <input type="radio" ng-model="$parent.data" value="{{choice.value}}" name="{{field._ref}}" />
           <div class="item-content">{{choice.label}}</div>
           <i class="radio-icon ion-checkmark"></i>
       </label>
