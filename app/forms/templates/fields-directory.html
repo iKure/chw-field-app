@@ -1,9 +1,12 @@
-
-<div class="list">
-  <div class="item item-divider">
-    All Answered Forms
-  </div>
-  <a ng-repeat="field in records" ui-sref="forms.field({field_id:field._id})" class="item">
-    <ng-include src="'forms/templates/form-item-view.html'" ></ng-include>
-  </a>
-</div>
+<ion-view>
+	<ion-content>
+		<div class="list">
+		  <div class="item item-divider">
+		    All Answered Forms
+		  </div>
+		  <a ng-repeat="field in records" ui-sref="forms.field({field_id:field._id})" class="item">
+		    <ng-include src="'forms/templates/form-item-view.html'" ></ng-include>
+		  </a>
+		</div>
+	</ion-content>
+</ion-view>

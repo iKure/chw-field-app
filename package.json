@@ -46,6 +46,7 @@
     "android"
   ],
   "dependencies": {
-    "couchapp": "git://github.com/mikeal/node.couchapp.js"
+    "couchapp": "git://github.com/mikeal/node.couchapp.js",
+    "enketo-transformer": "^1.0.9"
   }
 }

@@ -1,14 +1,12 @@
 <ion-view view-title="Forms">
   <ion-header-bar class="bar-dark">
     <h1 class="title">Forms Module</h1>
-    <button class="button button-icon" ui-sref="forms.list" ui-sref-active="active">
+    <button class="button button-icon" ui-sref="fields.list" ui-sref-active="active">
     	<i class="icon ion-navicon"></i>
     </button>
-    <button class="button button-icon" ui-sref="forms.create" ui-sref-active="active">
+    <button class="button button-icon" ui-sref="fields.create" ui-sref-active="active">
     	<i class="icon ion-compose"></i>
     </button>
   </ion-header-bar>
-  <ion-content class="has-header">
-    <ui-view name="formsContent"></ui-view>
-  </ion-content>
+  <ion-nav-view name="fieldsContent"></ion-nav-view>
 </ion-view>

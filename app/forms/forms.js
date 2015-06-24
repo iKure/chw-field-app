@@ -13,43 +13,43 @@ angular.module('forms', [
   console.log('Allo! Allo from your module: ' + 'forms');
 
   $stateProvider
-    .state('forms', {
-      url: '/forms',
+    .state('fields', {
+      url: '/fields',
       abstract: true,
       templateUrl: 'forms/templates/view.html',
     })
-    .state('forms.list', {
+    .state('fields.list', {
       url: '/list',
       views:{
-        'formsContent':{
+        'fieldsContent':{
           templateUrl: 'forms/templates/fields-directory.html',
           controller: 'FieldsDirectoryCtrl',
         }
       }
     })
-    .state('forms.create', {
+    .state('fields.create', {
       url: '/new',
       views: {
-        'formsContent': {
+        'fieldsContent': {
           templateUrl: 'forms/templates/forms-directory.html',
           controller: 'FormsDirectoryCtrl',
         }
       }
     })
-    .state('forms.field', {
+    .state('fields.field', {
       url: '/field/:field_id',
       views: {
-        'formsContent': {
+        'fieldsContent': {
           templateUrl: 'forms/templates/field-summary.html',
           controller: 'FieldSummaryCtrl'
         }
       }
     })
-    .state('forms.edit', {
+    .state('fields.edit', {
       url: '/edit?type&field_id',
       views:{
-        'formsContent': {
-          template: '<form-edit field-id="field_id" form-type="type" data="data" on-close="close()"></form-edit>',
+        'fieldsContent': {
+          templateUrl: 'forms/templates/field-edit-page.html',
           controller: ['$scope', '$state', '$stateParams', function ($scope, $state, $stateParams) {
             $scope.field_id = $stateParams.field_id;
             $scope.type = $stateParams.type;
