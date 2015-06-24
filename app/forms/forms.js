@@ -45,8 +45,11 @@ angular.module('forms', [
         }
       },
       resolve: {
-        field: ['$stateParams', 'Fields', function ($stateParams, Fields) {
-          return Fields.get($stateParams.field_id);
+        field: ['$state', '$stateParams', 'Fields', function ($state, $stateParams, Fields) {
+          return Fields.get($stateParams.field_id).catch(function (err) {
+            $state.go('fields.list');
+            return false;
+          });
         }]
       }
     })

@@ -1,5 +1,6 @@
 <ion-view>
 	<ion-content>
-		<field-summary data="field.data" form="field.form"></field-summary>
+		<a ui-sref="fields.edit({field_id:field._id})" class="button button-block"></a>
+		<field-summary data="field.data" inputs="field.form.inputs"></field-summary>
 	</ion-content>
 </ion-view>

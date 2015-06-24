@@ -9,18 +9,8 @@ angular.module('forms')
     },
     scope: {
       data: '=data',
-      form: '=?form',
-      type: '=?type',
+      inputs: '=?inputs',
     },
-    controller: ['$scope', 'Forms', function ($scope, Forms) {
-      $scope.$watch('type', function () {
-        if ($scope.type) {
-          Forms.get($scope.type).then(function (doc) {
-            $scope.form = doc;
-          });
-        }
-      });
-    }],
     compile: function (element) {
       return RecursionHelper.compile(element, function (scope, iElement, iAttrs, controller, transcludeFn) {
         // Define your normal link function here.
