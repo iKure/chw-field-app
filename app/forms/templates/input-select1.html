@@ -3,7 +3,7 @@
 		{{field.label}}
 	</div>
 	 <label ng-repeat="choice in field.choices" class="item item-radio">
-          <input type="radio" ng-model="data.value" value="{{choice.value}}" name="{{field.name}}" />
+          <input type="radio" ng-model="data" value="{{choice.value}}" name="{{field._ref}}" />
           <div class="item-content">{{choice.label}}</div>
           <i class="radio-icon ion-checkmark"></i>
       </label>
