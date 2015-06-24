@@ -1,8 +1,9 @@
 <div class="message-thread">
-<div class="list list-messages">
-  <div class="item item-message" ng-repeat="message in messages">
-    <p class="body-message">{{message.body}}</p>
-    <div class="meta meta-message">{{message.date_created | date}} by {{message.sender}}</div>
-  </div>
+	<div class="list list-messages">
+	  <div class="item item-message" ng-repeat="message in messages">
+	    <p class="body-message">{{message.body}}</p>
+	    <div class="meta meta-message">{{message.date_created | date}} by {{message.sender}}</div>
+	  </div>
+	</div>
+	<message-create ng-if="!read_only" thread-id="thread_id" on-create="addMessage(message)"></message-create>
 </div>
-<message-create ng-if="!read_only" thread-id="thread_id" on-create="addMessage(message)"></message-create>

@@ -1,6 +1,6 @@
 'use strict';
 angular.module('messages')
-.controller('MessageThreadCtrl', ['$scope', 'Messages', function ($scope, Messages) {
+.controller('MessageThreadCtrl', ['$scope', '$ionicScrollDelegate', 'Messages', function ($scope, $ionicScrollDelegate, Messages) {
 
   console.log('Hello from your Controller: MessageThreadCtrl in module messages:. This is your controller:', this);
 
@@ -13,6 +13,7 @@ angular.module('messages')
     Messages.get($scope.thread_id).then(function (thread) {
       $scope.thread = thread;
       $scope.messages = thread.messages;
+      $ionicScrollDelegate.resize();
     });
   }
 
