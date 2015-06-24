@@ -44,7 +44,30 @@
 
 
 .patient-header{
+	overflow:hidden;
 	height: 80px;
+	padding: 0px;
+	.pane{
+		height:79px; // this casues transition problems...
+	}
+	.title{
+		position:static;
+		line-height:1.5em;
+		padding: 5px 0px;
+		height: auto;
+	}
+	.subtitle{
+		font-weight:normal;
+	}
+	.button-back{
+		position:absolute;
+		top:15px;
+		left: 0px;
+		height: 100%;
+		span{
+			display:none;
+		}
+	}
 }
 .patient-header .nav{
 	position: absolute;

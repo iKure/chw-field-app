@@ -45,6 +45,10 @@ textarea, input[type="text"], input[type="password"], input[type="datetime"], in
 	top: 0px;
 }
 
+.has-header{
+	top: 49px;
+}
+
 @media (min-width:600px){
 	.content-sidebar{
 		width: 130px;
