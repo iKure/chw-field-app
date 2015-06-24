@@ -8,7 +8,7 @@ angular.module('messages')
       console.log('Yo! Message Thread Directive');
     },
     scope: {
-      messages: '=messages',
+      messages: '=?messages',
       thread_id: '=threadId',
       read_only: '=readOnly',
     },
