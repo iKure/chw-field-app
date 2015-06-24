@@ -125,7 +125,7 @@ angular.module('patients', [
       url: '/edit?type&field_id',
       views: {
         'personNav': {
-          templateUrl: 'patients/templates/nav-field.html',
+          templateUrl: 'patients/templates/nav-field-edit.html',
           controller: 'FieldSummaryCtrl',
         },
         'personContent': {
