@@ -18,7 +18,7 @@ angular.module('clinic')
   function setClinic(clinic_id) {
     var deferred = $q.defer();
     console.log('ClinicService: Setting clinic to ' + clinic_id);
-    service.localDB = new pouchDB(clinic_id);
+    service.localDB = pouchDB(clinic_id);
     service.localDB.info().then(function () {
       console.log('ClinicService: Set up localDB');
       // attempt to set up syncing
@@ -35,7 +35,7 @@ angular.module('clinic')
     if (Config.ENV.SERVER_URL) {
       var full_url = Config.ENV.SERVER_URL + clinic_id;
       console.log('ClinicService: Connecting to ' + full_url);
-      service.remoteDB = new pouchDB(full_url, {
+      service.remoteDB = pouchDB(full_url, {
         skipSetup: true,
       });
     }
