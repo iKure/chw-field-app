@@ -1,6 +1,6 @@
 'use strict';
 angular.module('forms')
-.directive('formEdit', function () {
+.directive('fieldEdit', function () {
   return {
     templateUrl: 'forms/templates/form-fields-list.html',
     restrict: 'EA',
@@ -10,9 +10,9 @@ angular.module('forms')
     scope: {
       form: '=?form',
       initialData: '=?initialData',
-      data: '=?data',
+      field: '=?field',
       close: '&onClose',
     },
-    controller: 'FormCtrl',
+    controller: 'FieldEditCtrl',
   };
 });

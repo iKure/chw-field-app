@@ -1,6 +1,6 @@
 'use strict';
 angular.module('forms')
-.controller('FormCtrl', ['$scope', 'Fields', function ($scope, Fields) {
+.controller('FieldEditCtrl', ['$scope', 'Fields', function ($scope, Fields) {
 
   console.log('Hello from your Controller: FormCtrl in module forms:. This is your controller:', this);
 

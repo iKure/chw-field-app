@@ -50,10 +50,13 @@ angular.module('forms', [
       views:{
         'fieldsContent': {
           templateUrl: 'forms/templates/field-edit-page.html',
-          controller: ['$scope', '$state', '$stateParams', function ($scope, $state, $stateParams) {
-            $scope.field_id = $stateParams.field_id;
-            $scope.type = $stateParams.type;
-            $scope.data = {};
+          controller: ['$scope', '$state', 'form', 'field', function ($scope, $state, form, field) {
+            if (!form && !field) {
+              $state.go('forms.list');
+              return false;
+            }
+            $scope.form = form;
+            $scope.field = field;
             $scope.close = function () {
               if ($scope.data._id) {
                 $state.go("forms.field", {field_id: $scope.data._id});
@@ -63,6 +66,20 @@ angular.module('forms', [
             }
           }],
         }
+      },
+      resolve: {
+        form: ['$stateParams', 'Forms', function ($stateParams, Forms) {
+          if (!$stateParams.type) {
+            return false;
+          }
+          return Forms.get($stateParams.type);
+        }],
+        field: ['$stateParams', 'Fields', function ($stateParams, Fields) {
+          if (!$stateParams.field_id) {
+            return false;
+          }
+          return Fields.get($stateParams.field_id);
+        }],
       }
     });
 });
