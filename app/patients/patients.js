@@ -129,7 +129,7 @@ angular.module('patients', [
           controller: 'FieldSummaryCtrl',
         },
         'personContent': {
-          template: '<ion-content><form-edit initial-data="initialData" data="data" form="form" on-close="close()"></form-edit></ion-content>',
+          template: '<ion-content><form-edit initial-data="initialData" data="data.data" form="form" on-close="close()"></form-edit></ion-content>',
           controller: ['$scope', '$state', '$stateParams', '$ionicPopup', 'data', 'form', function ($scope, $state, $stateParams, $ionicPopup, data, form) {
             $scope.data = data;
             $scope.form = form;
