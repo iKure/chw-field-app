@@ -1,20 +1,20 @@
 'use strict';
 angular.module('forms')
-.controller('FieldSummaryCtrl', ['$scope', '$stateParams', 'Fields', 'Forms', 'data', function ($scope, $stateParams, Fields, Forms, data) {
+.controller('FieldSummaryCtrl', ['$scope', '$stateParams', 'Fields', 'Forms', 'field', function ($scope, $stateParams, Fields, Forms, field) {
 
   console.log('Hello from your Controller: FieldSummaryCtrl in module forms:. This is your controller:', this);
 
-  $scope.data = data;
-  $scope.form = data.form;
+  $scope.field = field;
+  $scope.form = field.form;
 
   function archive () {
-    console.log("FieldSummaryCtrl: ARCHIVE! " + $scope.data._id);
+    console.log("FieldSummaryCtrl: ARCHIVE! " + $scope.field._id);
     // show confirm
     // show loading
-    Fields.toggleArchive($scope.data._id).then(function (response) {
+    Fields.toggleArchive($scope.field._id).then(function (response) {
       Fields.get(response.id).then(function (doc) {
-        $scope.data = doc;
-        console.log("FieldSummaryCtrl: Finished archiving field " + $scope.data._id);
+        $scope.field = doc;
+        console.log("FieldSummaryCtrl: Finished archiving field " + $scope.field._id);
         // hide loading
       });
     });
@@ -23,7 +23,7 @@ angular.module('forms')
 
   $scope.$on('fields.update', function () {
     Fields.get($scope.data._id).then(function (doc) {
-      $scope.data = doc;
+      $scope.field = doc;
       $scope.form = doc.form;
     });
   });

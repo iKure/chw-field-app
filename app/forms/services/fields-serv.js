@@ -25,6 +25,7 @@ angular.module('forms')
       db.get(id).then(function (doc) {
         Forms.get(doc.form_id).then(function (form) {
           doc.form = form;
+          console.log("FieldsService: Returning field: " + id);
           deferred.resolve(doc);
         });
       });

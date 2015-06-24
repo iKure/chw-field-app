@@ -18,6 +18,7 @@ angular.module('forms')
     if (!$scope.field) {
       $scope.field = {};
     }
+    $scope.field.form_id = $scope.form._id;
     $scope.field.data = $scope.data;
     Fields.save($scope.field).then(function (response) {
       $scope.field._id = response.id;

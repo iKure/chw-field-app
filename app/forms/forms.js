@@ -40,9 +40,14 @@ angular.module('forms', [
       url: '/field/:field_id',
       views: {
         'fieldsContent': {
-          templateUrl: 'forms/templates/field-summary.html',
+          templateUrl: 'forms/templates/field-summary-page.html',
           controller: 'FieldSummaryCtrl'
         }
+      },
+      resolve: {
+        field: ['$stateParams', 'Fields', function ($stateParams, Fields) {
+          return Fields.get($stateParams.field_id);
+        }]
       }
     })
     .state('fields.edit', {
