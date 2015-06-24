@@ -108,6 +108,9 @@ angular.module('forms')
           input.readonly = true;
         }
       }
+      if (input.type == 'string' && input.readonly) {
+        input.type = 'note';
+      }
       return input;
     }
     var inputs = gatherInputObjects(json.html.body);

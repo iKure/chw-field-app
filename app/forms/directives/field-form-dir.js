@@ -15,6 +15,6 @@ angular.module('forms')
       field: '=field',
       data: '=?data',
     },
-    template: '{{data}}',
+    template: '',
   };
 }]);
