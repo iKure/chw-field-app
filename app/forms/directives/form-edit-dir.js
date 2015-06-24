@@ -2,7 +2,7 @@
 angular.module('forms')
 .directive('fieldEdit', function () {
   return {
-    templateUrl: 'forms/templates/form-fields-list.html',
+    templateUrl: 'forms/templates/field-edit.html',
     restrict: 'EA',
     link: function postLink (scope, element, attrs) {
       console.log("Yo! FormEditDirective.");
