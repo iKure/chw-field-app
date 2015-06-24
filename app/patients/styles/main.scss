@@ -44,37 +44,25 @@
 
 
 .patient-header{
-	overflow:hidden;
-	height: 80px;
-	padding: 0px;
-	.pane{
-		height:79px; // this casues transition problems...
-	}
 	.title{
 		position:static;
+		display:block;
+		float:left;
 		line-height:1.5em;
 		padding: 5px 0px;
 		height: auto;
 	}
 	.subtitle{
 		font-weight:normal;
+		display:block;
+		float:left;
 	}
 	.button-back{
-		position:absolute;
-		top:15px;
-		left: 0px;
-		height: 100%;
-		span{
-			display:none;
-		}
+		display:block;
+		float:left;
 	}
-}
-.patient-header .nav{
-	position: absolute;
-	top:30px;
-	height:35px;
-}
-.patient-pane .patient-content{
-	position:absolute;
-	top:80px;
+	.button-bar{
+		display:flex;
+		width:auto;
+	}
 }

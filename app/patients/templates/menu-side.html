@@ -1,6 +1,8 @@
-<div class="patient-pane">
-	<ion-header class="bar bar-header patient-header">
-		<ion-nav-view name="personNav"></ion-nav-view>
-	</ion-header>
-	<ion-nav-view class="patient-content" name="personContent"></ion-nav-view>
-</div>
+<ion-view>
+	<ion-header-bar class="bar bar-header bar-subheader patient-header">
+		<a class="button button-back icon-left ion-chevron-left button-clear"><span>Back</span></a>
+		<div class="title title-patient">{{patient.name}} ({{patient._id}})</div>
+		<ui-view name="personNav"></ui-view>
+	</ion-header-bar>
+	<ion-nav-view name="personContent"></ion-nav-view>
+</ion-view>

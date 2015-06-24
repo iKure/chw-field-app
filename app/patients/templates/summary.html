@@ -1,10 +1,11 @@
-
-<ion-content>
-	<div class="list">
-		<a ui-sref="patients.single.form({patient_id:patient._id, field_id:field._id})" ng-repeat="field in records" class="item item-form item-icon-right">
-			<i class="icon ion-chevron-right"></i>
-			<div class="title">{{field.form_id}}</div>
-			<div class="meta">{{field.date_modified}} by {{field.user_modified}}</div>
-		</a>
-	</div>
-</ion-content>
+<ion-view>
+	<ion-content>
+		<div class="list">
+			<a ui-sref="patients.single.form({patient_id:patient._id, field_id:field._id})" ng-repeat="field in records" class="item item-form item-icon-right">
+				<i class="icon ion-chevron-right"></i>
+				<div class="title">{{field.form_id}}</div>
+				<div class="meta">{{field.date_modified}} by {{field.user_modified}}</div>
+			</a>
+		</div>
+	</ion-content>
+</ion-view>

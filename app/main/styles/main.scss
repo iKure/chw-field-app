@@ -49,14 +49,8 @@ textarea, input[type="text"], input[type="password"], input[type="datetime"], in
 	top: 49px;
 }
 
-@media (min-width:600px){
-	.content-sidebar{
-		width: 130px;
-		a span{
-			display:block;
-		}
-	}
-	.content-main{
-		padding-left:150px;
+.button, button{
+	span {
+		display:none;
 	}
 }
