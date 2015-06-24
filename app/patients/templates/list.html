@@ -20,7 +20,7 @@
 		  </button>
 		</div>
 	</ion-header-bar>
-	<ion-content class="has-header">
+	<ion-content>
 		<div class="list">
 			<a ng-repeat="patient in records" class="item list-item" ui-sref="patients.single.summary({patient_id:patient._id})" >
 			{{patient.name}} ({{patient._id}})
