@@ -95,6 +95,7 @@ angular.module('forms')
     function parseInputObject (ele, type) {
       var input = {};
       input._ref = ele._ref;
+      input.name = ele._ref.split("/").reverse()[0];
       input.label = ele.label;
       if (ele.item && Array.isArray(ele.item)) {
         input.choices = ele.item;

@@ -1,6 +1,6 @@
 <div class="list">
 	<div class="item item-divider">
-		{{field.label}}
+		{{field.label}} {{data}}
 	</div>
 	 <label ng-repeat="choice in field.choices" class="item item-radio">
           <input type="radio" ng-model="data" value="{{choice.value}}" name="{{field._ref}}" />

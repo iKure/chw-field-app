@@ -1,20 +1,20 @@
 'use strict';
 angular.module('forms')
-.directive('fieldInput', function () {
+.directive('fieldInput', ['$compile', '$templateRequest', function ($compile, $templateRequest) {
   return {
-    templateUrl: 'forms/templates/input-base.html',
     restrict: 'A',
     link: function postLink (scope, element, attrs) {
-      var type = scope.field.type;
-      console.log("fieldFormDirective: Yo! Check this " + type);
-      if (!scope.data) {
-        console.log("fieldFormDirective: No data");
+      if (scope.field.type) {
+        console.log("fieldFormDirective: Yo! Check this " + scope.field.type);
+        $templateRequest('forms/templates/input-' + scope.field.type + '.html').then(function (html) {
+          element.append($compile(html)(scope));
+        });
       }
-      scope.contentUrl = 'forms/templates/input-' + type + '.html';
     },
     scope: {
       field: '=field',
-      data: '=data'
-    }
+      data: '=?data',
+    },
+    template: '{{data}}',
   };
-});
+}]);

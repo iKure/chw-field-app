@@ -8,6 +8,9 @@ angular.module('forms')
   if (!$scope.data && $scope.initialData) {
     $scope.data = $scope.initialData;
   }
+  if (!$scope.data) {
+    $scope.data = {};
+  }
   if (!$scope.form && $scope.field.form) {
     $scope.form = $scope.field.form;
   }

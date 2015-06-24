@@ -1,5 +1,6 @@
 <p>You are editing a field, which is a {{form.label}}</p>
+{{data}}
 <div class="list">
-	<div class="item" ng-repeat="input in form.inputs" field-input field="input"></div>
+	<div class="item" ng-repeat="input in form.inputs" field-input field="input" type="{{input.type}}" data="data[input.name]"></div>
 </div>
 <button class="button button-block" ng-click="save()">Save</button>
