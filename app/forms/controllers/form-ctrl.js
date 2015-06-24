@@ -15,9 +15,10 @@ angular.module('forms')
     $scope.form = $scope.field.form;
   }
   function save() {
-    if ($scope.field) {
-      $scope.field.data = $scope.data;
+    if (!$scope.field) {
+      $scope.field = {};
     }
+    $scope.field.data = $scope.data;
     Fields.save($scope.field).then(function (response) {
       $scope.field._id = response.id;
       $scope.field._rev = response.rev;

@@ -58,10 +58,10 @@ angular.module('forms', [
             $scope.form = form;
             $scope.field = field;
             $scope.close = function () {
-              if ($scope.data._id) {
-                $state.go("forms.field", {field_id: $scope.data._id});
+              if ($scope.field && $scope.field._id) {
+                $state.go("fields.field", {field_id: $scope.data._id});
               } else {
-                $state.go("forms.list");
+                $state.go("fields.list");
               }
             }
           }],
