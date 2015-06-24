@@ -36,11 +36,18 @@
             {
                 "_id": "field-1",
                 "type": "field",
+                "date_created": 100,
+                "user_created": "test",
                 "patient_id": "foobar",
                 "form_id": "test",
                 "data": {
-                    "age": 12,
-                    "ice_cream": "notchocolate"
+                    "age": {
+                        "value": 12,
+                        "units": "years"
+                    },
+                    "ice_cream": {
+                        "value": "notchocolate"
+                    }
                 }
             }
         ]
