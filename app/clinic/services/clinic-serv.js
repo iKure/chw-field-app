@@ -19,6 +19,14 @@ angular.module('clinic')
     var deferred = $q.defer();
     console.log('ClinicService: Setting clinic to ' + clinic_id);
     service.localDB = pouchDB(clinic_id);
+    service.localDB.changes({
+      since: 'now',
+      live: true,
+      include_docs: true
+    }).on('change', function () {
+      console.log('ClinicService: Has change');
+      $rootScope.$broadcast('clinic.update');
+    });
     service.localDB.info().then(function () {
       console.log('ClinicService: Set up localDB');
       // attempt to set up syncing
@@ -54,12 +62,6 @@ angular.module('clinic')
       syncHandler = service.localDB.sync(service.remoteDB, {
         live: true,
         retry: true,
-      }).on('change', function (info) {
-        // handle change
-        console.log('ClinicService: Sync handeling changes');
-        if (info.direction == 'pull') {
-          $rootScope.$broadcast('clinic.update');
-        }
       }).on('paused', function () {
         // replication paused (e.g. user went offline)
         $rootScope.$broadcast('clinic.sync.stop');
