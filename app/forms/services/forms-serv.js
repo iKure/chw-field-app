@@ -67,6 +67,12 @@ angular.module('forms')
     */
     var x2js = new X2JS();
     var json = x2js.xml_str2json(xml);
+    // used for sorting inputs
+    var binds = {};
+    json.html.head.model.bind.forEach(function (item, index) {
+      item.position = index;
+      binds[item._nodeset] = item;
+    });
     function gatherInputObjects (ele) {
       var inputs = [];
       Object.keys(ele).forEach(function (key) {
@@ -81,6 +87,9 @@ angular.module('forms')
           inputs.push(parseInputObject(ele[key], key));
         }
       });
+      inputs.sort(function (a, b) {
+        return +(a.position > b.position) || +(a.position === b.position) - 1;
+      });
       return inputs;
     }
     function parseInputObject (ele, type) {
@@ -91,11 +100,13 @@ angular.module('forms')
       if (ele.item && Array.isArray(ele.item)) {
         input.choices = ele.item;
       }
+      if (binds[input._ref]) {
+        input.position = binds[input._ref].position;
+        input.condition = binds[input._ref]._relivant;
+      }
       return input;
     }
     var inputs = gatherInputObjects(json.html.body);
-    // sort by order of binds
-    var binds = json.html.head.model.bind;
     return inputs;
   }
 
