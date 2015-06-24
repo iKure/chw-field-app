@@ -94,7 +94,6 @@ angular.module('forms')
     }
     function parseInputObject (ele, type) {
       var input = {};
-      input.type = type;
       input._ref = ele._ref;
       input.label = ele.label;
       if (ele.item && Array.isArray(ele.item)) {
@@ -103,6 +102,10 @@ angular.module('forms')
       if (binds[input._ref]) {
         input.position = binds[input._ref].position;
         input.condition = binds[input._ref]._relivant;
+        input.type = binds[input._ref]._type;
+        if (binds[input._ref]._readonly) {
+          input.readonly = true;
+        }
       }
       return input;
     }
