@@ -49,7 +49,7 @@ angular.module('forms', [
       url: '/edit?type&field_id',
       views:{
         'formsContent': {
-          template: '{{close}}<form-edit field-id="field_id" form-type="type" data="data" on-close="close()"></form-edit>',
+          template: '<form-edit field-id="field_id" form-type="type" data="data" on-close="close()"></form-edit>',
           controller: ['$scope', '$state', '$stateParams', function ($scope, $state, $stateParams) {
             $scope.field_id = $stateParams.field_id;
             $scope.type = $stateParams.type;
