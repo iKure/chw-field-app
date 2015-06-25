@@ -2,17 +2,17 @@
 angular.module('forms')
 .directive('fieldList', function () {
   return {
-    templateUrl: 'forms/templates/fields-list.html',
-    restrict: 'A',
+    templateUrl: 'forms/templates/field-edit-list.html',
+    restrict: 'E',
     link: function postLink (scope, element, attrs) {
-      //element.text('this is the myDirective directive', attrs);
+      console.log("Yo! Field List Directive!");
+      if (!scope.data) {
+        scope.data = {};
+      }
     },
     scope: {
       data: '=data',
-      form: '=form',
-      fields: '=fields',
-      label: '=label',
-      close: '&onClose',
+      inputs: '=inputs',
     }
   };
 });

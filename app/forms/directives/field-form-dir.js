@@ -19,27 +19,17 @@ angular.module('forms')
         return false;
       }
     } else {
-      str.split(' ').forEach(function (part) {
-        if (part == "") {
+      str = str.replace(/ /g, '');
+      condition = '==';
+      dataKey = str.split('=')[0].split('/').reverse()[0];
+      cmpValue = eval(str.split('=')[1]);
+      evalFn = function (val) {
+        try {
+          return eval( '"' + val + '"' + condition + '"' + cmpValue + '"');
+        } catch (err) {
+          console.error('Error parsing condition: ' + str);
           return false;
         }
-        if (!dataKey) {
-          dataKey = part.split('/').reverse()[0];
-          return true;
-        }
-        if (!condition) {
-          condition = part;
-          if (condition == '=') {
-            condition = '==';
-          }
-          return true;
-        }
-        if (!cmpValue) {
-          cmpValue = eval(part);
-        }
-      });
-      evalFn = function (val) {
-        return eval( '"' + val + '"' + condition + '"' + cmpValue + '"');
       }
     }
     return {
