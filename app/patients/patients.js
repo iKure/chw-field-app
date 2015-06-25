@@ -3,6 +3,7 @@ angular.module('patients', [
   'ionic',
   'ngCordova',
   'ui.router',
+  'forms',
   'yaru22.angular-timeago',
   "checklist-model",
   // TODO: load other modules selected during generation
@@ -129,13 +130,14 @@ angular.module('patients', [
           controller: 'FieldSummaryCtrl',
         },
         'personContent': {
-          template: '<ion-view><ion-content><form-edit initial-data="initialData" data="data" form="form" on-close="close()"></form-edit></ion-content></ion-view>',
-          controller: ['$scope', '$state', '$stateParams', '$ionicPopup', 'data', 'form', function ($scope, $state, $stateParams, $ionicPopup, data, form) {
-            $scope.data = data;
-            $scope.form = form;
-            if (!form && data.form) {
-              $scope.form = data.form;
+          template: '<ion-view><ion-content><field-edit initial-data="initialData" field="field" form="form" on-close="close()"></form-edit></ion-content></ion-view>',
+          controller: ['$scope', '$state', '$stateParams', '$ionicPopup', 'field', 'form', function ($scope, $state, $stateParams, $ionicPopup, field, form) {
+            if (!form && !field) {
+              $state.go('forms.list');
+              return false;
             }
+            $scope.form = form;
+            $scope.field = field;
 
             $scope.initialData = {
               patient_id: $stateParams.patient_id
@@ -157,7 +159,7 @@ angular.module('patients', [
         }
       },
       resolve: {
-        data: ['$stateParams', 'Fields', function ($stateParams, Fields) {
+        field: ['$stateParams', 'Fields', function ($stateParams, Fields) {
           if (!$stateParams.field_id) {
             return false;
           }
@@ -184,7 +186,7 @@ angular.module('patients', [
         }
       },
       resolve: {
-        data: ['$stateParams', 'Fields', function ($stateParams, Fields) {
+        field: ['$stateParams', 'Fields', function ($stateParams, Fields) {
           return Fields.get($stateParams.field_id);
         }]
       }

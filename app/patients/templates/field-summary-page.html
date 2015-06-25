@@ -1,6 +1,7 @@
 <ion-view>
 	<ion-content>
-		<ng-include src="'forms/templates/field-summary-page.html'"></ng-include>
+		<a ui-sref="^.edit({field_id:field._id})" class="button button-block"><i class="icon ion-edit"></i>Edit</a>
+		<field-summary data="field.data" inputs="field.form.inputs"></field-summary>
 		<message-thread thread-id="data._id"></message-thread>
 	</ion-content>
 </ion-view>
