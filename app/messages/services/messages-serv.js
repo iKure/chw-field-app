@@ -79,12 +79,20 @@ angular.module('messages')
       if (!threadObj.date_created || doc.date_created < threadObj.date_created) {
         threadObj.date_created = doc.date_created;
       }
+      if (threadObj.participants.indexOf(doc.sender) < 0) {
+        threadObj.participants.push(doc.sender);
+      }
     }
     docs.forEach(function (doc) {
       threadObj._id = doc.thread_id;
       if (doc.body) {
         addMessage(doc);
       }
+      Object.keys(doc).forEach(function (key) {
+        if (key.indexOf('_id') > 0) {
+          threadObj[key] = doc[key];
+        }
+      });
     });
     threadObj.messages.sort(function (a, b) {
       return +(a.date_created > b.date_created) || +(a.date_created === b.date_created) - 1;

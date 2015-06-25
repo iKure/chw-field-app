@@ -12,4 +12,9 @@ angular.module('patients')
   $scope.back = function () {
     $ionicHistory.goBack();
   }
+
+  $scope.$on('message.save', function (event, message) {
+    console.log('PatientCtrl: Got the message');
+    message.patient_id = patient._id;
+  });
 }]);
