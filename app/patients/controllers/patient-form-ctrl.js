@@ -8,23 +8,21 @@ angular.module('patients')
     return false;
   }
   $scope.form = form;
+  $scope.field = {};
   $scope.data = {};
 
   function save() {
     var patient = {};
 
-    $scope.form.fields.forEach( function (field) {
-      if (!field.persistant || !$scope.data[field.name]) {
-        return true;
-      }
-      if ($scope.data[field.name].value) {
-        patient[field.name] = $scope.data[field.name].value;
+    $scope.form.inputs.forEach( function (field) {
+      if ($scope.field.data[field.name]) {
+        patient[field.name] = $scope.field.data[field.name];
       }
     });
 
     Patients.save(patient).then(function (patient) {
-      $scope.data.patient_id = patient._id;
-      Fields.save($scope.data).then(function () {
+      $scope.field.patient_id = patient._id;
+      Fields.save($scope.field).then(function () {
         close();
       });
     });
@@ -32,8 +30,8 @@ angular.module('patients')
   $scope.save = save;
 
   function close () {
-    if ($scope.data.patient_id) {
-      $state.go('patients.single.summary', { patient_id:$scope.data.patient_id });
+    if ($scope.field.patient_id) {
+      $state.go('patients.single.summary', { patient_id:$scope.field.patient_id });
     } else {
       $state.go('patients.directory');
     }
