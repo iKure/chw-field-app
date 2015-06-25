@@ -8,6 +8,7 @@ angular.module('messages')
     if ($scope.thread_id) {
       $scope.message.thread_id = $scope.thread_id;
     }
+    $scope.$root.$broadcast('message.save', $scope.message);
     Messages.save($scope.message).then(function (message) {
       $scope.message = {};
       if ($scope.create) {

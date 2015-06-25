@@ -11,6 +11,12 @@ angular.module('patients', [
 .config(function ($ionicConfigProvider) {
   $ionicConfigProvider.views.maxCache(0);
 })
+.run(['$rootScope', 'Clinic', function ($rootScope, Clinic) {
+  $rootScope.$on('message.save', function (event, message) {
+    console.log('Patients: Got the message');
+    message.clinic_id = Clinic.currentClinic;
+  });
+}])
 .config(function ($stateProvider, $urlRouterProvider) {
 
   console.log('Allo! Allo from your module: ' + 'patients');
