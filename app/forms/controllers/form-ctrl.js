@@ -14,9 +14,11 @@ angular.module('forms')
   if (!$scope.form && $scope.field.form) {
     $scope.form = $scope.field.form;
   }
-  $scope.data.user_roles = Auth.currentUser.roles.join(',');
+  if (Auth.currentUser.roles.length > 0) {
+    $scope.data.role = Auth.currentUser.roles[0];
+  }
   function save() {
-    delete $scope.data.user_roles;
+    delete $scope.data.role;
     if (!$scope.field) {
       $scope.field = {};
     }
