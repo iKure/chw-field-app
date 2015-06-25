@@ -1,6 +1,16 @@
 'use strict';
 angular.module('forms')
 .directive('fieldInput', ['$compile', '$templateRequest', function ($compile, $templateRequest) {
+  function parseCmpValue (str) {
+    try {
+      return eval(str);
+    } catch (err) {
+      return str;
+    }
+  }
+  function parseDataKey (str) {
+    return str.split('/').reverse()[0];
+  }
   function parseCondition(str) {
     var dataKey = false;
     var condition = false;
@@ -10,8 +20,8 @@ angular.module('forms')
     }
     if (str.indexOf('selected(') == 0) {
       str = str.replace(/ /g, "").replace('selected(', '').replace(')', '');
-      dataKey = str.split(',')[0].split('/').reverse()[0];
-      cmpValue = eval(str.split(',')[1]);
+      dataKey = parseDataKey(str.split(',')[0]);
+      cmpValue = parseCmpValue(str.split(',')[1]);
       evalFn = function (arr) {
         if (Array.isArray(arr) && arr.indexOf(cmpValue) >= 0) {
           return true;
@@ -21,8 +31,8 @@ angular.module('forms')
     } else {
       str = str.replace(/ /g, '');
       condition = '==';
-      dataKey = str.split('=')[0].split('/').reverse()[0];
-      cmpValue = eval(str.split('=')[1]);
+      dataKey = parseDataKey(str.split('=')[0]);
+      cmpValue = parseCmpValue(str.split('=')[1]);
       evalFn = function (val) {
         try {
           return eval( '"' + val + '"' + condition + '"' + cmpValue + '"');
