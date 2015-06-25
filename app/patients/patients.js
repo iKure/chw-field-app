@@ -29,14 +29,17 @@ angular.module('patients', [
       views: {
         'patientsContent': {
           templateUrl: 'patients/templates/message-threads.html',
-          controller: ['$scope', '$state', 'threads', function ($scope, $state, threads) {
+          controller: ['$scope', 'threads', function ($scope, threads) {
             $scope.threads = threads;
           }],
         }
       },
       resolve: {
-        threads: ['Messages', function (Messages) {
-          return Messages.list();
+        threads: ['Messages', 'Clinic', function (Messages, Clinic) {
+          console.log('Patients: Getting messages for clinic=' + Clinic.currentClinic);
+          return Messages.list({
+            clinic_id:Clinic.currentClinic,
+          });
         }]
       }
     })

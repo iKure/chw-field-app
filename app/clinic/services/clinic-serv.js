@@ -33,6 +33,7 @@ angular.module('clinic')
     });
     service.localDB.info().then(function () {
       console.log('ClinicService: Set up localDB');
+      service.currentClinic = clinic_id;
       // attempt to set up syncing
       service.sync(clinic_id + salt);
       deferred.resolve(true);
