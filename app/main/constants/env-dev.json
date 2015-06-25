@@ -9,7 +9,7 @@
         "ok": true, 
         "userCtx": {
             "name": "test", 
-            "roles": [],
+            "roles": ["doctor"],
             "clinics": ["foo"]
         }
     },

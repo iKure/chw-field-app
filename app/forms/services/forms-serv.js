@@ -45,7 +45,6 @@ angular.module('forms')
       } else {
         doc.inputs = [];
       }
-      
       deferred.resolve(doc);
     }).catch(function (err) {
       console.error(err);

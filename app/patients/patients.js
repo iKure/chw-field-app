@@ -127,7 +127,13 @@ angular.module('patients', [
       views: {
         'personNav': {
           templateUrl: 'patients/templates/nav-field-edit.html',
-          controller: 'FieldSummaryCtrl',
+          controller: ['$scope', 'field', 'form', function ($scope, field, form) {
+            $scope.form = form;
+            $scope.field = field;
+            if (!form && field.form) {
+              $scope.form = field.form;
+            }
+          }],
         },
         'personContent': {
           template: '<ion-view><ion-content><field-edit initial-data="initialData" field="field" form="form" on-close="close()"></form-edit></ion-content></ion-view>',
