@@ -138,16 +138,19 @@ angular.module('patients', [
             }
             $scope.form = form;
             $scope.field = field;
+            if (!$scope.field) {
+              $scope.field = {};
+            }
 
             $scope.initialData = {
               patient_id: $stateParams.patient_id
             };
 
             $scope.close = function () {
-              if ($scope.data._id) {
+              if ($scope.field._id) {
                 $state.go('patients.single.form', {
                   patient_id: $stateParams.patient_id,
-                  field_id: $scope.data._id,
+                  field_id: $scope.field._id,
                 });
               } else {
                 $state.go('patients.single.summary', {
