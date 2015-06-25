@@ -42,12 +42,9 @@
                 "user_modified": "test",
                 "patient_id": "foobar",
                 "form_id": "demographics",
-                "age": {
-                    "value": 12,
-                    "units": "years"
-                },
-                "ice_cream": {
-                    "value": "notchocolate"
+                "data": {
+                    "patient_age": 22,
+                    "patient_name": "Foo Bar"
                 }
             }
         ]
