@@ -104,7 +104,10 @@ angular.module('forms')
       if (binds[input._ref]) {
         input.position = binds[input._ref].position;
         input.condition = binds[input._ref]._relevant;
-        if (binds[input._ref]._type) input.type = binds[input._ref]._type; // Overwrite previously set type because this is better
+        if (binds[input._ref]._type){
+          // Overwrite previously set type because this is better
+          input.type = binds[input._ref]._type;
+        }
         if (binds[input._ref]._readonly) {
           input.readonly = true;
         }
