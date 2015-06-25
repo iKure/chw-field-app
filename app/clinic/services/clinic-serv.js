@@ -6,6 +6,10 @@ angular.module('clinic')
   var service = {}
   service.localDB = false;
   service.remoteDB = false;
+  var salt = ''
+  if (Config.ENV.SaltDB) {
+    salt = '-' + Config.ENV.SaltDB;
+  }
   // List available clinics — based on User's permission to databases
   function getAvailableClinics(user) {
     if (user.clinics) {
@@ -17,8 +21,8 @@ angular.module('clinic')
   // Set pouch to load specific clinic
   function setClinic(clinic_id) {
     var deferred = $q.defer();
-    console.log('ClinicService: Setting clinic to ' + clinic_id);
-    service.localDB = pouchDB(clinic_id);
+    console.log('ClinicService: Setting clinic to ' + clinic_id + salt);
+    service.localDB = pouchDB(clinic_id + salt);
     service.localDB.changes({
       since: 'now',
       live: true,
@@ -30,7 +34,7 @@ angular.module('clinic')
     service.localDB.info().then(function () {
       console.log('ClinicService: Set up localDB');
       // attempt to set up syncing
-      service.sync(clinic_id);
+      service.sync(clinic_id + salt);
       deferred.resolve(true);
     });
     return deferred.promise;
@@ -41,7 +45,7 @@ angular.module('clinic')
   function sync(clinic_id) {
     var deferred = $q.defer();
     if (Config.ENV.SERVER_URL) {
-      var full_url = Config.ENV.SERVER_URL + clinic_id;
+      var full_url = Config.ENV.SERVER_URL + clinic_id + salt;
       console.log('ClinicService: Connecting to ' + full_url);
       service.remoteDB = pouchDB(full_url, {
         skipSetup: true,

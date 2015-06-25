@@ -10,11 +10,11 @@
         "userCtx": {
             "name": "test", 
             "roles": [],
-            "clinics": ["FOO"]
+            "clinics": ["foo"]
         }
     },
     "CLINICS": {
-        "FOO": [
+        "foo": [
             {
                 "_id": "settings",
                 "name": "Foo Clinic"

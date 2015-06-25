@@ -4,11 +4,9 @@ angular.module('forms')
   console.log('Hello from your Service: Forms in module forms');
 
   var dbName = 'forms';
-  /*
   if (Config.ENV.SaltDB) {
     dbName = dbName + '-' + Config.ENV.SaltDB;
   }
-  */
 
   var localDB = new pouchDB(dbName);
   var remoteDB = false;
