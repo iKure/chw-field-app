@@ -69,6 +69,10 @@
             "_id": "demographics",
             "label": "Patient Demographics",
             "hidden": true
+        },
+        {
+            "_id": "general_case",
+            "label": "General Case"
         }
     ]
 }
