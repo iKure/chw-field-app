@@ -1,6 +1,6 @@
 'use strict';
 angular.module('forms')
-.controller('FieldEditCtrl', ['$scope', 'Fields', function ($scope, Fields) {
+.controller('FieldEditCtrl', ['$scope', 'Fields', 'Auth', function ($scope, Fields, Auth) {
   console.log('Hello from your Controller: FieldEditCtrl in module forms:. This is your controller:', this);
   if ($scope.field && $scope.field.data) {
     $scope.data = $scope.field.data;
@@ -14,7 +14,9 @@ angular.module('forms')
   if (!$scope.form && $scope.field.form) {
     $scope.form = $scope.field.form;
   }
+  $scope.data.user_roles = Auth.currentUser.roles.join(',');
   function save() {
+    delete $scope.data.user_roles;
     if (!$scope.field) {
       $scope.field = {};
     }
