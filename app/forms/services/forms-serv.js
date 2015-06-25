@@ -83,7 +83,7 @@ angular.module('forms')
           ele[key].forEach(function (item) {
             inputs.push(parseInputObject(item, key));
           });
-        } else {
+        } else if (ele[key]._ref) {
           inputs.push(parseInputObject(ele[key], key));
         }
       });
@@ -97,14 +97,16 @@ angular.module('forms')
       input._ref = ele._ref;
       input.name = ele._ref.split("/").reverse()[0];
       input.label = ele.label;
+      delete ele.label;
       input.type = type;
       if (ele.item && Array.isArray(ele.item)) {
         input.choices = ele.item;
+        delete ele.item;
       }
       if (binds[input._ref]) {
         input.position = binds[input._ref].position;
         input.condition = binds[input._ref]._relevant;
-        if (binds[input._ref]._type){
+        if (binds[input._ref]._type) {
           // Overwrite previously set type because this is better
           input.type = binds[input._ref]._type;
         }
@@ -114,6 +116,10 @@ angular.module('forms')
       }
       if (input.type == 'string' && input.readonly) {
         input.type = 'note';
+      }
+      var children = gatherInputObjects(ele);
+      if (children.length > 0) {
+        input.children = children;
       }
       return input;
     }
