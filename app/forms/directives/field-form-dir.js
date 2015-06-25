@@ -78,6 +78,9 @@ angular.module('forms')
           element.hide();
         }
       });
+      if (scope.field.appearance == 'hidden') {
+        element.remove();
+      }
     },
     scope: {
       field: '=field',

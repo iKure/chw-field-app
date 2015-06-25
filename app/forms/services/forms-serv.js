@@ -104,6 +104,9 @@ angular.module('forms')
         input.choices = ele.item;
         delete ele.item;
       }
+      if (ele._appearance) {
+        input.appearance = ele._appearance;
+      }
       if (binds[input._ref]) {
         input.position = binds[input._ref].position;
         input.condition = binds[input._ref]._relevant;
