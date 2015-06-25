@@ -5,29 +5,46 @@ angular.module('forms')
     var dataKey = false;
     var condition = false;
     var cmpValue = false;
-    str.split(' ').forEach(function (part) {
-      if (part == "") {
+    var evalFn = function () {
+      return false;
+    }
+    if (str.indexOf('selected(') == 0) {
+      str = str.replace(/ /g, "").replace('selected(', '').replace(')', '');
+      dataKey = str.split(',')[0].split('/').reverse()[0];
+      cmpValue = eval(str.split(',')[1]);
+      evalFn = function (arr) {
+        if (Array.isArray(arr) && arr.indexOf(cmpValue) >= 0) {
+          return true;
+        }
         return false;
       }
-      if (!dataKey) {
-        dataKey = part.split('/').reverse()[0];
-        return true;
-      }
-      if (!condition) {
-        condition = part;
-        if (condition == '=') {
-          condition = '==';
+    } else {
+      str.split(' ').forEach(function (part) {
+        if (part == "") {
+          return false;
         }
-        return true;
+        if (!dataKey) {
+          dataKey = part.split('/').reverse()[0];
+          return true;
+        }
+        if (!condition) {
+          condition = part;
+          if (condition == '=') {
+            condition = '==';
+          }
+          return true;
+        }
+        if (!cmpValue) {
+          cmpValue = eval(part);
+        }
+      });
+      evalFn = function (val) {
+        return eval( '"' + val + '"' + condition + '"' + cmpValue + '"');
       }
-      if (!cmpValue) {
-        cmpValue = eval(part);
-      }
-    });
+    }
     return {
       dataKey: dataKey,
-      condition: condition,
-      cmpValue: cmpValue,
+      eval: evalFn,
     }
   }
   function evalCondition(str, data) {
@@ -76,7 +93,7 @@ angular.module('forms')
           return $scope.$parent.data[condition.dataKey];
         }, function (value) {
           console.log('fieldFormDirective: Watching ' + condition.dataKey + '=' + value);
-          if (eval( '"' + value + '"' + condition.condition + '"' + condition.cmpValue + '"')) {
+          if (condition.eval(value)) {
             $scope.visible = true;
           } else {
             $scope.visible = false;
@@ -84,7 +101,7 @@ angular.module('forms')
           setTimeout(function () {
             $ionicScrollDelegate.resize();
           }, 50);
-        });
+        }, true); // sets watch collection to true
       }
     }],
   };
