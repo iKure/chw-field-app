@@ -100,7 +100,7 @@ angular.module('forms')
       }
       if (binds[input._ref]) {
         input.position = binds[input._ref].position;
-        input.condition = binds[input._ref]._relivant;
+        input.condition = binds[input._ref]._relevant;
         input.type = binds[input._ref]._type;
         if (binds[input._ref]._readonly) {
           input.readonly = true;
