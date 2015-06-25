@@ -83,7 +83,7 @@ angular.module('forms')
       field: '=field',
       data: '=?data',
     },
-    template: '',
+    template: '{{field.type}}',
     controller: ['$scope', '$ionicScrollDelegate', function ($scope, $ionicScrollDelegate) {
       $scope.visible = true;
       if ($scope.field.condition) {

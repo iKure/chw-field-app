@@ -59,6 +59,8 @@ angular.module('forms')
     {
       _ref: /FORM_NAME/data_name,
       type: int|string|select1|null (for group)
+      label: String (readable, for humans)
+      name: String (not for humans)
       condition: ~~ string for condition
       children: [ list of other inputs ]
     }
@@ -95,13 +97,14 @@ angular.module('forms')
       input._ref = ele._ref;
       input.name = ele._ref.split("/").reverse()[0];
       input.label = ele.label;
+      input.type = type;
       if (ele.item && Array.isArray(ele.item)) {
         input.choices = ele.item;
       }
       if (binds[input._ref]) {
         input.position = binds[input._ref].position;
         input.condition = binds[input._ref]._relevant;
-        input.type = binds[input._ref]._type;
+        if (binds[input._ref]._type) input.type = binds[input._ref]._type; // Overwrite previously set type because this is better
         if (binds[input._ref]._readonly) {
           input.readonly = true;
         }
