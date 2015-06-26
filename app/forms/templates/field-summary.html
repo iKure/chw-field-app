@@ -1,4 +1,5 @@
 <div ng-repeat="input in inputs" ng-if="data[input.name]" class="item">
 	<div class="label">{{input.label}}:</div>
 	<div class="value">{{data[input.name]}}</div>
+	<field-summary ng-if="input.children" data="data[input.name]" inputs="input.children"></field-summary>
 </div>
