@@ -18,6 +18,15 @@ angular.module('forms')
         // you can also pass an object with
         // a 'pre'- and 'post'-link function.
       });
-    }
+    },
+    controller: ['$scope', function ($scope) {
+      $scope.getValueLabel = function (value, choices) {
+        var choicesObj = {};
+        choices.forEach(function (choice) {
+          choicesObj[choice.value] = choice.label;
+        });
+        return choicesObj[value];
+      }
+    }],
   };
 }]);
