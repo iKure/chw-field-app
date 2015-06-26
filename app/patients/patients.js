@@ -6,7 +6,6 @@ angular.module('patients', [
   'forms',
   'yaru22.angular-timeago',
   "checklist-model",
-  // TODO: load other modules selected during generation
 ])
 .config(function ($ionicConfigProvider) {
   $ionicConfigProvider.views.maxCache(0);
@@ -196,11 +195,21 @@ angular.module('patients', [
       views: {
         'personContent': {
           templateUrl: 'patients/templates/field-summary-page.html',
-          controller: 'FieldSummaryCtrl',
+          controller: ['$scope', '$ionicSideMenuDelegate', 'field', function ($scope, $ionicSideMenuDelegate, field) {
+            $scope.field = field;
+          }],
+
         },
         'personNav': {
           templateUrl: 'patients/templates/nav-field.html',
-          controller: 'FieldSummaryCtrl',
+          controller: ['$scope', '$ionicSideMenuDelegate', 'field', function ($scope, $ionicSideMenuDelegate, field) {
+            $scope.field = field;
+            $scope.messagesVisiable = false;
+            $scope.toggleMessages = function () {
+              $ionicSideMenuDelegate.toggleRight();
+              $scope.messagesVisiable = !$scope.messagesVisiable;
+            }
+          }],
         }
       },
       resolve: {

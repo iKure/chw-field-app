@@ -1,14 +1,24 @@
 <ion-view>
-	<ion-content>
-		<div class="list list-inset">
-			<div class="item item-divider">{{field.form.label}}</div>
-			<a ui-sref="^.edit({field_id:field._id})" class="item item-icon-left item-icon-right">
-				<i class="icon ion-edit"></i>
-				Edit
-				<i class="icon ion-chevron-right"></i>
-			</a>
-			<field-summary data="field.data" inputs="field.form.inputs"></field-summary>
-		</div>
-		<message-thread thread-id="field._id"></message-thread>
-	</ion-content>
+	<ion-side-menus>
+		<ion-side-menu-content>
+			<ion-content>
+				<div class="field-pane" controller="FieldSummaryCtrl">
+					<div class="list list-inset">
+						<div class="item item-divider">{{field.form.label}}</div>
+						<a ui-sref="^.edit({field_id:field._id})" class="item item-icon-left item-icon-right">
+							<i class="icon ion-edit"></i>
+							Edit
+							<i class="icon ion-chevron-right"></i>
+						</a>
+						<field-summary data="field.data" inputs="field.form.inputs"></field-summary>
+					</div>
+				</div>
+			</ion-content>
+		</ion-side-menu-content>
+		<ion-side-menu side="right" expose-aside-when="large">
+			<ion-content>
+				<message-thread thread-id="field._id"></message-thread>
+			</ion-content>
+		</ion-side-menu>
+	</ion-side-menus>
 </ion-view>
