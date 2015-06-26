@@ -43,8 +43,8 @@
                 "patient_id": "foobar",
                 "form_id": "demographics",
                 "data": {
-                    "patient_age": 22,
-                    "patient_name": "Foo Bar"
+                    "age": 22,
+                    "name": "Foo Bar"
                 }
             }
         ]
