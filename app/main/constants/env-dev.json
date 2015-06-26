@@ -46,6 +46,35 @@
                     "age": 22,
                     "name": "Foo Bar"
                 }
+            },
+            {
+                "_id": "field-2",
+                "type": "field",
+                "date_created": 1435304493181,
+                "date_modified": 1435304493181,
+                "user_created": "test",
+                "user_modified": "test",
+                "patient_id": "foobar",
+                "form_id": "general_case",
+                "data": {
+                    "patient_id": "foobar",
+                    "gender": "female",
+                    "patient_history": "yes",
+                    "female_symptom": [
+                      "pregnancy"
+                    ],
+                    "add_history": {
+                      "smoker": "no",
+                      "hypertension_history": "no",
+                      "operation_history": "no"
+                    },
+                    "pregnancy": {
+                      "pregnancy_complaint": "Pregnant"
+                    },
+                    "injury": {
+                      "injury_sustained": {}
+                    }
+                }
             }
         ]
     },
