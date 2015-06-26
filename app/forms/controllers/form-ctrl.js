@@ -14,16 +14,26 @@ angular.module('forms')
   if (!$scope.form && $scope.field.form) {
     $scope.form = $scope.field.form;
   }
-  if (Auth.currentUser.roles.length > 0) {
-    $scope.data.role = Auth.currentUser.roles[0];
+  function isEmpty(obj) {
+    for (var prop in obj) {
+      if (obj.hasOwnProperty(prop)) {
+        return false;
+      }
+    }
+    return true;
   }
   function save() {
-    delete $scope.data.role;
     if (!$scope.field) {
       $scope.field = {};
     }
+    Object.keys($scope.data).forEach(function (key) {
+      if (isEmpty($scope.data[key])) {
+        delete $scope.data[key];
+      }
+    });
     $scope.field.form_id = $scope.form._id;
     $scope.field.data = $scope.data;
+    delete $scope.form;
     Fields.save($scope.field).then(function (response) {
       $scope.field._id = response.id;
       $scope.field._rev = response.rev;
