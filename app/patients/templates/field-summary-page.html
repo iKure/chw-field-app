@@ -12,6 +12,15 @@
 						</a>
 						<field-summary data="field.data" inputs="field.form.inputs"></field-summary>
 					</div>
+					<div class="list list-inset" ng-repeat="child in field.children" >
+						<div class="item item-divider">{{child.form.label}}</div>
+						<a ui-sref="^.edit({field_id:child._id})" class="item item-icon-left item-icon-right">
+							<i class="icon ion-edit"></i>
+							Edit
+							<i class="icon ion-chevron-right"></i>
+						</a>
+						<field-summary data="child.data" inputs="child.form.inputs"></field-summary>
+					</div>
 				</div>
 			</ion-content>
 		</ion-side-menu-content>
