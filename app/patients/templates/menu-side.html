@@ -1,7 +1,5 @@
 <ion-view>
-	<ion-header-bar class="bar bar-header bar-subheader patient-header">
-		<a ng-click="back()" class="button button-back icon-left ion-chevron-left button-clear"><span>Back</span></a>
-		<div class="title title-patient">{{patient.name}} ({{patient._id}})</div>
+	<ion-header-bar class="bar bar-header bar-stable bar-subheader patient-header">
 		<ui-view name="personNav"></ui-view>
 	</ion-header-bar>
 	<ion-nav-view name="personContent"></ion-nav-view>
