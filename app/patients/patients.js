@@ -153,15 +153,20 @@ angular.module('patients', [
             $scope.form = form;
             $scope.field = field;
             if (!$scope.field) {
-              $scope.field = {};
+              $scope.field = {
+                patient_id: $stateParams.patient_id
+              };
+              if ($stateParams.parent_id) {
+                $scope.field.parent_id = $stateParams.parent_id;
+              }
             }
 
-            $scope.initialData = {
-              patient_id: $stateParams.patient_id
-            };
-
             $scope.close = function () {
-              if ($scope.field._id) {
+              if ($scope.field.parent_id) {
+                $state.go('^.form', {
+                  field_id: $scope.field.parent_id,
+                });
+              } else if ($scope.field._id) {
                 $state.go('patients.single.form', {
                   patient_id: $stateParams.patient_id,
                   field_id: $scope.field._id,
@@ -307,6 +312,7 @@ angular.module('patients', [
   $rootScope.$on('$stateChangeSuccess', function (event, toState, toParams, fromState, fromParams) {
     if (fromState.name == 'patients.single.edit' &&
       toState.name == 'patients.single.form' &&
+      !fromParams.parent_id &&
       !fromParams.field_id &&
       toParams.field_id) {
       addReferalAlert(toParams.field_id);
