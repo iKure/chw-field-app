@@ -1,6 +1,6 @@
 'use strict';
 angular.module('forms')
-.directive('fieldInput', ['$compile', '$templateRequest', function ($compile, $templateRequest) {
+.directive('fieldInput', ['$q', '$compile', '$templateRequest', function ($q, $compile, $templateRequest) {
   function parseCmpValue (str) {
     try {
       return eval(str);
@@ -60,15 +60,38 @@ angular.module('forms')
     }
     return false;
   }
+  function getTemplate (template, scope) {
+    var deferred = $q.defer();
+    var templateName = template.join('-');
+    var templateUri = 'forms/templates/' + templateName + '.html'
+    console.log('fieldFormDirective: Getting template: ' + templateName);
+    $templateRequest(templateUri).then(function (html) {
+      deferred.resolve($compile(html)(scope));
+    }).catch(function (err) {
+      console.log('fieldFormDirective: No template: ' + templateName + ' (' + err.message + ')');
+      template.pop();
+      if (template.length) {
+        getTemplate(template, scope);
+      } else {
+        console.error(err);
+      }
+    });
+    return deferred.promise;
+  }
   return {
     restrict: 'A',
     link: function postLink (scope, element, attrs) {
+      var template = ['input'];
       if (scope.field.type) {
         console.log("fieldFormDirective: Yo! Check this " + scope.field.type);
-        $templateRequest('forms/templates/input-' + scope.field.type + '.html').then(function (html) {
-          element.append($compile(html)(scope));
-        });
+        template.push(scope.field.type);
+        if (scope.field.appearance) {
+          template.push(scope.field.appearance);
+        }
       }
+      getTemplate(template, scope).then(function (html) {
+        element.append(html);
+      });
       scope.$watch('visible', function (value) {
         if (value) {
           console.log('Show');
