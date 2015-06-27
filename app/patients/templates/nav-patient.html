@@ -1,3 +1,3 @@
 <a ui-sref='patients.directory' class="button button-back icon-left ion-chevron-left button-clear"><span>Back</span></a>
 <div class="title title-patient">{{patient.name}} ({{patient._id}})</div>
-<a ui-sref="patients.single.new({patient_id:patient._id})" ui-sref-active="active" class="button button-clear icon-left ion-plus">New Case</a>
+<a ng-click="addForm()" class="button button-clear icon-left ion-plus">New Case</a>

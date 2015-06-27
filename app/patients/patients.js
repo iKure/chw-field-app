@@ -104,6 +104,15 @@ angular.module('patients', [
       views:{
         'personNav': {
           templateUrl: 'patients/templates/nav-patient.html',
+          controller: ['$scope', '$state', 'FormAdd', function ($scope, $state, FormAdd) {
+            $scope.addForm = function () {
+              FormAdd.show().then(function (type) {
+                $state.go('^.edit', {
+                  type: type,
+                });
+              });
+            }
+          }]
         },
         'personContent': {
           templateUrl: 'patients/templates/summary.html',
@@ -126,9 +135,12 @@ angular.module('patients', [
       views: {
         'personNav': {
           templateUrl: 'patients/templates/nav-field-edit.html',
-          controller: ['$scope', 'field', 'form', function ($scope, field, form) {
+          controller: ['$scope', '$stateParams', 'field', 'form', function ($scope, $stateParams, field, form) {
             $scope.form = form;
             $scope.field = field;
+            if ($stateParams.parent_id) {
+              $scope.parent_id = $stateParams.parent_id;
+            }
             if (!form && field.form) {
               $scope.form = field.form;
             }
