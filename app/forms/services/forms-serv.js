@@ -131,15 +131,20 @@ angular.module('forms')
     return inputs;
   }
 
-  function all () {
+  function all (ids) {
     var deferred = $q.defer();
     var promise = localDB.allDocs({
       include_docs: true,
     }).then(function (docs) {
       var results = [];
       docs.rows.forEach(function (row) {
-        if (!row.doc.hidden) {
+        if (!row.doc.hidden && !ids) {
           results.push(row.doc);
+        }
+        if (ids && Array.isArray(ids)) {
+          if (ids.indexOf(row.id) >= 0) {
+            results.push(row.doc);
+          }
         }
       });
       deferred.resolve(results);

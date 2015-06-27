@@ -131,7 +131,7 @@ angular.module('patients', [
       }
     })
     .state('patients.single.edit', {
-      url: '/edit?type&field_id',
+      url: '/edit?type&field_id&parent_id',
       views: {
         'personNav': {
           templateUrl: 'patients/templates/nav-field-edit.html',
@@ -202,12 +202,33 @@ angular.module('patients', [
         },
         'personNav': {
           templateUrl: 'patients/templates/nav-field.html',
-          controller: ['$scope', '$ionicSideMenuDelegate', 'field', function ($scope, $ionicSideMenuDelegate, field) {
+          controller: ['$scope', '$state', '$ionicSideMenuDelegate', '$ionicPopup', 'Forms', 'field', function ($scope, $state, $ionicSideMenuDelegate, $ionicPopup, Forms, field) {
             $scope.field = field;
             $scope.messagesVisiable = false;
             $scope.toggleMessages = function () {
               $ionicSideMenuDelegate.toggleRight();
               $scope.messagesVisiable = !$scope.messagesVisiable;
+            }
+            $scope.addForm = function () {
+              Forms.all(field.form.children).then(function (results) {
+                var popUpScope = $scope.$new(true);
+                popUpScope.forms = results;
+                popUpScope.choose = function (form_id) {
+                  myPopup.close();
+                  $state.go('^.edit', {
+                    type: form_id,
+                    parent_id: field._id,
+                  });
+                }
+                var myPopup = $ionicPopup.show({
+                  template: '<a ng-repeat="form in forms" ng-click="choose(form._id)">{{form.label}}</a>',
+                  title: 'Pick a form to add',
+                  scope: popUpScope,
+                  buttons: [
+                    { text: 'Cancel' }
+                  ]
+                });
+              });
             }
           }],
         }
