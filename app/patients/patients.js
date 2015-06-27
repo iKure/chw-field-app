@@ -121,15 +121,6 @@ angular.module('patients', [
         }]
       }
     })
-    .state('patients.single.new', {
-      url: '/new',
-      views:{
-        'personContent': {
-          templateUrl: 'patients/templates/forms-new.html',
-          controller: 'FormsDirectoryCtrl',
-        }
-      }
-    })
     .state('patients.single.edit', {
       url: '/edit?type&field_id&parent_id',
       views: {
@@ -207,7 +198,7 @@ angular.module('patients', [
         },
         'personNav': {
           templateUrl: 'patients/templates/nav-field.html',
-          controller: ['$scope', '$state', '$ionicSideMenuDelegate', '$ionicPopup', 'Forms', 'field', function ($scope, $state, $ionicSideMenuDelegate, $ionicPopup, Forms, field) {
+          controller: ['$scope', '$state', '$ionicSideMenuDelegate', 'FormAdd', 'field', function ($scope, $state, $ionicSideMenuDelegate, FormAdd, field) {
             $scope.field = field;
             $scope.messagesVisiable = false;
             $scope.toggleMessages = function () {
@@ -215,23 +206,10 @@ angular.module('patients', [
               $scope.messagesVisiable = !$scope.messagesVisiable;
             }
             $scope.addForm = function () {
-              Forms.all(field.form.children).then(function (results) {
-                var popUpScope = $scope.$new(true);
-                popUpScope.forms = results;
-                popUpScope.choose = function (form_id) {
-                  myPopup.close();
-                  $state.go('^.edit', {
-                    type: form_id,
-                    parent_id: field._id,
-                  });
-                }
-                var myPopup = $ionicPopup.show({
-                  templateUrl: 'forms/templates/form-popup-list.html',
-                  title: 'Pick a form to add',
-                  scope: popUpScope,
-                  buttons: [
-                    { text: 'Cancel' }
-                  ]
+              FormAdd.show($scope.field.form.children).then(function (form_id) {
+                $state.go('^.edit', {
+                  type: form_id,
+                  parent_id: $scope.field._id,
                 });
               });
             }
