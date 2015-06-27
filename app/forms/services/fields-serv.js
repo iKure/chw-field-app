@@ -69,7 +69,7 @@ angular.module('forms')
       var deferred = $q.defer();
       var matches = {
         type: 'field',
-        parent: undefined,
+        parent_id: undefined,
         archived: undefined
       };
 
