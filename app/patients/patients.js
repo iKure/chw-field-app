@@ -221,7 +221,7 @@ angular.module('patients', [
                   });
                 }
                 var myPopup = $ionicPopup.show({
-                  template: '<a ng-repeat="form in forms" ng-click="choose(form._id)">{{form.label}}</a>',
+                  templateUrl: 'forms/templates/form-popup-list.html',
                   title: 'Pick a form to add',
                   scope: popUpScope,
                   buttons: [
