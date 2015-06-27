@@ -42,6 +42,7 @@ angular.module('forms')
             function checkDone () {
               loaded++;
               if (loaded >= results.length) {
+                doc.children = doc.children.reverse();
                 deferred.resolve(true);
               }
             }
