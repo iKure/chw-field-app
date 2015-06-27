@@ -75,6 +75,20 @@
                       "injury_sustained": {}
                     }
                 }
+            },
+            {
+                "_id": "field-2-sub-1",
+                "parent_id": "field-2",
+                "type": "field",
+                "date_created": 1435389024918,
+                "date_modified": 1435389024918,
+                "user_created": "test",
+                "user_modified": "test",
+                "patient_id": "foobar",
+                "form_id": "perscription",
+                "data": {
+                    "note": "FOo"
+                }
             }
         ]
     },

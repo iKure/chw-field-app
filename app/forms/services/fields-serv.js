@@ -25,6 +25,35 @@ angular.module('forms')
       db.get(id).then(function (doc) {
         Forms.get(doc.form_id).then(function (form) {
           doc.form = form;
+          console.log("FieldsService: Got form for field: " + id);
+        }).then(function () {
+          console.log("FieldsService: Checking for children of field: " + id);
+          doc.children = [];
+          var deferred = $q.defer();
+          service.all({
+            parent_id: doc._id
+          }).then(function (results) {
+            console.log("FieldsService: Got " + results.length + " children for: " + id);
+            if (results.length < 1) {
+              deferred.resolve(false);
+              return false;
+            }
+            var loaded = 0;
+            function checkDone () {
+              loaded++;
+              if (loaded >= results.length) {
+                deferred.resolve(true);
+              }
+            }
+            results.forEach(function (res) {
+              service.get(res._id).then(function (fdoc) {
+                doc.children.push(fdoc);
+                checkDone();
+              });
+            })
+          });
+          return deferred.promise;
+        }).then(function () {
           console.log("FieldsService: Returning field: " + id);
           deferred.resolve(doc);
         });
