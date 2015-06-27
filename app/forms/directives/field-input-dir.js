@@ -89,16 +89,16 @@ angular.module('forms')
           template.push(scope.field.appearance);
         }
       }
-      getTemplate(template, scope).then(function (html) {
-        element.append(html);
-      });
       scope.$watch('visible', function (value) {
         if (value) {
-          console.log('Show');
-          element.show();
+          console.log('Show' + scope.field.name);
+          getTemplate(template, scope).then(function (html) {
+            element.append(html);
+            element.show();
+          });
         } else {
-          console.log('Hide');
-          element.hide();
+          console.log('Hide' + scope.field.name);
+          element.hide().html('');
         }
       });
       if (scope.field.appearance == 'hidden') {
@@ -111,7 +111,7 @@ angular.module('forms')
     },
     template: '',
     controller: ['$scope', '$ionicScrollDelegate', function ($scope, $ionicScrollDelegate) {
-      $scope.visible = true;
+      $scope.visible = false;
       if ($scope.field.condition) {
         console.log('fieldFormDirective: Has condition: ' + $scope.field.condition);
         var condition = parseCondition($scope.field.condition);
@@ -128,6 +128,8 @@ angular.module('forms')
             $ionicScrollDelegate.resize();
           }, 50);
         }, true); // sets watch collection to true
+      } else {
+        $scope.visible = true;
       }
     }],
   };
