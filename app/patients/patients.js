@@ -147,7 +147,7 @@ angular.module('patients', [
           }],
         },
         'personContent': {
-          template: '<ion-view><ion-content><field-edit initial-data="initialData" field="field" form="form" on-close="close()"></form-edit></ion-content></ion-view>',
+          template: '<ion-view><ion-content class="form-content"><field-edit initial-data="initialData" field="field" form="form" on-close="close()"></form-edit></ion-content></ion-view>',
           controller: ['$scope', '$state', '$stateParams', '$ionicPopup', 'field', 'form', function ($scope, $state, $stateParams, $ionicPopup, field, form) {
             if (!form && !field) {
               $state.go('forms.list');

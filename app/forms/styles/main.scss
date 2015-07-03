@@ -60,3 +60,12 @@
 		display: inline;
 	}
 }
+
+.form-content, .form-content.scroll-content {
+	width: auto;
+}
+@media (min-width: 800px) {
+	.form-content, .form-content.scroll-content {
+		width: 550px;
+	}
+}
