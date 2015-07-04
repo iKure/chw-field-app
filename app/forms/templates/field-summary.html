@@ -1,10 +1,16 @@
-<div ng-repeat="input in inputs" ng-if="data[input.name]" ng-if="input.type!='note'" class="item">
-	<div ng-if="input.type!='group'" class="label">{{input.label}}:</div>
-	<div ng-if="['string', 'int', 'decimal'].indexOf(input.type) >= 0" class="value">{{data[input.name]}}</div>
-	<div ng-if="['select1'].indexOf(input.type) >= 0" class="value">{{getValueLabel(data[input.name], input.choices)}}</div>
-	<div ng-if="['select'].indexOf(input.type) >= 0" ng-repeat="val in data[input.name]" class="value">{{getValueLabel(val, input.choices)}}</div>
-	<div ng-if="input.type=='group'" class="list list-inset">
-		<div class="item item-divider">{{input.label}}</div>
-		<field-summary ng-if="input.children" data="data[input.name]" inputs="input.children"></field-summary>
+{{inputs}}
+{{data}}
+<div ng-if="data">
+	<div ng-repeat="input in inputs" ng-if="data[input.name]" ng-if="input.type!='note'" class="item">
+		<div ng-if="input.type!='group'" class="label">{{input.label}}:</div>
+		<div ng-if="['string', 'int', 'decimal'].indexOf(input.type) >= 0" class="value">{{data[input.name]}}</div>
+		<div ng-if="input.type == 'select1'" class="value">{{getValueLabel(data[input.name], input.choices)}}</div>
+		<div ng-if="input.type == 'select'">
+			<div ng-repeat="val in data[input.name]" class="value">{{getValueLabel(val, input.choices)}}</div>
+		</div>
+		<div ng-if="input.type=='group'" class="list list-inset">
+			<div class="item item-divider">{{input.label}}</div>
+			<field-summary ng-if="input.children" data="data[input.name]" inputs="input.children"></field-summary>
+		</div>
 	</div>
 </div>
