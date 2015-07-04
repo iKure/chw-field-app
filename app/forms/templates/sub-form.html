@@ -1,9 +1,20 @@
+<a class="button button-block icon-right ion-chevron-right" ng-click="showing=true">{{label}}</a>
+<field-summary data="data" inputs="inputs"></field-summary>
 <pageslide ps-open="showing" ps-push="true" ps-size="80%">
-	<div class="bar-header header">
-		<a ng-click="showing=false" class="button button-clear">
-			<i class="icon ion-chevron-left"></i>
-			Close
-		</a>
-	</div>
-	<div ng-transclude></div>
+	<ion-view>
+		<ion-header-bar>
+			<a ng-click="showing=false" class="button button-clear">
+				<i class="icon ion-chevron-left"></i>
+				Close
+			</a>
+			<div class="title">{{label}}</div>
+			<a ng-click="data={}" class="button button-aggressive button-clear">
+				<i class="icon ion-trash"></i>
+				Clear
+			</a>
+		</ion-header-bar>
+		<ion-content>
+			<field-list data="data" inputs="inputs"></field-list>
+			<a ng-click="showing=false" class="button button-block">Done</a>
+		</ion-content>
 </pageslide>

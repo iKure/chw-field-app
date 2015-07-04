@@ -131,6 +131,15 @@ angular.module('forms')
       } else {
         $scope.visible = true;
       }
+      function isEmpty(obj) {
+        for (var prop in obj) {
+          if (obj.hasOwnProperty(prop)) {
+            return false;
+          }
+        }
+        return true;
+      }
+      $scope.isEmpty = isEmpty;
     }],
   };
 }]);
