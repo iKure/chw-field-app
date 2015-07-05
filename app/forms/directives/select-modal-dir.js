@@ -57,6 +57,13 @@ angular.module('forms')
           $scope.data = $popupScope.data.value;
         });
       }
+      $scope.getValueLabel = function (value, choices) {
+        var choicesObj = {};
+        choices.forEach(function (choice) {
+          choicesObj[choice.value] = choice.label;
+        });
+        return choicesObj[value];
+      }
     }],
   };
 });

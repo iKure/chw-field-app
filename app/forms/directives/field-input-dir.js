@@ -141,6 +141,13 @@ angular.module('forms')
         return true;
       }
       $scope.isEmpty = isEmpty;
+      $scope.getValueLabel = function (value, choices) {
+        var choicesObj = {};
+        choices.forEach(function (choice) {
+          choicesObj[choice.value] = choice.label;
+        });
+        return choicesObj[value];
+      }
     }],
   };
 }]);
