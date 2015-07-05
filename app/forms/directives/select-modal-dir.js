@@ -31,6 +31,13 @@ angular.module('forms')
           }
           timeout = setTimeout(function () {
             console.log("SelectModalDirective: Filtering by " + value);
+            var choices = [];
+            $scope.choices.forEach(function (choice) {
+              if (choice.label.toLowerCase().indexOf(value.toLowerCase()) >= 0) {
+                choices.push(choice);
+              }
+            });
+            $popupScope.choices = choices;
           })
         });
 
