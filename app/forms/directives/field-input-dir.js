@@ -64,11 +64,11 @@ angular.module('forms')
     var deferred = $q.defer();
     var templateName = template.join('-');
     var templateUri = 'forms/templates/' + templateName + '.html'
-    console.log('fieldFormDirective: Getting template: ' + templateName);
+    console.log('fieldInput: Getting template: ' + templateName);
     $templateRequest(templateUri).then(function (html) {
       deferred.resolve($compile(html)(scope));
     }).catch(function (err) {
-      console.log('fieldFormDirective: No template: ' + templateName + ' (' + err.message + ')');
+      console.log('fieldInput: No template: ' + templateName + ' (' + err.message + ')');
       template.pop();
       if (template.length) {
         getTemplate(template, scope);
@@ -83,9 +83,10 @@ angular.module('forms')
     link: function postLink (scope, element, attrs) {
       var template = ['input'];
       if (scope.field.type) {
-        console.log("fieldFormDirective: Yo! Check this " + scope.field.type);
+        console.log("fieldInput: Yo! Check this " + scope.field.type);
         template.push(scope.field.type);
         if (scope.field.appearance) {
+          console.log("fieldInput: " + scope.field.type + " has appearance " + scope.field.appearance);
           template.push(scope.field.appearance);
         }
       }
@@ -113,12 +114,12 @@ angular.module('forms')
     controller: ['$scope', '$ionicScrollDelegate', function ($scope, $ionicScrollDelegate) {
       $scope.visible = false;
       if ($scope.field.condition) {
-        console.log('fieldFormDirective: Has condition: ' + $scope.field.condition);
+        console.log('fieldInput: Has condition: ' + $scope.field.condition);
         var condition = parseCondition($scope.field.condition);
         $scope.$watch(function () {
           return $scope.$parent.data[condition.dataKey];
         }, function (value) {
-          console.log('fieldFormDirective: Watching ' + condition.dataKey + '=' + value);
+          console.log('fieldInput: Watching ' + condition.dataKey + '=' + value);
           if (condition.eval(value)) {
             $scope.visible = true;
           } else {

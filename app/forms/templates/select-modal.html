@@ -1,0 +1,11 @@
+<div class="list">
+	<a ng-click="show()" class="item item-divider item-button-right">
+		{{label}}
+		<button ng-if="!data" class="button button-clear icon ion-plus"></button>
+		<button ng-if="data" class="button button-clear icon ion-edit"></button>
+	</a>
+	<div ng-repeat="datum in data" class="item item-button-right">
+		{{datum}}
+		<a class="button icon ion-close"></a>
+	</div>
+</div>

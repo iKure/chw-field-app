@@ -1,0 +1,13 @@
+<div class="bar-header bar">
+	<label class="item-input-wrapper">
+		<i class="icon ion-ios-search placeholder-icon"></i>
+		<input type="search" ng-model="query.text" placeholder="Search">
+	</label>
+</div>
+<div ng-repeat="choice in choices" class="item item-checkbox">
+	<label class="checkbox">
+		<input checklist-model="$parent.data.value" checklist-value="choice.value" type="checkbox" />
+	</label>
+	{{choice.label}}
+</div>
+{{data}}
