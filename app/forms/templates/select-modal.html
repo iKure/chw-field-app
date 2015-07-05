@@ -6,7 +6,7 @@
 <div ng-if="selectMultiple" class="list">
 	<div ng-repeat="datum in data" class="item item-button-right">
 		{{getValueLabel(datum, choices)}}
-		<a class="button icon ion-close"></a>
+		<a ng-click="removeChoice(datum)" class="button icon ion-close"></a>
 	</div>
 </div>
 <div ng-if="!selectMultiple && data" class="value">

@@ -57,6 +57,40 @@ angular.module('forms')
           $scope.data = $popupScope.data.value;
         });
       }
+      function removeChoice (value) {
+        if (!$scope.selectMultiple) {
+          $scope.data = false;
+          return true;
+        }
+        var index = $scope.data.indexOf(value);
+        if (index >= 0) {
+          $scope.data.splice(index, 1);
+          return true;
+        }
+        return false;
+      }
+      $scope.removeChoice = function (value) {
+        $ionicPopup.show({
+          title: 'Remove ' + $scope.getValueLabel(value, $scope.choices),
+          scope: $scope,
+          buttons: [
+            {
+              text: 'Cancel'
+            },
+            {
+              text: 'Remove',
+              type: 'button-aggressive',
+              onTap: function (e) {
+                return true;
+              },
+            },
+          ],
+        }).then(function (result) {
+          if (result) {
+            removeChoice(value);
+          }
+        });
+      }
       $scope.getValueLabel = function (value, choices) {
         var choicesObj = {};
         choices.forEach(function (choice) {
