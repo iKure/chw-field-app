@@ -18,6 +18,11 @@ angular.module('auth')
 
   function login (username, password) {
     var deferred = $q.defer();
+    if (Config.ENV.SESSION) {
+      service.currentUser = Config.ENV.SESSION.userCtx;
+      deferred.resolve(service.currentUser);
+      return deferred.promise;
+    }
     console.log("AuthServ: Logging in to :" + Config.ENV.SERVER_URL);
     console.log("AuthServ: username=" + username + ' & password=' + password);
     var ajaxOpts = {

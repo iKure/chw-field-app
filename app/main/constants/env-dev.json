@@ -10,15 +10,16 @@
         "userCtx": {
             "name": "test", 
             "roles": ["healthworker"],
-            "clinics": ["foo"]
+        }
+    },
+    "CLINIC_LIST": {
+        "foo": {
+            "name": "Foo Clinic",
+            "members": ["test"]
         }
     },
     "CLINICS": {
         "foo": [
-            {
-                "_id": "settings",
-                "name": "Foo Clinic"
-            },
             {
                 "_id": "nickreid",
                 "type": "patient",

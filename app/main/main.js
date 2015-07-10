@@ -55,7 +55,12 @@ angular.module('main', [
       });
     });
   }
-
+  if (Config.ENV.CLINIC_LIST) {
+    console.log('MAIN: Init list of clinics');
+    cleanDB('clinics' + salt).then(function () {
+      initDB('forms' + salt, Config.ENV.CLINIC_LIST);
+    })
+  }
   if (Config.ENV.FORMS) {
     console.log('MAIN: Init forms');
     cleanDB('forms' + salt).then(function () {

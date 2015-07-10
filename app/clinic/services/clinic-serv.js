@@ -10,12 +10,25 @@ angular.module('clinic')
   if (Config.ENV.SaltDB) {
     salt = '-' + Config.ENV.SaltDB;
   }
+  var dbName = 'clinics' + salt;
+  var clinicLocalDB = pouchDB(dbName)
+  if (Config.ENV.SERVER_URL) {
+    var clinicRemoteDB = pouchDB(Config.ENV.SERVER_URL + dbName + salt);
+  }
   // List available clinics — based on User's permission to databases
   function getAvailableClinics(user) {
-    if (user.clinics) {
-      return user.clinics;
-    }
-    return [];
+    console.log('ClinicService: Get available clinics for ' + user);
+    var deferred = $q.defer();
+    clinicLocalDB.allDocs({
+      include_docs: true,
+    }).then(function (results) {
+      var clinics = [];
+      results.rows.forEach(function (row) {
+        clinics.push(row.doc);
+      });
+      deferred.resolve(clinics);
+    });
+    return deferred.promise;
   }
   service.getAvailableClinics = getAvailableClinics;
   // Set pouch to load specific clinic
