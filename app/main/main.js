@@ -29,6 +29,10 @@ angular.module('main', [
     var db = new pouchDB(id);
     db.allDocs().then(function (results) {
       console.log('MAIN: Got ' + results.rows.length + ' docs to clean');
+      if (results.rows.length == 0) {
+        deferred.resolve(false);
+        return false;
+      }
       var deleted = 0;
       function moveOn () {
         deleted += 1;
@@ -58,7 +62,7 @@ angular.module('main', [
   if (Config.ENV.CLINIC_LIST) {
     console.log('MAIN: Init list of clinics');
     cleanDB('clinics' + salt).then(function () {
-      initDB('forms' + salt, Config.ENV.CLINIC_LIST);
+      initDB('clinics' + salt, Config.ENV.CLINIC_LIST);
     })
   }
   if (Config.ENV.FORMS) {

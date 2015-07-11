@@ -9,15 +9,16 @@
         "ok": true, 
         "userCtx": {
             "name": "test", 
-            "roles": ["healthworker"],
+            "roles": ["healthworker"]
         }
     },
-    "CLINIC_LIST": {
-        "foo": {
+    "CLINIC_LIST": [
+        {
+            "_id": "foo",
             "name": "Foo Clinic",
             "members": ["test"]
         }
-    },
+    ],
     "CLINICS": {
         "foo": [
             {
