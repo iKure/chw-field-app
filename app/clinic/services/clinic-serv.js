@@ -17,14 +17,16 @@ angular.module('clinic')
   }
   // List available clinics — based on User's permission to databases
   function getAvailableClinics(user) {
-    console.log('ClinicService: Get available clinics for ' + user);
+    console.log('ClinicService: Get available clinics for ' + user.name);
     var deferred = $q.defer();
     clinicLocalDB.allDocs({
       include_docs: true,
     }).then(function (results) {
       var clinics = [];
       results.rows.forEach(function (row) {
-        clinics.push(row.doc);
+        if (row.doc.members.indexOf(user.name) >= 0) {
+          clinics.push(row.doc);
+        }
       });
       deferred.resolve(clinics);
     });
@@ -32,10 +34,10 @@ angular.module('clinic')
   }
   service.getAvailableClinics = getAvailableClinics;
   // Set pouch to load specific clinic
-  function setClinic(clinic_id) {
+  function setClinic(clinic) {
     var deferred = $q.defer();
-    console.log('ClinicService: Setting clinic to ' + clinic_id + salt);
-    service.localDB = pouchDB(clinic_id + salt);
+    console.log('ClinicService: Setting clinic to ' + clinic._id + salt);
+    service.localDB = pouchDB(clinic._id + salt);
     service.localDB.changes({
       since: 'now',
       live: true,
@@ -46,9 +48,9 @@ angular.module('clinic')
     });
     service.localDB.info().then(function () {
       console.log('ClinicService: Set up localDB');
-      service.currentClinic = clinic_id;
+      service.currentClinic = clinic._id;
       // attempt to set up syncing
-      service.sync(clinic_id + salt);
+      service.sync(clinic._id + salt);
       deferred.resolve(true);
     });
     return deferred.promise;
@@ -107,14 +109,15 @@ angular.module('clinic')
       console.log('ClinicService: Getting current user');
       Auth.getCurrentUser().then(function (user) {
         console.log('ClinicService: Trying to set clinic...');
-        var clinics = service.getAvailableClinics(user);
-        if (clinics.length == 1) { // set up current clinic...
-          console.log('ClinicService: Got auth — setting clinic');
-          service.setClinic(clinics[0]).then(function () {
-            console.log('ClinicService: returning clinic db');
-            deferred.resolve(service.localDB);
-          });
-        }
+        service.getAvailableClinics(user).then(function (clinics) {
+          if (clinics.length == 1) { // set up current clinic...
+            console.log('ClinicService: Got auth — setting clinic');
+            service.setClinic(clinics[0]).then(function () {
+              console.log('ClinicService: returning clinic db');
+              deferred.resolve(service.localDB);
+            });
+          }
+        });
       }).catch(function (err) {
         console.log('ClinicService: No clinic to get');
         deferred.reject('ClinicService: No clinic selected');
